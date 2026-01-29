@@ -136,7 +136,7 @@ This configuration uses a unified Research MCP server that combines Google Searc
     },
     "research": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"],
+      "args": ["/absolute/path/to/mcp-ecosystem/research-assistant-mcp-server/dist/index.js"],
       "env": {
         "GOOGLE_API_KEY": "your-google-api-key-here",
         "GOOGLE_CSE_ID": "your-search-engine-id-here"
@@ -249,7 +249,7 @@ Add the following configuration to your Claude Desktop config file:
     },
     "research": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"],
+      "args": ["/absolute/path/to/mcp-ecosystem/research-assistant-mcp-server/dist/index.js"],
       "env": {
         "GOOGLE_API_KEY": "your-google-api-key-here",
         "GOOGLE_CSE_ID": "your-search-engine-id-here"

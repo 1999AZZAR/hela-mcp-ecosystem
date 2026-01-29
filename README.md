@@ -56,7 +56,7 @@ The AZZAR MCP Server Suite provides a collection of specialized MCP servers that
 **Option 2: Enhanced Research Server (5 total MCP servers)**
 | Server                                                                                  | Purpose                        | Key Features                                                    |
 | --------------------------------------------------------------------------------------- | ------------------------------ | --------------------------------------------------------------- |
-| [**Research MCP**](https://github.com/1999AZZAR/research-mcp-server)                  | Combined research platform     | Unified Google Search + Wikipedia with additional analysis tools |
+| [**Research MCP**](https://github.com/1999AZZAR/research-assistant-mcp-server)                  | Combined research platform     | Unified Google Search + Wikipedia with additional analysis tools |
 
 ## Quick Start
 
@@ -101,7 +101,7 @@ The AZZAR MCP Server Suite provides a collection of specialized MCP servers that
    - ✅ Clones core MCP server repositories (chaining, filesystem, project-guardian, terminal)
    - ✅ Clones research servers based on your selection:
      - **6-server option:** Clones google-search-mcp-server and wikipedia-mcp-server
-     - **5-server option:** Clones research-mcp-server
+     - **5-server option:** Clones research-assistant-mcp-server
    - ✅ Installs dependencies and builds all servers
    - ✅ **Interactively selects your MCP client**
    - ✅ **Automatically creates configuration files**
@@ -251,7 +251,7 @@ Add the following to `~/.cursor/mcp.json`:
     },
     "research": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"],
+      "args": ["/absolute/path/to/mcp-ecosystem/research-assistant-mcp-server/dist/index.js"],
       "env": {
         "GOOGLE_API_KEY": "your-google-api-key-here",
         "GOOGLE_CSE_ID": "your-search-engine-id-here"
@@ -293,7 +293,7 @@ Add the following to your `claude_desktop_config.json`:
     },
     "research": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"],
+      "args": ["/absolute/path/to/mcp-ecosystem/research-assistant-mcp-server/dist/index.js"],
       "env": {
         "GOOGLE_API_KEY": "your-google-api-key-here",
         "GOOGLE_CSE_ID": "your-search-engine-id-here"

@@ -7,7 +7,7 @@ services:
   # Research MCP Server - Combined Google Search and Wikipedia
   research-mcp:
     build:
-      context: ../research-mcp-server
+      context: ../research-assistant-mcp-server
       dockerfile: Dockerfile
     ports:
       - "3007:3007"

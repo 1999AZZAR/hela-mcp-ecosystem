@@ -102,7 +102,7 @@ main() {
     declare -a research_servers=(
         "google-search-mcp-server"
         "wikipedia-mcp-server"
-        "research-mcp-server"
+        "research-assistant-mcp-server"
     )
     
     # Build list of servers to process

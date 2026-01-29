@@ -40,7 +40,7 @@ select_research_mcp() {
     echo "1) Individual servers (wikipedia-mcp-server + google-search-mcp-server)"
     echo "   - Provides 6 total MCP servers"
     echo "   - Separate Google Search and Wikipedia functionality"
-    echo "2) Enhanced research server (research-mcp-server)"
+    echo "2) Enhanced research server (research-assistant-mcp-server)"
     echo "   - Provides 5 total MCP servers"
     echo "   - Combined Google Search and Wikipedia with additional tools"
     echo
@@ -427,7 +427,7 @@ main() {
         print_status "Using individual research servers: 6 total MCP servers"
     else
         research_servers=(
-            "research-mcp-server:https://github.com/1999AZZAR/research-mcp-server.git"
+            "research-assistant-mcp-server:https://github.com/1999AZZAR/research-assistant-mcp-server.git"
         )
         print_status "Using enhanced research server: 5 total MCP servers"
     fi
