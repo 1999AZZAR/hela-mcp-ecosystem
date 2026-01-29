@@ -464,7 +464,7 @@ main() {
         echo
         print_success "🎉 Setup complete! Your MCP server ecosystem is ready to use."
         echo
-        print_status "For more information, see the README.md and docs/integration.md files"
+        print_status "For more information, see the README.md and documentation files in docs/"
     else
         print_warning "Some servers failed to setup. Please check the errors above and try again."
         exit 1

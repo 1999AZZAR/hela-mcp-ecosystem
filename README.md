@@ -20,6 +20,7 @@ A collection of Model Context Protocol (MCP) servers developed by Azzar, designe
   - [Project Guardian MCP Server](#project-guardian-mcp-server)
   - [Terminal MCP Server](#terminal-mcp-server)
   - [Wikipedia MCP Server](#wikipedia-mcp-server)
+  - [Research MCP Server](#research-mcp-server)
 - [Development](#development)
   - [Repository Structure](#repository-structure)
   - [Individual Server Development](#individual-server-development)
@@ -28,6 +29,10 @@ A collection of Model Context Protocol (MCP) servers developed by Azzar, designe
   - [For New Contributors](#for-new-contributors)
   - [Development Guidelines](#development-guidelines)
   - [Adding New Servers](#adding-new-servers)
+- [Documentation](#documentation)
+  - [Architecture Guide](docs/architecture.md)
+  - [Integration Guide](docs/integration.md)
+  - [Troubleshooting Guide](docs/troubleshooting.md)
 - [License](#license)
 - [Support](#support)
 - [Updates](#updates)
@@ -117,7 +122,9 @@ The AZZAR MCP Server Suite provides a collection of specialized MCP servers that
 
    **Note:** Replace `/absolute/path/to/mcp-ecosystem` with the actual absolute path to your mcp-ecosystem directory.
 
-   **Important:** The chaining MCP server requires a GitHub Personal Access Token for awesome-copilot integration. Get a token from https://github.com/settings/tokens and replace `your-github-token-here` with your actual token.
+   **Important:** The chaining MCP server requires a GitHub Personal Access Token for awesome-copilot integration. Get a token from [https://github.com/settings/tokens](https://github.com/settings/tokens) and replace `your-github-token-here` with your actual token.
+
+   For detailed setup instructions, see the [Integration Guide](docs/integration.md).
 
 ### MCP Client Configuration
 
@@ -172,7 +179,7 @@ Add the following to `~/.cursor/mcp.json`:
 }
 ```
 
-**Note:** You can also merge `config/cursor-example.json` and `config/cursor-individual-research.json` to get this configuration.
+**Note:** You can also merge [`config/cursor-example.json`](config/cursor-example.json) and [`config/cursor-individual-research.json`](config/cursor-individual-research.json) to get this configuration.
 
 ##### For Claude Desktop (6-Server Configuration)
 
@@ -218,7 +225,7 @@ Add the following to your `claude_desktop_config.json`:
 }
 ```
 
-**Note:** You can also merge `config/claude-example.json` and `config/claude-individual-research.json` to get this configuration.
+**Note:** You can also merge [`config/claude-example.json`](config/claude-example.json) and [`config/claude-individual-research.json`](config/claude-individual-research.json) to get this configuration.
 
 #### Option 2: 5-Server Stack (Combined Research Server)
 
@@ -265,7 +272,7 @@ Add the following to `~/.cursor/mcp.json`:
 }
 ```
 
-**Note:** You can also merge `config/cursor-example.json` and `config/cursor-combined-research.json` to get this configuration.
+**Note:** You can also merge [`config/cursor-example.json`](config/cursor-example.json) and [`config/cursor-combined-research.json`](config/cursor-combined-research.json) to get this configuration.
 
 ##### For Claude Desktop (5-Server Configuration)
 
@@ -307,7 +314,7 @@ Add the following to your `claude_desktop_config.json`:
 }
 ```
 
-**Note:** You can also merge `config/claude-example.json` and `config/claude-combined-research.json` to get this configuration.
+**Note:** You can also merge [`config/claude-example.json`](config/claude-example.json) and [`config/claude-combined-research.json`](config/claude-combined-research.json) to get this configuration.
 
 ## Server Details
 
@@ -385,27 +392,52 @@ Knowledge base access server providing:
 - Geographic search capabilities
 - Content sections and metadata access
 
+**Note**: Only included in Option 1 (6-server configuration).
+
+### Research MCP Server
+
+**Repository:** [research-assistant-mcp-server](https://github.com/1999AZZAR/research-assistant-mcp-server)
+
+Unified research platform combining Google Search and Wikipedia functionality:
+
+- Combined Google Search and Wikipedia access
+- Enhanced analysis tools (sentiment analysis, keyword extraction)
+- Research workflow management
+- Academic research capabilities
+- Multi-source fact checking
+- Research session management
+
+**Note**: Only included in Option 2 (5-server configuration). Replaces Google Search MCP and Wikipedia MCP servers.
+
 ## Development
 
 ### Repository Structure
 
 ```
 mcp-ecosystem/
-├── README.md                    # This file
-├── setup.sh                     # Automated setup script
-├── update.sh                    # Update all servers script
-├── config/                      # Configuration examples
-│   ├── cursor-example.json      # Cursor IDE configuration
-│   ├── claude-example.json      # Claude Desktop configuration
-│   └── docker-compose.yml       # Docker deployment example
-├── docs/                        # Additional documentation
-│   ├── architecture.md          # System architecture overview
-│   ├── integration.md           # Comprehensive integration guides
-│   └── troubleshooting.md       # Common issues and solutions
-└── scripts/                     # Utility scripts
-    ├── build-all.sh            # Build all servers
-    ├── test-all.sh             # Run tests for all servers
-    └── clean-all.sh            # Clean build artifacts
+├── README.md                              # This file
+├── CONTRIBUTING.md                        # Contribution guidelines
+├── LICENSE                                # MIT License
+├── setup.sh                               # Automated setup script
+├── update.sh                              # Update all servers script
+├── config/                                # Configuration examples
+│   ├── cursor-example.json                # Cursor IDE base configuration
+│   ├── cursor-individual-research.json   # Individual research servers config
+│   ├── cursor-combined-research.json     # Combined research server config
+│   ├── claude-example.json                # Claude Desktop base configuration
+│   ├── claude-individual-research.json   # Individual research servers config
+│   ├── claude-combined-research.json     # Combined research server config
+│   ├── docker-compose.yml                # Docker base configuration
+│   ├── docker-compose-individual-research.yml  # Docker individual research config
+│   └── docker-compose-combined-research.yml    # Docker combined research config
+├── docs/                                  # Additional documentation
+│   ├── architecture.md                   # System architecture overview
+│   ├── integration.md                    # Comprehensive integration guides
+│   └── troubleshooting.md                # Common issues and solutions
+└── scripts/                               # Utility scripts
+    ├── build-all.sh                      # Build all servers
+    ├── test-all.sh                       # Run tests for all servers
+    └── clean-all.sh                      # Clean build artifacts
 ```
 
 ### Individual Server Development
@@ -430,9 +462,11 @@ Each MCP server maintains its own repository for focused development:
 ./scripts/clean-all.sh
 ```
 
+For more detailed information, see the [Development Documentation](docs/integration.md#development-integration).
+
 ## Contributing
 
-We welcome contributions to the AZZAR MCP Server Suite! Here's how you can help:
+We welcome contributions to the AZZAR MCP Server Suite! See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines. Here's how you can help:
 
 ### For New Contributors
 
@@ -459,15 +493,26 @@ To propose a new MCP server for the ecosystem:
 3. **Add Documentation:** Provide README and usage examples
 4. **Submit Proposal:** Open an issue in this repository with server details
 
+## Documentation
+
+For comprehensive documentation, see:
+
+- **[Architecture Guide](docs/architecture.md)** - System architecture, server components, and data flow diagrams
+- **[Integration Guide](docs/integration.md)** - Detailed setup instructions for Cursor IDE, Claude Desktop, and Docker
+- **[Troubleshooting Guide](docs/troubleshooting.md)** - Common issues and solutions
+
 ## License
 
-The AZZAR MCP Server Suite is licensed under the MIT License. Individual servers may have their own licenses - please check each repository for specific licensing information.
+The AZZAR MCP Server Suite is licensed under the MIT License. See [LICENSE](LICENSE) for details. Individual servers may have their own licenses - please check each repository for specific licensing information.
 
 ## Support
 
 - **Issues:** Report bugs and request features in individual server repositories
 - **Discussions:** Join community discussions in the respective GitHub repositories
-- **Documentation:** Check individual server READMEs for detailed usage instructions
+- **Documentation:** 
+  - Check individual server READMEs for detailed usage instructions
+  - See [docs/integration.md](docs/integration.md) for integration help
+  - See [docs/troubleshooting.md](docs/troubleshooting.md) for common issues
 
 ## Updates
 
