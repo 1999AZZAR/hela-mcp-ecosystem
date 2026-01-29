@@ -8,12 +8,17 @@
   - [2. Interoperability](#2-interoperability)
   - [3. Specialization](#3-specialization)
 - [Server Architecture](#server-architecture)
+  - [Core Servers](#core-servers)
+  - [Research Servers](#research-servers)
+    - [Option 1: Individual Research Servers](#option-1-individual-research-servers)
+    - [Option 2: Combined Research Server](#option-2-combined-research-server)
   - [Chaining MCP Server](#chaining-mcp-server)
   - [Filesystem MCP Server](#filesystem-mcp-server)
-  - [Google Search MCP Server](#google-search-mcp-server)
   - [Project Guardian MCP Server](#project-guardian-mcp-server)
   - [Terminal MCP Server](#terminal-mcp-server)
+  - [Google Search MCP Server](#google-search-mcp-server)
   - [Wikipedia MCP Server](#wikipedia-mcp-server)
+  - [Research MCP Server](#research-mcp-server)
 - [Data Flow Architecture](#data-flow-architecture)
   - [Client Interaction Layer](#client-interaction-layer)
   - [Server Orchestration Layer](#server-orchestration-layer)
@@ -61,12 +66,41 @@ All servers communicate through the standardized MCP protocol, enabling:
 Each server targets specific use cases:
 - **Chaining MCP**: Workflow orchestration and AI guidance
 - **Filesystem MCP**: File system operations and management
-- **Google Search MCP**: Web research and content analysis
 - **Project Guardian MCP**: Project memory and knowledge management
 - **Terminal MCP**: System command execution
-- **Wikipedia MCP**: Knowledge base access
+- **Research Servers**: Web research and knowledge access (choose one option)
+  - **Option 1**: Google Search MCP + Wikipedia MCP (6 total servers)
+  - **Option 2**: Research MCP (5 total servers, combined functionality)
 
 ## Server Architecture
+
+The AZZAR MCP Server Suite consists of core servers that are always present, plus research servers where users choose between two options:
+
+### Core Servers
+
+These four servers form the foundation of the ecosystem and are always included:
+
+1. **Chaining MCP Server**: Intelligent workflow orchestration
+2. **Filesystem MCP Server**: Advanced file operations
+3. **Project Guardian MCP Server**: Project memory and knowledge management
+4. **Terminal MCP Server**: System command execution
+
+### Research Servers
+
+Users choose one of two research server configurations:
+
+#### Option 1: Individual Research Servers (6 total servers)
+
+- **Google Search MCP Server**: Web research and content analysis
+- **Wikipedia MCP Server**: Knowledge base access
+
+This configuration provides maximum flexibility with separate servers for different research capabilities.
+
+#### Option 2: Combined Research Server (5 total servers)
+
+- **Research MCP Server**: Unified research platform combining Google Search and Wikipedia functionality with additional analysis tools
+
+This configuration reduces the number of servers to manage while providing comprehensive research capabilities.
 
 ### Chaining MCP Server
 **Purpose**: Intelligent tool orchestration and workflow management
@@ -114,6 +148,8 @@ Each server targets specific use cases:
 - Supports content verification in knowledge management
 - Enables web-based data collection for projects
 
+**Note**: Only included in Option 1 (6-server configuration).
+
 ### Project Guardian MCP Server
 **Purpose**: Project memory and knowledge management
 
@@ -159,6 +195,27 @@ Each server targets specific use cases:
 - Supports content verification and fact-checking
 - Enables knowledge enrichment for project documentation
 
+**Note**: Only included in Option 1 (6-server configuration).
+
+### Research MCP Server
+**Purpose**: Unified research platform combining Google Search and Wikipedia functionality
+
+**Components**:
+- Combined Search Interface: Unified Google Search and Wikipedia access
+- Content Analysis Engine: Advanced content extraction and analysis
+- Fact Verification System: Multi-source credibility assessment
+- Research Workflow Manager: Coordinated research across sources
+- Trend Analysis: Search pattern and interest analysis
+- Academic Research Tools: Specialized tools for scholarly research
+
+**Integration Points**:
+- Provides comprehensive research capabilities in a single server
+- Supports content verification and fact-checking
+- Enables web-based and knowledge base research workflows
+- Reduces server count while maintaining functionality
+
+**Note**: Only included in Option 2 (5-server configuration). Replaces Google Search MCP and Wikipedia MCP servers.
+
 ## Data Flow Architecture
 
 ### Client Interaction Layer
@@ -176,6 +233,8 @@ Each server targets specific use cases:
 ```
 
 ### Server Orchestration Layer
+
+#### Option 1: 6-Server Configuration (Individual Research Servers)
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                    Chaining MCP Server                      │
@@ -206,7 +265,48 @@ Each server targets specific use cases:
 │ Wikipedia MCP   │      │   External APIs │
 │                 │      │                 │
 │ Knowledge Base  │      │   (Google, etc) │
-└─────────────────┐      └─────────────────┘
+└─────────────────┘      └─────────────────┘
+         │
+         ▼
+┌─────────────────┐
+│  Data Storage   │
+│                 │
+│ SQLite • Files  │
+└─────────────────┘
+```
+
+#### Option 2: 5-Server Configuration (Combined Research Server)
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Chaining MCP Server                      │
+│  ┌─────────────────────────────────────────────────────┐    │
+│  │ Tool Discovery • Route Optimization • Orchestration │    │
+│  └─────────────────────────────────────────────────────┘    │
+│              │                        │                    │
+│      Orchestrates              Coordinates              │
+│              │                        │                    │
+└─────────────────────────────────────────────────────────────┘
+         │                        │
+         ▼                        ▼
+┌─────────────────┐      ┌─────────────────┐
+│ Filesystem MCP  │      │  Research MCP   │
+│                 │      │                 │
+│ File Operations │      │ Google+Wikipedia│
+└─────────────────┘      │ Unified Research │
+         │               └─────────────────┘
+         ▼                        │
+┌─────────────────┐               │
+│ Project Guardian│               │
+│                 │               │
+│ Knowledge Mgmt  │               │
+└─────────────────┘               │
+         │                        │
+         ▼                        ▼
+┌─────────────────┐      ┌─────────────────┐
+│  Terminal MCP   │      │   External APIs │
+│                 │      │                 │
+│ System Commands │      │   (Google, etc) │
+└─────────────────┘      └─────────────────┘
          │
          ▼
 ┌─────────────────┐

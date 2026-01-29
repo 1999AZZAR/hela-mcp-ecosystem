@@ -268,11 +268,12 @@ configure_docker() {
 
     # Create .env file if it doesn't exist
     if [ ! -f ".env" ]; then
-        cat > .env << 'EOF'
+        if [ "$RESEARCH_MCP" = "individual" ]; then
+            cat > .env << 'EOF'
 # GitHub Integration (Required for Chaining MCP Server)
 GITHUB_TOKEN=your-github-token-here
 
-# Google Search API (Required for research servers)
+# Google Search API (Required for individual research servers)
 GOOGLE_API_KEY=your-google-api-key-here
 GOOGLE_SEARCH_ENGINE_ID=your-search-engine-id-here
 
@@ -285,6 +286,26 @@ SEQUENTIAL_THINKING_AVAILABLE=true
 AWESOME_COPILOT_ENABLED=true
 RELIABILITY_MONITORING_ENABLED=true
 EOF
+        else
+            cat > .env << 'EOF'
+# GitHub Integration (Required for Chaining MCP Server)
+GITHUB_TOKEN=your-github-token-here
+
+# Google Search API (Required for combined research server)
+GOOGLE_API_KEY=your-google-api-key-here
+GOOGLE_SEARCH_ENGINE_ID=your-search-engine-id-here
+# Note: docker-compose-combined-research.yml maps GOOGLE_SEARCH_ENGINE_ID to GOOGLE_CSE_ID
+
+# Optional: Data persistence paths
+DATA_PATH=./data
+WORKSPACE_PATH=./workspace
+
+# Optional: Server-specific settings
+SEQUENTIAL_THINKING_AVAILABLE=true
+AWESOME_COPILOT_ENABLED=true
+RELIABILITY_MONITORING_ENABLED=true
+EOF
+        fi
         print_success "Created .env file with template values"
     fi
 

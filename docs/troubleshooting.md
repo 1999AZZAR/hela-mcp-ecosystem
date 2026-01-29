@@ -243,7 +243,9 @@ This guide helps you resolve common issues when setting up and using the AZZAR M
 
 ### External API Access
 
-**Problem**: External services (Google Search, Wikipedia) fail.
+**Problem**: External services (Google Search, Wikipedia, or Research MCP) fail.
+
+**Note**: If you're using the 5-server stack with the combined Research MCP server, replace references to "Google Search" and "Wikipedia" with "Research MCP" in the troubleshooting steps below.
 
 **Solutions**:
 1. Check internet connectivity:

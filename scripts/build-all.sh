@@ -65,15 +65,30 @@ build_server() {
 main() {
     print_status "Starting build of all MCP servers..."
 
-    # Define the servers to build
-    declare -a servers=(
+    # Define the core servers (always present)
+    declare -a core_servers=(
         "chaining-mcp-server"
         "filesystem-mcp-server"
-        "google-search-mcp-server"
         "Project-Guardian-mcp-server"
         "terminal-mcp-server"
-        "wikipedia-mcp-server"
     )
+    
+    # Define research servers (user chooses one option)
+    declare -a research_servers=(
+        "google-search-mcp-server"
+        "wikipedia-mcp-server"
+        "research-mcp-server"
+    )
+    
+    # Build list of servers to process
+    declare -a servers=("${core_servers[@]}")
+    
+    # Add research servers that exist
+    for research_server in "${research_servers[@]}"; do
+        if [ -d "$research_server" ]; then
+            servers+=("$research_server")
+        fi
+    done
 
     # Track success/failure
     local success_count=0

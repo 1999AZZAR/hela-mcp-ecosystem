@@ -94,11 +94,14 @@ The AZZAR MCP Server Suite provides a collection of specialized MCP servers that
      - **Claude Desktop** - Automatic configuration
      - **Docker Compose** - Container setup
      - **Skip** - Manual setup
-   - Clones and builds selected MCP servers
+   - Clones and builds selected MCP servers based on your choice
    - Automatically configures your selected client
    - Sets up environment variables and paths
    **What happens automatically:**
-   - ✅ Clones all 6 MCP server repositories
+   - ✅ Clones core MCP server repositories (chaining, filesystem, project-guardian, terminal)
+   - ✅ Clones research servers based on your selection:
+     - **6-server option:** Clones google-search-mcp-server and wikipedia-mcp-server
+     - **5-server option:** Clones research-mcp-server
    - ✅ Installs dependencies and builds all servers
    - ✅ **Interactively selects your MCP client**
    - ✅ **Automatically creates configuration files**
@@ -118,7 +121,13 @@ The AZZAR MCP Server Suite provides a collection of specialized MCP servers that
 
 ### MCP Client Configuration
 
-#### For Cursor IDE
+Choose your configuration based on your research server selection:
+
+#### Option 1: 6-Server Stack (Individual Research Servers)
+
+This configuration uses separate Google Search and Wikipedia servers, providing maximum flexibility and granular control.
+
+##### For Cursor IDE (6-Server Configuration)
 
 Add the following to `~/.cursor/mcp.json`:
 
@@ -163,7 +172,9 @@ Add the following to `~/.cursor/mcp.json`:
 }
 ```
 
-#### For Claude Desktop
+**Note:** You can also merge `config/cursor-example.json` and `config/cursor-individual-research.json` to get this configuration.
+
+##### For Claude Desktop (6-Server Configuration)
 
 Add the following to your `claude_desktop_config.json`:
 
@@ -206,6 +217,97 @@ Add the following to your `claude_desktop_config.json`:
   }
 }
 ```
+
+**Note:** You can also merge `config/claude-example.json` and `config/claude-individual-research.json` to get this configuration.
+
+#### Option 2: 5-Server Stack (Combined Research Server)
+
+This configuration uses a unified Research MCP server that combines Google Search and Wikipedia functionality, resulting in fewer servers to manage.
+
+##### For Cursor IDE (5-Server Configuration)
+
+Add the following to `~/.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "chaining": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"],
+      "env": {
+        "SEQUENTIAL_THINKING_AVAILABLE": "true",
+        "AWESOME_COPILOT_ENABLED": "true",
+        "RELIABILITY_MONITORING_ENABLED": "true",
+        "GITHUB_TOKEN": "your-github-token-here"
+      }
+    },
+    "filesystem": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/filesystem-mcp-server/dist/index.js"]
+    },
+    "project-guardian": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"]
+    },
+    "research": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"],
+      "env": {
+        "GOOGLE_API_KEY": "your-google-api-key-here",
+        "GOOGLE_CSE_ID": "your-search-engine-id-here"
+      }
+    },
+    "terminal": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/dist/index.js"]
+    }
+  }
+}
+```
+
+**Note:** You can also merge `config/cursor-example.json` and `config/cursor-combined-research.json` to get this configuration.
+
+##### For Claude Desktop (5-Server Configuration)
+
+Add the following to your `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "chaining": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"],
+      "env": {
+        "SEQUENTIAL_THINKING_AVAILABLE": "true",
+        "AWESOME_COPILOT_ENABLED": "true",
+        "GITHUB_TOKEN": "your-github-token-here"
+      }
+    },
+    "filesystem": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/filesystem-mcp-server/dist/index.js"]
+    },
+    "project-guardian": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"]
+    },
+    "research": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"],
+      "env": {
+        "GOOGLE_API_KEY": "your-google-api-key-here",
+        "GOOGLE_CSE_ID": "your-search-engine-id-here"
+      }
+    },
+    "terminal": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/dist/index.js"]
+    }
+  }
+}
+```
+
+**Note:** You can also merge `config/claude-example.json` and `config/claude-combined-research.json` to get this configuration.
 
 ## Server Details
 
