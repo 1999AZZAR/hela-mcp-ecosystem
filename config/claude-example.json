@@ -21,6 +21,14 @@
       "command": "node",
       "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/dist/index.js"]
     },
+    "researcher": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/research-assistant-mcp-server/dist/index.js"],
+      "env": {
+        "GOOGLE_API_KEY": "your-google-api-key-here",
+        "GOOGLE_CSE_ID": "your-search-engine-id-here"
+      }
+    },
     "browser": {
       "command": "node",
       "args": ["/absolute/path/to/mcp-ecosystem/browser-agent/src/server.js"]

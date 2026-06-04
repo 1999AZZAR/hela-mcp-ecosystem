@@ -16,11 +16,10 @@ A collection of Model Context Protocol (MCP) servers developed by Azzar, designe
 - [Server Details](#server-details)
   - [Chaining MCP Server](#chaining-mcp-server)
   - [Filesystem MCP Server](#filesystem-mcp-server)
-  - [Google Search MCP Server](#google-search-mcp-server)
   - [Project Guardian MCP Server](#project-guardian-mcp-server)
   - [Terminal MCP Server](#terminal-mcp-server)
-  - [Wikipedia MCP Server](#wikipedia-mcp-server)
-  - [Research MCP Server](#research-mcp-server)
+  - [Researcher MCP Server](#researcher-mcp-server)
+  - [Browser Agent MCP Server](#browser-agent-mcp-server)
 - [Development](#development)
   - [Repository Structure](#repository-structure)
   - [Individual Server Development](#individual-server-development)
@@ -39,7 +38,7 @@ A collection of Model Context Protocol (MCP) servers developed by Azzar, designe
 
 ## Overview
 
-The AZZAR MCP Server Suite provides a collection of specialized MCP servers that work together to create an effective AI assistant toolkit. Each server focuses on specific domains while maintaining interoperability through the MCP protocol.
+The AZZAR MCP Server Suite provides a collection of 6 specialized MCP servers that work together to create an effective AI assistant toolkit. Each server focuses on specific domains while maintaining interoperability through the MCP protocol.
 
 ### Core Servers
 
@@ -49,20 +48,8 @@ The AZZAR MCP Server Suite provides a collection of specialized MCP servers that
 | [**Filesystem MCP**](https://github.com/1999AZZAR/filesystem-mcp-server)             | Advanced file operations       | File manipulation, directory operations, search capabilities    |
 | [**Project Guardian MCP**](https://github.com/1999AZZAR/Project-Guardian-mcp-server) | Project memory management      | Knowledge graphs, task tracking, database operations            |
 | [**Terminal MCP**](https://github.com/1999AZZAR/terminal-mcp-server)                 | System command execution       | Remote execution, session management, cross-platform support    |
+| [**Researcher MCP**](https://github.com/1999AZZAR/research-assistant-mcp-server)    | Combined research platform     | Unified Google Search + Wikipedia with additional analysis tools |
 | [**Browser Agent MCP**](https://github.com/1999AZZAR/browser-agent)             | Browser automation             | Playwright-based web interaction, scraping, automation          |
-
-### Research Servers (Choose One Option)
-
-**Option 1: Individual Research Servers (6 total MCP servers)**
-| Server                                                                                  | Purpose                        | Key Features                                                    |
-| --------------------------------------------------------------------------------------- | ------------------------------ | --------------------------------------------------------------- |
-| [**Google Search MCP**](https://github.com/1999AZZAR/Google-Search-MCP)       | Web research and analysis      | Search, content extraction, fact checking, research assistance  |
-| [**Wikipedia MCP**](https://github.com/1999AZZAR/wikipedia-mcp-server)               | Knowledge base access          | Article search, content extraction, language support            |
-
-**Option 2: Enhanced Research Server (5 total MCP servers)**
-| Server                                                                                  | Purpose                        | Key Features                                                    |
-| --------------------------------------------------------------------------------------- | ------------------------------ | --------------------------------------------------------------- |
-| [**Research MCP**](https://github.com/1999AZZAR/research-assistant-mcp-server)                  | Combined research platform     | Unified Google Search + Wikipedia with additional analysis tools |
 
 ## Quick Start
 
@@ -92,149 +79,17 @@ The AZZAR MCP Server Suite provides a collection of specialized MCP servers that
 
    **Setup Process:**
    - Checks prerequisites (Node.js, Git)
-   - **Research MCP Selection:** Choose between individual research servers or combined research server
-     - **Individual:** Google Search + Wikipedia servers (6 total MCP servers)
-     - **Combined:** Enhanced research server with unified functionality (5 total MCP servers)
+   - Clones all 6 core MCP servers
    - Prompts for MCP client selection:
      - **Cursor IDE** - Automatic configuration
      - **Claude Desktop** - Automatic configuration
      - **Docker Compose** - Container setup
-     - **Skip** - Manual setup
-   - Clones and builds selected MCP servers based on your choice
-   - Automatically configures your selected client
-   - Sets up environment variables and paths
-   **What happens automatically:**
-   - ✅ Clones core MCP server repositories (chaining, filesystem, project-guardian, terminal)
-   - ✅ Clones research servers based on your selection:
-     - **6-server option:** Clones google-search-mcp-server and wikipedia-mcp-server
-     - **5-server option:** Clones research-assistant-mcp-server
-   - ✅ Installs dependencies and builds all servers
-   - ✅ **Interactively selects your MCP client**
-   - ✅ **Automatically creates configuration files**
-   - ✅ **Sets correct paths and environment variables**
-
-3. **MCP Client Options:**
-
-   Choose from:
-   - **Cursor IDE** - Creates `~/.cursor/mcp.json` automatically
-   - **Claude Desktop** - Sets up config in the correct OS-specific location
-   - **Docker Compose** - Prepares containerized deployment with `.env` file
-   - **Skip** - Manual configuration (see below)
-
-   **Note:** Replace `/absolute/path/to/mcp-ecosystem` with the actual absolute path to your mcp-ecosystem directory.
-
-   **Important:** The chaining MCP server requires a GitHub Personal Access Token for awesome-copilot integration. Get a token from [https://github.com/settings/tokens](https://github.com/settings/tokens) and replace `your-github-token-here` with your actual token.
-
-   For detailed setup instructions, see the [Integration Guide](docs/integration.md).
 
 ### MCP Client Configuration
 
-Choose your configuration based on your research server selection:
+#### For Cursor IDE
 
-#### Option 1: 6-Server Stack (Individual Research Servers)
-
-This configuration uses separate Google Search and Wikipedia servers, providing maximum flexibility and granular control.
-
-##### For Cursor IDE (6-Server Configuration)
-
-Add the following to `~/.cursor/mcp.json`:
-
-```json
-{
-  "mcpServers": {
-    "chaining": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"],
-      "env": {
-        "SEQUENTIAL_THINKING_AVAILABLE": "true",
-        "AWESOME_COPILOT_ENABLED": "true",
-        "RELIABILITY_MONITORING_ENABLED": "true",
-        "GITHUB_TOKEN": "your-github-token-here"
-      }
-    },
-    "filesystem": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/filesystem-mcp-server/dist/index.js"]
-    },
-    "google-search": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/google-search-mcp-server/dist/index.js"],
-      "env": {
-        "GOOGLE_API_KEY": "your-google-api-key-here",
-        "GOOGLE_SEARCH_ENGINE_ID": "your-search-engine-id-here"
-      }
-    },
-    "project-guardian": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"]
-    },
-    "terminal": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/dist/index.js"]
-    },
-    "wikipedia": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/wikipedia-mcp-server/dist/index.js"]
-    }
-  }
-}
-```
-
-**Note:** You can also merge [`config/cursor-example.json`](config/cursor-example.json) and [`config/cursor-individual-research.json`](config/cursor-individual-research.json) to get this configuration.
-
-##### For Claude Desktop (6-Server Configuration)
-
-Add the following to your `claude_desktop_config.json`:
-
-```json
-{
-  "mcpServers": {
-    "chaining": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"],
-      "env": {
-        "SEQUENTIAL_THINKING_AVAILABLE": "true",
-        "AWESOME_COPILOT_ENABLED": "true",
-        "GITHUB_TOKEN": "your-github-token-here"
-      }
-    },
-    "filesystem": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/filesystem-mcp-server/dist/index.js"]
-    },
-    "google-search": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/google-search-mcp-server/dist/index.js"],
-      "env": {
-        "GOOGLE_API_KEY": "your-google-api-key-here",
-        "GOOGLE_SEARCH_ENGINE_ID": "your-search-engine-id-here"
-      }
-    },
-    "project-guardian": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"]
-    },
-    "terminal": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/dist/index.js"]
-    },
-    "wikipedia": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/wikipedia-mcp-server/dist/index.js"]
-    }
-  }
-}
-```
-
-**Note:** You can also merge [`config/claude-example.json`](config/claude-example.json) and [`config/claude-individual-research.json`](config/claude-individual-research.json) to get this configuration.
-
-#### Option 2: 5-Server Stack (Combined Research Server)
-
-This configuration uses a unified Research MCP server that combines Google Search and Wikipedia functionality, resulting in fewer servers to manage.
-
-##### For Cursor IDE (5-Server Configuration)
-
-Add the following to `~/.cursor/mcp.json`:
+Add the following to your `mcp.json`:
 
 ```json
 {
@@ -257,7 +112,11 @@ Add the following to `~/.cursor/mcp.json`:
       "command": "node",
       "args": ["/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"]
     },
-    "research": {
+    "terminal": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/dist/index.js"]
+    },
+    "researcher": {
       "command": "node",
       "args": ["/absolute/path/to/mcp-ecosystem/research-assistant-mcp-server/dist/index.js"],
       "env": {
@@ -265,17 +124,15 @@ Add the following to `~/.cursor/mcp.json`:
         "GOOGLE_CSE_ID": "your-search-engine-id-here"
       }
     },
-    "terminal": {
+    "browser": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/dist/index.js"]
+      "args": ["/absolute/path/to/mcp-ecosystem/browser-agent/src/server.js"]
     }
   }
 }
 ```
 
-**Note:** You can also merge [`config/cursor-example.json`](config/cursor-example.json) and [`config/cursor-combined-research.json`](config/cursor-combined-research.json) to get this configuration.
-
-##### For Claude Desktop (5-Server Configuration)
+#### For Claude Desktop
 
 Add the following to your `claude_desktop_config.json`:
 
@@ -299,7 +156,11 @@ Add the following to your `claude_desktop_config.json`:
       "command": "node",
       "args": ["/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"]
     },
-    "research": {
+    "terminal": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/dist/index.js"]
+    },
+    "researcher": {
       "command": "node",
       "args": ["/absolute/path/to/mcp-ecosystem/research-assistant-mcp-server/dist/index.js"],
       "env": {
@@ -307,15 +168,13 @@ Add the following to your `claude_desktop_config.json`:
         "GOOGLE_CSE_ID": "your-search-engine-id-here"
       }
     },
-    "terminal": {
+    "browser": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/dist/index.js"]
+      "args": ["/absolute/path/to/mcp-ecosystem/browser-agent/src/server.js"]
     }
   }
 }
 ```
-
-**Note:** You can also merge [`config/claude-example.json`](config/claude-example.json) and [`config/claude-combined-research.json`](config/claude-combined-research.json) to get this configuration.
 
 ## Server Details
 
@@ -344,19 +203,6 @@ Advanced file system operations server providing:
 - Archive creation and extraction
 - File system monitoring and change detection
 
-### Google Search MCP Server
-
-**Repository:** [Google-Search-MCP](https://github.com/1999AZZAR/Google-Search-MCP)
-
-Web research and content analysis server offering:
-
-- Google Custom Search integration
-- Content extraction and summarization
-- Fact checking with credibility analysis
-- Academic research capabilities
-- News monitoring and trend analysis
-- Multi-site search functionality
-
 ### Project Guardian MCP Server
 
 **Repository:** [Project-Guardian-mcp-server](https://github.com/1999AZZAR/Project-Guardian-mcp-server)
@@ -381,6 +227,19 @@ System command execution server with:
 - Command timeout and error handling
 - Environment variable support
 
+### Researcher MCP Server
+
+**Repository:** [research-assistant-mcp-server](https://github.com/1999AZZAR/research-assistant-mcp-server)
+
+Unified research platform combining Google Search and Wikipedia functionality:
+
+- Combined Google Search and Wikipedia access
+- Enhanced analysis tools (sentiment analysis, keyword extraction)
+- Research workflow management
+- Academic research capabilities
+- Multi-source fact checking
+- Research session management
+
 ### Browser Agent MCP Server
 
 **Repository:** [browser-agent](https://github.com/1999AZZAR/browser-agent)
@@ -394,35 +253,6 @@ Browser automation and web interaction server featuring:
 - Visual verification and screenshots
 - Session management for persistent browsing
 
-### Wikipedia MCP Server
-
-**Repository:** [wikipedia-mcp-server](https://github.com/1999AZZAR/wikipedia-mcp-server)
-
-Knowledge base access server providing:
-
-- Article search and content retrieval
-- Multi-language support
-- Category browsing and navigation
-- Geographic search capabilities
-- Content sections and metadata access
-
-**Note**: Only included in Option 1 (6-server configuration).
-
-### Research MCP Server
-
-**Repository:** [research-assistant-mcp-server](https://github.com/1999AZZAR/research-assistant-mcp-server)
-
-Unified research platform combining Google Search and Wikipedia functionality:
-
-- Combined Google Search and Wikipedia access
-- Enhanced analysis tools (sentiment analysis, keyword extraction)
-- Research workflow management
-- Academic research capabilities
-- Multi-source fact checking
-- Research session management
-
-**Note**: Only included in Option 2 (5-server configuration). Replaces Google Search MCP and Wikipedia MCP servers.
-
 ## Development
 
 ### Repository Structure
@@ -435,15 +265,9 @@ mcp-ecosystem/
 ├── setup.sh                               # Automated setup script
 ├── update.sh                              # Update all servers script
 ├── config/                                # Configuration examples
-│   ├── cursor-example.json                # Cursor IDE base configuration
-│   ├── cursor-individual-research.json   # Individual research servers config
-│   ├── cursor-combined-research.json     # Combined research server config
-│   ├── claude-example.json                # Claude Desktop base configuration
-│   ├── claude-individual-research.json   # Individual research servers config
-│   ├── claude-combined-research.json     # Combined research server config
-│   ├── docker-compose.yml                # Docker base configuration
-│   ├── docker-compose-individual-research.yml  # Docker individual research config
-│   └── docker-compose-combined-research.yml    # Docker combined research config
+│   ├── cursor-example.json                # Cursor IDE configuration
+│   ├── claude-example.json                # Claude Desktop configuration
+│   └── docker-compose.yml                # Docker configuration
 ├── docs/                                  # Additional documentation
 │   ├── architecture.md                   # System architecture overview
 │   ├── integration.md                    # Comprehensive integration guides
@@ -480,32 +304,7 @@ For more detailed information, see the [Development Documentation](docs/integrat
 
 ## Contributing
 
-We welcome contributions to the AZZAR MCP Server Suite! See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines. Here's how you can help:
-
-### For New Contributors
-
-1. **Choose a Server:** Pick a server that interests you from the list above
-2. **Check Issues:** Look for open issues in the respective repository
-3. **Fork and Clone:** Fork the repository and create a feature branch
-4. **Make Changes:** Implement your improvements
-5. **Test Thoroughly:** Run the test suite and ensure all tests pass
-6. **Submit PR:** Create a pull request with a clear description
-
-### Development Guidelines
-
-- **Code Quality:** Follow TypeScript best practices and maintain test coverage
-- **Documentation:** Update README and documentation for any new features
-- **Compatibility:** Ensure MCP protocol compliance and cross-platform compatibility
-- **Security:** Follow security best practices, especially for network operations
-
-### Adding New Servers
-
-To propose a new MCP server for the ecosystem:
-
-1. **Create Repository:** Develop the server in its own repository
-2. **Follow Standards:** Implement MCP protocol correctly with proper error handling
-3. **Add Documentation:** Provide README and usage examples
-4. **Submit Proposal:** Open an issue in this repository with server details
+We welcome contributions to the AZZAR MCP Server Suite! See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ## Documentation
 

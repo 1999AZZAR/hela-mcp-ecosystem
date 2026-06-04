@@ -20,10 +20,9 @@ services:
       - ./data:/app/data
     depends_on:
       - filesystem-mcp
-      - google-search-mcp
       - project-guardian-mcp
       - terminal-mcp
-      - wikipedia-mcp
+      - researcher-mcp
       - browser-mcp
     networks:
       - mcp-network
@@ -40,26 +39,13 @@ services:
     networks:
       - mcp-network
 
-  # Google Search MCP Server - Web research
-  google-search-mcp:
-    build:
-      context: ../google-search-mcp-server
-      dockerfile: Dockerfile
-    ports:
-      - "3003:3003"
-    environment:
-      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
-      - GOOGLE_SEARCH_ENGINE_ID=${GOOGLE_SEARCH_ENGINE_ID}
-    networks:
-      - mcp-network
-
   # Project Guardian MCP Server - Knowledge management
   project-guardian-mcp:
     build:
       context: ../Project-Guardian-mcp-server
       dockerfile: Dockerfile
     ports:
-      - "3004:3004"
+      - "3003:3003"
     volumes:
       - ./data:/app/data
     networks:
@@ -71,18 +57,21 @@ services:
       context: ../terminal-mcp-server
       dockerfile: Dockerfile
     ports:
-      - "3005:3005"
+      - "3004:3004"
     privileged: true
     networks:
       - mcp-network
 
-  # Wikipedia MCP Server - Knowledge base
-  wikipedia-mcp:
+  # Researcher MCP Server - Combined research platform
+  researcher-mcp:
     build:
-      context: ../wikipedia-mcp-server
+      context: ../research-assistant-mcp-server
       dockerfile: Dockerfile
     ports:
-      - "3006:3006"
+      - "3005:3005"
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - GOOGLE_CSE_ID=${GOOGLE_SEARCH_ENGINE_ID}
     networks:
       - mcp-network
 
@@ -92,7 +81,7 @@ services:
       context: ../browser-agent
       dockerfile: Dockerfile
     ports:
-      - "3007:3007"
+      - "3006:3006"
     networks:
       - mcp-network
 
