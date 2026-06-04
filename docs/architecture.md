@@ -8,17 +8,13 @@
   - [2. Interoperability](#2-interoperability)
   - [3. Specialization](#3-specialization)
 - [Server Architecture](#server-architecture)
-  - [Core Servers](#core-servers)
-  - [Research Servers](#research-servers)
-    - [Option 1: Individual Research Servers](#option-1-individual-research-servers)
-    - [Option 2: Combined Research Server](#option-2-combined-research-server)
+  - [The 6 Core Servers](#the-6-core-servers)
   - [Chaining MCP Server](#chaining-mcp-server)
   - [Filesystem MCP Server](#filesystem-mcp-server)
   - [Project Guardian MCP Server](#project-guardian-mcp-server)
   - [Terminal MCP Server](#terminal-mcp-server)
-  - [Google Search MCP Server](#google-search-mcp-server)
-  - [Wikipedia MCP Server](#wikipedia-mcp-server)
-  - [Research MCP Server](#research-mcp-server)
+  - [Researcher MCP Server](#researcher-mcp-server)
+  - [Browser Agent MCP Server](#browser-agent-mcp-server)
 - [Data Flow Architecture](#data-flow-architecture)
   - [Client Interaction Layer](#client-interaction-layer)
   - [Server Orchestration Layer](#server-orchestration-layer)
@@ -44,7 +40,7 @@
 
 ## Overview
 
-The AZZAR MCP Server Suite is a collection of specialized Model Context Protocol (MCP) servers designed to work together to provide AI assistant capabilities. The architecture follows a modular, distributed approach where each server focuses on specific domains while maintaining interoperability through the MCP protocol.
+The AZZAR MCP Server Suite is a collection of 6 specialized Model Context Protocol (MCP) servers designed to work together to provide comprehensive AI assistant capabilities. The architecture follows a modular, distributed approach where each server focuses on specific domains while maintaining seamless interoperability.
 
 ## Core Principles
 
@@ -68,39 +64,21 @@ Each server targets specific use cases:
 - **Filesystem MCP**: File system operations and management
 - **Project Guardian MCP**: Project memory and knowledge management
 - **Terminal MCP**: System command execution
-- **Research Servers**: Web research and knowledge access (choose one option)
-  - **Option 1**: Google Search MCP + Wikipedia MCP (6 total servers)
-  - **Option 2**: Research MCP (5 total servers, combined functionality)
+- **Researcher MCP**: Combined web research and knowledge access
+- **Browser Agent MCP**: Browser automation and web interaction
 
 ## Server Architecture
 
-The AZZAR MCP Server Suite consists of core servers that are always present, plus research servers where users choose between two options:
+The AZZAR MCP Server Suite consists of 6 core servers that work in tandem:
 
-### Core Servers
-
-These four servers form the foundation of the ecosystem and are always included:
+### The 6 Core Servers
 
 1. **Chaining MCP Server**: Intelligent workflow orchestration
 2. **Filesystem MCP Server**: Advanced file operations
 3. **Project Guardian MCP Server**: Project memory and knowledge management
 4. **Terminal MCP Server**: System command execution
-
-### Research Servers
-
-Users choose one of two research server configurations:
-
-#### Option 1: Individual Research Servers (6 total servers)
-
-- **Google Search MCP Server**: Web research and content analysis
-- **Wikipedia MCP Server**: Knowledge base access
-
-This configuration provides maximum flexibility with separate servers for different research capabilities.
-
-#### Option 2: Combined Research Server (5 total servers)
-
-- **Research MCP Server**: Unified research platform combining Google Search and Wikipedia functionality with additional analysis tools
-
-This configuration reduces the number of servers to manage while providing comprehensive research capabilities.
+5. **Researcher MCP Server**: Unified research platform (Google Search + Wikipedia)
+6. **Browser Agent MCP Server**: Browser automation and web interaction
 
 ### Chaining MCP Server
 **Purpose**: Intelligent tool orchestration and workflow management
@@ -133,23 +111,6 @@ This configuration reduces the number of servers to manage while providing compr
 - Supports data import/export for Project Guardian
 - Enables file-based workflows in terminal operations
 
-### Google Search MCP Server
-**Purpose**: Web research and content analysis
-
-**Components**:
-- Search Engine Interface: Google Custom Search API integration
-- Content Extractor: Web page content analysis and extraction
-- Fact Checker: Credibility assessment and verification
-- Research Assistant: Academic and analytical research tools
-- Trend Analyzer: Search pattern and trend analysis
-
-**Integration Points**:
-- Provides research capabilities for other servers
-- Supports content verification in knowledge management
-- Enables web-based data collection for projects
-
-**Note**: Only included in Option 1 (6-server configuration).
-
 ### Project Guardian MCP Server
 **Purpose**: Project memory and knowledge management
 
@@ -180,24 +141,7 @@ This configuration reduces the number of servers to manage while providing compr
 - Provides deployment and automation capabilities
 - Enables infrastructure management workflows
 
-### Wikipedia MCP Server
-**Purpose**: Structured knowledge base access
-
-**Components**:
-- Article Search Engine: Wikipedia content discovery
-- Content Parser: Structured data extraction from articles
-- Language Manager: Multi-language content support
-- Category Browser: Topic-based content navigation
-- Citation System: Source attribution and verification
-
-**Integration Points**:
-- Provides factual knowledge for research tasks
-- Supports content verification and fact-checking
-- Enables knowledge enrichment for project documentation
-
-**Note**: Only included in Option 1 (6-server configuration).
-
-### Research MCP Server
+### Researcher MCP Server
 **Purpose**: Unified research platform combining Google Search and Wikipedia functionality
 
 **Components**:
@@ -212,9 +156,21 @@ This configuration reduces the number of servers to manage while providing compr
 - Provides comprehensive research capabilities in a single server
 - Supports content verification and fact-checking
 - Enables web-based and knowledge base research workflows
-- Reduces server count while maintaining functionality
 
-**Note**: Only included in Option 2 (5-server configuration). Replaces Google Search MCP and Wikipedia MCP servers.
+### Browser Agent MCP Server
+**Purpose**: Browser automation and web interaction
+
+**Components**:
+- Browser Controller: Playwright-based browser management
+- Interaction Engine: Automated clicking, typing, and navigation
+- Content Scraper: Intelligent data extraction from web pages
+- Session Manager: Persistent browser sessions and cookie handling
+- Visual Monitor: Screenshot and visual verification capabilities
+
+**Integration Points**:
+- Enables automation of web-based workflows
+- Provides real-time web interaction for research and testing
+- Complements Researcher MCP by providing interactive capabilities
 
 ## Data Flow Architecture
 
@@ -234,7 +190,6 @@ This configuration reduces the number of servers to manage while providing compr
 
 ### Server Orchestration Layer
 
-#### Option 1: 6-Server Configuration (Individual Research Servers)
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                    Chaining MCP Server                      │
@@ -248,64 +203,23 @@ This configuration reduces the number of servers to manage while providing compr
          │                        │
          ▼                        ▼
 ┌─────────────────┐      ┌─────────────────┐
-│ Filesystem MCP  │      │ Google Search   │
+│ Filesystem MCP  │      │  Researcher MCP │
 │                 │      │                 │
-│ File Operations │      │ Web Research    │
+│ File Operations │      │ Web+Wikipedia   │
 └─────────────────┘      └─────────────────┘
          │                        │
          ▼                        ▼
 ┌─────────────────┐      ┌─────────────────┐
-│ Project Guardian│      │  Terminal MCP   │
+│ Project Guardian│      │  Browser Agent  │
 │                 │      │                 │
-│ Knowledge Mgmt  │      │ System Commands │
+│ Knowledge Mgmt  │      │ Automation      │
 └─────────────────┘      └─────────────────┘
-         │                        │
-         ▼                        ▼
-┌─────────────────┐      ┌─────────────────┐
-│ Wikipedia MCP   │      │   External APIs │
-│                 │      │                 │
-│ Knowledge Base  │      │   (Google, etc) │
-└─────────────────┘      └─────────────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Data Storage   │
-│                 │
-│ SQLite • Files  │
-└─────────────────┘
-```
-
-#### Option 2: 5-Server Configuration (Combined Research Server)
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    Chaining MCP Server                      │
-│  ┌─────────────────────────────────────────────────────┐    │
-│  │ Tool Discovery • Route Optimization • Orchestration │    │
-│  └─────────────────────────────────────────────────────┘    │
-│              │                        │                    │
-│      Orchestrates              Coordinates              │
-│              │                        │                    │
-└─────────────────────────────────────────────────────────────┘
-         │                        │
-         ▼                        ▼
-┌─────────────────┐      ┌─────────────────┐
-│ Filesystem MCP  │      │  Research MCP   │
-│                 │      │                 │
-│ File Operations │      │ Google+Wikipedia│
-└─────────────────┘      │ Unified Research │
-         │               └─────────────────┘
-         ▼                        │
-┌─────────────────┐               │
-│ Project Guardian│               │
-│                 │               │
-│ Knowledge Mgmt  │               │
-└─────────────────┘               │
          │                        │
          ▼                        ▼
 ┌─────────────────┐      ┌─────────────────┐
 │  Terminal MCP   │      │   External APIs │
 │                 │      │                 │
-│ System Commands │      │   (Google, etc) │
+│ System Commands │      │ (Google/Web/SSH)│
 └─────────────────┘      └─────────────────┘
          │
          ▼
@@ -349,6 +263,7 @@ Project Guardian provides persistent storage for project state and knowledge acr
 - Server-specific API keys (Google Search, etc.)
 - Command validation in Terminal MCP
 - File system permission checks
+- Browser isolation and security policies
 
 ### 2. Data Protection
 - Secure storage of sensitive configuration
@@ -365,11 +280,11 @@ Project Guardian provides persistent storage for project state and knowledge acr
 ### 1. Caching Strategies
 - Tool discovery results caching
 - Content caching in search operations
-- Session persistence in terminal operations
+- Session persistence in terminal and browser operations
 
 ### 2. Resource Management
 - Connection pooling in database operations
-- Memory management in large file operations
+- Memory management in large file and browser operations
 - Concurrent request handling
 
 ### 3. Monitoring
