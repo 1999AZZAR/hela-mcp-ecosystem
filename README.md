@@ -49,6 +49,7 @@ The AZZAR MCP Server Suite provides a collection of specialized MCP servers that
 | [**Filesystem MCP**](https://github.com/1999AZZAR/filesystem-mcp-server)             | Advanced file operations       | File manipulation, directory operations, search capabilities    |
 | [**Project Guardian MCP**](https://github.com/1999AZZAR/Project-Guardian-mcp-server) | Project memory management      | Knowledge graphs, task tracking, database operations            |
 | [**Terminal MCP**](https://github.com/1999AZZAR/terminal-mcp-server)                 | System command execution       | Remote execution, session management, cross-platform support    |
+| [**Browser Agent MCP**](https://github.com/1999AZZAR/browser-agent)             | Browser automation             | Playwright-based web interaction, scraping, automation          |
 
 ### Research Servers (Choose One Option)
 
@@ -379,6 +380,19 @@ System command execution server with:
 - Cross-platform compatibility
 - Command timeout and error handling
 - Environment variable support
+
+### Browser Agent MCP Server
+
+**Repository:** [browser-agent](https://github.com/1999AZZAR/browser-agent)
+
+Browser automation and web interaction server featuring:
+
+- Playwright-based browser automation
+- Web scraping and content extraction
+- Interactive web navigation
+- Form filling and automated actions
+- Visual verification and screenshots
+- Session management for persistent browsing
 
 ### Wikipedia MCP Server
 

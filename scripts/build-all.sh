@@ -71,6 +71,7 @@ main() {
         "filesystem-mcp-server"
         "Project-Guardian-mcp-server"
         "terminal-mcp-server"
+        "browser-agent"
     )
     
     # Define research servers (user chooses one option)

@@ -415,6 +415,7 @@ main() {
         "filesystem-mcp-server:https://github.com/1999AZZAR/filesystem-mcp-server.git"
         "Project-Guardian-mcp-server:https://github.com/1999AZZAR/Project-Guardian-mcp-server.git"
         "terminal-mcp-server:https://github.com/1999AZZAR/terminal-mcp-server.git"
+        "browser-agent:https://github.com/1999AZZAR/browser-agent.git"
     )
 
     # Define research servers based on user choice

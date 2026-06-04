@@ -20,6 +20,10 @@
     "terminal": {
       "command": "node",
       "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/dist/index.js"]
+    },
+    "browser": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/browser-agent/src/server.js"]
     }
   }
 }

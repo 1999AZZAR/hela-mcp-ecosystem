@@ -24,6 +24,7 @@ services:
       - project-guardian-mcp
       - terminal-mcp
       - wikipedia-mcp
+      - browser-mcp
     networks:
       - mcp-network
 
@@ -82,6 +83,16 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3006:3006"
+    networks:
+      - mcp-network
+
+  # Browser Agent MCP Server - Browser automation
+  browser-mcp:
+    build:
+      context: ../browser-agent
+      dockerfile: Dockerfile
+    ports:
+      - "3007:3007"
     networks:
       - mcp-network
 
