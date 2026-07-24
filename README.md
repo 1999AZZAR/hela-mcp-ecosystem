@@ -2,6 +2,8 @@
 
 A collection of Model Context Protocol (MCP) servers developed by Azzar, designed to enhance AI assistant capabilities across development, research, project management, and system operations.
 
+![Blotcat plugging MCP server cables into the central AI Hub](assets/blotcat-hero.jpg)
+
 ## Table of Contents
 
 - [Overview](#overview)
