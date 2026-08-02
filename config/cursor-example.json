@@ -2,37 +2,55 @@
   "mcpServers": {
     "chaining": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"],
+      "args": [
+        "/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"
+      ],
       "env": {
         "SEQUENTIAL_THINKING_AVAILABLE": "true",
         "AWESOME_COPILOT_ENABLED": "true",
         "RELIABILITY_MONITORING_ENABLED": "true",
-        "GITHUB_TOKEN": "your-github-token-here"
+        "GITHUB_TOKEN": "your-github-token"
       }
     },
     "filesystem": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/filesystem-mcp-server/dist/index.js"]
+      "args": [
+        "/absolute/path/to/mcp-ecosystem/filesystem-mcp-server/dist/index.js"
+      ]
     },
-    "project-guardian": {
+    "Project-Guardian": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"]
+      "args": [
+        "/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"
+      ]
     },
     "terminal": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/dist/index.js"]
+      "args": [
+        "/absolute/path/to/mcp-ecosystem/terminal-mcp-server/build/index.js"
+      ]
     },
-    "researcher": {
+    "research": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/research-assistant-mcp-server/dist/index.js"],
+      "args": [
+        "/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"
+      ],
       "env": {
-        "GOOGLE_API_KEY": "your-google-api-key-here",
-        "GOOGLE_CSE_ID": "your-search-engine-id-here"
+        "GOOGLE_API_KEY": "your-google-api-key",
+        "GOOGLE_CSE_ID": "your-google-cse-id"
       }
     },
-    "browser": {
+    "browser-agent": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/browser-agent/src/server.js"]
+      "args": [
+        "/absolute/path/to/mcp-ecosystem/browser-agent/src/server.js"
+      ]
+    },
+    "the-designer": {
+      "command": "node",
+      "args": [
+        "/absolute/path/to/mcp-ecosystem/the-designer/dist/index.js"
+      ]
     }
   }
 }

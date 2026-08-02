@@ -1,4 +1,4 @@
-# AZZAR MCP Server Suite Integration Guide
+# MCP Ecosystem Suite Integration Guide
 
 ## Table of Contents
 
@@ -43,7 +43,15 @@
 
 ## Overview
 
-This guide provides detailed instructions for integrating the AZZAR MCP Server Suite into your development workflow and AI assistant setup. The suite consists of 6 specialized servers providing a comprehensive toolkit.
+This guide provides detailed instructions for integrating the MCP Ecosystem Suite into your development workflow and AI assistant setup. The suite is **profile-driven**: you choose a profile that best fits your use case and target system (GUI desktop or headless server), and the setup tool installs only the servers in that profile.
+
+The profile-driven configuration is generated automatically during `./setup.sh`, or on demand:
+
+```bash
+node scripts/generate-config.mjs <profile> --backend <cursor|claude|docker>
+```
+
+See [Profiles](profiles.md) for the list of profiles and how to create custom ones.
 
 ## Client Integration
 
@@ -55,7 +63,7 @@ This guide provides detailed instructions for integrating the AZZAR MCP Server S
 
 #### Step 2: Setup MCP Configuration
 
-The AZZAR MCP Suite uses a unified 6-server configuration. Create or update your `~/.cursor/mcp.json` file with the following:
+The MCP Ecosystem Suite uses a profile-based configuration. Create or update your `~/.cursor/mcp.json` file, ideally generated via `scripts/generate-config.mjs`:
 
 ```json
 {

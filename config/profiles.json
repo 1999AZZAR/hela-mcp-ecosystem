@@ -1,0 +1,54 @@
+{
+  "$comment": "Available stack profiles. Order determines the setup menu. 'servers' keys must exist in config/inventory.json. 'system' marks GUI vs headless target.",
+  "profiles": [
+    {
+      "id": "dev-workspace",
+      "name": "Dev Workspace",
+      "system": "gui",
+      "description": "Full desktop development workstation: orchestration, files, project memory, terminal, research, browser and design.",
+      "servers": ["chaining-mcp-server", "filesystem-mcp-server", "Project-Guardian-mcp-server", "terminal-mcp-server", "research-mcp-server", "browser-agent", "the-designer"]
+    },
+    {
+      "id": "headless-server",
+      "name": "Headless Server",
+      "system": "headless",
+      "description": "Client-oriented core for server OS / CI boxes: orchestration, files, memory, terminal and research. No GUI or device servers.",
+      "servers": ["chaining-mcp-server", "filesystem-mcp-server", "Project-Guardian-mcp-server", "terminal-mcp-server", "research-mcp-server"]
+    },
+    {
+      "id": "research",
+      "name": "Research Terminal",
+      "system": "headless",
+      "description": "Dedicated research node: research platform plus orchestration and file access.",
+      "servers": ["research-mcp-server", "chaining-mcp-server", "filesystem-mcp-server"]
+    },
+    {
+      "id": "web-devops",
+      "name": "Web Dev + Browser Automation",
+      "system": "gui",
+      "description": "Browser automation and web operations with file, memory and orchestration support.",
+      "servers": ["browser-agent", "filesystem-mcp-server", "Project-Guardian-mcp-server", "chaining-mcp-server", "the-designer"]
+    },
+    {
+      "id": "android-testing",
+      "name": "Android Testing Rig",
+      "system": "gui",
+      "description": "Device testing and automation via scrcpy plus file and orchestration support.",
+      "servers": ["scrcpy-mcp", "filesystem-mcp-server", "chaining-mcp-server"]
+    },
+    {
+      "id": "3d-modeling",
+      "name": "3D / Blender Station",
+      "system": "gui",
+      "description": "Blender-based 3D modeling with file and orchestration support.",
+      "servers": ["ll3m-agent", "filesystem-mcp-server", "chaining-mcp-server"]
+    },
+    {
+      "id": "all",
+      "name": "All (full inventory)",
+      "system": "any",
+      "description": "Install every server in the inventory.",
+      "servers": ["chaining-mcp-server", "filesystem-mcp-server", "Project-Guardian-mcp-server", "terminal-mcp-server", "research-mcp-server", "browser-agent", "the-designer", "scrcpy-mcp", "ll3m-agent"]
+    }
+  ]
+}

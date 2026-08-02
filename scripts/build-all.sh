@@ -1,103 +1,30 @@
 #!/bin/bash
 
-# Build All MCP Servers Script
-# This script builds all MCP server projects
+# build-all.sh - Build MCP servers for a scope (all inventory, a profile, or explicit keys).
+# Usage: build-all.sh [--all | --profile ID | KEY...]
 
-set -e  # Exit on any error
+set -e
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck disable=SC1091
+source "$SCRIPT_DIR/lib.sh"
 
-# Color codes for output
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m' # No Color
+usage() { echo "Usage: $0 [--all | --profile ID | KEY...]"; }
 
-# Function to print colored output
-print_status() {
-    echo -e "${BLUE}[INFO]${NC} $1"
-}
+process_scope_args "$@"
+resolve_scope
+materialize_servers
 
-print_success() {
-    echo -e "${GREEN}[SUCCESS]${NC} $1"
-}
+[ "${#SERVERS[@]}" -eq 0 ] && { print_error "No servers selected."; exit 1; }
+print_status "Building ${#SERVERS[@]} server(s)..."
 
-print_warning() {
-    echo -e "${YELLOW}[WARNING]${NC} $1"
-}
+ok=0
+for entry in "${SERVERS[@]}"; do
+    key="${entry%%:*}"; dir="${entry##*:}"
+    if [ ! -d "$dir" ]; then print_warning "$key ($dir) not found. Skipping."; continue; fi
+    if [ ! -f "$dir/package.json" ]; then print_warning "$key has no package.json. Skipping build."; continue; fi
+    print_status "Building $key ..."
+    ( cd "$dir" && npm run build ) && { print_success "Built $key"; ((ok++)); } || print_error "Build failed: $key"
+done
 
-print_error() {
-    echo -e "${RED}[ERROR]${NC} $1"
-}
-
-# Function to build a single server
-build_server() {
-    local repo_name=$1
-
-    if [ ! -d "$repo_name" ]; then
-        print_warning "$repo_name directory not found. Skipping..."
-        return 1
-    fi
-
-    print_status "Building $repo_name..."
-
-    cd "$repo_name"
-
-    # Check if package.json exists
-    if [ ! -f "package.json" ]; then
-        print_warning "No package.json found in $repo_name. Skipping..."
-        cd ..
-        return 0
-    fi
-
-    # Build the project
-    if npm run build; then
-        print_success "Built $repo_name successfully"
-        cd ..
-        return 0
-    else
-        print_error "Failed to build $repo_name"
-        cd ..
-        return 1
-    fi
-}
-
-# Main build function
-main() {
-    print_status "Starting build of all MCP servers..."
-
-    # Define the servers
-    declare -a servers=(
-        "chaining-mcp-server"
-        "filesystem-mcp-server"
-        "Project-Guardian-mcp-server"
-        "terminal-mcp-server"
-        "research-assistant-mcp-server"
-        "browser-agent"
-    )
-
-    # Track success/failure
-    local success_count=0
-    local total_count=${#servers[@]}
-
-    # Build each server
-    for repo_name in "${servers[@]}"; do
-        if build_server "$repo_name"; then
-            ((success_count++))
-        fi
-    done
-
-    # Print summary
-    echo
-    print_status "Build completed!"
-    print_success "Successfully built $success_count out of $total_count servers"
-
-    if [ "$success_count" -eq "$total_count" ]; then
-        print_success "All MCP servers have been successfully built!"
-    else
-        print_warning "Some servers failed to build. Please check the errors above."
-        exit 1
-    fi
-}
-
-# Run main function
-main "$@"
+echo
+print_success "Build complete: $ok/${#SERVERS[@]}"

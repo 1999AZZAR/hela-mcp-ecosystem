@@ -1,363 +1,157 @@
 #!/bin/bash
 
-# AZZAR MCP Server Suite Setup Script
-# This script clones all MCP server repositories and sets them up
+# mcp-ecosystem Setup Script
+# Profile-driven installer. Picks a target system + profile (from config/profiles.json),
+# clones/installs/builds the servers in that profile (via config/inventory.json),
+# and generates the MCP client configuration.
 
-set -e  # Exit on any error
+set -e
 
-# Color codes for output
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m' # No Color
+# shellcheck source=scripts/lib.sh
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck disable=SC1091
+source "$SCRIPT_DIR/scripts/lib.sh"
 
-# Function to print colored output
-print_status() {
-    echo -e "${BLUE}[INFO]${NC} $1"
+# Default selection (overridable via env/flags)
+TARGET_SYSTEM="${TARGET_SYSTEM:-any}"   # gui | headless | any
+MCP_CLIENT="${MCP_CLIENT:-}"
+PROFILE_ID="${PROFILE_ID:-}"
+NON_INTERACTIVE=false
+
+usage() {
+    cat <<EOF
+Usage: $0 [OPTIONS]
+
+Profile-driven installer for the MCP server suite.
+
+Options:
+  --profile ID         Select a profile (see config/profiles.json) instead of prompting
+  --system SYS         Filter profiles by target: gui | headless | any
+  --client C           Backend to configure: cursor | claude | opencode | docker | skip
+  --non-interactive     Skip client-generation prompt; just setup servers
+  -h, --help           Show this help
+EOF
 }
 
-print_question() {
-    echo -e "${BLUE}[QUESTION]${NC} $1"
-}
-
-print_success() {
-    echo -e "${GREEN}[SUCCESS]${NC} $1"
-}
-
-print_warning() {
-    echo -e "${YELLOW}[WARNING]${NC} $1"
-}
-
-print_error() {
-    echo -e "${RED}[ERROR]${NC} $1"
-}
-
-# Function to select MCP client
-select_mcp_client() {
-    echo
-    print_status "Select your MCP client:"
-    echo "1) Cursor IDE"
-    echo "2) Claude Desktop"
-    echo "3) Docker Compose"
-    echo "4) Skip configuration (manual setup)"
-    echo
-
-    while true; do
-        print_question "Enter your choice (1-4): "
-        read -r choice
-
-        case $choice in
-            1)
-                MCP_CLIENT="cursor"
-                print_success "Selected: Cursor IDE"
-                break
-                ;;
-            2)
-                MCP_CLIENT="claude"
-                print_success "Selected: Claude Desktop"
-                break
-                ;;
-            3)
-                MCP_CLIENT="docker"
-                print_success "Selected: Docker Compose"
-                break
-                ;;
-            4)
-                MCP_CLIENT="skip"
-                print_status "Skipping automatic configuration"
-                break
-                ;;
-            *)
-                print_warning "Invalid choice. Please enter 1, 2, 3, or 4."
-                ;;
+parse_args() {
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            --help|-h) usage; exit 0 ;;
+            --profile) PROFILE_ID="$2"; shift 2 ;;
+            --system)  TARGET_SYSTEM="$2"; shift 2 ;;
+            --client)  MCP_CLIENT="$2"; shift 2 ;;
+            --non-interactive)
+      MCP_CLIENT="skip"
+      shift
+      ;;
+            *) echo "Unknown option: $1"; usage; exit 1 ;;
         esac
     done
-    echo
 }
 
-# Function to configure MCP client automatically
-configure_mcp_client() {
-    local current_dir=$(pwd)
-
-    case $MCP_CLIENT in
-        cursor)
-            configure_cursor "$current_dir"
-            ;;
-        claude)
-            configure_claude "$current_dir"
-            ;;
-        docker)
-            configure_docker "$current_dir"
-            ;;
-        skip)
-            print_status "Manual configuration required. See README.md for instructions."
-            ;;
-    esac
-}
-
-# Function to configure Cursor IDE
-configure_cursor() {
-    local current_dir=$1
-    local config_file="$HOME/.cursor/mcp.json"
-
-    print_status "Configuring Cursor IDE..."
-
-    # Create config directory if it doesn't exist
-    mkdir -p "$HOME/.cursor"
-
-    # Start with base config
-    cp "config/cursor-example.json" "$config_file.tmp"
-
-    # Append research server config
-    sed '$ s/}$/,/' "$config_file.tmp" > "$config_file.tmp2"
-    cat "config/cursor-combined-research.json" | sed '1d;$d' >> "$config_file.tmp2"
-    mv "$config_file.tmp2" "$config_file.tmp"
-
-    # Replace placeholder paths with actual path
-    sed "s|/absolute/path/to/mcp-ecosystem|$current_dir|g" "$config_file.tmp" > "$config_file"
-
-    # Clean up temp file
-    rm "$config_file.tmp"
-
-    print_success "Cursor configuration created at: $config_file"
-    print_status "Next steps:"
-    echo "1. Set environment variables:"
-    echo "   export GITHUB_TOKEN='your-github-token'"
-    echo "   export GOOGLE_API_KEY='your-google-api-key'"
-    echo "   export GOOGLE_CSE_ID='your-search-engine-id'"
-    echo "2. Restart Cursor IDE"
-}
-
-# Function to configure Claude Desktop
-configure_claude() {
-    local current_dir=$1
-
-    print_status "Configuring Claude Desktop..."
-
-    # Determine Claude config location based on OS
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-        # macOS
-        local config_file="$HOME/Library/Application Support/Claude/claude_desktop_config.json"
-        mkdir -p "$HOME/Library/Application Support/Claude"
-    elif [[ "$OSTYPE" == "msys" ]] || [[ "$OSTYPE" == "win32" ]]; then
-        # Windows
-        local config_file="$APPDATA/Claude/claude_desktop_config.json"
-        mkdir -p "$APPDATA/Claude"
-    else
-        # Linux
-        local config_file="$HOME/.config/Claude/claude_desktop_config.json"
-        mkdir -p "$HOME/.config/Claude"
+check_prereqs() {
+    if ! command -v git >/dev/null; then print_error "git is required."; exit 1; fi
+    if ! command -v node >/dev/null; then print_error "Node.js is required."; exit 1; fi
+    NODE_MAJOR="$(node --version | sed 's/v//' | cut -d. -f1)"
+    if [ "$NODE_MAJOR" -lt 18 ]; then
+        print_error "Node.js 18+ required (found $(node --version))."
+        exit 1
     fi
-
-    # Start with base config
-    cp "config/claude-example.json" "$config_file.tmp"
-
-    # Append research server config
-    sed '$ s/}$/,/' "$config_file.tmp" > "$config_file.tmp2"
-    cat "config/claude-combined-research.json" | sed '1d;$d' >> "$config_file.tmp2"
-    mv "$config_file.tmp2" "$config_file.tmp"
-
-    # Replace placeholder paths with actual path
-    sed "s|/absolute/path/to/mcp-ecosystem|$current_dir|g" "$config_file.tmp" > "$config_file"
-
-    # Clean up temp file
-    rm "$config_file.tmp"
-
-    print_success "Claude configuration created at: $config_file"
-    print_status "Next steps:"
-    echo "1. Set environment variables:"
-    echo "   export GITHUB_TOKEN='your-github-token'"
-    echo "   export GOOGLE_API_KEY='your-google-api-key'"
-    echo "   export GOOGLE_CSE_ID='your-search-engine-id'"
-    echo "2. Restart Claude Desktop"
+    print_success "Prerequisites OK (Node.js $(node --version))"
 }
 
-# Function to configure Docker
-configure_docker() {
-    local current_dir=$1
-
-    print_status "Configuring Docker deployment..."
-
-    # Check if Docker is available
-    if ! command -v docker &> /dev/null; then
-        print_error "Docker is not installed. Please install Docker first."
-        print_status "Manual Docker setup instructions:"
-        echo "1. Install Docker and Docker Compose"
-        echo "2. Copy config/.env.example to .env and fill in your values"
-        echo "3. Run: cd config && docker-compose -f docker-compose.yml -f docker-compose-combined-research.yml up -d"
-        return 1
-    fi
-
-    # Check if Docker Compose is available
-    if ! command -v docker-compose &> /dev/null && ! docker compose version &> /dev/null; then
-        print_error "Docker Compose is not installed. Please install Docker Compose first."
-        return 1
-    fi
-
-    print_success "Docker and Docker Compose are available"
-
-    # Create .env file if it doesn't exist
-    if [ ! -f ".env" ]; then
-        cat > .env << 'EOF'
-# GitHub Integration (Required for Chaining MCP Server)
-GITHUB_TOKEN=your-github-token-here
-
-# Google Search API (Required for researcher server)
-GOOGLE_API_KEY=your-google-api-key-here
-GOOGLE_SEARCH_ENGINE_ID=your-search-engine-id-here
-# Note: docker-compose-combined-research.yml maps GOOGLE_SEARCH_ENGINE_ID to GOOGLE_CSE_ID
-
-# Optional: Data persistence paths
-DATA_PATH=./data
-WORKSPACE_PATH=./workspace
-
-# Optional: Server-specific settings
-SEQUENTIAL_THINKING_AVAILABLE=true
-AWESOME_COPILOT_ENABLED=true
-RELIABILITY_MONITORING_ENABLED=true
-EOF
-        print_success "Created .env file with template values"
-    fi
-
-    print_status "Next steps:"
-    echo "1. Edit the .env file with your actual API keys and tokens:"
-    echo "   nano .env"
-    echo "2. Start the Docker containers:"
-    echo "   cd config && docker-compose -f docker-compose.yml -f docker-compose-combined-research.yml up -d"
-    echo "3. Check container status:"
-    echo "   docker-compose ps"
-}
-
-# Function to setup a single server
 setup_server() {
-    local repo_name=$1
-    local repo_url=$2
+    local key="$1"
+    local dir repo
+    dir="$(inventory_field "$key" dir)"
+    repo="$(inventory_field "$key" repo)"
+    build="$(inventory_field "$key" build)"
 
-    print_status "Setting up $repo_name..."
-
-    if [ -d "$repo_name" ]; then
-        print_warning "$repo_name directory already exists. Pulling latest changes..."
-        cd "$repo_name"
-        git pull origin main 2>/dev/null || git pull origin master 2>/dev/null || true
-        cd ..
+    print_status "Setting up $key ..."
+    if [ -d "$dir" ]; then
+        print_warning "$dir exists. Pulling latest..."
+        if ( cd "$dir" && git pull --quiet origin main 2>/dev/null || git pull --quiet origin master 2>/dev/null || true ); then :; fi
     else
-        print_status "Cloning $repo_name..."
-        if git clone "$repo_url" "$repo_name"; then
-            print_success "Cloned $repo_name successfully"
-        else
-            print_error "Failed to clone $repo_name"
-            return 1
+        print_status "Cloning $dir ..."
+        git clone --quiet "$repo" "$dir" || { print_error "Failed to clone $repo"; return 1; }
+    fi
+
+    cd "$dir"
+    if [ -f "package.json" ]; then
+        if [ ! -d node_modules ]; then
+            print_status "Installing dependencies for $dir ..."
+            npm install --silent
         fi
-    fi
-
-    # Enter the server directory
-    cd "$repo_name"
-
-    # Check if package.json exists
-    if [ ! -f "package.json" ]; then
-        print_warning "No package.json found in $repo_name. Skipping npm operations."
-        cd ..
-        return 0
-    fi
-
-    # Install dependencies
-    print_status "Installing dependencies for $repo_name..."
-    if npm install; then
-        print_success "Dependencies installed for $repo_name"
+        if [ -n "$build" ] && [ -n "$(node -e "try{const p=require('./package.json');console.log(p.scripts?.['$build']||'')}catch(e){}")" ]; then
+            print_status "Building $dir ($build) ..."
+            npm run "$build" || { print_error "Build failed for $dir"; cd ..; return 1; }
+        fi
     else
-        print_error "Failed to install dependencies for $repo_name"
-        cd ..
-        return 1
+        print_warning "No package.json in $dir; skipping npm."
     fi
-
-    # Build the project
-    print_status "Building $repo_name..."
-    if npm run build; then
-        print_success "Built $repo_name successfully"
-    else
-        print_error "Failed to build $repo_name"
-        cd ..
-        return 1
-    fi
-
-    # Go back to the ecosystem root
-    cd ..
+    cd "$MCP_ECOSYSTEM_ROOT"
+    print_success "Done: $key"
 }
 
-# Main setup function
+generate_client_config() {
+    local client="$1"
+    local out
+    case "$client" in
+        cursor) out="$HOME/.cursor/mcp.json" ;;
+        claude)
+            if [[ "$OSTYPE" == "darwin"* ]]; then out="$HOME/Library/Application Support/Claude/claude_desktop_config.json";
+            elif [[ "$OSTYPE" == "msys"* ]] || [[ "$OSTYPE" == "win32" ]]; then out="$APPDATA/Claude/claude_desktop_config.json";
+            else out="$HOME/.config/Claude/claude_desktop_config.json"; fi ;;
+        opencode) out="$HOME/.config/opencode/opencode.json" ;;
+        skip) return 0 ;;
+        *) return 0 ;;
+    esac
+    local mkdirp
+    mkdirp="$(dirname "$out")"
+    mkdir -p "$mkdirp"
+    backup_if_exists "$out"
+    node "$SCRIPT_DIR/scripts/generate-config.mjs" "$PROFILE_ID" --backend "$client" --root "$MCP_ECOSYSTEM_ROOT" --out "$out"
+    print_success "Wrote $client config to $out"
+}
+
 main() {
-    print_status "Starting AZZAR MCP Server Suite setup..."
+    parse_args "$@"
+    print_status "mcp-ecosystem setup"
+    check_prereqs
 
-    # Check if git is available
-    if ! command -v git &> /dev/null; then
-        print_error "Git is not installed. Please install git first."
-        exit 1
+    # Resolve profile
+    if [ -z "$PROFILE_ID" ]; then
+        select_profile "$TARGET_SYSTEM"
     fi
+    print_status "Using profile: $PROFILE_ID ($(profile_name "$PROFILE_ID"))"
 
-    # Check if node is available
-    if ! command -v node &> /dev/null; then
-        print_error "Node.js is not installed. Please install Node.js >= 18.0.0 first."
-        exit 1
-    fi
-
-    # Check Node.js version
-    NODE_VERSION=$(node --version | sed 's/v//' | cut -d. -f1)
-    if [ "$NODE_VERSION" -lt 18 ]; then
-        print_error "Node.js version 18.0.0 or higher is required. Current version: $(node --version)"
-        exit 1
-    fi
-
-    print_success "Prerequisites check passed. Node.js version: $(node --version)"
-
-    # Interactive client selection
-    select_mcp_client
-
-    # Define the core servers
-    declare -a servers=(
-        "chaining-mcp-server:https://github.com/1999AZZAR/chaining-mcp-server.git"
-        "filesystem-mcp-server:https://github.com/1999AZZAR/filesystem-mcp-server.git"
-        "Project-Guardian-mcp-server:https://github.com/1999AZZAR/Project-Guardian-mcp-server.git"
-        "terminal-mcp-server:https://github.com/1999AZZAR/terminal-mcp-server.git"
-        "research-assistant-mcp-server:https://github.com/1999AZZAR/research-assistant-mcp-server.git"
-        "browser-agent:https://github.com/1999AZZAR/browser-agent.git"
-    )
-
-    # Track success/failure
-    local success_count=0
-    local total_count=${#servers[@]}
-
-    # Setup each server
-    for server_info in "${servers[@]}"; do
-        IFS=':' read -r repo_name repo_url <<< "$server_info"
-
-        if setup_server "$repo_name" "$repo_url"; then
-            ((success_count++))
-        fi
+    # Setup each server in the profile
+    local ok=0 total=0 key
+    mapfile -t servers < <(profile_servers "$PROFILE_ID")
+    total="${#servers[@]}"
+    if [ "$total" -eq 0 ]; then print_error "No servers in profile $PROFILE_ID."; exit 1; fi
+    for key in "${servers[@]}"; do
+        if setup_server "$key"; then ((ok++)); else print_error "Failed: $key"; fi
     done
 
-    # Print summary
     echo
-    print_status "Setup completed!"
-    print_success "Successfully set up $success_count out of $total_count servers"
+    print_status "Setup complete: $ok/$total servers ready"
+    [ "$ok" -ne "$total" ] && print_warning "Some servers failed. Check output above." && exit 1
 
-    if [ "$success_count" -eq "$total_count" ]; then
+    if [ -z "$MCP_CLIENT" ]; then
         echo
-        print_success "All MCP servers have been successfully set up!"
-        echo
-
-        # Automatic configuration
-        configure_mcp_client
-
-        echo
-        print_success "🎉 Setup complete! Your MCP server ecosystem is ready to use."
-        echo
-        print_status "For more information, see the README.md and documentation files in docs/"
-    else
-        print_warning "Some servers failed to setup. Please check the errors above and try again."
-        exit 1
+        print_status "Generate MCP client config?"
+        echo "  1) Cursor IDE"
+        echo "  2) Claude Desktop"
+        echo "  3) OpenCode"
+        echo "  4) Docker Compose"
+        echo "  5) Skip"
+        print_question "Choice (1-5): "
+        read -r MCP_CLIENT
+        case "$MCP_CLIENT" in 1) MCP_CLIENT=cursor;; 2) MCP_CLIENT=claude;; 3) MCP_CLIENT=opencode;; 4) MCP_CLIENT=docker;; *) MCP_CLIENT=skip;; esac
     fi
+    generate_client_config "$MCP_CLIENT"
+    print_success "Done. Restart your MCP client to pick up the new config."
 }
 
-# Run main function
 main "$@"

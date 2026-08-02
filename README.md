@@ -1,4 +1,4 @@
-# AZZAR MCP Server Suite
+# MCP Ecosystem Suite
 
 A collection of Model Context Protocol (MCP) servers developed by Azzar, designed to enhance AI assistant capabilities across development, research, project management, and system operations.
 
@@ -25,7 +25,7 @@ A collection of Model Context Protocol (MCP) servers developed by Azzar, designe
 - [Development](#development)
   - [Repository Structure](#repository-structure)
   - [Individual Server Development](#individual-server-development)
-  - [Building All Servers](#building-all-servers)
+  - [Building All Servers](#managing-servers-by-scope)
 - [Contributing](#contributing)
   - [For New Contributors](#for-new-contributors)
   - [Development Guidelines](#development-guidelines)
@@ -40,7 +40,9 @@ A collection of Model Context Protocol (MCP) servers developed by Azzar, designe
 
 ## Overview
 
-The AZZAR MCP Server Suite provides a collection of 6 specialized MCP servers that work together to create an effective AI assistant toolkit. Each server focuses on specific domains while maintaining interoperability through the MCP protocol.
+The MCP Ecosystem Suite provides a profile-driven collection of specialized MCP servers. Instead of installing one fixed stack, you pick a **profile** — a named subset of servers matched to your use case and target system (GUI desktop vs. headless server). Each server focuses on a specific domain while interoperating through the MCP protocol.
+
+See [Profiles](docs/profiles.md) for the full profile reference and custom-profile guide.
 
 ### Core Servers
 
@@ -52,6 +54,11 @@ The AZZAR MCP Server Suite provides a collection of 6 specialized MCP servers th
 | [**Terminal MCP**](https://github.com/1999AZZAR/terminal-mcp-server)                 | System command execution       | Remote execution, session management, cross-platform support    |
 | [**Researcher MCP**](https://github.com/1999AZZAR/research-assistant-mcp-server)    | Combined research platform     | Unified Google Search + Wikipedia with additional analysis tools |
 | [**Browser Agent MCP**](https://github.com/1999AZZAR/browser-agent)             | Browser automation             | Playwright-based web interaction, scraping, automation          |
+| [**The Designer MCP**](https://github.com/1999AZZAR/the-designer)              | UI/UX design tooling           | Style evaluation, tokens, component + Tailwind generation       |
+| [**scrcpy MCP**](https://github.com/1999AZZAR/scrcpy-mcp) *(GUI/device)*        | Android device control         | ADB + scrcpy automation, UI inspection, app control             |
+| [**LL3M Agent MCP**](https://github.com/1999AZZAR/ll3m-agent) *(GUI)*          | Autonomous 3D modeling         | Blender scene generation, iterative refinement                  |
+
+All servers are listed in `config/inventory.json`; *(GUI)*/*(device)* servers ship only in matching headless-appropriate profiles.
 
 ## Quick Start
 
@@ -64,7 +71,7 @@ The AZZAR MCP Server Suite provides a collection of 6 specialized MCP servers th
 
 ### Installation
 
-1. **Clone the AZZAR MCP Server Suite repository:**
+1. **Clone the MCP Ecosystem Suite repository:**
 
    ```bash
    git clone https://github.com/1999AZZAR/mcp-ecosystem.git
@@ -81,13 +88,23 @@ The AZZAR MCP Server Suite provides a collection of 6 specialized MCP servers th
 
    **Setup Process:**
    - Checks prerequisites (Node.js, Git)
-   - Clones all 6 core MCP servers
+   - Prompts for target system and use-case **profile**
+   - Clones/builds only the servers in that profile
    - Prompts for MCP client selection:
      - **Cursor IDE** - Automatic configuration
      - **Claude Desktop** - Automatic configuration
+     - **OpenCode** - Automatic configuration
      - **Docker Compose** - Container setup
 
 ### MCP Client Configuration
+
+The example configs below reflect the `dev-workspace` profile. To generate config for a different profile/client, use the generator:
+
+```bash
+node scripts/generate-config.mjs <profile> --backend <cursor|claude|opencode|docker>
+```
+
+The full, current examples are also checked in as `config/cursor-example.json`, `config/claude-example.json`, and `config/opencode-example.json`.
 
 #### For Cursor IDE
 
@@ -178,7 +195,34 @@ Add the following to your `claude_desktop_config.json`:
 }
 ```
 
+#### For OpenCode
+
+Add the generated snippet to `~/.config/opencode/opencode.json` (under `"mcp"`) or let `setup.sh` generate it for you. It follows the same structure:
+
+```bash
+node scripts/generate-config.mjs dev-workspace --backend opencode --root /absolute/path/to/mcp-ecosystem --out config/opencode-example.json
+```
+
+```json
+{
+  "mcpServers": {
+    "chaining": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"],
+      "env": {
+        "SEQUENTIAL_THINKING_AVAILABLE": "true",
+        "AWESOME_COPILOT_ENABLED": "true",
+        "RELIABILITY_MONITORING_ENABLED": "true",
+        "GITHUB_TOKEN": "your-github-token"
+      }
+    }
+  }
+}
+```
+
 ## Server Details
+
+All servers are defined in `config/inventory.json`; a server can be added to any number of profiles. Servers marked **GUI/device** are excluded from headless profiles by default.
 
 ### Chaining MCP Server
 
@@ -255,6 +299,39 @@ Browser automation and web interaction server featuring:
 - Visual verification and screenshots
 - Session management for persistent browsing
 
+### The Designer MCP Server
+
+**Repository:** [the-designer](https://github.com/1999AZZAR/the-designer)
+
+UI/UX design system tooling:
+
+- Style evaluation and best-system recommendation
+- Design tokens and Tailwind config generation
+- HTML/CSS/React/Vue component generation
+- 8-state component demos and accessibility audit
+- Pre-flight scanning of existing projects
+
+### scrcpy MCP Server
+
+**Repository:** [scrcpy-mcp](https://github.com/1999AZZAR/scrcpy-mcp)
+
+Android device control (GUI/device target):
+
+- ADB + scrcpy device automation
+- UI hierarchy inspection and element control
+- App install/launch/stop and file transfer
+- Screen recording and screenshots
+
+### LL3M Agent MCP Server
+
+**Repository:** [ll3m-agent](https://github.com/1999AZZAR/ll3m-agent)
+
+Autonomous 3D modeling (GUI target, requires local Blender):
+
+- Blender scene generation via natural language
+- Multi-agent iterative refinement
+- Mesh/material inspection and rendering
+
 ## Development
 
 ### Repository Structure
@@ -262,22 +339,28 @@ Browser automation and web interaction server featuring:
 ```
 mcp-ecosystem/
 ├── README.md                              # This file
-├── CONTRIBUTING.md                        # Contribution guidelines
-├── LICENSE                                # MIT License
-├── setup.sh                               # Automated setup script
-├── update.sh                              # Update all servers script
-├── config/                                # Configuration examples
-│   ├── cursor-example.json                # Cursor IDE configuration
-│   ├── claude-example.json                # Claude Desktop configuration
+├── CONTRIBUTING.md                      # Contribution guidelines
+├── LICENSE                              # MIT License
+├── setup.sh                             # Profile-driven setup script
+├── update.sh                            # Update servers in a scope
+├── config/                              # Server registry + profiles + examples
+│   ├── inventory.json                   # All available servers (registry)
+│   ├── profiles.json                    # Profile (stack) definitions
+│   ├── cursor-example.json              # Generated Cursor config (dev-workspace)
+│   ├── claude-example.json              # Generated Claude config (dev-workspace)
+│   ├── opencode-example.json            # Generated OpenCode config (dev-workspace)
 │   └── docker-compose.yml                # Docker configuration
-├── docs/                                  # Additional documentation
-│   ├── architecture.md                   # System architecture overview
-│   ├── integration.md                    # Comprehensive integration guides
-│   └── troubleshooting.md                # Common issues and solutions
-└── scripts/                               # Utility scripts
-    ├── build-all.sh                      # Build all servers
-    ├── test-all.sh                       # Run tests for all servers
-    └── clean-all.sh                      # Clean build artifacts
+├── docs/                                # Documentation
+│   ├── architecture.md                 # System architecture overview
+│   ├── integration.md                  # Comprehensive integration guides
+│   ├── profiles.md                     # Profile reference + custom profiles
+│   └── troubleshooting.md              # Common issues and solutions
+└── scripts/                             # Utility scripts
+    ├── generate-config.mjs             # Render profile -> client config
+    ├── lib.sh                          # Shared helpers (profiles/inventory/scope)
+    ├── build-all.sh                    # Build servers in a scope
+    ├── test-all.sh                     # Test servers in a scope
+    └── clean-all.sh                    # Clean build artifacts in a scope
 ```
 
 ### Individual Server Development
@@ -289,36 +372,40 @@ Each MCP server maintains its own repository for focused development:
 3. **Specialization:** Focused repositories enable domain-specific optimizations
 4. **Community Contributions:** Easier for contributors to focus on specific server improvements
 
-### Building All Servers
+### Managing Servers by Scope
+
+Every utility script accepts a scope: the whole inventory, a profile, or explicit keys.
 
 ```bash
-# Build all servers
+# Build / test / clean — interactive scope selection
 ./scripts/build-all.sh
+./scripts/build-all.sh --all                    # every server in the inventory
+./scripts/build-all.sh --profile research       # only a profile's servers
+./scripts/build-all.sh chaining-mcp-server filesystem-mcp-server
 
-# Run tests for all servers
-./scripts/test-all.sh
-
-# Clean all build artifacts
-./scripts/clean-all.sh
+# Tests and cleanup use the same flags
+./scripts/test-all.sh --profile dev-workspace
+./scripts/clean-all.sh --all --full
 ```
 
-For more detailed information, see the [Development Documentation](docs/integration.md#development-integration).
+For more information see the [Profiles Guide](docs/profiles.md) and [Development Documentation](docs/integration.md#development-integration).
 
 ## Contributing
 
-We welcome contributions to the AZZAR MCP Server Suite! See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+We welcome contributions to the MCP Ecosystem Suite! See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ## Documentation
 
 For comprehensive documentation, see:
 
 - **[Architecture Guide](docs/architecture.md)** - System architecture, server components, and data flow diagrams
+- **[Profiles Guide](docs/profiles.md)** - Profile reference, GUI vs. headless stacks, custom profiles
 - **[Integration Guide](docs/integration.md)** - Detailed setup instructions for Cursor IDE, Claude Desktop, and Docker
 - **[Troubleshooting Guide](docs/troubleshooting.md)** - Common issues and solutions
 
 ## License
 
-The AZZAR MCP Server Suite is licensed under the MIT License. See [LICENSE](LICENSE) for details. Individual servers may have their own licenses - please check each repository for specific licensing information.
+The MCP Ecosystem Suite is licensed under the MIT License. See [LICENSE](LICENSE) for details. Individual servers may have their own licenses - please check each repository for specific licensing information.
 
 ## Support
 
@@ -331,12 +418,14 @@ The AZZAR MCP Server Suite is licensed under the MIT License. See [LICENSE](LICE
 
 ## Updates
 
-To update all servers to their latest versions:
+To update servers to their latest versions (use `--all`, `--profile <id>`, or explicit keys, or let the menu prompt you):
 
 ```bash
-./update.sh
+./update.sh                 # interactive scope
+./update.sh --all           # every server in the inventory
+./update.sh --profile headless-server
 ```
 
-This will pull the latest changes from all server repositories and rebuild them.
+This pulls the latest changes for the selected servers, reinstalls dependencies, and rebuilds them.
 
 ---

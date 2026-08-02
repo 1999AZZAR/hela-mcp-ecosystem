@@ -1,0 +1,113 @@
+{
+  "$comment": "Registry of every available MCP server. Profiles reference these keys. Fields: repo (git url), dir (clone dir name), runtime, entry (main script), entryDocker, build (npm build script, or null if no build), needsGui (display/device), needsDevice, docs, env (default env placeholders), description.",
+  "inventory": {
+    "chaining-mcp-server": {
+      "name": "Chaining MCP",
+      "repo": "https://github.com/1999AZZAR/chaining-mcp-server.git",
+      "dir": "chaining-mcp-server",
+      "runtime": "node",
+      "entry": "dist/index.js",
+      "build": "build",
+      "needsGui": false,
+      "needsDevice": false,
+      "env": ["SEQUENTIAL_THINKING_AVAILABLE", "AWESOME_COPILOT_ENABLED", "RELIABILITY_MONITORING_ENABLED", "GITHUB_TOKEN"],
+      "description": "Intelligent tool orchestration, route optimization, sequential thinking and multi-server workflow management."
+    },
+    "filesystem-mcp-server": {
+      "name": "Filesystem MCP",
+      "repo": "https://github.com/1999AZZAR/filesystem-mcp-server.git",
+      "dir": "filesystem-mcp-server",
+      "runtime": "node",
+      "entry": "dist/index.js",
+      "build": "build",
+      "needsGui": false,
+      "needsDevice": false,
+      "env": [],
+      "description": "Advanced file and directory operations, content reading, search, archive and file watching."
+    },
+    "Project-Guardian-mcp-server": {
+      "name": "Project Guardian",
+      "repo": "https://github.com/1999AZZAR/database-mcp-server.git",
+      "dir": "Project-Guardian-mcp-server",
+      "runtime": "node",
+      "entry": "dist/index.js",
+      "build": "build",
+      "needsGui": false,
+      "needsDevice": false,
+      "env": [],
+      "description": "Project memory and knowledge management: knowledge graphs, task tracking, SQLite operations."
+    },
+    "terminal-mcp-server": {
+      "name": "Terminal MCP",
+      "repo": "https://github.com/1999AZZAR/terminal-mcp-server.git",
+      "dir": "terminal-mcp-server",
+      "runtime": "node",
+      "entry": "build/index.js",
+      "build": "build",
+      "needsGui": false,
+      "needsDevice": false,
+      "env": [],
+      "description": "System command execution with local/remote (SSH) support, sessions, timeouts and env control."
+    },
+    "research-mcp-server": {
+      "name": "Researcher MCP",
+      "repo": "https://github.com/1999AZZAR/research-mcp-server.git",
+      "dir": "research-mcp-server",
+      "runtime": "node",
+      "entry": "dist/index.js",
+      "build": "build",
+      "needsGui": false,
+      "needsDevice": false,
+      "env": ["GOOGLE_API_KEY", "GOOGLE_CSE_ID"],
+      "description": "Combined research platform: Google Search + Wikipedia with analysis, fact-checking and research sessions."
+    },
+    "browser-agent": {
+      "name": "Browser Agent",
+      "repo": "https://github.com/1999AZZAR/Browser-Agent.git",
+      "dir": "browser-agent",
+      "runtime": "node",
+      "entry": "src/server.js",
+      "build": null,
+      "needsGui": false,
+      "needsDevice": false,
+      "env": [],
+      "description": "Playwright-based browser automation with 88 tools for navigation, scraping, form filling and screenshots."
+    },
+    "scrcpy-mcp": {
+      "name": "scrcpy MCP",
+      "repo": "https://github.com/1999AZZAR/scrcpy-mcp.git",
+      "dir": "scrcpy-mcp",
+      "runtime": "node",
+      "entry": "dist/server.js",
+      "build": "build",
+      "needsGui": true,
+      "needsDevice": true,
+      "env": [],
+      "description": "Android device control via ADB and scrcpy: screenshots, input, UI inspection and app control."
+    },
+    "ll3m-agent": {
+      "name": "LL3M Agent (Blender)",
+      "repo": "https://github.com/1999AZZAR/ll3m-agent.git",
+      "dir": "ll3m-agent",
+      "runtime": "node",
+      "entry": null,
+      "build": null,
+      "needsGui": true,
+      "needsDevice": false,
+      "env": [],
+      "description": "Autonomous 3D modeling system for Blender with iterative refinement and multi-agent reasoning. Requires local Blender installation."
+    },
+    "the-designer": {
+      "name": "The Designer",
+      "repo": "https://github.com/1999AZZAR/the-designer.git",
+      "dir": "the-designer",
+      "runtime": "node",
+      "entry": "dist/index.js",
+      "build": "build",
+      "needsGui": false,
+      "needsDevice": false,
+      "env": [],
+      "description": "UI/UX design system selector, token generation, brand cloning and component preview generation."
+    }
+  }
+}
