@@ -1,5 +1,6 @@
 # MCP Ecosystem Suite Architecture
 
+![Blotcat acting as a conductor in front of a modular system of interconnected server blocks](../assets/blotcat-architecture.jpg)
 ## Table of Contents
 
 - [Overview](#overview)

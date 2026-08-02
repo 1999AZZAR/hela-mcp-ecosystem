@@ -1,5 +1,6 @@
 # Troubleshooting Guide
 
+![Blotcat wearing a hard hat, looking at a smoking server block while consulting a thick manual](../assets/blotcat-troubleshooting.jpg)
 ## Table of Contents
 
 - [Setup Issues](#setup-issues)

@@ -1,5 +1,6 @@
 # Profiles
 
+![Blotcat carefully choosing a specific loadout backpack from a rack of different backpacks](../assets/blotcat-profiles.jpg)
 Rather than one hardcoded "install everything" stack, the suite is **profile-driven**. A profile is a named subset of servers from the inventory (`config/inventory.json`) chosen for a particular use case and target system. Each target system is classified as:
 
 - **`gui`** — a desktop workstation where GUI/device servers make sense (Blender, scrcpy, headed browser).

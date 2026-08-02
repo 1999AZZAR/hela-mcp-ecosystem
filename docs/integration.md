@@ -1,5 +1,6 @@
 # MCP Ecosystem Suite Integration Guide
 
+![Blotcat plugging various cables into different desktop IDE interfaces](../assets/blotcat-integration.jpg)
 ## Table of Contents
 
 - [Overview](#overview)
