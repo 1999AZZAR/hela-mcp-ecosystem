@@ -122,3 +122,11 @@ temp/
 # Backup files
 *.backup
 *.bak
+
+# Project Guardian
+memory.db
+memory.db-journal
+
+# Generated MCP client configs (from scripts/generate-config.mjs)
+config/opencode.generated.json
+config/docker-compose.generated.yml

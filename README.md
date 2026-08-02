@@ -1,6 +1,6 @@
 # MCP Ecosystem Suite
 
-A collection of Model Context Protocol (MCP) servers developed by Azzar, designed to enhance AI assistant capabilities across development, research, project management, and system operations.
+A collection of Model Context Protocol (MCP) servers developed by Azzar, designed to enhance AI agent harness capabilities across development, research, project management, and system operations.
 
 ![Blotcat plugging MCP server cables into the central AI Hub](assets/blotcat-hero.jpg)
 
@@ -108,100 +108,7 @@ The full, current examples are also checked in as `config/cursor-example.json`, 
 
 #### For Cursor IDE
 
-Add the following to your `mcp.json`:
-
-```json
-{
-  "mcpServers": {
-    "chaining": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"],
-      "env": {
-        "SEQUENTIAL_THINKING_AVAILABLE": "true",
-        "AWESOME_COPILOT_ENABLED": "true",
-        "RELIABILITY_MONITORING_ENABLED": "true",
-        "GITHUB_TOKEN": "your-github-token-here"
-      }
-    },
-    "filesystem": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/filesystem-mcp-server/dist/index.js"]
-    },
-    "project-guardian": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"]
-    },
-    "terminal": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/dist/index.js"]
-    },
-    "researcher": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/research-assistant-mcp-server/dist/index.js"],
-      "env": {
-        "GOOGLE_API_KEY": "your-google-api-key-here",
-        "GOOGLE_CSE_ID": "your-search-engine-id-here"
-      }
-    },
-    "browser": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/browser-agent/src/server.js"]
-    }
-  }
-}
-```
-
-#### For Claude Desktop
-
-Add the following to your `claude_desktop_config.json`:
-
-```json
-{
-  "mcpServers": {
-    "chaining": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"],
-      "env": {
-        "SEQUENTIAL_THINKING_AVAILABLE": "true",
-        "AWESOME_COPILOT_ENABLED": "true",
-        "GITHUB_TOKEN": "your-github-token-here"
-      }
-    },
-    "filesystem": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/filesystem-mcp-server/dist/index.js"]
-    },
-    "project-guardian": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"]
-    },
-    "terminal": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/dist/index.js"]
-    },
-    "researcher": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/research-assistant-mcp-server/dist/index.js"],
-      "env": {
-        "GOOGLE_API_KEY": "your-google-api-key-here",
-        "GOOGLE_CSE_ID": "your-search-engine-id-here"
-      }
-    },
-    "browser": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/browser-agent/src/server.js"]
-    }
-  }
-}
-```
-
-#### For OpenCode
-
-Add the generated snippet to `~/.config/opencode/opencode.json` (under `"mcp"`) or let `setup.sh` generate it for you. It follows the same structure:
-
-```bash
-node scripts/generate-config.mjs dev-workspace --backend opencode --root /absolute/path/to/mcp-ecosystem --out config/opencode-example.json
-```
+Add the following to your `mcp.json` (the `dev-workspace` profile):
 
 ```json
 {
@@ -215,10 +122,124 @@ node scripts/generate-config.mjs dev-workspace --backend opencode --root /absolu
         "RELIABILITY_MONITORING_ENABLED": "true",
         "GITHUB_TOKEN": "your-github-token"
       }
+    },
+    "filesystem": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/filesystem-mcp-server/dist/index.js"]
+    },
+    "Project-Guardian": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"]
+    },
+    "terminal": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/build/index.js"]
+    },
+    "research": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"],
+      "env": {
+        "GOOGLE_API_KEY": "your-google-api-key",
+        "GOOGLE_CSE_ID": "your-google-cse-id"
+      }
+    },
+    "browser-agent": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/browser-agent/src/server.js"]
+    },
+    "the-designer": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/the-designer/dist/index.js"]
     }
   }
 }
 ```
+
+#### For Claude Desktop
+
+Add the following to your `claude_desktop_config.json` (the `dev-workspace` profile):
+
+```json
+{
+  "mcpServers": {
+    "chaining": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"],
+      "env": {
+        "SEQUENTIAL_THINKING_AVAILABLE": "true",
+        "AWESOME_COPILOT_ENABLED": "true",
+        "RELIABILITY_MONITORING_ENABLED": "true",
+        "GITHUB_TOKEN": "your-github-token"
+      }
+    },
+    "filesystem": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/filesystem-mcp-server/dist/index.js"]
+    },
+    "Project-Guardian": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"]
+    },
+    "terminal": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/build/index.js"]
+    },
+    "research": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"],
+      "env": {
+        "GOOGLE_API_KEY": "your-google-api-key",
+        "GOOGLE_CSE_ID": "your-google-cse-id"
+      }
+    },
+    "browser-agent": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/browser-agent/src/server.js"]
+    },
+    "the-designer": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/the-designer/dist/index.js"]
+    }
+  }
+}
+```
+
+#### For OpenCode
+
+OpenCode uses a different schema than Cursor/Claude: servers go under `mcp` with `type: "local"`, a `command` array, and `environment` instead of `env`. Generate it or let `setup.sh` do it:
+
+```bash
+node scripts/generate-config.mjs dev-workspace --backend opencode --root /absolute/path/to/mcp-ecosystem --out config/opencode-example.json
+```
+
+```json
+{
+  "mcp": {
+    "chaining": {
+      "type": "local",
+      "enabled": true,
+      "command": ["node", "/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"],
+      "environment": {
+        "SEQUENTIAL_THINKING_AVAILABLE": "true",
+        "AWESOME_COPILOT_ENABLED": "true",
+        "RELIABILITY_MONITORING_ENABLED": "true",
+        "GITHUB_TOKEN": "your-github-token"
+      }
+    },
+    "research": {
+      "type": "local",
+      "enabled": true,
+      "command": ["node", "/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"],
+      "environment": {
+        "GOOGLE_API_KEY": "your-google-api-key",
+        "GOOGLE_CSE_ID": "your-google-cse-id"
+      }
+    }
+  }
+}
+```
+
+Merge this `mcp` object into your `~/.config/opencode/opencode.json` (it merges with existing settings rather than replacing them). The full `dev-workspace` example is at `config/opencode-example.json`.
 
 ## Server Details
 

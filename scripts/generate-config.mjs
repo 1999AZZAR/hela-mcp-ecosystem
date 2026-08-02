@@ -61,6 +61,27 @@ function entryArgs(server, root) {
   return [path.join(root, server.dir, server.entry)];
 }
 
+function renderOpencode(servers, root) {
+  const mcp = {};
+  for (const s of servers) {
+    const name = s.id.replace('-mcp-server', '').replace('-mcp', '');
+    const entry = s.entry ? path.join(root, s.dir, s.entry) : null;
+    const block = {
+      type: 'local',
+      enabled: !!entry,
+      command: entry ? [s.runtime || 'node', entry] : [],
+    };
+    const env = {};
+    for (const key of (s.env || [])) {
+      if (/_AVAILABLE$|_ENABLED$/.test(key)) env[key] = 'true';
+      else env[key] = 'your-' + key.toLowerCase().replace(/_/g, '-');
+    }
+    if (Object.keys(env).length) block.environment = env;
+    mcp[name] = block;
+  }
+  return JSON.stringify({ mcp }, null, 2);
+}
+
 function renderNode(servers, root) {
   const mcpServers = {};
   for (const s of servers) {
@@ -129,8 +150,10 @@ function main() {
   switch (args.backend) {
     case 'cursor':
     case 'claude':
-    case 'opencode':
       out = renderNode(servers, root) + '\n';
+      break;
+    case 'opencode':
+      out = renderOpencode(servers, root) + '\n';
       break;
     case 'docker':
       out = renderDocker(servers) + '\n';

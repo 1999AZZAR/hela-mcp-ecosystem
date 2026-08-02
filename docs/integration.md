@@ -12,6 +12,13 @@
     - [Step 1: Locate Configuration File](#step-1-locate-configuration-file)
     - [Step 2: Update Configuration](#step-2-update-configuration)
     - [Step 3: Restart Claude Desktop](#step-3-restart-claude-desktop)
+- [Step 1: Locate Configuration File](#step-1-locate-configuration-file)
+    - [Step 2: Update Configuration](#step-2-update-configuration)
+    - [Step 3: Restart Claude Desktop](#step-3-restart-claude-desktop)
+  - [OpenCode Integration](#opencode-integration)
+    - [Step 1: Locate Configuration File](#step-1-locate-configuration-file-1)
+    - [Step 2: Update Configuration](#step-2-update-configuration-1)
+    - [Step 3: Restart OpenCode](#step-3-restart-opencode)
 - [API Keys and Tokens Setup](#api-keys-and-tokens-setup)
   - [GitHub Token (Required for Chaining MCP)](#github-token-required-for-chaining-mcp)
   - [Google API Keys (Required for Researcher MCP)](#google-api-keys-required-for-researcher-mcp)
@@ -43,12 +50,12 @@
 
 ## Overview
 
-This guide provides detailed instructions for integrating the MCP Ecosystem Suite into your development workflow and AI assistant setup. The suite is **profile-driven**: you choose a profile that best fits your use case and target system (GUI desktop or headless server), and the setup tool installs only the servers in that profile.
+This guide provides detailed instructions for integrating the MCP Ecosystem Suite into your development workflow and AI agent harness setup. The suite is **profile-driven**: you choose a profile that best fits your use case and target system (GUI desktop or headless server), and the setup tool installs only the servers in that profile.
 
 The profile-driven configuration is generated automatically during `./setup.sh`, or on demand:
 
 ```bash
-node scripts/generate-config.mjs <profile> --backend <cursor|claude|docker>
+node scripts/generate-config.mjs <profile> --backend <cursor|claude|opencode|docker>
 ```
 
 See [Profiles](profiles.md) for the list of profiles and how to create custom ones.
@@ -75,35 +82,45 @@ The MCP Ecosystem Suite uses a profile-based configuration. Create or update you
         "SEQUENTIAL_THINKING_AVAILABLE": "true",
         "AWESOME_COPILOT_ENABLED": "true",
         "RELIABILITY_MONITORING_ENABLED": "true",
-        "GITHUB_TOKEN": "your-github-token-here"
+        "GITHUB_TOKEN": "your-github-token"
       }
     },
     "filesystem": {
       "command": "node",
       "args": ["/absolute/path/to/mcp-ecosystem/filesystem-mcp-server/dist/index.js"]
     },
-    "project-guardian": {
+    "Project-Guardian": {
       "command": "node",
       "args": ["/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"]
     },
     "terminal": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/dist/index.js"]
+      "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/build/index.js"]
     },
-    "researcher": {
+    "research": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/research-assistant-mcp-server/dist/index.js"],
+      "args": ["/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"],
       "env": {
-        "GOOGLE_API_KEY": "your-google-api-key-here",
-        "GOOGLE_CSE_ID": "your-search-engine-id-here"
+        "GOOGLE_API_KEY": "your-google-api-key",
+        "GOOGLE_CSE_ID": "your-google-cse-id"
       }
     },
-    "browser": {
+    "browser-agent": {
       "command": "node",
       "args": ["/absolute/path/to/mcp-ecosystem/browser-agent/src/server.js"]
+    },
+    "the-designer": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/the-designer/dist/index.js"]
     }
   }
 }
+```
+
+This matches the `dev-workspace` profile. The authoritative copy is `config/cursor-example.json` — regenerate it (and any other profile) with:
+
+```bash
+node scripts/generate-config.mjs <profile> --backend cursor --root /absolute/path/to/mcp-ecosystem --out config/cursor-example.json
 ```
 
 1. Replace `/absolute/path/to/mcp-ecosystem` with your actual path.
@@ -111,7 +128,7 @@ The MCP Ecosystem Suite uses a profile-based configuration. Create or update you
 
 #### Step 3: Verify Installation
 1. Restart Cursor IDE.
-2. Open the MCP panel and verify all 6 servers are connected and show available tools.
+2. Open the MCP panel and verify the profile's servers are connected and show available tools.
 
 ### Claude Desktop Integration
 
@@ -122,7 +139,7 @@ The MCP Ecosystem Suite uses a profile-based configuration. Create or update you
 
 #### Step 2: Update Configuration
 
-Add the following 6-server configuration to your Claude Desktop config file:
+Add your profile's servers to the Claude Desktop config file. For the `dev-workspace` profile:
 
 ```json
 {
@@ -133,39 +150,86 @@ Add the following 6-server configuration to your Claude Desktop config file:
       "env": {
         "SEQUENTIAL_THINKING_AVAILABLE": "true",
         "AWESOME_COPILOT_ENABLED": "true",
-        "GITHUB_TOKEN": "your-github-token-here"
+        "RELIABILITY_MONITORING_ENABLED": "true",
+        "GITHUB_TOKEN": "your-github-token"
       }
     },
     "filesystem": {
       "command": "node",
       "args": ["/absolute/path/to/mcp-ecosystem/filesystem-mcp-server/dist/index.js"]
     },
-    "project-guardian": {
+    "Project-Guardian": {
       "command": "node",
       "args": ["/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"]
     },
     "terminal": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/dist/index.js"]
+      "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/build/index.js"]
     },
-    "researcher": {
+    "research": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/research-assistant-mcp-server/dist/index.js"],
+      "args": ["/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"],
       "env": {
-        "GOOGLE_API_KEY": "your-google-api-key-here",
-        "GOOGLE_CSE_ID": "your-search-engine-id-here"
+        "GOOGLE_API_KEY": "your-google-api-key",
+        "GOOGLE_CSE_ID": "your-google-cse-id"
       }
     },
-    "browser": {
+    "browser-agent": {
       "command": "node",
       "args": ["/absolute/path/to/mcp-ecosystem/browser-agent/src/server.js"]
+    },
+    "the-designer": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/the-designer/dist/index.js"]
     }
   }
 }
 ```
 
+Or generate it from a profile:
+
+```bash
+node scripts/generate-config.mjs <profile> --backend claude --root /absolute/path/to/mcp-ecosystem --out config/claude-example.json
+```
+
 #### Step 3: Restart Claude Desktop
 Restart Claude Desktop to load the new MCP server configuration.
+
+### OpenCode Integration
+
+#### Step 1: Locate Configuration File
+- **Linux/macOS**: `~/.config/opencode/opencode.json`
+
+#### Step 2: Update Configuration
+
+OpenCode uses a distinct schema: servers live under `mcp` with `type: "local"`, a `command` array, and `environment` (not `env`). Generate it from a profile:
+
+```bash
+node scripts/generate-config.mjs <profile> --backend opencode --root /absolute/path/to/mcp-ecosystem --out /tmp/opencode-mcp.json
+```
+
+Example (`dev-workspace`):
+
+```json
+{
+  "mcp": {
+    "research": {
+      "type": "local",
+      "enabled": true,
+      "command": ["node", "/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"],
+      "environment": {
+        "GOOGLE_API_KEY": "your-google-api-key",
+        "GOOGLE_CSE_ID": "your-google-cse-id"
+      }
+    }
+  }
+}
+```
+
+OpenCode merges config files, so add the `mcp` object to your `~/.config/opencode/opencode.json` without overwriting its `provider`/`model` settings. The authoritative `dev-workspace` example is at `config/opencode-example.json`.
+
+#### Step 3: Restart OpenCode
+Restart OpenCode to pick up the new MCP servers.
 
 ## API Keys and Tokens Setup
 
@@ -200,16 +264,16 @@ export GOOGLE_SEARCH_ENGINE_ID="your-search-engine-id-here"
 1. Run the setup script and select "Docker Compose":
    ```bash
    ./setup.sh
-   # Select option 3 (Docker Compose)
+   # Select option 4 (Docker Compose)
    ```
-2. Edit the generated .env file with your API keys:
+2. The setup tool writes a profile-specific compose file to `config/docker-compose.generated.yml`. Edit the `config/docker-compose.yml` template (or the generated file) with your API keys:
    ```bash
-   nano .env
+   nano config/docker-compose.yml
    ```
 3. Start all services:
    ```bash
    cd config
-   docker-compose up -d
+   docker-compose -f docker-compose.generated.yml up -d
    ```
 
 ### Environment File (.env)

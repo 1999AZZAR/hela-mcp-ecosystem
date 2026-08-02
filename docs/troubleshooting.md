@@ -32,7 +32,7 @@
   - [Community Support](#community-support)
   - [Emergency Recovery](#emergency-recovery)
 
-This guide helps you resolve common issues when setting up and using the AZZAR MCP Server Suite.
+This guide helps you resolve common issues when setting up and using the MCP Ecosystem Suite.
 
 ## Setup Issues
 
@@ -86,10 +86,15 @@ This guide helps you resolve common issues when setting up and using the AZZAR M
 **Solutions**:
 1. **Verify configuration file location**:
    - Cursor IDE: `~/.cursor/mcp.json`
-   - Claude Desktop: Check app settings.
+   - Claude Desktop: Check app settings (`~/Library/Application Support/Claude/claude_desktop_config.json` on macOS, `~/.config/Claude/` on Linux)
+   - OpenCode: `~/.config/opencode/opencode.json`
 2. **Validate JSON syntax**: `cat ~/.cursor/mcp.json | python3 -m json.tool`.
 3. **Check absolute paths**: Ensure all paths in `args` are absolute.
 4. **Restart MCP client** after any changes.
+5. **Regenerate a profile config** instead of hand-editing:
+   ```bash
+   node scripts/generate-config.mjs <profile> --backend <cursor|claude|opencode>
+   ```
 
 ### Environment Variables
 

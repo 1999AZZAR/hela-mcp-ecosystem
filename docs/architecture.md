@@ -1,4 +1,4 @@
-# AZZAR MCP Server Suite Architecture
+# MCP Ecosystem Suite Architecture
 
 ## Table of Contents
 
@@ -7,14 +7,20 @@
   - [1. Modularity](#1-modularity)
   - [2. Interoperability](#2-interoperability)
   - [3. Specialization](#3-specialization)
+- [Profile-Driven Architecture](#profile-driven-architecture)
+  - [Inventory](#inventory)
+  - [Profiles](#profiles)
 - [Server Architecture](#server-architecture)
-  - [The 6 Core Servers](#the-6-core-servers)
+  - [The MCP Servers](#the-mcp-servers)
   - [Chaining MCP Server](#chaining-mcp-server)
   - [Filesystem MCP Server](#filesystem-mcp-server)
   - [Project Guardian MCP Server](#project-guardian-mcp-server)
   - [Terminal MCP Server](#terminal-mcp-server)
   - [Researcher MCP Server](#researcher-mcp-server)
   - [Browser Agent MCP Server](#browser-agent-mcp-server)
+  - [The Designer MCP Server](#the-designer-mcp-server)
+  - [scrcpy MCP Server](#scrcpy-mcp-server)
+  - [LL3M Agent MCP Server](#ll3m-agent-mcp-server)
 - [Data Flow Architecture](#data-flow-architecture)
   - [Client Interaction Layer](#client-interaction-layer)
   - [Server Orchestration Layer](#server-orchestration-layer)
@@ -40,7 +46,7 @@
 
 ## Overview
 
-The AZZAR MCP Server Suite is a collection of 6 specialized Model Context Protocol (MCP) servers designed to work together to provide comprehensive AI assistant capabilities. The architecture follows a modular, distributed approach where each server focuses on specific domains while maintaining seamless interoperability.
+The MCP Ecosystem Suite is a **profile-driven** collection of Model Context Protocol (MCP) servers. Instead of a single fixed stack, servers are registered in an **inventory** (`config/inventory.json`) and grouped into **profiles** (`config/profiles.json`) matched to a use case and target system. Each server focuses on a specific domain while interoperating through the MCP protocol.
 
 ## Core Principles
 
@@ -66,19 +72,23 @@ Each server targets specific use cases:
 - **Terminal MCP**: System command execution
 - **Researcher MCP**: Combined web research and knowledge access
 - **Browser Agent MCP**: Browser automation and web interaction
+- **The Designer MCP**: UI/UX design system tooling
+- **scrcpy MCP**: Android device control *(GUI/device)*
+- **LL3M Agent MCP**: Autonomous 3D modeling in Blender *(GUI)*
+
+## Profile-Driven Architecture
+
+The suite keeps a single registry of servers and a set of curated stacks, rather than one hardcoded "install everything" bundle.
+
+### Inventory
+`config/inventory.json` lists every available server with metadata the tooling depends on: Git repository URL, clone directory, entry file, build command (if any), required environment variables, and whether the server needs a GUI or physical device. Adding a new server here makes it available to every profile and to the `--all` scope.
+
+### Profiles
+`config/profiles.json` defines named stacks. Each entry picks a **system** (`gui`, `headless`, or `any`) and a `servers` list referencing inventory keys. The setup tool filters profiles by the target system and installs only the selected profile. The built-in `all` profile (system `any`) resolves to every inventory server. See [profiles.md](profiles.md).
 
 ## Server Architecture
 
-The AZZAR MCP Server Suite consists of 6 core servers that work in tandem:
-
-### The 6 Core Servers
-
-1. **Chaining MCP Server**: Intelligent workflow orchestration
-2. **Filesystem MCP Server**: Advanced file operations
-3. **Project Guardian MCP Server**: Project memory and knowledge management
-4. **Terminal MCP Server**: System command execution
-5. **Researcher MCP Server**: Unified research platform (Google Search + Wikipedia)
-6. **Browser Agent MCP Server**: Browser automation and web interaction
+The MCP Ecosystem Suite covers 9 servers registered in the inventory:
 
 ### Chaining MCP Server
 **Purpose**: Intelligent tool orchestration and workflow management
@@ -172,12 +182,53 @@ The AZZAR MCP Server Suite consists of 6 core servers that work in tandem:
 - Provides real-time web interaction for research and testing
 - Complements Researcher MCP by providing interactive capabilities
 
+### The Designer MCP Server
+**Purpose**: UI/UX design system and token tooling
+
+**Components**:
+- Style Evaluation: Recommends the best design system for a product tone
+- Token Generator: Produces design tokens (colors, typography, spacing) and Tailwind configs
+- Component Generator: Renders ready-to-paste HTML/React/Vue components
+- Accessibility Audit: Runs WCAG checks and flags contrast/labeling issues
+- Pre-flight Scanner: Detects framework and token state in an existing project
+
+**Integration Points**:
+- Generates styling primitives consumed by frontend/design workflows
+- Pairs with Filesystem to write generated component and token files
+
+### scrcpy MCP Server
+**Purpose**: Android device control via ADB and scrcpy *(GUI/device)*
+
+**Components**:
+- Device Manager: Enumerates connected Android devices
+- Input Controller: Tap, swipe, key and text injection
+- UI Inspector: Dumps the accessibility tree and locates views
+- File Transfer: Push/pull files between host and device
+- Media Capture: Screenshots and screen recording
+
+**Integration Points**:
+- Enables mobile testing and automation workflows
+- Complements Terminal MCP for ADB-based system operations
+
+### LL3M Agent MCP Server
+**Purpose**: Autonomous 3D modeling in Blender *(GUI, requires local Blender)*
+
+**Components**:
+- Scene Generator: Builds 3D scenes from natural-language prompts
+- Planning Agent: Produces multi-component modeling plans
+- Refinement Loop: Applies reviewer feedback iteratively to improve mesh quality
+- Rendering: Captures screenshots and renders scene output
+
+**Integration Points**:
+- Depends on a local Blender installation and a display target
+- Complements Filesystem MCP for asset persistence
+
 ## Data Flow Architecture
 
 ### Client Interaction Layer
 ```
 ┌─────────────────┐
-│   MCP Client    │ (Cursor IDE, Claude Desktop, etc.)
+│   MCP Client    │ (Cursor IDE, Claude Desktop, OpenCode, etc.)
 │                 │
 │ • Tool Calls    │
 │ • Resource Reads│
@@ -307,4 +358,4 @@ Project Guardian provides persistent storage for project state and knowledge acr
 - Automated workflow learning
 - Cross-server dependency resolution
 
-This architecture provides a solid foundation for extensible AI assistant capabilities while maintaining clean separation of concerns and robust interoperability.
+This architecture provides a solid foundation for extensible AI agent harness capabilities while maintaining clean separation of concerns and robust interoperability. Because servers are inventory-driven and grouped into profiles, deploying a headless research node vs. a full GUI workstation is just a matter of choosing a different profile.

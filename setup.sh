@@ -102,16 +102,22 @@ generate_client_config() {
             if [[ "$OSTYPE" == "darwin"* ]]; then out="$HOME/Library/Application Support/Claude/claude_desktop_config.json";
             elif [[ "$OSTYPE" == "msys"* ]] || [[ "$OSTYPE" == "win32" ]]; then out="$APPDATA/Claude/claude_desktop_config.json";
             else out="$HOME/.config/Claude/claude_desktop_config.json"; fi ;;
-        opencode) out="$HOME/.config/opencode/opencode.json" ;;
+        opencode) out="$MCP_ECOSYSTEM_ROOT/config/opencode.generated.json" ;;
+        docker)   out="$MCP_ECOSYSTEM_ROOT/config/docker-compose.generated.yml" ;;
         skip) return 0 ;;
         *) return 0 ;;
     esac
+
     local mkdirp
     mkdirp="$(dirname "$out")"
     mkdir -p "$mkdirp"
     backup_if_exists "$out"
     node "$SCRIPT_DIR/scripts/generate-config.mjs" "$PROFILE_ID" --backend "$client" --root "$MCP_ECOSYSTEM_ROOT" --out "$out"
     print_success "Wrote $client config to $out"
+
+    if [ "$client" = "opencode" ]; then
+        print_status "OpenCode: merge the 'mcp' object into ~/.config/opencode/opencode.json (do not overwrite provider/model settings)."
+    fi
 }
 
 main() {
