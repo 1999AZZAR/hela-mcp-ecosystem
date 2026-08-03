@@ -1,5 +1,6 @@
 # Contributing to AZZAR MCP Server Suite
 
+![Blotcat carefully placing a new, glowing building block on top of an established, complex structure](assets/blotcat-contributing.jpg)
 Thank you for your interest in contributing to the AZZAR MCP Server Suite! This document provides guidelines and information for contributors.
 
 ## Table of Contents
