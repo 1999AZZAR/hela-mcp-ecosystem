@@ -242,37 +242,37 @@ The MCP Ecosystem Suite covers 9 servers registered in the inventory:
 
 ### Server Orchestration Layer
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    Chaining MCP Server                      │
-│  ┌─────────────────────────────────────────────────────┐    │
-│  │ Tool Discovery • Route Optimization • Orchestration │    │
-│  └─────────────────────────────────────────────────────┘    │
-│              │                        │                    │
-│      Orchestrates              Coordinates              │
-│              │                        │                    │
-└─────────────────────────────────────────────────────────────┘
-         │                        │
-         ▼                        ▼
-┌─────────────────┐      ┌─────────────────┐
-│ Filesystem MCP  │      │  Researcher MCP │
-│                 │      │                 │
-│ File Operations │      │ Web+Wikipedia   │
-└─────────────────┘      └─────────────────┘
-         │                        │
-         ▼                        ▼
-┌─────────────────┐      ┌─────────────────┐
-│ Project Guardian│      │  Browser Agent  │
-│                 │      │                 │
-│ Knowledge Mgmt  │      │ Automation      │
-└─────────────────┘      └─────────────────┘
-         │                        │
-         ▼                        ▼
-┌─────────────────┐      ┌─────────────────┐
-│  Terminal MCP   │      │   External APIs │
-│                 │      │                 │
-│ System Commands │      │ (Google/Web/SSH)│
-└─────────────────┘      └─────────────────┘
+```text
+┌───────────────────────────────────────────────────────────────────────┐
+│                         Chaining MCP Server                           │
+│  ┌─────────────────────────────────────────────────────────────────┐  │
+│  │      Tool Discovery • Route Optimization • Orchestration        │  │
+│  └─────────────────────────────────────────────────────────────────┘  │
+│              │                        │                    │          │
+│      Orchestrates              Coordinates              Manages       │
+│              │                        │                    │          │
+└───────────────────────────────────────────────────────────────────────┘
+         │                        │                          │
+         ▼                        ▼                          ▼
+┌─────────────────┐      ┌─────────────────┐        ┌─────────────────┐
+│ Filesystem MCP  │      │  Researcher MCP │        │The Designer MCP │
+│                 │      │                 │        │                 │
+│ File Operations │      │ Web+Wikipedia   │        │ UI/UX & Tokens  │
+└─────────────────┘      └─────────────────┘        └─────────────────┘
+         │                        │                          │
+         ▼                        ▼                          ▼
+┌─────────────────┐      ┌─────────────────┐        ┌─────────────────┐
+│ Project Guardian│      │  Browser Agent  │        │   scrcpy MCP    │
+│                 │      │                 │        │                 │
+│ Knowledge Mgmt  │      │ Automation      │        │ Android Control │
+└─────────────────┘      └─────────────────┘        └─────────────────┘
+         │                        │                          │
+         ▼                        ▼                          ▼
+┌─────────────────┐      ┌─────────────────┐        ┌─────────────────┐
+│  Terminal MCP   │      │   External APIs │        │ LL3M Agent MCP  │
+│                 │      │                 │        │                 │
+│ System Commands │      │ (Google/Web/SSH)│        │ 3D Modeling     │
+└─────────────────┘      └─────────────────┘        └─────────────────┘
          │
          ▼
 ┌─────────────────┐
