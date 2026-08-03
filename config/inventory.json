@@ -88,10 +88,10 @@
     "ll3m-agent": {
       "name": "LL3M Agent (Blender)",
       "repo": "https://github.com/1999AZZAR/ll3m-agent.git",
-      "dir": "ll3m-agent",
+      "dir": "ll3m-agent/brain",
       "runtime": "node",
-      "entry": null,
-      "build": null,
+      "entry": "dist/index.js",
+      "build": "build",
       "needsGui": true,
       "needsDevice": false,
       "env": [],
