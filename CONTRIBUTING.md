@@ -1,7 +1,7 @@
-# Contributing to AZZAR MCP Server Suite
+# Contributing to MCP Ecosystem Suite
 
 ![Blotcat carefully placing a new, glowing building block on top of an established, complex structure](assets/blotcat-contributing.jpg)
-Thank you for your interest in contributing to the AZZAR MCP Server Suite! This document provides guidelines and information for contributors.
+Thank you for your interest in contributing to the MCP Ecosystem Suite! This document provides guidelines and information for contributors.
 
 ## Table of Contents
 
@@ -51,7 +51,7 @@ Thank you for your interest in contributing to the AZZAR MCP Server Suite! This 
 
 ### For Existing Servers
 
-1. **Choose a server** to contribute to from the list in the main README
+1. **Choose a server** to contribute to from `config/inventory.json`
 2. **Fork the repository** of the specific server you want to work on
 3. **Create a feature branch**:
    ```bash
@@ -59,12 +59,14 @@ Thank you for your interest in contributing to the AZZAR MCP Server Suite! This 
    ```
 4. **Make your changes** following the coding standards
 5. **Add tests** if applicable
-6. **Run the test suite**:
+6. **Run the test suite** (narrow to one server with a scope flag):
    ```bash
+   ./scripts/test-all.sh my-server-key
    npm test
    ```
 7. **Build the project**:
    ```bash
+   ./scripts/build-all.sh my-server-key
    npm run build
    ```
 8. **Submit a pull request** with a clear description
@@ -74,6 +76,7 @@ Thank you for your interest in contributing to the AZZAR MCP Server Suite! This 
 1. **Propose the server** by creating an issue in this repository describing:
    - Purpose and scope
    - Why it fits the ecosystem
+   - GUI/device requirements (desktop-only vs. headless-friendly)
    - Technical approach
    - Integration points with existing servers
 
@@ -84,7 +87,14 @@ Thank you for your interest in contributing to the AZZAR MCP Server Suite! This 
    - Provide test coverage
    - Use established project structure
 
-3. **Submit for inclusion** in the ecosystem by updating this repository
+3. **Wire it into the ecosystem**:
+   - Add the server to `config/inventory.json` (repo URL, clone dir, entry file, build command, env vars, GUI/device flags). This makes it available to every profile and to the `--all` scope.
+   - Add it to one or more `profiles` in `config/profiles.json` (use `system: "gui"` if it needs a display/device, otherwise `headless` or `any`).
+   - Update the Server Details table and Core Servers list in `config/../README.md`.
+   - Verify config rendering:
+     ```bash
+     node scripts/generate-config.mjs <profile> --backend print
+     ```
 
 ## Coding Standards
 
@@ -130,7 +140,7 @@ test: add integration tests for new features
 - Test integration with MCP clients
 
 ### Manual Testing
-- Test with actual MCP clients (Cursor, Claude Desktop)
+- Test with actual MCP clients (Cursor, Claude Desktop, OpenCode)
 - Verify cross-platform compatibility
 - Test error scenarios
 
@@ -185,4 +195,4 @@ Contributors are recognized through:
 - Mention in release notes for significant contributions
 - Credit in documentation for major features
 
-Thank you for contributing to the AZZAR MCP Server Suite! Your efforts help make AI assistants more capable and useful.
+Thank you for contributing to the MCP Ecosystem Suite! Your efforts help make AI agent harnesses more capable and useful.
