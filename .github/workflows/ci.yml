@@ -1,0 +1,113 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-config:
+    name: Validate config & generators
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: JSON configs parse
+        run: |
+          node -e 'JSON.parse(require("fs").readFileSync("config/inventory.json","utf8"))'
+          node -e 'JSON.parse(require("fs").readFileSync("config/profiles.json","utf8"))'
+          for f in config/*-example.json; do
+            node -e 'const p=process.argv[1]; JSON.parse(require("fs").readFileSync(p,"utf8"))' "$f"
+          done
+
+      - name: Checked-in examples match generation
+        run: |
+          # Checked-in examples use the /absolute/path/to/mcp-ecosystem placeholder.
+          ROOT=/absolute/path/to/mcp-ecosystem
+          node scripts/generate-config.mjs dev-workspace --backend opencode --root "$ROOT" \
+            | diff - config/opencode-example.json
+          node scripts/generate-config.mjs dev-workspace --backend cursor --root "$ROOT" \
+            | diff - config/cursor-example.json
+          node scripts/generate-config.mjs dev-workspace --backend claude --root "$ROOT" \
+            | diff - config/claude-example.json
+
+      - name: Cross-check profiles vs inventory
+        run: |
+          set -e
+          node -e '
+            const inv=require("./config/inventory.json").inventory;
+            const profs=require("./config/profiles.json").profiles;
+            const unknownKey=k=>`Unknown server key "${k}" referenced by a profile but absent from inventory.json`;
+            let bad=0;
+            for (const p of profs) for (const s of p.servers) {
+              if (!inv[s]) { console.error(unknownKey(s)); bad=1; }
+            }
+            process.exit(bad);
+          '
+          node -e '
+            const inv=require("./config/inventory.json").inventory;
+            const bad=[];
+            for (const [k,v] of Object.entries(inv)) {
+              if (v.runtime!=="node") bad.push(`${k}: unsupported runtime "${v.runtime}"`);
+              if (v.build && !/^[a-zA-Z0-9:_-]+$/.test(v.build)) bad.push(`${k}: suspicious build script "${v.build}"`);
+              if (!v.entry) bad.push(`${k}: missing "entry"`);
+            }
+            if (bad.length){ console.error(bad.join("\n")); process.exit(1); }
+          '
+
+      - name: Generate config for every profile x backend
+        run: |
+          set -e
+          for p in dev-workspace headless-server research web-devops android-testing 3d-modeling all; do
+            for b in print cursor claude opencode docker; do
+              tmp="$(mktemp)"
+              if ! node scripts/generate-config.mjs "$p" --backend "$b" --root "$PWD" --out "$tmp" >/dev/null 2>&1; then
+                echo "FAIL: profile=$p backend=$b"; exit 1
+              fi
+            done
+          done
+          echo "All profiles generate for every backend."
+
+  validate-scripts:
+    name: Validate shell scripts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Syntax-check all shell scripts
+        run: |
+          set -e
+          for f in setup.sh update.sh scripts/*.sh; do
+            bash -n "$f" && echo "OK: $f"
+          done
+
+      - name: Setup script dry-run on Node version
+        run: |
+          node -v
+          # ensure setup.sh at least parses its CLI-sensitive helpers
+          bash -n setup.sh
+
+  pre-commit:
+    name: Pre-commit hooks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install pre-commit
+        run: pip install pre-commit
+
+      - name: Run pre-commit on all files
+        run: pre-commit run --all-files
