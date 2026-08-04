@@ -432,7 +432,7 @@ The MCP Ecosystem Suite is licensed under the MIT License. See [LICENSE](LICENSE
 
 - **Issues:** Report bugs and request features in individual server repositories
 - **Discussions:** Join community discussions in the respective GitHub repositories
-- **Documentation:** 
+- **Documentation:**
   - Check individual server READMEs for detailed usage instructions
   - See [docs/integration.md](docs/integration.md) for integration help
   - See [docs/troubleshooting.md](docs/troubleshooting.md) for common issues
