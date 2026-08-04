@@ -1,0 +1,25 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+        args: [--maxkb=500]
+      - id: check-merge-conflict
+      - id: detect-private-key
+
+  - repo: local
+    hooks:
+      - id: project-guardian-auto-combine
+        name: Auto-combine scattered memory.db files
+        entry: >
+            bash -c 'command -v sqlite3 >/dev/null 2>&1 || exit 0;
+            find . -mindepth 2 -type f -name memory.db | while read db; do
+              sqlite3 memory.db "ATTACH DATABASE \"$db\" AS nested; INSERT OR IGNORE INTO entities SELECT * FROM nested.entities; INSERT OR IGNORE INTO relations SELECT * FROM nested.relations;";
+              rm "$db";
+            done'
+        language: system
+        always_run: true
+        pass_filenames: false

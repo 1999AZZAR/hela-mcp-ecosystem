@@ -248,9 +248,9 @@ The MCP Ecosystem Suite covers 9 servers registered in the inventory:
 │  ┌─────────────────────────────────────────────────────────────────┐  │
 │  │      Tool Discovery • Route Optimization • Orchestration        │  │
 │  └─────────────────────────────────────────────────────────────────┘  │
-│              │                        │                    │          │
-│      Orchestrates              Coordinates              Manages       │
-│              │                        │                    │          │
+│        │                        │                          │          │
+│   Orchestrates             Coordinates                  Manages       │
+│        │                        │                          │          │
 └───────────────────────────────────────────────────────────────────────┘
          │                        │                          │
          ▼                        ▼                          ▼
