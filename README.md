@@ -42,6 +42,8 @@ A collection of Model Context Protocol (MCP) servers developed by Azzar, designe
 
 The MCP Ecosystem Suite provides a profile-driven collection of specialized MCP servers. Instead of installing one fixed stack, you pick a **profile** — a named subset of servers matched to your use case and target system (GUI desktop vs. headless server). Each server focuses on a specific domain while interoperating through the MCP protocol.
 
+![Blotcat sorting server blocks into GUI and Headless profiles](assets/blotcat-illustrations/01-profile-selection.jpg)
+
 See [Profiles](docs/profiles.md) for the full profile reference and custom-profile guide.
 
 ### Core Servers
@@ -258,6 +260,8 @@ Intelligent tool orchestration and workflow management server featuring:
 - Time zone management and conversion
 - Awesome Copilot integration for development guidance
 
+![Blotcat orchestrating multiple tools and routing workflow traffic](assets/blotcat-illustrations/02-chaining-orchestration.jpg)
+
 ### Filesystem MCP Server
 
 **Repository:** [filesystem-mcp-server](https://github.com/1999AZZAR/filesystem-mcp-server)
@@ -281,6 +285,8 @@ Project memory and knowledge management server featuring:
 - SQLite database operations
 - Data import/export capabilities
 - Project management workflows
+
+![Blotcat placing a memory orb into a connected knowledge graph](assets/blotcat-illustrations/03-project-guardian-memory.jpg)
 
 ### Terminal MCP Server
 
