@@ -5,7 +5,7 @@
       "enabled": true,
       "command": [
         "node",
-        "/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"
+        "/home/azzar/project/MCPservers/mcp-ecosystem/chaining-mcp-server/dist/index.js"
       ],
       "environment": {
         "SEQUENTIAL_THINKING_AVAILABLE": "true",
@@ -19,7 +19,7 @@
       "enabled": true,
       "command": [
         "node",
-        "/absolute/path/to/mcp-ecosystem/filesystem-mcp-server/dist/index.js"
+        "/home/azzar/project/MCPservers/mcp-ecosystem/filesystem-mcp-server/dist/index.js"
       ]
     },
     "Project-Guardian": {
@@ -27,7 +27,7 @@
       "enabled": true,
       "command": [
         "node",
-        "/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"
+        "/home/azzar/project/MCPservers/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"
       ]
     },
     "terminal": {
@@ -35,7 +35,15 @@
       "enabled": true,
       "command": [
         "node",
-        "/absolute/path/to/mcp-ecosystem/terminal-mcp-server/build/index.js"
+        "/home/azzar/project/MCPservers/mcp-ecosystem/terminal-mcp-server/build/index.js"
+      ]
+    },
+    "menager": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "node",
+        "/home/azzar/project/MCPservers/mcp-ecosystem/menager-mcp-server/build/index.js"
       ]
     },
     "research": {
@@ -43,7 +51,7 @@
       "enabled": true,
       "command": [
         "node",
-        "/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"
+        "/home/azzar/project/MCPservers/mcp-ecosystem/research-mcp-server/dist/index.js"
       ],
       "environment": {
         "GOOGLE_API_KEY": "your-google-api-key",
@@ -55,7 +63,7 @@
       "enabled": true,
       "command": [
         "node",
-        "/absolute/path/to/mcp-ecosystem/browser-agent/src/server.js"
+        "/home/azzar/project/MCPservers/mcp-ecosystem/browser-agent/src/server.js"
       ]
     },
     "the-designer": {
@@ -63,7 +71,7 @@
       "enabled": true,
       "command": [
         "node",
-        "/absolute/path/to/mcp-ecosystem/the-designer/dist/index.js"
+        "/home/azzar/project/MCPservers/mcp-ecosystem/the-designer/dist/index.js"
       ]
     }
   }

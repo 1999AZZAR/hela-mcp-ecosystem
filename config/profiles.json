@@ -6,14 +6,14 @@
       "name": "Dev Workspace",
       "system": "gui",
       "description": "Full desktop development workstation: orchestration, files, project memory, terminal, research, browser and design.",
-      "servers": ["chaining-mcp-server", "filesystem-mcp-server", "Project-Guardian-mcp-server", "terminal-mcp-server", "research-mcp-server", "browser-agent", "the-designer"]
+      "servers": ["chaining-mcp-server", "filesystem-mcp-server", "Project-Guardian-mcp-server", "terminal-mcp-server", "menager-mcp-server", "research-mcp-server", "browser-agent", "the-designer"]
     },
     {
       "id": "headless-server",
       "name": "Headless Server",
       "system": "headless",
-      "description": "Client-oriented core for server OS / CI boxes: orchestration, files, memory, terminal and research. No GUI or device servers.",
-      "servers": ["chaining-mcp-server", "filesystem-mcp-server", "Project-Guardian-mcp-server", "terminal-mcp-server", "research-mcp-server"]
+      "description": "Client-oriented core for server OS / CI boxes: orchestration, files, memory, terminal, menager and research. No GUI or device servers.",
+      "servers": ["chaining-mcp-server", "filesystem-mcp-server", "Project-Guardian-mcp-server", "terminal-mcp-server", "menager-mcp-server", "research-mcp-server"]
     },
     {
       "id": "research",
@@ -48,7 +48,7 @@
       "name": "All (full inventory)",
       "system": "any",
       "description": "Install every server in the inventory.",
-      "servers": ["chaining-mcp-server", "filesystem-mcp-server", "Project-Guardian-mcp-server", "terminal-mcp-server", "research-mcp-server", "browser-agent", "the-designer", "scrcpy-mcp", "ll3m-agent"]
+      "servers": ["chaining-mcp-server", "filesystem-mcp-server", "Project-Guardian-mcp-server", "terminal-mcp-server", "menager-mcp-server", "research-mcp-server", "browser-agent", "the-designer", "scrcpy-mcp", "ll3m-agent"]
     }
   ]
 }

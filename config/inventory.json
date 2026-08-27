@@ -49,6 +49,18 @@
       "env": [],
       "description": "System command execution with local/remote (SSH) support, sessions, timeouts and env control."
     },
+    "menager-mcp-server": {
+      "name": "Menager MCP",
+      "repo": "https://github.com/1999AZZAR/menager-mcp-server.git",
+      "dir": "menager-mcp-server",
+      "runtime": "node",
+      "entry": "build/index.js",
+      "build": "build",
+      "needsGui": false,
+      "needsDevice": false,
+      "env": [],
+      "description": "Terminal orchestration server for multiplexing, regex hooks, and pseudo-terminal (PTY) session management."
+    },
     "research-mcp-server": {
       "name": "Researcher MCP",
       "repo": "https://github.com/1999AZZAR/research-mcp-server.git",

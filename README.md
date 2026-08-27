@@ -54,6 +54,7 @@ See [Profiles](docs/profiles.md) for the full profile reference and custom-profi
 | [**Filesystem MCP**](https://github.com/1999AZZAR/filesystem-mcp-server)             | Advanced file operations       | File manipulation, directory operations, search capabilities    |
 | [**Project Guardian MCP**](https://github.com/1999AZZAR/Project-Guardian-mcp-server) | Project memory management      | Knowledge graphs, task tracking, database operations            |
 | [**Terminal MCP**](https://github.com/1999AZZAR/terminal-mcp-server)                 | System command execution       | Remote execution, session management, cross-platform support    |
+| [**Menager MCP**](https://github.com/1999AZZAR/menager-mcp-server)                 | Terminal Orchestration         | Polyglot harness multiplexing, Regex hooks, PTY session management |
 | [**Researcher MCP**](https://github.com/1999AZZAR/research-assistant-mcp-server)    | Combined research platform     | Unified Google Search + Wikipedia with additional analysis tools |
 | [**Browser Agent MCP**](https://github.com/1999AZZAR/browser-agent)             | Browser automation             | Playwright-based web interaction, scraping, automation          |
 | [**The Designer MCP**](https://github.com/1999AZZAR/the-designer)              | UI/UX design tooling           | Style evaluation, tokens, component + Tailwind generation       |
@@ -137,6 +138,10 @@ Add the following to your `mcp.json` (the `dev-workspace` profile):
       "command": "node",
       "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/build/index.js"]
     },
+    "menager": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/menager-mcp-server/build/index.js"]
+    },
     "research": {
       "command": "node",
       "args": ["/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"],
@@ -185,6 +190,10 @@ Add the following to your `claude_desktop_config.json` (the `dev-workspace` prof
     "terminal": {
       "command": "node",
       "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/build/index.js"]
+    },
+    "menager": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/menager-mcp-server/build/index.js"]
     },
     "research": {
       "command": "node",
@@ -299,6 +308,18 @@ System command execution server with:
 - Cross-platform compatibility
 - Command timeout and error handling
 - Environment variable support
+
+### Menager MCP Server
+
+**Repository:** [menager-mcp-server](https://github.com/1999AZZAR/menager-mcp-server)
+
+Terminal orchestration server featuring:
+
+- Inter-session terminal orchestration via POSIX pseudo-terminals (`pty`)
+- AI agent control plane for spawning, monitoring, and driving child terminal harnesses
+- Predictable event interception with non-blocking regex hooks
+- Memory-bounded observability with token-efficient circular buffers
+- Simulated human typing (text, control sequences, raw keystrokes)
 
 ### Researcher MCP Server
 
