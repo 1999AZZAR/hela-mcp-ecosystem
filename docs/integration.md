@@ -98,6 +98,10 @@ The MCP Ecosystem Suite uses a profile-based configuration. Create or update you
       "command": "node",
       "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/build/index.js"]
     },
+    "menager": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/menager-mcp-server/build/index.js"]
+    },
     "research": {
       "command": "node",
       "args": ["/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"],
@@ -166,6 +170,10 @@ Add your profile's servers to the Claude Desktop config file. For the `dev-works
     "terminal": {
       "command": "node",
       "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/build/index.js"]
+    },
+    "menager": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/menager-mcp-server/build/index.js"]
     },
     "research": {
       "command": "node",

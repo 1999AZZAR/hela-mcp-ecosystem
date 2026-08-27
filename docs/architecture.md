@@ -17,6 +17,7 @@
   - [Filesystem MCP Server](#filesystem-mcp-server)
   - [Project Guardian MCP Server](#project-guardian-mcp-server)
   - [Terminal MCP Server](#terminal-mcp-server)
+  - [Menager MCP Server](#menager-mcp-server)
   - [Researcher MCP Server](#researcher-mcp-server)
   - [Browser Agent MCP Server](#browser-agent-mcp-server)
   - [The Designer MCP Server](#the-designer-mcp-server)
@@ -151,6 +152,19 @@ The MCP Ecosystem Suite covers 9 servers registered in the inventory:
 - Executes system operations for other servers
 - Provides deployment and automation capabilities
 - Enables infrastructure management workflows
+
+### Menager MCP Server
+**Purpose**: Inter-session terminal orchestration and AI agent control plane
+
+**Components**:
+- Session Manager: Polyglot harness multiplexing via pseudo-terminals (`pty`)
+- Event Interception Hook: Predictable output matching with non-blocking regex hooks
+- Memory-Bounded Buffer: Circular buffers for token-efficient terminal observability
+- Simulation Engine: Automated human typing and control sequence injection
+
+**Integration Points**:
+- Acts as a control plane for secondary CLI harnesses and sub-agents
+- Complements Terminal MCP by offering long-running multiplexed PTYs
 
 ### Researcher MCP Server
 **Purpose**: Unified research platform combining Google Search and Wikipedia functionality

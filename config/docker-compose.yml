@@ -62,6 +62,17 @@ services:
     networks:
       - mcp-network
 
+  # Menager MCP Server - Terminal Orchestration
+  menager-mcp:
+    build:
+      context: ../menager-mcp-server
+      dockerfile: Dockerfile
+    ports:
+      - "3007:3007"
+    privileged: true
+    networks:
+      - mcp-network
+
   # Researcher MCP Server - Combined research platform
   researcher-mcp:
     build:
