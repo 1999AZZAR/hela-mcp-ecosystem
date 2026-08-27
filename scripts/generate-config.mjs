@@ -4,7 +4,7 @@
  * Emits target MCP client configurations for a chosen profile + backend.
  *
  * Usage:
- *   node scripts/generate-config.mjs <profileId> --backend <cursor|claude|opencode|docker|print> [--root <path>] [--out <file>]
+ *   node scripts/generate-config.mjs <profileId> --backend <cursor|claude|opencode|zed|docker|print> [--root <path>] [--out <file>]
  *
  * Resolves every profile server against inventory.json and renders the config
  * with absolute paths derived from --root (defaults to the ecosystem root).
@@ -82,8 +82,8 @@ function renderOpencode(servers, root) {
   return JSON.stringify({ mcp }, null, 2);
 }
 
-function renderNode(servers, root) {
-  const mcpServers = {};
+function renderNode(servers, root, keyName = 'mcpServers') {
+  const serversObj = {};
   for (const s of servers) {
     const name = s.id.replace('-mcp-server', '').replace('-mcp', '');
     const env = {};
@@ -91,13 +91,13 @@ function renderNode(servers, root) {
       if (/_AVAILABLE$|_ENABLED$/.test(key)) env[key] = 'true';
       else env[key] = 'your-' + key.toLowerCase().replace(/_/g, '-');
     }
-    mcpServers[name] = {
+    serversObj[name] = {
       command: s.runtime || 'node',
       args: entryArgs(s, root),
       ...(Object.keys(env).length ? { env } : {}),
     };
   }
-  return JSON.stringify({ mcpServers }, null, 2);
+  return JSON.stringify({ [keyName]: serversObj }, null, 2);
 }
 
 function renderDocker(servers) {
@@ -131,7 +131,7 @@ function renderPrint(servers, root) {
 function main() {
   const args = parseArgs(process.argv.slice(2));
   if (!args.profile || !args.backend) {
-    console.error('Usage: node scripts/generate-config.mjs <profileId> --backend <cursor|claude|opencode|docker|print> [--root <path>] [--out <file>]');
+    console.error('Usage: node scripts/generate-config.mjs <profileId> --backend <cursor|claude|opencode|zed|docker|print> [--root <path>] [--out <file>]');
     process.exit(1);
   }
 
@@ -150,7 +150,10 @@ function main() {
   switch (args.backend) {
     case 'cursor':
     case 'claude':
-      out = renderNode(servers, root) + '\n';
+      out = renderNode(servers, root, 'mcpServers') + '\n';
+      break;
+    case 'zed':
+      out = renderNode(servers, root, 'context_servers') + '\n';
       break;
     case 'opencode':
       out = renderOpencode(servers, root) + '\n';
@@ -162,7 +165,7 @@ function main() {
       out = renderPrint(servers, root) + '\n';
       break;
     default:
-      console.error(`Unknown backend "${args.backend}". Use cursor|claude|opencode|docker|print.`);
+      console.error(`Unknown backend "${args.backend}". Use cursor|claude|opencode|zed|docker|print.`);
       process.exit(1);
   }
 
