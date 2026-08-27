@@ -104,10 +104,10 @@ All servers are listed in `config/inventory.json`; *(GUI)*/*(device)* servers sh
 The example configs below reflect the `dev-workspace` profile. To generate config for a different profile/client, use the generator:
 
 ```bash
-node scripts/generate-config.mjs <profile> --backend <cursor|claude|opencode|docker>
+node scripts/generate-config.mjs <profile> --backend <cursor|claude|opencode|zed|docker|print>
 ```
 
-The full, current examples are also checked in as `config/cursor-example.json`, `config/claude-example.json`, and `config/opencode-example.json`.
+The full, current examples are also checked in as `config/cursor-example.json`, `config/claude-example.json`, `config/opencode-example.json`, and `config/zed-example.json`.
 
 #### For Cursor IDE
 

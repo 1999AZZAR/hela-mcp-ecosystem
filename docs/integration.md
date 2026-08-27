@@ -13,12 +13,12 @@
     - [Step 1: Locate Configuration File](#step-1-locate-configuration-file)
     - [Step 2: Update Configuration](#step-2-update-configuration)
     - [Step 3: Restart Claude Desktop](#step-3-restart-claude-desktop)
-- [Step 1: Locate Configuration File](#step-1-locate-configuration-file)
-    - [Step 2: Update Configuration](#step-2-update-configuration)
-    - [Step 3: Restart Claude Desktop](#step-3-restart-claude-desktop)
   - [OpenCode Integration](#opencode-integration)
     - [Step 1: Locate Configuration File](#step-1-locate-configuration-file-1)
     - [Step 2: Update Configuration](#step-2-update-configuration-1)
+  - [Zed IDE Integration](#zed-ide-integration)
+    - [Step 1: Locate Settings File](#step-1-locate-settings-file)
+    - [Step 2: Update Configuration](#step-2-update-configuration-2)
     - [Step 3: Restart OpenCode](#step-3-restart-opencode)
 - [API Keys and Tokens Setup](#api-keys-and-tokens-setup)
   - [GitHub Token (Required for Chaining MCP)](#github-token-required-for-chaining-mcp)
@@ -239,6 +239,42 @@ OpenCode merges config files, so add the `mcp` object to your `~/.config/opencod
 
 #### Step 3: Restart OpenCode
 Restart OpenCode to pick up the new MCP servers.
+
+### Zed IDE Integration
+
+#### Step 1: Locate Settings File
+- **macOS/Linux**: `~/.config/zed/settings.json`
+
+#### Step 2: Update Configuration
+
+Zed natively supports MCP servers under the `context_servers` key.
+
+Generate it from a profile:
+
+```bash
+node scripts/generate-config.mjs <profile> --backend zed --root /absolute/path/to/mcp-ecosystem --out /tmp/zed-mcp.json
+```
+
+Example (`dev-workspace` snippet):
+
+```json
+{
+  "context_servers": {
+    "chaining": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"],
+      "env": {
+        "SEQUENTIAL_THINKING_AVAILABLE": "true"
+      }
+    }
+  }
+}
+```
+
+Copy the generated `context_servers` block into your `~/.config/zed/settings.json` file. The authoritative `dev-workspace` example is available at `config/zed-example.json`.
+
+#### Step 3: Restart Zed
+Zed will automatically restart the context servers upon saving `settings.json`, but restarting the editor entirely ensures all extensions reload correctly.
 
 ## API Keys and Tokens Setup
 
