@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HeLa MCP Ecosystem — 10-Server Cellular Distribution Suite</title>
+  <meta name="description" content="A reproducible, 10-server MCP distribution suite for AI agents with dual-backbone orchestration and living memory graphs.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container header-inner">
+      <div class="brand-block">
+        <a href="index.html" class="brand-title">HeLa MCP Ecosystem</a>
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span>v1.0.0 (c2cdf68)</span>
+        </div>
+      </div>
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-active">Workbench</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="workflows.html">Workflows</a>
+        <a href="profiles.html">Profiles</a>
+        <a href="showcase.html">Showcases</a>
+        <a href="troubleshooting.html">Diagnostics</a>
+        <button class="k-shortcut-btn open-cmd-palette">
+          <span>Search 295 Tools</span>
+          <span class="k-key">⌘K</span>
+        </button>
+        <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Workbench Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-header-wrap">
+          <h1 class="hero-title">Cellular AI Tooling for Model Context Protocol</h1>
+          <p class="hero-tagline">A hardened 10-server MCP distribution suite. Grounded by a dual-backbone for dynamic reasoning and SQLite memory graphs across full-stack engineering, research, design, device automation, and 3D modeling.</p>
+
+          <div class="hero-actions">
+            <a href="profiles.html" class="btn btn-primary">Explore 7 Profiles</a>
+            <a href="workflows.html" class="btn btn-secondary">View Workflows A–F</a>
+          </div>
+
+          <div class="quick-bar" style="max-width: 720px; margin: 0 auto;">
+            <span class="quick-cmd" id="heroCmd">git clone https://github.com/1999AZZAR/hela-mcp-ecosystem.git && cd hela-mcp-ecosystem && ./setup.sh</span>
+            <button class="copy-mini" id="heroCopyBtn">Copy</button>
+          </div>
+        </div>
+
+        <!-- Full-Width Interactive Workbench Terminal -->
+        <div class="workbench-terminal">
+          <div class="terminal-header">
+            <div class="terminal-tabs">
+              <button class="term-tab active" data-tab="doctor">setup.sh doctor</button>
+              <button class="term-tab" data-tab="matrix">test:matrix (70/70)</button>
+              <button class="term-tab" data-tab="integration">npm test (295 tools)</button>
+            </div>
+            <div style="display:flex; gap:6px;">
+              <span class="status-dot"></span>
+            </div>
+          </div>
+          <pre class="terminal-body" id="terminalBody">$ ./setup.sh doctor
+=== HeLa MCP Ecosystem — Diagnostic Report ===
+Node.js:     ✓ v20+ LTS (Node.js engine ready)
+Git:         ✓ 2.25+ (Repository clean)
+SQLite3:     ✓ Ready (WAL mode active, zero locking)
+
+=== Component Health (All 10 Servers) ===
+Component          Scope        Entrypoint   Diagnostics
+-----------------------------------------------------------------
+HeLa Mitosis       core         present      [READY] Stdio JSON-RPC OK (18 tools)
+HeLa Genome        core         present      [READY] Stdio JSON-RPC OK (34 tools)
+HeLa Membrane      core         present      [READY] Stdio JSON-RPC OK (16 tools)
+HeLa Nucleus       core         present      [READY] Stdio JSON-RPC OK (5 tools)
+HeLa Ribosome      core         present      [READY] Stdio JSON-RPC OK (11 tools)
+HeLa Enzyme        core         present      [READY] Stdio JSON-RPC OK (28 tools)
+HeLa Cytosol       core         present      [READY] Stdio JSON-RPC OK (93 tools)
+HeLa Phenotype     specialized  present      [READY] Stdio JSON-RPC OK (29 tools)
+HeLa Receptor      specialized  present      [READY] Stdio JSON-RPC OK (46 tools)
+HeLa Plastid       specialized  present      [READY] Stdio JSON-RPC OK (15 tools)
+
+SUCCESS: All required HeLa MCP servers and dependencies are healthy!</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Cellular Topology Graph -->
+    <section class="section" id="architecture">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-label">Interactive Organelle Explorer</div>
+          <h2 class="section-heading">Cellular Dual-Backbone Architecture</h2>
+        </div>
+
+        <div class="node-graph-card">
+          <div class="node-graph-header">
+            <span style="font-size:0.85rem; color:var(--text-muted);">Click any cell below to inspect its active tools catalog and sample JSON-RPC protocol:</span>
+          </div>
+
+          <div class="node-graph-view">
+            <div class="cell-node active" data-cell="hela-mitosis">
+              <div class="cell-node-title">🧬 HeLa Mitosis</div>
+              <div class="cell-node-role">Orchestrator Backbone</div>
+            </div>
+            <div class="cell-node" data-cell="hela-genome">
+              <div class="cell-node-title">🧠 HeLa Genome</div>
+              <div class="cell-node-role">State Backbone</div>
+            </div>
+            <div class="cell-node" data-cell="hela-membrane">
+              <div class="cell-node-title">🛡️ HeLa Membrane</div>
+              <div class="cell-node-role">Workspace FS</div>
+            </div>
+            <div class="cell-node" data-cell="hela-nucleus">
+              <div class="cell-node-title">⚡ HeLa Nucleus</div>
+              <div class="cell-node-role">Execution</div>
+            </div>
+            <div class="cell-node" data-cell="hela-ribosome">
+              <div class="cell-node-title">🧵 HeLa Ribosome</div>
+              <div class="cell-node-role">Process Harness</div>
+            </div>
+            <div class="cell-node" data-cell="hela-enzyme">
+              <div class="cell-node-title">🔍 HeLa Enzyme</div>
+              <div class="cell-node-role">Knowledge</div>
+            </div>
+            <div class="cell-node" data-cell="hela-cytosol">
+              <div class="cell-node-title">🌐 HeLa Cytosol</div>
+              <div class="cell-node-role">Browser Agent</div>
+            </div>
+            <div class="cell-node" data-cell="hela-phenotype">
+              <div class="cell-node-title">🎨 HeLa Phenotype</div>
+              <div class="cell-node-role">Design Tokens</div>
+            </div>
+            <div class="cell-node" data-cell="hela-receptor">
+              <div class="cell-node-title">📱 HeLa Receptor</div>
+              <div class="cell-node-role">Mobile ADB</div>
+            </div>
+            <div class="cell-node" data-cell="hela-plastid">
+              <div class="cell-node-title">🧊 HeLa Plastid</div>
+              <div class="cell-node-role">Blender 3D</div>
+            </div>
+          </div>
+
+          <div class="node-inspector" id="nodeInspector">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <strong style="color:var(--text-primary); font-size:0.95rem;">HeLa Mitosis (<code>hela-mitosis</code>)</strong>
+              <span class="badge-core">18 Active Tools</span>
+            </div>
+            <p style="color:var(--text-muted); margin-bottom:12px; font-family:var(--font-sans); font-size:0.85rem;">Cognitive division & orchestration backbone. Dynamic peer tool discovery, step-by-step reasoning, task decomposition, and 42 domain prompt templates.</p>
+            <div style="margin-bottom:8px;"><strong style="color:var(--accent-cyan);">Tools Catalog:</strong> <span style="color:#cbd5e1;">analyze_with_sequential_thinking, sequentialthinking, workflow_orchestrator, llm_decompose_task, llm_query, llm_summarize, search_prompts, get_prompt, list_mcp_servers, validate_tool_chain</span></div>
+            <div style="margin-top:12px; color:var(--text-dim); font-size:0.75rem;">Sample MCP JSON-RPC Payload:</div>
+            <pre style="background:var(--bg-canvas); padding:10px; border-radius:4px; margin-top:4px; color:#a78bfa; overflow-x:auto;">{
+  "method": "tools/call",
+  "params": {
+    "name": "analyze_with_sequential_thinking",
+    "arguments": {
+      "thought": "Evaluate database migration constraints",
+      "thoughtNumber": 1,
+      "totalThoughts": 3
+    }
+  }
+}</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Configurator Workbench -->
+    <section class="section" id="configurator">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-label">Config Generator</div>
+          <h2 class="section-heading">Client Configuration Workbench</h2>
+        </div>
+
+        <div class="config-workbench">
+          <div class="config-sidebar">
+            <div class="control-item">
+              <label for="profileSelect">Target Profile</label>
+              <select id="profileSelect">
+                <option value="dev-workspace">Dev Workspace (Full Desktop)</option>
+                <option value="headless-server">Headless Server (Core 7)</option>
+                <option value="research">Research Terminal</option>
+                <option value="web-devops">Web Dev & Browser Verification</option>
+                <option value="android-testing">Android Mobile QA</option>
+                <option value="3d-modeling">Blender 3D Modeling</option>
+                <option value="all">All (Full 10-MCP Stack)</option>
+              </select>
+            </div>
+
+            <div class="control-item">
+              <label for="clientSelect">Target AI Client</label>
+              <select id="clientSelect">
+                <option value="cursor">Cursor IDE (~/.cursor/mcp.json)</option>
+                <option value="claude">Claude Desktop (~/.claude.json)</option>
+                <option value="gemini">Gemini / Antigravity CLI</option>
+                <option value="opencode">OpenCode (opencode.json)</option>
+                <option value="kilo">Kilo CLI (config.json)</option>
+                <option value="zed">Zed Editor (settings.json)</option>
+                <option value="codex">Codex / ChatGPT (config.toml)</option>
+                <option value="docker">Docker Compose (docker-compose.yml)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="config-code-pane">
+            <div class="code-pane-header">
+              <span class="code-title">Configuration Output</span>
+              <button class="copy-mini" id="copyConfigBtn">Copy</button>
+            </div>
+            <pre><code id="configCode">// Configuration output will render here...</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Attribution -->
+    <section class="section">
+      <div class="container">
+        <div class="tribute-section">
+          <h3>In Recognition of Henrietta Lacks</h3>
+          <p>The HeLa MCP Ecosystem is named in respectful recognition of <strong>Henrietta Lacks</strong> (1920–1951) and the immortal scientific legacy of HeLa cells, which transformed global biomedical research. In this architecture, HeLa represents modular specialization, deterministic replicability, and software longevity.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Command Palette Modal (⌘K) -->
+  <div class="cmd-palette-backdrop" id="cmdPalette">
+    <div class="cmd-palette-modal">
+      <div class="cmd-input-wrap">
+        <span style="color:var(--text-dim);">🔍</span>
+        <input type="text" class="cmd-input" id="cmdInput" placeholder="Search 295 tools, pages, or profiles (e.g. sequentialthinking, memory, dev-workspace)..." />
+        <span class="k-key">ESC</span>
+      </div>
+      <div class="cmd-results" id="cmdResults">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div class="footer-nav">
+          <a href="index.html">Workbench</a>
+          <a href="architecture.html">Architecture</a>
+          <a href="workflows.html">Workflows</a>
+          <a href="profiles.html">Profiles</a>
+          <a href="showcase.html">Showcases</a>
+          <a href="troubleshooting.html">Diagnostics</a>
+          <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank">GitHub</a>
+        </div>
+        <div class="footer-copy">
+          MIT License • Developed by Azzar
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

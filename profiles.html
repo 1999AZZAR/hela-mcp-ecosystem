@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Profiles & Matrix — HeLa MCP Ecosystem</title>
+  <meta name="description" content="7 pre-configured agent deployment profiles and client configuration matrix for the HeLa MCP Ecosystem.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container header-inner">
+      <div class="brand-block">
+        <a href="index.html" class="brand-title">HeLa MCP Ecosystem</a>
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span>v1.0.0 (c2cdf68)</span>
+        </div>
+      </div>
+      <nav class="nav-menu">
+        <a href="index.html">Workbench</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="workflows.html">Workflows</a>
+        <a href="profiles.html" class="nav-active">Profiles</a>
+        <a href="showcase.html">Showcases</a>
+        <a href="troubleshooting.html">Diagnostics</a>
+        <button class="k-shortcut-btn open-cmd-palette">
+          <span>Search 295 Tools</span>
+          <span class="k-key">⌘K</span>
+        </button>
+        <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Banner -->
+    <div class="page-banner">
+      <div class="container">
+        <div class="page-label">Deployment Profiles</div>
+        <h1 class="page-title">Agent Profiles & Tool Matrices</h1>
+        <p class="page-lead">Pre-configured bundles tailored for specific hardware, security constraints, and operational domains. Every profile maintains the dual-backbone while mounting targeted capability cells.</p>
+      </div>
+    </div>
+
+    <!-- Profiles Grid -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-label">Catalog</div>
+          <h2 class="section-heading">The 7 Agent Profiles</h2>
+        </div>
+
+        <div class="profiles-cards-grid">
+          <!-- Profile 1 -->
+          <div class="profile-box">
+            <div class="profile-head">
+              <h3>Dev Workspace</h3>
+              <span class="profile-badge">8 Servers • 234 Tools</span>
+            </div>
+            <div class="profile-target">Target: Desktop / Full-Stack Workstation</div>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Full desktop engineering with browser interaction, design token synthesis, workspace edits, and memory tracking.</p>
+            <div class="profile-servers-list">
+              <span class="server-chip">mitosis</span>
+              <span class="server-chip">genome</span>
+              <span class="server-chip">membrane</span>
+              <span class="server-chip">nucleus</span>
+              <span class="server-chip">ribosome</span>
+              <span class="server-chip">enzyme</span>
+              <span class="server-chip">phenotype</span>
+              <span class="server-chip">cytosol</span>
+            </div>
+          </div>
+
+          <!-- Profile 2 -->
+          <div class="profile-box">
+            <div class="profile-head">
+              <h3>Headless Server</h3>
+              <span class="profile-badge">7 Servers • 141 Tools</span>
+            </div>
+            <div class="profile-target">Target: Cloud VPS / CI/CD Pipelines</div>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Hardened server profile with zero GUI dependencies. No Chromium/Playwright, ADB, or Blender required.</p>
+            <div class="profile-servers-list">
+              <span class="server-chip">mitosis</span>
+              <span class="server-chip">genome</span>
+              <span class="server-chip">membrane</span>
+              <span class="server-chip">nucleus</span>
+              <span class="server-chip">ribosome</span>
+              <span class="server-chip">enzyme</span>
+              <span class="server-chip">phenotype</span>
+            </div>
+          </div>
+
+          <!-- Profile 3 -->
+          <div class="profile-box">
+            <div class="profile-head">
+              <h3>Research Terminal</h3>
+              <span class="profile-badge">5 Servers • 189 Tools</span>
+            </div>
+            <div class="profile-target">Target: Academic & Market Research</div>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Optimized for deep web crawling, Wikipedia caching, Google Search synthesis, and knowledge graph mapping.</p>
+            <div class="profile-servers-list">
+              <span class="server-chip">mitosis</span>
+              <span class="server-chip">genome</span>
+              <span class="server-chip">enzyme</span>
+              <span class="server-chip">membrane</span>
+              <span class="server-chip">cytosol</span>
+            </div>
+          </div>
+
+          <!-- Profile 4 -->
+          <div class="profile-box">
+            <div class="profile-head">
+              <h3>Web Dev & Verification</h3>
+              <span class="profile-badge">6 Servers • 195 Tools</span>
+            </div>
+            <div class="profile-target">Target: Frontend QA & Dev</div>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Tailored for UI feature development, Tailwind CSS synthesis, live DOM inspection, and Playwright verification.</p>
+            <div class="profile-servers-list">
+              <span class="server-chip">mitosis</span>
+              <span class="server-chip">genome</span>
+              <span class="server-chip">membrane</span>
+              <span class="server-chip">nucleus</span>
+              <span class="server-chip">phenotype</span>
+              <span class="server-chip">cytosol</span>
+            </div>
+          </div>
+
+          <!-- Profile 5 -->
+          <div class="profile-box">
+            <div class="profile-head">
+              <h3>Android Mobile QA</h3>
+              <span class="profile-badge">5 Servers • 131 Tools</span>
+            </div>
+            <div class="profile-target">Target: Mobile Device Engineers</div>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Dedicated physical and emulated Android control via ADB, XML view hierarchy parsing, and touch interaction.</p>
+            <div class="profile-servers-list">
+              <span class="server-chip">mitosis</span>
+              <span class="server-chip">genome</span>
+              <span class="server-chip">nucleus</span>
+              <span class="server-chip">receptor</span>
+              <span class="server-chip">enzyme</span>
+            </div>
+          </div>
+
+          <!-- Profile 6 -->
+          <div class="profile-box">
+            <div class="profile-head">
+              <h3>Blender 3D Modeling</h3>
+              <span class="profile-badge">5 Servers • 88 Tools</span>
+            </div>
+            <div class="profile-target">Target: 3D Artists & Game Devs</div>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Procedural geometry generation, material shader synthesis, and camera rendering directly in Blender.</p>
+            <div class="profile-servers-list">
+              <span class="server-chip">mitosis</span>
+              <span class="server-chip">genome</span>
+              <span class="server-chip">plastid</span>
+              <span class="server-chip">membrane</span>
+              <span class="server-chip">nucleus</span>
+            </div>
+          </div>
+
+          <!-- Profile 7 -->
+          <div class="profile-box">
+            <div class="profile-head">
+              <h3>All (Full Stack)</h3>
+              <span class="profile-badge">10 Servers • 295 Tools</span>
+            </div>
+            <div class="profile-target">Target: Unrestricted Master Agent</div>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">The complete 10-server ecosystem with all 295 tools enabled across all specialized capability domains.</p>
+            <div class="profile-servers-list">
+              <span class="server-chip">All 10 Servers Active</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Client Configurator -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-label">Generator</div>
+          <h2 class="section-heading">Multi-Client Configuration Workbench</h2>
+        </div>
+
+        <div class="config-workbench">
+          <div class="config-sidebar">
+            <div class="control-item">
+              <label for="profileSelect">Target Profile</label>
+              <select id="profileSelect">
+                <option value="dev-workspace">Dev Workspace (Full Desktop)</option>
+                <option value="headless-server">Headless Server (Core 7)</option>
+                <option value="research">Research Terminal</option>
+                <option value="web-devops">Web Dev & Browser Verification</option>
+                <option value="android-testing">Android Mobile QA</option>
+                <option value="3d-modeling">Blender 3D Modeling</option>
+                <option value="all">All (Full 10-MCP Stack)</option>
+              </select>
+            </div>
+
+            <div class="control-item">
+              <label for="clientSelect">Target AI Client</label>
+              <select id="clientSelect">
+                <option value="cursor">Cursor IDE (~/.cursor/mcp.json)</option>
+                <option value="claude">Claude Desktop (~/.claude.json)</option>
+                <option value="gemini">Gemini / Antigravity CLI</option>
+                <option value="opencode">OpenCode (opencode.json)</option>
+                <option value="kilo">Kilo CLI (config.json)</option>
+                <option value="zed">Zed Editor (settings.json)</option>
+                <option value="codex">Codex / ChatGPT (config.toml)</option>
+                <option value="docker">Docker Compose (docker-compose.yml)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="config-code-pane">
+            <div class="code-pane-header">
+              <span class="code-title">Generated Client Config</span>
+              <button class="copy-mini" id="copyConfigBtn">Copy</button>
+            </div>
+            <pre><code id="configCode">// Configuration output will render here...</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Command Palette Modal (⌘K) -->
+  <div class="cmd-palette-backdrop" id="cmdPalette">
+    <div class="cmd-palette-modal">
+      <div class="cmd-input-wrap">
+        <span style="color:var(--text-dim);">🔍</span>
+        <input type="text" class="cmd-input" id="cmdInput" placeholder="Search 295 tools, pages, or profiles..." />
+        <span class="k-key">ESC</span>
+      </div>
+      <div class="cmd-results" id="cmdResults">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div class="footer-nav">
+          <a href="index.html">Workbench</a>
+          <a href="architecture.html">Architecture</a>
+          <a href="workflows.html">Workflows</a>
+          <a href="profiles.html">Profiles</a>
+          <a href="showcase.html">Showcases</a>
+          <a href="troubleshooting.html">Diagnostics</a>
+          <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank">GitHub</a>
+        </div>
+        <div class="footer-copy">MIT License • Developed by Azzar</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
