@@ -120,7 +120,7 @@
       "scope": "core",
       "role": "knowledge",
       "targetRequirement": "headless-compatible",
-      "repo": "https://github.com/1999AZZAR/research-mcp-server.git",
+      "repo": "https://github.com/1999AZZAR/research-assistant-mcp-server.git",
       "dir": "research-mcp-server",
       "runtime": "node",
       "entry": "dist/index.js",
