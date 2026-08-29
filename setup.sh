@@ -190,7 +190,7 @@ main() {
         total="${#servers[@]}"
         if [ "$total" -eq 0 ]; then print_error "No servers in profile $PROFILE_ID."; exit 1; fi
         for key in "${servers[@]}"; do
-            if setup_server "$key"; then ((ok++)); else print_error "Failed: $key"; fi
+            if setup_server "$key"; then ok=$((ok + 1)); else print_error "Failed: $key"; fi
         done
 
         echo

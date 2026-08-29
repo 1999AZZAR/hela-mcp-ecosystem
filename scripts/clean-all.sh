@@ -32,7 +32,7 @@ for entry in "${SERVERS[@]}"; do
         ( cd "$dir" && npm run clean --silent ) 2>/dev/null || true
     fi
     print_success "Cleaned $key"
-    ((ok++))
+    ok=$((ok + 1))
 done
 
 echo
