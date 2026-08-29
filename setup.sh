@@ -17,18 +17,29 @@ TARGET_SYSTEM="${TARGET_SYSTEM:-any}"   # gui | headless | any
 MCP_CLIENT="${MCP_CLIENT:-}"
 PROFILE_ID="${PROFILE_ID:-}"
 NON_INTERACTIVE=false
+RECONFIGURE_ONLY=false
+
+OPENROUTER_KEY="${OPENROUTER_API_KEY:-}"
+GITHUB_TOKEN="${GITHUB_TOKEN:-}"
+GOOGLE_KEY="${GOOGLE_API_KEY:-}"
+GOOGLE_CSE_ID="${GOOGLE_CSE_ID:-}"
 
 usage() {
     cat <<EOF
 Usage: $0 [OPTIONS]
 
-Profile-driven installer for the MCP server suite.
+Profile-driven installer and reconfigurator for the MCP server suite.
 
 Options:
   --profile ID         Select a profile (see config/profiles.json) instead of prompting
   --system SYS         Filter profiles by target: gui | headless | any
-  --client C           Backend to configure: cursor | claude | opencode | docker | skip
-  --non-interactive     Skip client-generation prompt; just setup servers
+  --client C           Backend to configure: cursor | claude | gemini | antigravity | opencode | kilo | zed | codex | docker | skip
+  --reconfigure        Skip cloning and building; immediately reconfigure client & API keys
+  --openrouter-key K   OpenRouter API key for chaining LLM features
+  --github-token T     GitHub Personal Access Token for remote prompt syncing
+  --google-key K       Google Custom Search API Key
+  --google-cse-id ID   Google Custom Search Engine ID
+  --non-interactive    Skip interactive prompts; use provided flags/env defaults
   -h, --help           Show this help
 EOF
 }
@@ -40,10 +51,15 @@ parse_args() {
             --profile) PROFILE_ID="$2"; shift 2 ;;
             --system)  TARGET_SYSTEM="$2"; shift 2 ;;
             --client)  MCP_CLIENT="$2"; shift 2 ;;
+            --reconfigure) RECONFIGURE_ONLY=true; shift ;;
+            --openrouter-key|--openrouter) OPENROUTER_KEY="$2"; shift 2 ;;
+            --github-token|--github) GITHUB_TOKEN="$2"; shift 2 ;;
+            --google-key|--google) GOOGLE_KEY="$2"; shift 2 ;;
+            --google-cse-id|--cse) GOOGLE_CSE_ID="$2"; shift 2 ;;
             --non-interactive)
-      MCP_CLIENT="skip"
-      shift
-      ;;
+                NON_INTERACTIVE=true
+                shift
+                ;;
             *) echo "Unknown option: $1"; usage; exit 1 ;;
         esac
     done
@@ -93,6 +109,31 @@ setup_server() {
     print_success "Done: $key"
 }
 
+prompt_secrets() {
+    if [ "$NON_INTERACTIVE" = true ]; then return 0; fi
+    echo
+    print_status "Configuring Optional API Keys & Secrets:"
+    echo "  (All keys are optional. Press Enter to skip and use offline fallback mode)"
+    echo "  See docs/keys-and-secrets.md for documentation & sign-up URLs."
+    echo
+    if [ -z "$OPENROUTER_KEY" ]; then
+        print_question "OpenRouter API Key (sk-or-v1-..., optional): "
+        read -r OPENROUTER_KEY
+    fi
+    if [ -z "$GITHUB_TOKEN" ]; then
+        print_question "GitHub Personal Access Token (ghp_..., optional): "
+        read -r GITHUB_TOKEN
+    fi
+    if [ -z "$GOOGLE_KEY" ]; then
+        print_question "Google API Key (optional): "
+        read -r GOOGLE_KEY
+    fi
+    if [ -z "$GOOGLE_CSE_ID" ]; then
+        print_question "Google Custom Search Engine ID (optional): "
+        read -r GOOGLE_CSE_ID
+    fi
+}
+
 generate_client_config() {
     local client="$1"
     local out
@@ -116,7 +157,14 @@ generate_client_config() {
     mkdirp="$(dirname "$out")"
     mkdir -p "$mkdirp"
     backup_if_exists "$out"
-    node "$SCRIPT_DIR/scripts/generate-config.mjs" "$PROFILE_ID" --backend "$client" --root "$MCP_ECOSYSTEM_ROOT" --out "$out"
+
+    local gen_args=("$PROFILE_ID" --backend "$client" --root "$MCP_ECOSYSTEM_ROOT" --out "$out")
+    [ -n "$OPENROUTER_KEY" ] && gen_args+=(--openrouter-key "$OPENROUTER_KEY")
+    [ -n "$GITHUB_TOKEN" ] && gen_args+=(--github-token "$GITHUB_TOKEN")
+    [ -n "$GOOGLE_KEY" ] && gen_args+=(--google-key "$GOOGLE_KEY")
+    [ -n "$GOOGLE_CSE_ID" ] && gen_args+=(--google-cse-id "$GOOGLE_CSE_ID")
+
+    node "$SCRIPT_DIR/scripts/generate-config.mjs" "${gen_args[@]}"
     print_success "Wrote $client config to $out"
 
     if [ "$client" = "opencode" ]; then
@@ -126,7 +174,7 @@ generate_client_config() {
 
 main() {
     parse_args "$@"
-    print_status "mcp-ecosystem setup"
+    print_status "mcp-ecosystem setup & configuration"
     check_prereqs
 
     # Resolve profile
@@ -135,24 +183,28 @@ main() {
     fi
     print_status "Using profile: $PROFILE_ID ($(profile_name "$PROFILE_ID"))"
 
-    # Setup each server in the profile
-    local ok=0 total=0 key
-    mapfile -t servers < <(profile_servers "$PROFILE_ID")
-    total="${#servers[@]}"
-    if [ "$total" -eq 0 ]; then print_error "No servers in profile $PROFILE_ID."; exit 1; fi
-    for key in "${servers[@]}"; do
-        if setup_server "$key"; then ((ok++)); else print_error "Failed: $key"; fi
-    done
+    # Setup each server in the profile unless --reconfigure is passed
+    if [ "$RECONFIGURE_ONLY" = false ]; then
+        local ok=0 total=0 key
+        mapfile -t servers < <(profile_servers "$PROFILE_ID")
+        total="${#servers[@]}"
+        if [ "$total" -eq 0 ]; then print_error "No servers in profile $PROFILE_ID."; exit 1; fi
+        for key in "${servers[@]}"; do
+            if setup_server "$key"; then ((ok++)); else print_error "Failed: $key"; fi
+        done
 
-    echo
-    print_status "Setup complete: $ok/$total servers ready"
-    [ "$ok" -ne "$total" ] && print_warning "Some servers failed. Check output above." && exit 1
+        echo
+        print_status "Setup complete: $ok/$total servers ready"
+        [ "$ok" -ne "$total" ] && print_warning "Some servers failed. Check output above." && exit 1
+    else
+        print_status "Reconfigure mode active: skipping server builds."
+    fi
 
     if [ -z "$MCP_CLIENT" ]; then
         echo
         print_status "Generate MCP client config?"
         echo "  1) Cursor IDE (~/.cursor/mcp.json)"
-        echo "  2) Claude Desktop (~/.claude.json)"
+        echo "  2) Claude Desktop / CLI (~/.claude.json)"
         echo "  3) Antigravity CLI / Gemini (~/.gemini/antigravity-cli/mcp_config.json)"
         echo "  4) OpenCode (config/opencode.generated.json)"
         echo "  5) Kilo CLI (~/.config/kilo/config.json)"
@@ -174,6 +226,11 @@ main() {
             *) MCP_CLIENT=skip;;
         esac
     fi
+
+    if [ "$MCP_CLIENT" != "skip" ]; then
+        prompt_secrets
+    fi
+
     generate_client_config "$MCP_CLIENT"
     print_success "Done. Restart your MCP client to pick up the new config."
 }

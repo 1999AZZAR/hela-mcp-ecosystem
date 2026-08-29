@@ -29,12 +29,25 @@ function readProfiles() {
 }
 
 function parseArgs(argv) {
-  const args = { profile: null, backend: null, root: ECOSYSTEM_ROOT, out: null };
+  const args = {
+    profile: null,
+    backend: null,
+    root: ECOSYSTEM_ROOT,
+    out: null,
+    openrouterKey: process.env.OPENROUTER_API_KEY || null,
+    githubToken: process.env.GITHUB_TOKEN || null,
+    googleKey: process.env.GOOGLE_API_KEY || null,
+    googleCseId: process.env.GOOGLE_CSE_ID || null,
+  };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === '--backend') args.backend = argv[++i];
     else if (arg === '--root') args.root = argv[++i];
     else if (arg === '--out') args.out = argv[++i];
+    else if (arg === '--openrouter-key' || arg === '--openrouter') args.openrouterKey = argv[++i];
+    else if (arg === '--github-token' || arg === '--github') args.githubToken = argv[++i];
+    else if (arg === '--google-key' || arg === '--google') args.googleKey = argv[++i];
+    else if (arg === '--google-cse-id' || arg === '--cse') args.googleCseId = argv[++i];
     else if (args.profile === null) args.profile = arg;
   }
   return args;
@@ -61,7 +74,7 @@ function entryArgs(server, root) {
   return [path.join(root, server.dir, server.entry)];
 }
 
-function buildServerEnv(s, root) {
+function buildServerEnv(s, root, options = {}) {
   const env = {};
   for (const key of (s.env || [])) {
     if (key === 'MEMORY_FILE_PATH') {
@@ -69,15 +82,19 @@ function buildServerEnv(s, root) {
     } else if (key === 'CHAINING_TOOL_TIMEOUT_MS') {
       env[key] = '10000';
     } else if (key === 'CHAINING_LLM_ENABLED') {
-      env[key] = 'true';
+      env[key] = options.openrouterKey ? 'true' : 'false';
     } else if (key === 'CHAINING_LLM_MODEL') {
       env[key] = 'openrouter/free';
     } else if (key === 'CHAINING_LLM_BASE_URL') {
       env[key] = 'https://openrouter.ai/api/v1';
     } else if (key === 'OPENROUTER_API_KEY') {
-      env[key] = 'your-openrouter-api-key';
+      if (options.openrouterKey) env[key] = options.openrouterKey;
     } else if (key === 'GITHUB_TOKEN') {
-      env[key] = 'your-github-token';
+      if (options.githubToken) env[key] = options.githubToken;
+    } else if (key === 'GOOGLE_API_KEY') {
+      if (options.googleKey) env[key] = options.googleKey;
+    } else if (key === 'GOOGLE_CSE_ID') {
+      if (options.googleCseId) env[key] = options.googleCseId;
     } else if (key === 'WIKIPEDIA_CACHE_MAX') {
       env[key] = '100';
     } else if (key === 'WIKIPEDIA_CACHE_TTL') {
@@ -93,7 +110,7 @@ function buildServerEnv(s, root) {
   return env;
 }
 
-function renderOpencode(servers, root) {
+function renderOpencode(servers, root, options) {
   const mcp = {};
   for (const s of servers) {
     const name = s.id.replace('-mcp-server', '').replace('-mcp', '');
@@ -103,14 +120,14 @@ function renderOpencode(servers, root) {
       enabled: !!entry,
       command: entry ? [s.runtime || 'node', entry] : [],
     };
-    const env = buildServerEnv(s, root);
+    const env = buildServerEnv(s, root, options);
     if (Object.keys(env).length) block.environment = env;
     mcp[name] = block;
   }
   return JSON.stringify({ mcp }, null, 2);
 }
 
-function renderKilo(servers, root) {
+function renderKilo(servers, root, options) {
   const mcp = {};
   for (const s of servers) {
     const name = s.id.replace('-mcp-server', '').replace('-mcp', '');
@@ -120,18 +137,18 @@ function renderKilo(servers, root) {
       enabled: true,
       command: entry ? [s.runtime || 'node', entry] : [],
     };
-    const env = buildServerEnv(s, root);
+    const env = buildServerEnv(s, root, options);
     if (Object.keys(env).length) block.environment = env;
     mcp[name] = block;
   }
   return JSON.stringify({ mcp }, null, 2);
 }
 
-function renderNode(servers, root, keyName = 'mcpServers') {
+function renderNode(servers, root, keyName = 'mcpServers', options) {
   const serversObj = {};
   for (const s of servers) {
     const name = s.id.replace('-mcp-server', '').replace('-mcp', '');
-    const env = buildServerEnv(s, root);
+    const env = buildServerEnv(s, root, options);
     serversObj[name] = {
       command: s.runtime || 'node',
       args: entryArgs(s, root),
@@ -141,7 +158,7 @@ function renderNode(servers, root, keyName = 'mcpServers') {
   return JSON.stringify({ [keyName]: serversObj }, null, 2);
 }
 
-function renderCodexToml(servers, root) {
+function renderCodexToml(servers, root, options) {
   const lines = ['# Generated Codex / ChatGPT MCP Server Configuration\n'];
   for (const s of servers) {
     const name = s.id.replace('-mcp-server', '').replace('-mcp', '');
@@ -149,7 +166,7 @@ function renderCodexToml(servers, root) {
     lines.push(`[mcpServers.${name}]`);
     lines.push(`command = "${s.runtime || 'node'}"`);
     lines.push(`args = ["${entry}"]`);
-    const env = buildServerEnv(s, root);
+    const env = buildServerEnv(s, root, options);
     if (Object.keys(env).length > 0) {
       lines.push(`[mcpServers.${name}.env]`);
       for (const [k, v] of Object.entries(env)) {
@@ -213,19 +230,19 @@ function main() {
     case 'claude':
     case 'gemini':
     case 'antigravity':
-      out = renderNode(servers, root, 'mcpServers') + '\n';
+      out = renderNode(servers, root, 'mcpServers', args) + '\n';
       break;
     case 'zed':
-      out = renderNode(servers, root, 'context_servers') + '\n';
+      out = renderNode(servers, root, 'context_servers', args) + '\n';
       break;
     case 'opencode':
-      out = renderOpencode(servers, root) + '\n';
+      out = renderOpencode(servers, root, args) + '\n';
       break;
     case 'kilo':
-      out = renderKilo(servers, root) + '\n';
+      out = renderKilo(servers, root, args) + '\n';
       break;
     case 'codex':
-      out = renderCodexToml(servers, root) + '\n';
+      out = renderCodexToml(servers, root, args) + '\n';
       break;
     case 'docker':
       out = renderDocker(servers) + '\n';
