@@ -2,10 +2,13 @@
 
 A collection of Model Context Protocol (MCP) servers developed by Azzar, designed to enhance AI agent harness capabilities across development, research, project management, and system operations.
 
+> 👶 **New to MCP or non-technical?** Read our **[Beginner's Step-by-Step Guide](docs/beginner-guide.md)** for a 3-minute, zero-code visual walkthrough!
+
 ![Blotcat plugging MCP server cables into the central AI Hub](assets/blotcat-hero.jpg)
 
 ## Table of Contents
 
+- [Beginner's Guide](docs/beginner-guide.md)
 - [Overview](#overview)
   - [Core Servers](#core-servers)
 - [Quick Start](#quick-start)
@@ -27,6 +30,7 @@ A collection of Model Context Protocol (MCP) servers developed by Azzar, designe
 - [Repository Structure](#repository-structure)
 - [Managing Servers by Scope](#managing-servers-by-scope)
 - [Documentation Index](#documentation-index)
+  - [Beginner's Step-by-Step Guide](docs/beginner-guide.md)
   - [Prerequisites & Secrets Guide](docs/keys-and-secrets.md)
   - [Architecture Guide](docs/architecture.md)
   - [Integration Guide](docs/integration.md)
@@ -454,6 +458,7 @@ We welcome contributions to the MCP Ecosystem Suite! See [CONTRIBUTING.md](CONTR
 
 For comprehensive guides across the ecosystem:
 
+- 👶 **[Beginner's Step-by-Step Guide](docs/beginner-guide.md)** - Visual 3-minute walkthrough for non-technical users and quick onboarding.
 - 🔑 **[Prerequisites, Keys & Secrets Guide](docs/keys-and-secrets.md)** - System requirements, OpenRouter, GitHub & Google API keys, acquisition URLs, and zero-key offline fallback modes.
 - 📐 **[Architecture Guide](docs/architecture.md)** - System architecture, server components, and data flow diagrams.
 - 🚀 **[Integration Guide](docs/integration.md)** - Detailed setup instructions for Cursor IDE, Claude Desktop, Antigravity, OpenCode, Kilo, Zed, Codex, and Docker.
