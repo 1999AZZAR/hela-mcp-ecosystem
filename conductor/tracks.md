@@ -14,10 +14,13 @@ This document tracks all Conductor development tracks for the HeLa MCP Ecosystem
   - Scope: Ecosystem snapshot engine (`config/snapshots/v1.0.0.json`), deterministic setup, idempotency guards, and diagnostic health check (`./setup.sh doctor`).
   - Status: Completed
 
+- [x] **[Track: Milestone 3 — Backbone Integration Layer & Workflows A–F](./tracks/m3-integration-workflows/index.md)**
+  - Scope: Backbone integration layer, output bounds, `test-integration.sh` suite, and Workflows A through F in `docs/workflows.md`.
+  - Status: Completed
+
 ---
 
 ## Planned Tracks
 
-- [ ] **Track: Milestone 3 — Backbone Integration Layer & Workflows A–F**
 - [ ] **Track: Milestone 4 — Security Audit, Client Verification & CI Hardening**
 - [ ] **Track: Milestone 5 — Real Showcase Recordings, Website & v1.0.0 Release**

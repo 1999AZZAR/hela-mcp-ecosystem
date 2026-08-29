@@ -35,7 +35,7 @@ This document translates the complete specifications in `Refinement_plan.md` and
 |---|---|---|:---:|---|
 | **M1: Baseline & HeLa Aliasing** | Phase 1, 2 & 3 | 10-MCP repository audit, canonical HeLa inventory, agent profiles & pre-validation | [✓ Completed] | Updated `inventory.json`, `profiles.json`, alias translation engine |
 | **M2: Determinism & Doctor** | Phase 4 & 5 | Ecosystem snapshot engine (`v1.0.0.json`), deterministic setup & diagnostic tool | [✓ Completed] | `config/snapshots/`, `./setup.sh doctor` |
-| **M3: Integration & Workflows** | Phase 6 & 7 | Backbone integration layer, output bounds, `test-integration.sh`, and Workflows A–F | 📋 Planned | `scripts/test-integration.sh`, `docs/workflows.md` |
+| **M3: Integration & Workflows** | Phase 6 & 7 | Backbone integration layer, output bounds, `test-integration.sh`, and Workflows A–F | [✓ Completed] | `scripts/test-integration.sh`, `docs/workflows.md` |
 | **M4: Security, CI & Clients** | Phase 8, 9 & 10 | Security audit, multi-client configuration testing & GitHub Actions CI matrix | 📋 Planned | Hardened `.github/workflows/ci.yml`, security report |
 | **M5: Showcase & Release** | Phase 11 | Real workflow recordings, documentation website & v1.0.0 public launch | 📋 Planned | Documentation website (`docs/site`), GitHub Release |
 
@@ -173,60 +173,60 @@ This document translates the complete specifications in `Refinement_plan.md` and
 
 ## Phase 6: Backbone Auditing & Cross-MCP Integration Layer
 
-- [ ] **6.1. HeLa Mitosis Backbone Audit**
-  - [ ] Verify dynamic discovery of all peer MCP servers in the active client configuration.
-  - [ ] Verify tool analysis (`analyze_tools`) and routing suggestions (`generate_route_suggestions`, `llm_suggest_route`).
-  - [ ] Verify task decomposition (`llm_decompose_task`) and workflow orchestrator (`workflow_orchestrator`).
-  - [ ] Verify sequential thinking (`sequentialthinking`) and multi-branch reasoning trees.
-  - [ ] Verify telemetry and health monitoring endpoints (`chaining://health`, `chaining://cache/stats`).
-  - [ ] Test graceful zero-key degradation (deterministic local heuristic fallback in <30ms).
+- [x] **6.1. HeLa Mitosis Backbone Audit**
+  - [x] Verify dynamic discovery of all peer MCP servers in the active client configuration.
+  - [x] Verify tool analysis (`analyze_tools`) and routing suggestions (`generate_route_suggestions`, `llm_suggest_route`).
+  - [x] Verify task decomposition (`llm_decompose_task`) and workflow orchestrator (`workflow_orchestrator`).
+  - [x] Verify sequential thinking (`sequentialthinking`) and multi-branch reasoning trees.
+  - [x] Verify telemetry and health monitoring endpoints (`chaining://health`, `chaining://cache/stats`).
+  - [x] Test graceful zero-key degradation (deterministic local heuristic fallback in <30ms).
 
-- [ ] **6.2. HeLa Genome Backbone Audit**
-  - [ ] Verify session context restoration at startup (`get_session_context`).
-  - [ ] Verify persistent entity, relation, and observation tracking in SQLite knowledge graph (`memory.db`).
-  - [ ] Verify task tracking and status updates across chat sessions.
-  - [ ] Verify central memory synchronization (`sync_central_memory`).
-  - [ ] Maintain strict boundary: Genome remembers and tracks state; Mitosis plans and executes.
+- [x] **6.2. HeLa Genome Backbone Audit**
+  - [x] Verify session context restoration at startup (`get_session_context`).
+  - [x] Verify persistent entity, relation, and observation tracking in SQLite knowledge graph (`memory.db`).
+  - [x] Verify task tracking and status updates across chat sessions.
+  - [x] Verify central memory synchronization (`sync_central_memory`).
+  - [x] Maintain strict boundary: Genome remembers and tracks state; Mitosis plans and executes.
 
-- [ ] **6.3. Audit 8 Capability MCPs Against the Backbone**
-  - [ ] Verify tool naming and schema clarity across all 8 capabilities (`hela-membrane`, `hela-nucleus`, `hela-ribosome`, `hela-enzyme`, `hela-phenotype`, `hela-cytosol`, `hela-receptor`, `hela-plastid`).
-  - [ ] Control large output payloads: enforce pagination, line limits, and truncation warnings.
-  - [ ] Standardize error responses: operation, root cause, recoverability status, and suggested action.
+- [x] **6.3. Audit 8 Capability MCPs Against the Backbone**
+  - [x] Verify tool naming and schema clarity across all 8 capabilities (`hela-membrane`, `hela-nucleus`, `hela-ribosome`, `hela-enzyme`, `hela-phenotype`, `hela-cytosol`, `hela-receptor`, `hela-plastid`).
+  - [x] Control large output payloads: enforce pagination, line limits, and truncation warnings.
+  - [x] Standardize error responses: operation, root cause, recoverability status, and suggested action.
 
-- [ ] **6.4. Ecosystem Integration Test Script (`scripts/test-integration.sh`)**
-  - [ ] Create automated integration test script:
-    - [ ] Launches selected MCP servers.
-    - [ ] Validates tool registration via stdio JSON-RPC.
-    - [ ] Executes simulated multi-MCP chain (Mitosis plan -> Capability execution -> Genome persistence).
-    - [ ] Asserts 100% clean shutdown without zombie processes.
+- [x] **6.4. Ecosystem Integration Test Script (`scripts/test-integration.sh`)**
+  - [x] Create automated integration test script:
+    - [x] Launches selected MCP servers.
+    - [x] Validates tool registration via stdio JSON-RPC.
+    - [x] Executes simulated multi-MCP chain (Mitosis plan -> Capability execution -> Genome persistence).
+    - [x] Asserts 100% clean shutdown without zombie processes.
 
 ---
 
 ## Phase 7: Real Cross-MCP Workflow Validation Scenarios
 
-- [ ] **7.1. Workflow A: Autonomous Software Development**
-  - [ ] Pipeline: HeLa Genome (restore context) -> HeLa Mitosis (decompose plan) -> HeLa Membrane (inspect repo) -> HeLa Nucleus (implement/test) -> HeLa Cytosol (verify web UI) -> HeLa Genome (record decisions).
-  - [ ] Document test inputs, expected outputs, and recovery steps.
+- [x] **7.1. Workflow A: Autonomous Software Development**
+  - [x] Pipeline: HeLa Genome (restore context) -> HeLa Mitosis (decompose plan) -> HeLa Membrane (inspect repo) -> HeLa Nucleus (implement/test) -> HeLa Cytosol (verify web UI) -> HeLa Genome (record decisions).
+  - [x] Document test inputs, expected outputs, and recovery steps.
 
-- [ ] **7.2. Workflow B: Deep Research & Knowledge Ingestion**
-  - [ ] Pipeline: HeLa Genome (restore context) -> HeLa Mitosis (plan research) -> HeLa Enzyme (gather facts) -> HeLa Membrane (write document) -> HeLa Genome (persist knowledge graph).
-  - [ ] Document test inputs, expected outputs, and recovery steps.
+- [x] **7.2. Workflow B: Deep Research & Knowledge Ingestion**
+  - [x] Pipeline: HeLa Genome (restore context) -> HeLa Mitosis (plan research) -> HeLa Enzyme (gather facts) -> HeLa Membrane (write document) -> HeLa Genome (persist knowledge graph).
+  - [x] Document test inputs, expected outputs, and recovery steps.
 
-- [ ] **7.3. Workflow C: UI/UX Design & Frontend Verification**
-  - [ ] Pipeline: HeLa Genome (restore specs) -> HeLa Mitosis (coordinate) -> HeLa Phenotype (generate tokens/Tailwind) -> HeLa Membrane (create component) -> HeLa Cytosol (visual verification) -> HeLa Genome (record design tokens).
-  - [ ] Document test inputs, expected outputs, and recovery steps.
+- [x] **7.3. Workflow C: UI/UX Design & Frontend Verification**
+  - [x] Pipeline: HeLa Genome (restore specs) -> HeLa Mitosis (coordinate) -> HeLa Phenotype (generate tokens/Tailwind) -> HeLa Membrane (create component) -> HeLa Cytosol (visual verification) -> HeLa Genome (record design tokens).
+  - [x] Document test inputs, expected outputs, and recovery steps.
 
-- [ ] **7.4. Workflow D: Android Automation & Debugging**
-  - [ ] Pipeline: HeLa Genome (restore issue) -> HeLa Enzyme (investigate error) -> HeLa Nucleus (inspect build/logcat) -> HeLa Receptor (drive device UI) -> HeLa Genome (record resolution).
-  - [ ] Document test inputs, expected outputs, and recovery steps.
+- [x] **7.4. Workflow D: Android Automation & Debugging**
+  - [x] Pipeline: HeLa Genome (restore issue) -> HeLa Enzyme (investigate error) -> HeLa Nucleus (inspect build/logcat) -> HeLa Receptor (drive device UI) -> HeLa Genome (record resolution).
+  - [x] Document test inputs, expected outputs, and recovery steps.
 
-- [ ] **7.5. Workflow E: Multi-Agent Terminal Orchestration**
-  - [ ] Pipeline: HeLa Genome (restore state) -> HeLa Mitosis (distribute tasks) -> HeLa Ribosome (spawn PTY harnesses & hooks) -> HeLa Nucleus/Membrane (perform work) -> HeLa Genome (persist logs & results).
-  - [ ] Document test inputs, expected outputs, and recovery steps.
+- [x] **7.5. Workflow E: Multi-Agent Terminal Orchestration**
+  - [x] Pipeline: HeLa Genome (restore state) -> HeLa Mitosis (distribute tasks) -> HeLa Ribosome (spawn PTY harnesses & hooks) -> HeLa Nucleus/Membrane (perform work) -> HeLa Genome (persist logs & results).
+  - [x] Document test inputs, expected outputs, and recovery steps.
 
-- [ ] **7.6. Workflow F: Autonomous 3D Asset Modeling**
-  - [ ] Pipeline: HeLa Genome (restore 3D specs) -> HeLa Mitosis (plan stages) -> HeLa Plastid (Blender code execution & refine) -> HeLa Membrane (save `.blend` & `.png`) -> HeLa Genome (record asset relations).
-  - [ ] Document test inputs, expected outputs, and recovery steps.
+- [x] **7.6. Workflow F: Autonomous 3D Asset Modeling**
+  - [x] Pipeline: HeLa Genome (restore 3D specs) -> HeLa Mitosis (plan stages) -> HeLa Plastid (Blender code execution & refine) -> HeLa Membrane (save `.blend` & `.png`) -> HeLa Genome (record asset relations).
+  - [x] Document test inputs, expected outputs, and recovery steps.
 
 ---
 

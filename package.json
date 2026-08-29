@@ -1,0 +1,22 @@
+{
+  "name": "hela-mcp-ecosystem",
+  "version": "1.0.0",
+  "description": "The modular, immortal cellular AI tooling ecosystem based on Model Context Protocol.",
+  "type": "module",
+  "scripts": {
+    "doctor": "./setup.sh doctor",
+    "test": "node scripts/test-integration.mjs",
+    "test:integration": "node scripts/test-integration.mjs",
+    "build:all": "./scripts/build-all.sh --all",
+    "clean:all": "./scripts/clean-all.sh --all"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai-agents",
+    "orchestration",
+    "hela"
+  ],
+  "author": "1999AZZAR",
+  "license": "MIT"
+}
