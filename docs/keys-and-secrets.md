@@ -80,7 +80,7 @@ All keys and secrets in this ecosystem are **100% OPTIONAL**. The entire suite i
 
 ## ⚡ Zero-Touch Interactive Configuration
 
-You never have to manually edit JSON or TOML configuration files. 
+You never have to manually edit JSON or TOML configuration files.
 
 ### Initial Setup
 Run the setup script:

@@ -2,9 +2,9 @@
 
 [mcpServers.chaining]
 command = "node"
-args = ["/home/azzar/project/MCPservers/mcp-ecosystem/chaining-mcp-server/dist/index.js"]
+args = ["/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"]
 [mcpServers.chaining.env]
-MEMORY_FILE_PATH = "/home/azzar/project/MCPservers/mcp-ecosystem/chaining-mcp-server/data/memory.json"
+MEMORY_FILE_PATH = "/absolute/path/to/mcp-ecosystem/chaining-mcp-server/data/memory.json"
 SEQUENTIAL_THINKING_AVAILABLE = "true"
 AWESOME_COPILOT_ENABLED = "true"
 RELIABILITY_MONITORING_ENABLED = "true"
@@ -17,23 +17,23 @@ GITHUB_TOKEN = "your-github-token"
 
 [mcpServers.filesystem]
 command = "node"
-args = ["/home/azzar/project/MCPservers/mcp-ecosystem/filesystem-mcp-server/dist/index.js"]
+args = ["/absolute/path/to/mcp-ecosystem/filesystem-mcp-server/dist/index.js"]
 
 [mcpServers.Project-Guardian]
 command = "node"
-args = ["/home/azzar/project/MCPservers/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"]
+args = ["/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"]
 
 [mcpServers.terminal]
 command = "node"
-args = ["/home/azzar/project/MCPservers/mcp-ecosystem/terminal-mcp-server/build/index.js"]
+args = ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/build/index.js"]
 
 [mcpServers.menager]
 command = "node"
-args = ["/home/azzar/project/MCPservers/mcp-ecosystem/menager-mcp-server/build/index.js"]
+args = ["/absolute/path/to/mcp-ecosystem/menager-mcp-server/build/index.js"]
 
 [mcpServers.research]
 command = "node"
-args = ["/home/azzar/project/MCPservers/mcp-ecosystem/research-mcp-server/dist/index.js"]
+args = ["/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"]
 [mcpServers.research.env]
 GOOGLE_API_KEY = "your-google-api-key"
 GOOGLE_CSE_ID = "your-google-cse-id"
@@ -43,9 +43,8 @@ WIKIPEDIA_DEFAULT_LANGUAGE = "en"
 
 [mcpServers.the-designer]
 command = "node"
-args = ["/home/azzar/project/MCPservers/mcp-ecosystem/the-designer/dist/index.js"]
+args = ["/absolute/path/to/mcp-ecosystem/the-designer/dist/index.js"]
 
 [mcpServers.browser-agent]
 command = "node"
-args = ["/home/azzar/project/MCPservers/mcp-ecosystem/browser-agent/src/server.js"]
-
+args = ["/absolute/path/to/mcp-ecosystem/browser-agent/src/server.js"]

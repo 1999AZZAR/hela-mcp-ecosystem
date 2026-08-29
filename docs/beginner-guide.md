@@ -6,7 +6,7 @@
 
 ## 💡 What is the MCP Ecosystem? (In Plain English)
 
-Think of your AI assistant (like Claude, Cursor, ChatGPT, or Antigravity) like a brilliant mind in a room. By default, it can only talk to you. 
+Think of your AI assistant (like Claude, Cursor, ChatGPT, or Antigravity) like a brilliant mind in a room. By default, it can only talk to you.
 
 The **MCP Ecosystem** gives your AI assistant **hands, tools, and a long-term memory**:
 * 🧠 **Project Guardian**: Gives your AI a persistent memory so it never forgets your project plans, notes, or tasks across chats.
@@ -90,12 +90,12 @@ The wizard will ask if you have any optional API keys:
 [INFO] Configuring Optional API Keys & Secrets:
   (All keys are optional. Press Enter to skip and use offline fallback mode)
 
-[QUESTION] OpenRouter API Key (sk-or-v1-..., optional): 
-[QUESTION] GitHub Personal Access Token (ghp_..., optional): 
-[QUESTION] Google API Key (optional): 
-[QUESTION] Google Custom Search Engine ID (optional): 
+[QUESTION] OpenRouter API Key (sk-or-v1-..., optional):
+[QUESTION] GitHub Personal Access Token (ghp_..., optional):
+[QUESTION] Google API Key (optional):
+[QUESTION] Google Custom Search Engine ID (optional):
 ```
-👉 **What to do:** 
+👉 **What to do:**
 * **If you have a key:** Paste it and press `Enter`.
 * **If you don't have keys:** **Just press `Enter` on each question!** The system will automatically configure free offline fallback mode.
 

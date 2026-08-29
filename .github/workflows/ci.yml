@@ -32,14 +32,21 @@ jobs:
         run: |
           # Checked-in examples use the /absolute/path/to/mcp-ecosystem placeholder.
           ROOT=/absolute/path/to/mcp-ecosystem
-          node scripts/generate-config.mjs dev-workspace --backend opencode --root "$ROOT" \
+          PARAMS=(--openrouter "your-openrouter-api-key" --github "your-github-token" --google "your-google-api-key" --cse "your-google-cse-id")
+          node scripts/generate-config.mjs dev-workspace --backend opencode --root "$ROOT" "${PARAMS[@]}" \
             | diff - config/opencode-example.json
-          node scripts/generate-config.mjs dev-workspace --backend zed --root "$ROOT" \
+          node scripts/generate-config.mjs dev-workspace --backend zed --root "$ROOT" "${PARAMS[@]}" \
             | diff - config/zed-example.json
-          node scripts/generate-config.mjs dev-workspace --backend cursor --root "$ROOT" \
+          node scripts/generate-config.mjs dev-workspace --backend cursor --root "$ROOT" "${PARAMS[@]}" \
             | diff - config/cursor-example.json
-          node scripts/generate-config.mjs dev-workspace --backend claude --root "$ROOT" \
+          node scripts/generate-config.mjs dev-workspace --backend claude --root "$ROOT" "${PARAMS[@]}" \
             | diff - config/claude-example.json
+          node scripts/generate-config.mjs dev-workspace --backend gemini --root "$ROOT" "${PARAMS[@]}" \
+            | diff - config/gemini-example.json
+          node scripts/generate-config.mjs dev-workspace --backend kilo --root "$ROOT" "${PARAMS[@]}" \
+            | diff - config/kilo-example.json
+          node scripts/generate-config.mjs dev-workspace --backend codex --root "$ROOT" "${PARAMS[@]}" \
+            | diff - config/codex-example.toml
 
       - name: Cross-check profiles vs inventory
         run: |
@@ -69,11 +76,12 @@ jobs:
         run: |
           set -e
           for p in dev-workspace headless-server research web-devops android-testing 3d-modeling all; do
-            for b in print cursor claude opencode docker; do
+            for b in print cursor claude gemini antigravity opencode kilo zed codex docker; do
               tmp="$(mktemp)"
               if ! node scripts/generate-config.mjs "$p" --backend "$b" --root "$PWD" --out "$tmp" >/dev/null 2>&1; then
                 echo "FAIL: profile=$p backend=$b"; exit 1
               fi
+              rm -f "$tmp"
             done
           done
           echo "All profiles generate for every backend."

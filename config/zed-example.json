@@ -3,10 +3,10 @@
     "chaining": {
       "command": "node",
       "args": [
-        "/home/azzar/project/MCPservers/mcp-ecosystem/chaining-mcp-server/dist/index.js"
+        "/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"
       ],
       "env": {
-        "MEMORY_FILE_PATH": "/home/azzar/project/MCPservers/mcp-ecosystem/chaining-mcp-server/data/memory.json",
+        "MEMORY_FILE_PATH": "/absolute/path/to/mcp-ecosystem/chaining-mcp-server/data/memory.json",
         "SEQUENTIAL_THINKING_AVAILABLE": "true",
         "AWESOME_COPILOT_ENABLED": "true",
         "RELIABILITY_MONITORING_ENABLED": "true",
@@ -21,31 +21,31 @@
     "filesystem": {
       "command": "node",
       "args": [
-        "/home/azzar/project/MCPservers/mcp-ecosystem/filesystem-mcp-server/dist/index.js"
+        "/absolute/path/to/mcp-ecosystem/filesystem-mcp-server/dist/index.js"
       ]
     },
     "Project-Guardian": {
       "command": "node",
       "args": [
-        "/home/azzar/project/MCPservers/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"
+        "/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"
       ]
     },
     "terminal": {
       "command": "node",
       "args": [
-        "/home/azzar/project/MCPservers/mcp-ecosystem/terminal-mcp-server/build/index.js"
+        "/absolute/path/to/mcp-ecosystem/terminal-mcp-server/build/index.js"
       ]
     },
     "menager": {
       "command": "node",
       "args": [
-        "/home/azzar/project/MCPservers/mcp-ecosystem/menager-mcp-server/build/index.js"
+        "/absolute/path/to/mcp-ecosystem/menager-mcp-server/build/index.js"
       ]
     },
     "research": {
       "command": "node",
       "args": [
-        "/home/azzar/project/MCPservers/mcp-ecosystem/research-mcp-server/dist/index.js"
+        "/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"
       ],
       "env": {
         "GOOGLE_API_KEY": "your-google-api-key",
@@ -58,13 +58,13 @@
     "the-designer": {
       "command": "node",
       "args": [
-        "/home/azzar/project/MCPservers/mcp-ecosystem/the-designer/dist/index.js"
+        "/absolute/path/to/mcp-ecosystem/the-designer/dist/index.js"
       ]
     },
     "browser-agent": {
       "command": "node",
       "args": [
-        "/home/azzar/project/MCPservers/mcp-ecosystem/browser-agent/src/server.js"
+        "/absolute/path/to/mcp-ecosystem/browser-agent/src/server.js"
       ]
     }
   }
