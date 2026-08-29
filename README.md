@@ -82,8 +82,8 @@ Workspace FS   Command Exec   PTY Harness    Research/Wiki   Browser DOM
 Check your host environment, compiler readiness, external runtimes, and API key fallbacks:
 
 ```bash
-git clone https://github.com/1999AZZAR/mcp-ecosystem.git
-cd mcp-ecosystem
+git clone https://github.com/1999AZZAR/hela-mcp-ecosystem.git
+cd hela-mcp-ecosystem
 ./setup.sh doctor
 ```
 

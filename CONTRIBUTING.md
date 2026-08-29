@@ -22,8 +22,8 @@ Thank you for your interest in contributing to the **HeLa MCP Ecosystem**! This 
 
 ### 2.1 Local Environment Setup
 ```bash
-git clone https://github.com/1999AZZAR/mcp-ecosystem.git
-cd mcp-ecosystem
+git clone https://github.com/1999AZZAR/hela-mcp-ecosystem.git
+cd hela-mcp-ecosystem
 ./setup.sh --profile dev-workspace --client skip --non-interactive
 ```
 

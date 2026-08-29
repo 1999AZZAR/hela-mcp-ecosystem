@@ -165,4 +165,4 @@ Restore known-good, audited release snapshot:
 
 * **Run Integration Tests**: `npm test` (executes 295 tool discovery tests across all 10 servers).
 * **Run Matrix Tests**: `npm run test:matrix` (verifies all 70 client configuration combinations).
-* **File an Issue**: Open an issue on GitHub at [`https://github.com/1999AZZAR/mcp-ecosystem/issues`](https://github.com/1999AZZAR/mcp-ecosystem/issues) with the output of `./setup.sh doctor --json`.
+* **File an Issue**: Open an issue on GitHub at [`https://github.com/1999AZZAR/hela-mcp-ecosystem/issues`](https://github.com/1999AZZAR/hela-mcp-ecosystem/issues) with the output of `./setup.sh doctor --json`.
