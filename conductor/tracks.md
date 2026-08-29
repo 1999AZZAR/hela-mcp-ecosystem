@@ -22,8 +22,6 @@ This document tracks all Conductor development tracks for the HeLa MCP Ecosystem
   - Scope: Security & reliability audit (`docs/security-audit.md`), multi-client configuration matrix validator (70 combinations), and hardened GitHub Actions CI matrix.
   - Status: Completed
 
----
-
-## Planned Tracks
-
-- [ ] **Track: Milestone 5 — Real Showcase Recordings, Website & v1.0.0 Release**
+- [x] **[Track: Milestone 5 — Real Showcase Recordings, Documentation Site & Release](./tracks/m5-showcase-release/index.md)**
+  - Scope: Real workflow video showcases (YouTube), Asciinema terminal recordings, dedicated documentation landing website (`docs/site`), and v1.0.0 release finalization.
+  - Status: Completed
