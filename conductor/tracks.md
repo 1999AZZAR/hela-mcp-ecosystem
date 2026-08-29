@@ -6,7 +6,7 @@ This document tracks all Conductor development tracks for the HeLa MCP Ecosystem
 
 ## Active Tracks
 
-- [ ] **[Track: Milestone 1 — Baseline Audit & Canonical HeLa Aliasing](./tracks/m1-baseline-audit/plan.md)**
+- [~] **[Track: Milestone 1 — Baseline Audit & Canonical HeLa Aliasing](./tracks/m1-baseline-audit/index.md)**
   - Scope: Complete 10-MCP repository audit, canonical HeLa inventory update, agent profiles, and profile pre-validation engine.
   - Status: In Progress
 
