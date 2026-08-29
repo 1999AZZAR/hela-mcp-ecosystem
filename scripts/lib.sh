@@ -133,9 +133,20 @@ materialize_servers() {
     keys=("${SCOPE_ARGS[@]}")
   fi
   SERVERS=()
-  local k dir
+  local k rel_dir resolved_dir
   for k in "${keys[@]}"; do
-    dir="$(inventory_field "$k" dir)"
-    SERVERS+=("$k:$dir")
+    rel_dir="$(inventory_field "$k" dir)"
+    if [ -n "$rel_dir" ] && [ -d "$MCP_ECOSYSTEM_ROOT/$rel_dir" ]; then
+      resolved_dir="$MCP_ECOSYSTEM_ROOT/$rel_dir"
+    elif [ -n "$rel_dir" ] && [ -d "$MCP_ECOSYSTEM_ROOT/../$rel_dir" ]; then
+      resolved_dir="$MCP_ECOSYSTEM_ROOT/../$rel_dir"
+    elif [ -d "$MCP_ECOSYSTEM_ROOT/$k" ]; then
+      resolved_dir="$MCP_ECOSYSTEM_ROOT/$k"
+    elif [ -d "$MCP_ECOSYSTEM_ROOT/../$k" ]; then
+      resolved_dir="$MCP_ECOSYSTEM_ROOT/../$k"
+    else
+      resolved_dir="$MCP_ECOSYSTEM_ROOT/$rel_dir"
+    fi
+    SERVERS+=("$k:$resolved_dir")
   done
 }

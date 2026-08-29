@@ -23,7 +23,12 @@ for entry in "${SERVERS[@]}"; do
     if [ ! -d "$dir" ]; then print_warning "$key ($dir) not found. Skipping."; continue; fi
     if [ ! -f "$dir/package.json" ]; then print_warning "$key has no package.json. Skipping build."; continue; fi
     print_status "Building $key ..."
-    ( cd "$dir" && npm run build ) && { print_success "Built $key"; ((ok++)); } || print_error "Build failed: $key"
+    if ( cd "$dir" && npm run build ); then
+        print_success "Built $key"
+        ok=$((ok + 1))
+    else
+        print_error "Build failed: $key"
+    fi
 done
 
 echo

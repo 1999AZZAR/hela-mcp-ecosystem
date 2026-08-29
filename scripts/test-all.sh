@@ -25,7 +25,12 @@ for entry in "${SERVERS[@]}"; do
         print_warning "$key has no test script. Skipping."; continue
     fi
     print_status "Testing $key ..."
-    ( cd "$dir" && npm test ) && { print_success "Tests passed: $key"; ((ok++)); } || print_error "Tests failed: $key"
+    if ( cd "$dir" && npm test ); then
+        print_success "Tests passed: $key"
+        ok=$((ok + 1))
+    else
+        print_error "Tests failed: $key"
+    fi
 done
 
 echo
