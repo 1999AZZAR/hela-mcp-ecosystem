@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture & Cellular Topology — HeLa MCP Ecosystem</title>
+  <meta name="description" content="Deep architectural specification, dual-backbone topology, and cellular taxonomy of the HeLa MCP Ecosystem.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container header-inner">
+      <div class="brand-block">
+        <a href="index.html" class="brand-title">HeLa MCP Ecosystem</a>
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span>v1.0.0 (c2cdf68)</span>
+        </div>
+      </div>
+      <nav class="nav-menu">
+        <a href="index.html">Workbench</a>
+        <a href="architecture.html" class="nav-active">Architecture</a>
+        <a href="workflows.html">Workflows</a>
+        <a href="profiles.html">Profiles</a>
+        <a href="showcase.html">Showcases</a>
+        <a href="troubleshooting.html">Diagnostics</a>
+        <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" class="gh-link">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Banner -->
+    <div class="page-banner">
+      <div class="container">
+        <div class="page-label">System Specification</div>
+        <h1 class="page-title">Cellular Architecture & Dual-Backbone</h1>
+        <p class="page-lead">The HeLa MCP Ecosystem organizes 10 specialized servers into a cohesive, deterministic organism governed by dual-backbone coordination and standard Model Context Protocol (MCP) JSON-RPC 2.0 stdio.</p>
+      </div>
+    </div>
+
+    <!-- Dual Backbone Deep Dive -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-label">Foundation</div>
+          <h2 class="section-heading">The Dual-Backbone Coordination Model</h2>
+        </div>
+
+        <div class="arch-dual-grid">
+          <div class="backbone-card">
+            <div class="card-meta">
+              <span class="card-name">🧬 HeLa Mitosis</span>
+              <span class="card-tag">chaining-mcp-server</span>
+            </div>
+            <p><strong>Cognitive Orchestration Backbone:</strong> Responsible for intelligent task routing, iterative step-by-step reasoning via <code>sequentialthinking</code>, task decomposition, and dynamic peer MCP server discovery.</p>
+            <div style="margin-top: 14px; font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-cyan);">
+              Entrypoint: dist/index.js • 18 Tools • Scope: Core
+            </div>
+          </div>
+
+          <div class="backbone-card genome">
+            <div class="card-meta">
+              <span class="card-name">🧠 HeLa Genome</span>
+              <span class="card-tag">Project-Guardian-mcp-server</span>
+            </div>
+            <p><strong>Persistent State Backbone:</strong> Living SQLite knowledge graph (<code>memory.db</code>) with full-text FTS5 search, entity-relation tracking, decision memory, cross-session context restoration, and prompt injection defense.</p>
+            <div style="margin-top: 14px; font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-blue);">
+              Entrypoint: dist/index.js • 34 Tools • Scope: Core
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-bar" style="margin-top: 24px;">
+          <span style="color: var(--text-muted); font-size: 0.85rem;">Every profile in HeLa mounts Mitosis and Genome, ensuring any dispatched organelle retains full reasoning and persistent memory context.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4-Tier Identity Matrix -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-label">Taxonomy</div>
+          <h2 class="section-heading">The 4-Tier Canonical Naming Model</h2>
+        </div>
+
+        <p style="color: var(--text-muted); margin-bottom: 24px;">To guarantee both conceptual clarity and complete technical independence, every server in the ecosystem operates across 4 distinct identity tiers:</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Tier 1: Human Alias</th>
+                <th>Tier 2: Machine ID</th>
+                <th>Tier 3: Source Repo</th>
+                <th>Tier 4: Technical Scope</th>
+                <th>Cellular Function</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight: 700; color: var(--text-white);">HeLa Mitosis</td>
+                <td><code>hela-mitosis</code></td>
+                <td>chaining-mcp-server</td>
+                <td><span class="badge-core">Core</span></td>
+                <td>Task decomposition, dynamic routing, sequential reasoning</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700; color: var(--text-white);">HeLa Genome</td>
+                <td><code>hela-genome</code></td>
+                <td>Project-Guardian</td>
+                <td><span class="badge-core">Core</span></td>
+                <td>Living knowledge graph, cross-session decision memory</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700; color: var(--text-white);">HeLa Membrane</td>
+                <td><code>hela-membrane</code></td>
+                <td>filesystem-mcp-server</td>
+                <td><span class="badge-core">Core</span></td>
+                <td>Sandboxed workspace filesystem, deep search, archives</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700; color: var(--text-white);">HeLa Nucleus</td>
+                <td><code>hela-nucleus</code></td>
+                <td>terminal-mcp-server</td>
+                <td><span class="badge-core">Core</span></td>
+                <td>Subshell execution containment & RTK token savings</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700; color: var(--text-white);">HeLa Ribosome</td>
+                <td><code>hela-ribosome</code></td>
+                <td>menager-mcp-server</td>
+                <td><span class="badge-core">Core</span></td>
+                <td>Interactive PTY session multiplexing & Regex hooks</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700; color: var(--text-white);">HeLa Enzyme</td>
+                <td><code>hela-enzyme</code></td>
+                <td>research-assistant-mcp-server</td>
+                <td><span class="badge-core">Core</span></td>
+                <td>Google Search, Wikipedia caching & fact checking</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700; color: var(--text-white);">HeLa Cytosol</td>
+                <td><code>hela-cytosol</code></td>
+                <td>Browser-Agent</td>
+                <td><span class="badge-core">Core</span></td>
+                <td>Playwright browser automation & DOM accessibility trees</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700; color: var(--text-white);">HeLa Phenotype</td>
+                <td><code>hela-phenotype</code></td>
+                <td>the-designer</td>
+                <td><span class="badge-spec">Specialized</span></td>
+                <td>OKLCH tokens, brand design systems, Tailwind synthesis</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700; color: var(--text-white);">HeLa Receptor</td>
+                <td><code>hela-receptor</code></td>
+                <td>scrcpy-mcp</td>
+                <td><span class="badge-spec">Specialized</span></td>
+                <td>Android device control, ADB bridge & XML view inspection</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700; color: var(--text-white);">HeLa Plastid</td>
+                <td><code>hela-plastid</code></td>
+                <td>ll3m-agent</td>
+                <td><span class="badge-spec">Specialized</span></td>
+                <td>Blender procedural 3D modeling & render pipelines</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Attribution -->
+    <section class="section">
+      <div class="container">
+        <div class="tribute-section">
+          <h3>In Recognition of Henrietta Lacks</h3>
+          <p>The HeLa MCP Ecosystem is named in respectful recognition of <strong>Henrietta Lacks</strong> (1920–1951) and the immortal scientific legacy of HeLa cells, which transformed global biomedical research. In this architecture, HeLa represents modular specialization, deterministic replicability, and software longevity.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div class="footer-nav">
+          <a href="index.html">Workbench</a>
+          <a href="architecture.html">Architecture</a>
+          <a href="workflows.html">Workflows</a>
+          <a href="profiles.html">Profiles</a>
+          <a href="showcase.html">Showcases</a>
+          <a href="troubleshooting.html">Diagnostics</a>
+          <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank">GitHub</a>
+        </div>
+        <div class="footer-copy">MIT License • Developed by Azzar</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
