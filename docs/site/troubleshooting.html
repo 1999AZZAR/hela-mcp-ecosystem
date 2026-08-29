@@ -26,7 +26,11 @@
         <a href="profiles.html">Profiles</a>
         <a href="showcase.html">Showcases</a>
         <a href="troubleshooting.html" class="nav-active">Diagnostics</a>
-        <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" class="gh-link">GitHub ↗</a>
+        <button class="k-shortcut-btn open-cmd-palette">
+          <span>Search 295 Tools</span>
+          <span class="k-key">⌘K</span>
+        </button>
+        <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">GitHub ↗</a>
       </nav>
     </div>
   </header>
@@ -121,6 +125,20 @@
       </div>
     </section>
   </main>
+
+  <!-- Command Palette Modal (⌘K) -->
+  <div class="cmd-palette-backdrop" id="cmdPalette">
+    <div class="cmd-palette-modal">
+      <div class="cmd-input-wrap">
+        <span style="color:var(--text-dim);">🔍</span>
+        <input type="text" class="cmd-input" id="cmdInput" placeholder="Search 295 tools, pages, or profiles..." />
+        <span class="k-key">ESC</span>
+      </div>
+      <div class="cmd-results" id="cmdResults">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </div>
 
   <footer>
     <div class="container">
