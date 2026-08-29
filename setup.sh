@@ -78,21 +78,38 @@ check_prereqs() {
 
 setup_server() {
     local key="$1"
-    local dir repo
+    local dir repo build alias target_dir short_dir
     dir="$(inventory_field "$key" dir)"
     repo="$(inventory_field "$key" repo)"
     build="$(inventory_field "$key" build)"
+    alias="$(inventory_field "$key" alias)"
+    [ -z "$alias" ] && alias="$key"
 
-    print_status "Setting up $key ..."
-    if [ -d "$dir" ]; then
-        print_warning "$dir exists. Pulling latest..."
-        if ( cd "$dir" && git pull --quiet origin main 2>/dev/null || git pull --quiet origin master 2>/dev/null || true ); then :; fi
+    short_dir="${dir%-mcp-server}"
+    short_dir="${short_dir%-mcp}"
+
+    if [ -n "$dir" ] && [ -d "$MCP_ECOSYSTEM_ROOT/$dir" ]; then
+        target_dir="$MCP_ECOSYSTEM_ROOT/$dir"
+    elif [ -n "$dir" ] && [ -d "$MCP_ECOSYSTEM_ROOT/../$dir" ]; then
+        target_dir="$MCP_ECOSYSTEM_ROOT/../$dir"
+    elif [ -n "$short_dir" ] && [ -d "$MCP_ECOSYSTEM_ROOT/$short_dir" ]; then
+        target_dir="$MCP_ECOSYSTEM_ROOT/$short_dir"
+    elif [ -n "$short_dir" ] && [ -d "$MCP_ECOSYSTEM_ROOT/../$short_dir" ]; then
+        target_dir="$MCP_ECOSYSTEM_ROOT/../$short_dir"
     else
-        print_status "Cloning $dir ..."
-        git clone --quiet "$repo" "$dir" || { print_error "Failed to clone $repo"; return 1; }
+        target_dir="$MCP_ECOSYSTEM_ROOT/$dir"
     fi
 
-    cd "$dir"
+    print_status "Setting up $alias ($key) ..."
+    if [ -d "$target_dir" ]; then
+        print_status "$dir exists. Pulling latest..."
+        if ( cd "$target_dir" && ( git pull --quiet origin main 2>/dev/null || git pull --quiet origin master 2>/dev/null || true ) ); then :; fi
+    else
+        print_status "Cloning $dir into $target_dir ..."
+        git clone --quiet "$repo" "$target_dir" || { print_error "Failed to clone $repo"; return 1; }
+    fi
+
+    cd "$target_dir"
     if [ -f "package.json" ]; then
         if [ ! -d node_modules ]; then
             print_status "Installing dependencies for $dir ..."
@@ -100,13 +117,13 @@ setup_server() {
         fi
         if [ -n "$build" ] && [ -n "$(node -e "try{const p=require('./package.json');console.log(p.scripts?.['$build']||'')}catch(e){}")" ]; then
             print_status "Building $dir ($build) ..."
-            npm run "$build" || { print_error "Build failed for $dir"; cd ..; return 1; }
+            npm run "$build" || { print_error "Build failed for $dir"; cd "$MCP_ECOSYSTEM_ROOT"; return 1; }
         fi
     else
         print_warning "No package.json in $dir; skipping npm."
     fi
     cd "$MCP_ECOSYSTEM_ROOT"
-    print_success "Done: $key"
+    print_success "Done: $alias ($key)"
 }
 
 prompt_secrets() {
@@ -181,6 +198,7 @@ main() {
     if [ -z "$PROFILE_ID" ]; then
         select_profile "$TARGET_SYSTEM"
     fi
+    validate_profile "$PROFILE_ID" || exit 1
     print_status "Using profile: $PROFILE_ID ($(profile_name "$PROFILE_ID"))"
 
     # Setup each server in the profile unless --reconfigure is passed

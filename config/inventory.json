@@ -1,8 +1,19 @@
 {
-  "$comment": "Registry of every available MCP server. Profiles reference these keys. Fields: repo (git url), dir (clone dir name), runtime, entry (main script), entryDocker, build (npm build script, or null if no build), needsGui (display/device), needsDevice, docs, env (default env placeholders), description.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "project_name": "HeLa MCP Ecosystem",
+  "version": "1.0.0",
+  "total_servers": 10,
+  "core_headless_count": 7,
+  "specialized_gui_count": 3,
   "inventory": {
-    "chaining-mcp-server": {
-      "name": "Chaining MCP",
+    "hela-mitosis": {
+      "id": "hela-mitosis",
+      "alias": "HeLa Mitosis",
+      "name": "HeLa Mitosis (Chaining MCP)",
+      "source": "chaining-mcp-server",
+      "scope": "core",
+      "role": "backbone-orchestration",
+      "targetRequirement": "headless-compatible",
       "repo": "https://github.com/1999AZZAR/chaining-mcp-server.git",
       "dir": "chaining-mcp-server",
       "runtime": "node",
@@ -10,6 +21,7 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
+      "revision": "9776015b9aa44d882dbe3c279a2c8a986f9ebe4b",
       "env": [
         "MEMORY_FILE_PATH",
         "SEQUENTIAL_THINKING_AVAILABLE",
@@ -22,10 +34,35 @@
         "CHAINING_LLM_BASE_URL",
         "GITHUB_TOKEN"
       ],
-      "description": "Intelligent tool orchestration, route optimization, sequential thinking, 42 prebuilt prompts, and native OpenRouter LLM intelligence engine."
+      "description": "Orchestrates MCP capabilities, tool discovery, route optimization, sequential thinking, 42 prebuilt prompts, and multi-step workflows."
     },
-    "filesystem-mcp-server": {
-      "name": "Filesystem MCP",
+    "hela-genome": {
+      "id": "hela-genome",
+      "alias": "HeLa Genome",
+      "name": "HeLa Genome (Project Guardian)",
+      "source": "Project-Guardian-mcp-server",
+      "scope": "core",
+      "role": "backbone-state",
+      "targetRequirement": "headless-compatible",
+      "repo": "https://github.com/1999AZZAR/project-guardian-mcp-server.git",
+      "dir": "Project-Guardian-mcp-server",
+      "runtime": "node",
+      "entry": "dist/index.js",
+      "build": "build",
+      "needsGui": false,
+      "needsDevice": false,
+      "revision": "72bca15ebe511575fd14d5b841d7973bfaf26ca1",
+      "env": [],
+      "description": "Preserves persistent project knowledge, state, living SQLite knowledge graph, task tracking, and session continuity."
+    },
+    "hela-membrane": {
+      "id": "hela-membrane",
+      "alias": "HeLa Membrane",
+      "name": "HeLa Membrane (Filesystem MCP)",
+      "source": "filesystem-mcp-server",
+      "scope": "core",
+      "role": "workspace",
+      "targetRequirement": "headless-compatible",
       "repo": "https://github.com/1999AZZAR/filesystem-mcp-server.git",
       "dir": "filesystem-mcp-server",
       "runtime": "node",
@@ -33,23 +70,18 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
+      "revision": "6f38f7d763cce79a57ce13383515b74269782f36",
       "env": [],
-      "description": "Advanced file and directory operations, content reading, search, archive and file watching."
+      "description": "Controlled interaction with the project workspace: file search, regex patching, watching, and safe archive operations."
     },
-    "Project-Guardian-mcp-server": {
-      "name": "Project Guardian",
-      "repo": "https://github.com/1999AZZAR/Project-Guardian.git",
-      "dir": "Project-Guardian-mcp-server",
-      "runtime": "node",
-      "entry": "dist/index.js",
-      "build": "build",
-      "needsGui": false,
-      "needsDevice": false,
-      "env": [],
-      "description": "Project memory and knowledge management: knowledge graphs, task tracking, SQLite operations."
-    },
-    "terminal-mcp-server": {
-      "name": "Terminal MCP",
+    "hela-nucleus": {
+      "id": "hela-nucleus",
+      "alias": "HeLa Nucleus",
+      "name": "HeLa Nucleus (Terminal MCP)",
+      "source": "terminal-mcp-server",
+      "scope": "core",
+      "role": "workspace",
+      "targetRequirement": "headless-compatible",
       "repo": "https://github.com/1999AZZAR/terminal-mcp-server.git",
       "dir": "terminal-mcp-server",
       "runtime": "node",
@@ -57,11 +89,18 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
+      "revision": "e896c4fec5afc8d576df7d81d687b507a6a588b9",
       "env": [],
-      "description": "System command execution with local/remote (SSH) support, sessions, timeouts and env control with deep RTK integration."
+      "description": "Command execution and direct system interaction with local/remote SSH support, timeouts, and deep RTK integration."
     },
-    "menager-mcp-server": {
-      "name": "Menager MCP",
+    "hela-ribosome": {
+      "id": "hela-ribosome",
+      "alias": "HeLa Ribosome",
+      "name": "HeLa Ribosome (Menager MCP)",
+      "source": "menager-mcp-server",
+      "scope": "core",
+      "role": "workspace",
+      "targetRequirement": "headless-compatible",
       "repo": "https://github.com/1999AZZAR/menager-mcp-server.git",
       "dir": "menager-mcp-server",
       "runtime": "node",
@@ -69,11 +108,18 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
+      "revision": "9df80052ad7dbb8fb8c20aaf4a3c754f29ffca23",
       "env": [],
-      "description": "Terminal orchestration server for multiplexing, regex hooks, and pseudo-terminal (PTY) session management."
+      "description": "Process orchestration server for pseudo-terminal (PTY) session management, multiplexing, and non-blocking regex event hooks."
     },
-    "research-mcp-server": {
-      "name": "Researcher MCP",
+    "hela-enzyme": {
+      "id": "hela-enzyme",
+      "alias": "HeLa Enzyme",
+      "name": "HeLa Enzyme (Researcher MCP)",
+      "source": "research-mcp-server",
+      "scope": "core",
+      "role": "knowledge",
+      "targetRequirement": "headless-compatible",
       "repo": "https://github.com/1999AZZAR/research-mcp-server.git",
       "dir": "research-mcp-server",
       "runtime": "node",
@@ -81,23 +127,24 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "env": ["GOOGLE_API_KEY", "GOOGLE_CSE_ID", "WIKIPEDIA_CACHE_MAX", "WIKIPEDIA_CACHE_TTL", "WIKIPEDIA_DEFAULT_LANGUAGE"],
-      "description": "Combined research platform: Google Search + Wikipedia with analysis, fact-checking and research sessions."
+      "revision": "e49522b4b4027a7702050167af7f7bdadff8d21a",
+      "env": [
+        "GOOGLE_API_KEY",
+        "GOOGLE_CSE_ID",
+        "WIKIPEDIA_CACHE_MAX",
+        "WIKIPEDIA_CACHE_TTL",
+        "WIKIPEDIA_DEFAULT_LANGUAGE"
+      ],
+      "description": "Unified research platform: Google Search + Wikipedia with content analysis, fact-checking, and persistent sessions."
     },
-    "the-designer": {
-      "name": "The Designer",
-      "repo": "https://github.com/1999AZZAR/the-designer.git",
-      "dir": "the-designer",
-      "runtime": "node",
-      "entry": "dist/index.js",
-      "build": "build",
-      "needsGui": false,
-      "needsDevice": false,
-      "env": [],
-      "description": "UI/UX design system selector, token generation, brand cloning and component preview generation."
-    },
-    "browser-agent": {
-      "name": "Browser Agent",
+    "hela-cytosol": {
+      "id": "hela-cytosol",
+      "alias": "HeLa Cytosol",
+      "name": "HeLa Cytosol (Browser Agent)",
+      "source": "browser-agent",
+      "scope": "core",
+      "role": "interaction",
+      "targetRequirement": "headless-compatible",
       "repo": "https://github.com/1999AZZAR/Browser-Agent.git",
       "dir": "browser-agent",
       "runtime": "node",
@@ -105,11 +152,37 @@
       "build": null,
       "needsGui": false,
       "needsDevice": false,
+      "revision": "d08f4cc463266d12e40f6131f552543ebbb98f3b",
       "env": [],
-      "description": "Playwright-based browser automation with 88 tools for navigation, scraping, form filling and screenshots."
+      "description": "Playwright-based browser automation environment for navigation, DOM interaction, scraping, and visual screenshot verification."
     },
-    "scrcpy-mcp": {
-      "name": "scrcpy MCP",
+    "hela-phenotype": {
+      "id": "hela-phenotype",
+      "alias": "HeLa Phenotype",
+      "name": "HeLa Phenotype (The Designer)",
+      "source": "the-designer",
+      "scope": "specialized",
+      "role": "design",
+      "targetRequirement": "headless-compatible",
+      "repo": "https://github.com/1999AZZAR/the-designer.git",
+      "dir": "the-designer",
+      "runtime": "node",
+      "entry": "dist/index.js",
+      "build": "build",
+      "needsGui": false,
+      "needsDevice": false,
+      "revision": "0655c05c5df30898c7a6e442dfbb19eddebfe934",
+      "env": [],
+      "description": "UI/UX design system selector, OKLCH token generation, Tailwind CSS generator, brand cloning, and component preview."
+    },
+    "hela-receptor": {
+      "id": "hela-receptor",
+      "alias": "HeLa Receptor",
+      "name": "HeLa Receptor (scrcpy MCP)",
+      "source": "scrcpy-mcp",
+      "scope": "specialized",
+      "role": "mobile",
+      "targetRequirement": "device-required",
       "repo": "https://github.com/1999AZZAR/scrcpy-mcp.git",
       "dir": "scrcpy-mcp",
       "runtime": "node",
@@ -117,11 +190,18 @@
       "build": "build",
       "needsGui": true,
       "needsDevice": true,
+      "revision": "116e74f36b9211b2cec5bfe1085363355d0d669f",
       "env": [],
-      "description": "Android device control via ADB and scrcpy: screenshots, input, UI inspection and app control."
+      "description": "Android mobile device automation via ADB and scrcpy: element inspection, touch gestures, and app lifecycle control."
     },
-    "ll3m-agent": {
-      "name": "LL3M Agent (Blender)",
+    "hela-plastid": {
+      "id": "hela-plastid",
+      "alias": "HeLa Plastid",
+      "name": "HeLa Plastid (LL3M Agent)",
+      "source": "ll3m-agent",
+      "scope": "specialized",
+      "role": "3d",
+      "targetRequirement": "runtime-required",
       "repo": "https://github.com/1999AZZAR/ll3m-agent.git",
       "dir": "ll3m-agent/brain",
       "runtime": "node",
@@ -129,8 +209,24 @@
       "build": "build",
       "needsGui": true,
       "needsDevice": false,
+      "revision": "99b919da288cb8673e132ab7e809a71d1e6e9d5e",
       "env": [],
-      "description": "Autonomous 3D modeling system for Blender with iterative refinement and multi-agent reasoning. Requires local Blender installation."
+      "description": "Autonomous 3D modeling system for Blender with natural language scene generation and iterative refinement."
     }
+  },
+  "aliases": {
+    "chaining-mcp-server": "hela-mitosis",
+    "Project-Guardian-mcp-server": "hela-genome",
+    "project-guardian-mcp-server": "hela-genome",
+    "filesystem-mcp-server": "hela-membrane",
+    "terminal-mcp-server": "hela-nucleus",
+    "menager-mcp-server": "hela-ribosome",
+    "menager": "hela-ribosome",
+    "research-mcp-server": "hela-enzyme",
+    "research-assistant-mcp-server": "hela-enzyme",
+    "browser-agent": "hela-cytosol",
+    "the-designer": "hela-phenotype",
+    "scrcpy-mcp": "hela-receptor",
+    "ll3m-agent": "hela-plastid"
   }
 }

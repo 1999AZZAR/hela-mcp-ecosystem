@@ -53,17 +53,19 @@ for entry in "${SERVERS[@]}"; do
         continue
     fi
 
-    print_status "Updating $key ..."
+    alias="$(inventory_field "$key" alias)"
+    [ -z "$alias" ] && alias="$key"
+    print_status "Updating $alias ($key) ..."
     if ( cd "$dir" && ( git pull --quiet origin main 2>/dev/null || git pull --quiet origin master 2>/dev/null || true ) ); then
         build="$(inventory_field "$key" build)"
         if [ -f "$dir/package.json" ]; then
             ( cd "$dir" && npm install --silent )
             if [ -n "$build" ] && [ -n "$(node -e "try{const p=require('$dir/package.json');console.log(p.scripts?.['$build']||'')}catch(e){}")" ]; then
-                print_status "Building $key ($build) ..."
-                ( cd "$dir" && npm run "$build" ) || { print_error "Build failed for $key"; failed=$((failed + 1)); continue; }
+                print_status "Building $alias ($build) ..."
+                ( cd "$dir" && npm run "$build" ) || { print_error "Build failed for $alias"; failed=$((failed + 1)); continue; }
             fi
         fi
-        print_success "Updated $key"
+        print_success "Updated $alias ($key)"
         ok=$((ok + 1))
     else
         print_error "Git pull failed for $key"

@@ -1,54 +1,114 @@
 {
-  "$comment": "Available stack profiles. Order determines the setup menu. 'servers' keys must exist in config/inventory.json. 'system' marks GUI vs headless target.",
+  "$comment": "Available stack profiles for the HeLa MCP Ecosystem. 'servers' keys reference canonical hela-* IDs in config/inventory.json. 'system' indicates target environment.",
   "profiles": [
     {
       "id": "dev-workspace",
-      "name": "Dev Workspace",
+      "name": "HeLa Dev Workspace",
       "system": "gui",
-      "description": "Full desktop development workstation: orchestration, files, project memory, terminal, menager, research, design, and browser automation.",
-      "servers": ["chaining-mcp-server", "filesystem-mcp-server", "Project-Guardian-mcp-server", "terminal-mcp-server", "menager-mcp-server", "research-mcp-server", "the-designer", "browser-agent"]
+      "persona": "Full-Stack Software Engineer & Desktop Workstation Agent",
+      "description": "Full desktop development workstation: orchestration (Mitosis), memory (Genome), filesystem (Membrane), terminal (Nucleus), PTY (Ribosome), research (Enzyme), design (Phenotype), and browser automation (Cytosol).",
+      "servers": [
+        "hela-mitosis",
+        "hela-genome",
+        "hela-membrane",
+        "hela-nucleus",
+        "hela-ribosome",
+        "hela-enzyme",
+        "hela-phenotype",
+        "hela-cytosol"
+      ]
     },
     {
       "id": "headless-server",
-      "name": "Headless Server (Core 7)",
+      "name": "HeLa Headless Server (Core 7)",
       "system": "headless",
-      "description": "Client-oriented 7-server core for server OS / CI boxes / headless rigs: chaining, filesystem, memory, terminal, menager, research, and design.",
-      "servers": ["chaining-mcp-server", "filesystem-mcp-server", "Project-Guardian-mcp-server", "terminal-mcp-server", "menager-mcp-server", "research-mcp-server", "the-designer"]
+      "persona": "Cloud Infrastructure, Headless Server & CI/CD Runner Agent",
+      "description": "Core 7-server headless stack for servers, remote VMs, and CI/CD pipelines: Mitosis, Genome, Membrane, Nucleus, Ribosome, Enzyme, and Phenotype.",
+      "servers": [
+        "hela-mitosis",
+        "hela-genome",
+        "hela-membrane",
+        "hela-nucleus",
+        "hela-ribosome",
+        "hela-enzyme",
+        "hela-phenotype"
+      ]
     },
     {
       "id": "research",
-      "name": "Research Terminal",
+      "name": "HeLa Research Terminal",
       "system": "headless",
-      "description": "Dedicated research node: research platform plus orchestration and file access.",
-      "servers": ["research-mcp-server", "chaining-mcp-server", "filesystem-mcp-server"]
+      "persona": "Deep Research Investigator & Technical Knowledge Synthesizer",
+      "description": "Dedicated research node: deep multi-source research (Enzyme), browser extraction (Cytosol), workspace storage (Membrane), and persistent knowledge graph (Genome).",
+      "servers": [
+        "hela-mitosis",
+        "hela-genome",
+        "hela-enzyme",
+        "hela-membrane",
+        "hela-cytosol"
+      ]
     },
     {
       "id": "web-devops",
-      "name": "Web Dev + Browser Automation",
+      "name": "HeLa Web Dev + Browser Automation",
       "system": "gui",
-      "description": "Browser automation and web operations with file, memory and orchestration support.",
-      "servers": ["browser-agent", "filesystem-mcp-server", "Project-Guardian-mcp-server", "chaining-mcp-server", "the-designer"]
+      "persona": "Frontend Engineer & Web Verification Specialist",
+      "description": "Web engineering and browser automation with design tokens (Phenotype), headless testing (Cytosol), workspace interaction (Membrane/Nucleus), and state memory (Genome).",
+      "servers": [
+        "hela-mitosis",
+        "hela-genome",
+        "hela-membrane",
+        "hela-nucleus",
+        "hela-phenotype",
+        "hela-cytosol"
+      ]
     },
     {
       "id": "android-testing",
-      "name": "Android Testing Rig",
+      "name": "HeLa Android Testing Rig",
       "system": "gui",
-      "description": "Device testing and automation via scrcpy plus file and orchestration support.",
-      "servers": ["scrcpy-mcp", "filesystem-mcp-server", "chaining-mcp-server"]
+      "persona": "Mobile QA Tester & Android Device Automation Engineer",
+      "description": "Mobile automation via scrcpy/ADB (Receptor), system diagnostics (Nucleus), research (Enzyme), and project tracking (Genome).",
+      "servers": [
+        "hela-mitosis",
+        "hela-genome",
+        "hela-nucleus",
+        "hela-receptor",
+        "hela-enzyme"
+      ]
     },
     {
       "id": "3d-modeling",
-      "name": "3D / Blender Station",
+      "name": "HeLa 3D / Blender Station",
       "system": "gui",
-      "description": "Blender-based 3D modeling with file and orchestration support.",
-      "servers": ["ll3m-agent", "filesystem-mcp-server", "chaining-mcp-server"]
+      "persona": "Generative 3D Artist & Blender Scene Architect",
+      "description": "Autonomous Blender 3D modeling (Plastid), workspace management (Membrane/Nucleus), and project state tracking (Genome).",
+      "servers": [
+        "hela-mitosis",
+        "hela-genome",
+        "hela-plastid",
+        "hela-membrane",
+        "hela-nucleus"
+      ]
     },
     {
       "id": "all",
-      "name": "All (full inventory)",
+      "name": "HeLa All (Full 10-MCP Stack)",
       "system": "any",
-      "description": "Install every server in the inventory.",
-      "servers": ["chaining-mcp-server", "filesystem-mcp-server", "Project-Guardian-mcp-server", "terminal-mcp-server", "menager-mcp-server", "research-mcp-server", "browser-agent", "the-designer", "scrcpy-mcp", "ll3m-agent"]
+      "persona": "Complete HeLa Multi-Agent Autonomous Engineering Stack",
+      "description": "Complete 10-server inventory: Mitosis, Genome, Membrane, Nucleus, Ribosome, Enzyme, Cytosol, Phenotype, Receptor, and Plastid.",
+      "servers": [
+        "hela-mitosis",
+        "hela-genome",
+        "hela-membrane",
+        "hela-nucleus",
+        "hela-ribosome",
+        "hela-enzyme",
+        "hela-cytosol",
+        "hela-phenotype",
+        "hela-receptor",
+        "hela-plastid"
+      ]
     }
   ]
 }

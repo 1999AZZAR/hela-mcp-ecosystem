@@ -33,7 +33,7 @@ This document translates the complete specifications in `Refinement_plan.md` and
 
 | Milestone | Scope & Phases | Focus Area | Status | Target Deliverable |
 |---|---|---|:---:|---|
-| **M1: Baseline & HeLa Aliasing** | Phase 1, 2 & 3 | 10-MCP repository audit, canonical HeLa inventory, agent profiles & pre-validation | ⏳ In Progress | Updated `inventory.json`, `profiles.json`, alias translation engine |
+| **M1: Baseline & HeLa Aliasing** | Phase 1, 2 & 3 | 10-MCP repository audit, canonical HeLa inventory, agent profiles & pre-validation | [✓ Completed] | Updated `inventory.json`, `profiles.json`, alias translation engine |
 | **M2: Determinism & Doctor** | Phase 4 & 5 | Ecosystem snapshot engine (`v1.0.0.json`), deterministic setup & diagnostic tool | 📋 Planned | `config/snapshots/`, `./setup.sh doctor` |
 | **M3: Integration & Workflows** | Phase 6 & 7 | Backbone integration layer, output bounds, `test-integration.sh`, and Workflows A–F | 📋 Planned | `scripts/test-integration.sh`, `docs/workflows.md` |
 | **M4: Security, CI & Clients** | Phase 8, 9 & 10 | Security audit, multi-client configuration testing & GitHub Actions CI matrix | 📋 Planned | Hardened `.github/workflows/ci.yml`, security report |
@@ -43,75 +43,75 @@ This document translates the complete specifications in `Refinement_plan.md` and
 
 ## Phase 1: Complete Repository & 10-MCP Baseline Audit
 
-- [ ] **1.1. Inventory & Remote Repository Audit**
-  - [ ] Audit all 10 MCP server entries against their GitHub repositories:
-    - [ ] `chaining-mcp-server` (`1999AZZAR/chaining-mcp-server`)
-    - [ ] `filesystem-mcp-server` (`1999AZZAR/filesystem-mcp-server`)
-    - [ ] `Project-Guardian-mcp-server` (`1999AZZAR/Project-Guardian`)
-    - [ ] `terminal-mcp-server` (`1999AZZAR/terminal-mcp-server`)
-    - [ ] `menager-mcp-server` (`1999AZZAR/menager-mcp-server`)
-    - [ ] `research-assistant-mcp-server` (`1999AZZAR/research-mcp-server`)
-    - [ ] `the-designer` (`1999AZZAR/the-designer`)
-    - [ ] `browser-agent` (`1999AZZAR/browser-agent`)
-    - [ ] `scrcpy-mcp` (`1999AZZAR/scrcpy-mcp`)
-    - [ ] `ll3m-agent` (`1999AZZAR/ll3m-agent`)
-  - [ ] Verify runtime entrypoints, build commands (`npm run build`, `tsc`), and package scripts.
-  - [ ] Record exact commit hashes as current baseline revisions.
+- [x] **1.1. Inventory & Remote Repository Audit**
+  - [x] Audit all 10 MCP server entries against their GitHub repositories:
+    - [x] `chaining-mcp-server` (`1999AZZAR/chaining-mcp-server`)
+    - [x] `filesystem-mcp-server` (`1999AZZAR/filesystem-mcp-server`)
+    - [x] `Project-Guardian-mcp-server` (`1999AZZAR/Project-Guardian`)
+    - [x] `terminal-mcp-server` (`1999AZZAR/terminal-mcp-server`)
+    - [x] `menager-mcp-server` (`1999AZZAR/menager-mcp-server`)
+    - [x] `research-assistant-mcp-server` (`1999AZZAR/research-mcp-server`)
+    - [x] `the-designer` (`1999AZZAR/the-designer`)
+    - [x] `browser-agent` (`1999AZZAR/browser-agent`)
+    - [x] `scrcpy-mcp` (`1999AZZAR/scrcpy-mcp`)
+    - [x] `ll3m-agent` (`1999AZZAR/ll3m-agent`)
+  - [x] Verify runtime entrypoints, build commands (`npm run build`, `tsc`), and package scripts.
+  - [x] Record exact commit hashes as current baseline revisions.
 
-- [ ] **1.2. Baseline Test Run**
-  - [ ] Run test suite across all 10 servers and document baseline status.
+- [x] **1.2. Baseline Test Run**
+  - [x] Run test suite across all 10 servers and document baseline status.
 
 ---
 
 ## Phase 2: Canonical HeLa Taxonomy & Aliased Inventory System
 
-- [ ] **2.1. Update `config/inventory.json` with Canonical HeLa Metadata**
-  - [ ] Update `config/inventory.json` schema to include:
-    - [ ] `id`: Machine identifier (`hela-mitosis`, `hela-genome`, etc.)
-    - [ ] `alias`: Human-facing public name (`HeLa Mitosis`, `HeLa Genome`, etc.)
-    - [ ] `source`: Source repository key (`chaining-mcp-server`, `Project-Guardian-mcp-server`, etc.)
-    - [ ] `scope`: `core` (7 servers) vs. `specialized` (3 servers)
-    - [ ] `role`: `backbone-orchestration`, `backbone-state`, `workspace`, `knowledge`, `interaction`, `design`, `mobile`, `3d`
-    - [ ] `targetRequirement`: `headless-compatible`, `gui-required`, `device-required`, `runtime-required`
-    - [ ] `revision`: Pinned Git commit hash
-    - [ ] `env`: Documented environment variables and optional secret dependencies
-  - [ ] Ensure backward compatibility: scripts support both `hela-*` IDs and legacy source keys transparently.
+- [x] **2.1. Update `config/inventory.json` with Canonical HeLa Metadata**
+  - [x] Update `config/inventory.json` schema to include:
+    - [x] `id`: Machine identifier (`hela-mitosis`, `hela-genome`, etc.)
+    - [x] `alias`: Human-facing public name (`HeLa Mitosis`, `HeLa Genome`, etc.)
+    - [x] `source`: Source repository key (`chaining-mcp-server`, `Project-Guardian-mcp-server`, etc.)
+    - [x] `scope`: `core` (7 servers) vs. `specialized` (3 servers)
+    - [x] `role`: `backbone-orchestration`, `backbone-state`, `workspace`, `knowledge`, `interaction`, `design`, `mobile`, `3d`
+    - [x] `targetRequirement`: `headless-compatible`, `gui-required`, `device-required`, `runtime-required`
+    - [x] `revision`: Pinned Git commit hash
+    - [x] `env`: Documented environment variables and optional secret dependencies
+  - [x] Ensure backward compatibility: scripts support both `hela-*` IDs and legacy source keys transparently.
 
-- [ ] **2.2. Update Core Ecosystem Scripts for HeLa Aliasing**
-  - [ ] Update `scripts/lib.sh` to resolve server keys by both `hela-*` ID and source repository name.
-  - [ ] Update `scripts/generate-config.mjs` to render client configs using clean HeLa names while executing underlying source entries.
-  - [ ] Update `setup.sh` and `update.sh` CLI output to display canonical `HeLa <Component>` names with underlying source attribution.
+- [x] **2.2. Update Core Ecosystem Scripts for HeLa Aliasing**
+  - [x] Update `scripts/lib.sh` to resolve server keys by both `hela-*` ID and source repository name.
+  - [x] Update `scripts/generate-config.mjs` to render client configs using clean HeLa names while executing underlying source entries.
+  - [x] Update `setup.sh` and `update.sh` CLI output to display canonical `HeLa <Component>` names with underlying source attribution.
 
 ---
 
 ## Phase 3: Profile System Refinement & Agent-Oriented Profiles
 
-- [ ] **3.1. Audit & Refine Existing Profiles with HeLa Naming**
-  - [ ] Review all 7 profile definitions in `config/profiles.json`:
-    - [ ] `dev-workspace` (Full desktop workstation: Both backbones + Membrane + Nucleus + Ribosome + Enzyme + Phenotype + Cytosol)
-    - [ ] `headless-server` (Core 7 servers: Both backbones + Membrane + Nucleus + Ribosome + Enzyme + Phenotype)
-    - [ ] `research` (Dedicated research node: Both backbones + Enzyme + Membrane + Cytosol)
-    - [ ] `web-devops` (Web development + verification: Both backbones + Membrane + Nucleus + Phenotype + Cytosol)
-    - [ ] `android-testing` (Mobile automation: Both backbones + Nucleus + Receptor + Enzyme)
-    - [ ] `3d-modeling` (Blender 3D automation: Both backbones + Plastid + Membrane + Nucleus)
-    - [ ] `all` (Full 10-MCP inventory stack)
-  - [ ] Ensure every profile includes both backbone servers (`hela-mitosis` and `hela-genome`).
+- [x] **3.1. Audit & Refine Existing Profiles with HeLa Naming**
+  - [x] Review all 7 profile definitions in `config/profiles.json`:
+    - [x] `dev-workspace` (Full desktop workstation: Both backbones + Membrane + Nucleus + Ribosome + Enzyme + Phenotype + Cytosol)
+    - [x] `headless-server` (Core 7 servers: Both backbones + Membrane + Nucleus + Ribosome + Enzyme + Phenotype)
+    - [x] `research` (Dedicated research node: Both backbones + Enzyme + Membrane + Cytosol)
+    - [x] `web-devops` (Web development + verification: Both backbones + Membrane + Nucleus + Phenotype + Cytosol)
+    - [x] `android-testing` (Mobile automation: Both backbones + Nucleus + Receptor + Enzyme)
+    - [x] `3d-modeling` (Blender 3D automation: Both backbones + Plastid + Membrane + Nucleus)
+    - [x] `all` (Full 10-MCP inventory stack)
+  - [x] Ensure every profile includes both backbone servers (`hela-mitosis` and `hela-genome`).
 
-- [ ] **3.2. Agent Persona & Workflow Documentation in `docs/profiles.md`**
-  - [ ] Document each profile with:
-    - [ ] Agent Persona & Purpose
-    - [ ] Backbone Components (`HeLa Mitosis` + `HeLa Genome`)
-    - [ ] Specialized Capability Set
-    - [ ] Target Requirements (Headless vs. GUI / Device)
-    - [ ] Standard End-to-End Workflow Pipeline
+- [x] **3.2. Agent Persona & Workflow Documentation in `docs/profiles.md`**
+  - [x] Document each profile with:
+    - [x] Agent Persona & Purpose
+    - [x] Backbone Components (`HeLa Mitosis` + `HeLa Genome`)
+    - [x] Specialized Capability Set
+    - [x] Target Requirements (Headless vs. GUI / Device)
+    - [x] Standard End-to-End Workflow Pipeline
 
-- [ ] **3.3. Strict Profile Pre-Validation**
-  - [ ] Implement profile pre-validation in `scripts/lib.sh` / `setup.sh`:
-    - [ ] Verify profile ID exists.
-    - [ ] Verify every referenced server exists in `config/inventory.json`.
-    - [ ] Check target environment compatibility (warn/block GUI/device profiles on headless environments).
-    - [ ] Verify external binary prerequisites (e.g. `blender`, `adb`, `playwright`).
-    - [ ] Fail fast with actionable error messages before modifying disk state.
+- [x] **3.3. Strict Profile Pre-Validation**
+  - [x] Implement profile pre-validation in `scripts/lib.sh` / `setup.sh`:
+    - [x] Verify profile ID exists.
+    - [x] Verify every referenced server exists in `config/inventory.json`.
+    - [x] Check target environment compatibility (warn/block GUI/device profiles on headless environments).
+    - [x] Verify external binary prerequisites (e.g. `blender`, `adb`, `playwright`).
+    - [x] Fail fast with actionable error messages before modifying disk state.
 
 ---
 

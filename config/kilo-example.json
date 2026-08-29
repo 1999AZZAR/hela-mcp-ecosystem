@@ -1,86 +1,82 @@
 {
   "mcp": {
-    "chaining": {
+    "hela-mitosis": {
       "type": "local",
       "enabled": true,
       "command": [
         "node",
-        "/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"
+        "/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"
       ],
       "environment": {
-        "MEMORY_FILE_PATH": "/absolute/path/to/mcp-ecosystem/chaining-mcp-server/data/memory.json",
+        "MEMORY_FILE_PATH": "/path/to/mcp-ecosystem/chaining-mcp-server/data/memory.json",
         "SEQUENTIAL_THINKING_AVAILABLE": "true",
         "AWESOME_COPILOT_ENABLED": "true",
         "RELIABILITY_MONITORING_ENABLED": "true",
         "CHAINING_TOOL_TIMEOUT_MS": "10000",
-        "CHAINING_LLM_ENABLED": "true",
-        "OPENROUTER_API_KEY": "your-openrouter-api-key",
+        "CHAINING_LLM_ENABLED": "false",
         "CHAINING_LLM_MODEL": "openrouter/free",
-        "CHAINING_LLM_BASE_URL": "https://openrouter.ai/api/v1",
-        "GITHUB_TOKEN": "your-github-token"
+        "CHAINING_LLM_BASE_URL": "https://openrouter.ai/api/v1"
       }
     },
-    "filesystem": {
+    "hela-genome": {
       "type": "local",
       "enabled": true,
       "command": [
         "node",
-        "/absolute/path/to/mcp-ecosystem/filesystem-mcp-server/dist/index.js"
+        "/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"
       ]
     },
-    "Project-Guardian": {
+    "hela-membrane": {
       "type": "local",
       "enabled": true,
       "command": [
         "node",
-        "/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"
+        "/path/to/mcp-ecosystem/filesystem-mcp-server/dist/index.js"
       ]
     },
-    "terminal": {
+    "hela-nucleus": {
       "type": "local",
       "enabled": true,
       "command": [
         "node",
-        "/absolute/path/to/mcp-ecosystem/terminal-mcp-server/build/index.js"
+        "/path/to/mcp-ecosystem/terminal-mcp-server/build/index.js"
       ]
     },
-    "menager": {
+    "hela-ribosome": {
       "type": "local",
       "enabled": true,
       "command": [
         "node",
-        "/absolute/path/to/mcp-ecosystem/menager-mcp-server/build/index.js"
+        "/path/to/mcp-ecosystem/menager-mcp-server/build/index.js"
       ]
     },
-    "research": {
+    "hela-enzyme": {
       "type": "local",
       "enabled": true,
       "command": [
         "node",
-        "/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"
+        "/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"
       ],
       "environment": {
-        "GOOGLE_API_KEY": "your-google-api-key",
-        "GOOGLE_CSE_ID": "your-google-cse-id",
         "WIKIPEDIA_CACHE_MAX": "100",
         "WIKIPEDIA_CACHE_TTL": "300000",
         "WIKIPEDIA_DEFAULT_LANGUAGE": "en"
       }
     },
-    "the-designer": {
+    "hela-phenotype": {
       "type": "local",
       "enabled": true,
       "command": [
         "node",
-        "/absolute/path/to/mcp-ecosystem/the-designer/dist/index.js"
+        "/path/to/mcp-ecosystem/the-designer/dist/index.js"
       ]
     },
-    "browser-agent": {
+    "hela-cytosol": {
       "type": "local",
       "enabled": true,
       "command": [
         "node",
-        "/absolute/path/to/mcp-ecosystem/browser-agent/src/server.js"
+        "/path/to/mcp-ecosystem/browser-agent/src/server.js"
       ]
     }
   }

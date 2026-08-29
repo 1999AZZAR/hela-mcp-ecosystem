@@ -20,8 +20,12 @@ function readJson(p) {
   return JSON.parse(fs.readFileSync(p, 'utf8'));
 }
 
-function readInventory() {
-  return readJson(path.join(ECOSYSTEM_ROOT, 'config/inventory.json')).inventory;
+function readInventoryData() {
+  const data = readJson(path.join(ECOSYSTEM_ROOT, 'config/inventory.json'));
+  return {
+    inventory: data.inventory,
+    aliases: data.aliases || {},
+  };
 }
 
 function readProfiles() {
@@ -53,32 +57,48 @@ function parseArgs(argv) {
   return args;
 }
 
-function resolveServers(profile, inventory) {
+function resolveServers(profile, inventory, aliases = {}) {
   const resolved = [];
   const seen = new Set();
-  for (const id of profile.servers) {
+  for (const rawId of profile.servers) {
+    const id = aliases[rawId] || rawId;
     if (seen.has(id)) continue;
     seen.add(id);
-    const info = inventory[id];
+    const info = inventory[id] || inventory[rawId];
     if (!info) {
-      console.error(`[warn] Profile "${profile.id}" references unknown server "${id}". Skipping.`);
+      console.error(`[warn] Profile "${profile.id}" references unknown server "${rawId}". Skipping.`);
       continue;
     }
-    resolved.push({ id, ...info });
+    resolved.push({ id: info.id || id, ...info });
   }
   return resolved;
 }
 
+function resolveServerDir(s, root) {
+  const primary = path.join(root, s.dir);
+  if (fs.existsSync(primary)) return primary;
+  const sibling = path.join(root, '..', s.dir);
+  if (fs.existsSync(sibling)) return sibling;
+  const shortDir = s.dir.replace('-mcp-server', '').replace('-mcp', '');
+  const siblingShort = path.join(root, '..', shortDir);
+  if (fs.existsSync(siblingShort)) return siblingShort;
+  const primaryShort = path.join(root, shortDir);
+  if (fs.existsSync(primaryShort)) return primaryShort;
+  return primary;
+}
+
 function entryArgs(server, root) {
   if (!server.entry) return [];
-  return [path.join(root, server.dir, server.entry)];
+  const dir = resolveServerDir(server, root);
+  return [path.join(dir, server.entry)];
 }
 
 function buildServerEnv(s, root, options = {}) {
   const env = {};
+  const serverDir = resolveServerDir(s, root);
   for (const key of (s.env || [])) {
     if (key === 'MEMORY_FILE_PATH') {
-      env[key] = path.join(root, s.dir, 'data/memory.json');
+      env[key] = path.join(serverDir, 'data/memory.json');
     } else if (key === 'CHAINING_TOOL_TIMEOUT_MS') {
       env[key] = '10000';
     } else if (key === 'CHAINING_LLM_ENABLED') {
@@ -222,8 +242,8 @@ function main() {
     process.exit(1);
   }
 
-  const inventory = readInventory();
-  const servers = resolveServers(profile, inventory);
+  const { inventory, aliases } = readInventoryData();
+  const servers = resolveServers(profile, inventory, aliases);
   const root = path.resolve(args.root);
 
   let out;

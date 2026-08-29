@@ -27,11 +27,12 @@ for entry in "${SERVERS[@]}"; do
     [ -d "$dir/build" ] && rm -rf "$dir/build"
     [ -d "$dir/coverage" ] && rm -rf "$dir/coverage"
     [ -d "$dir/.tmp" ] && rm -rf "$dir/.tmp"
-    [ "$FULL_CLEAN" = true ] && [ -d "$dir/node_modules" ] && rm -rf "$dir/node_modules"
+    alias="$(inventory_field "$key" alias)"
+    [ -z "$alias" ] && alias="$key"
     if [ -f "$dir/package.json" ] && grep -q '"clean"' "$dir/package.json"; then
         ( cd "$dir" && npm run clean --silent ) 2>/dev/null || true
     fi
-    print_success "Cleaned $key"
+    print_success "Cleaned $alias ($key)"
     ok=$((ok + 1))
 done
 

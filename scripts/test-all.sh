@@ -24,12 +24,14 @@ for entry in "${SERVERS[@]}"; do
     if [ ! -f "$dir/package.json" ] || ! grep -q '"test"' "$dir/package.json"; then
         print_warning "$key has no test script. Skipping."; continue
     fi
-    print_status "Testing $key ..."
+    alias="$(inventory_field "$key" alias)"
+    [ -z "$alias" ] && alias="$key"
+    print_status "Testing $alias ($key) ..."
     if ( cd "$dir" && npm test ); then
-        print_success "Tests passed: $key"
+        print_success "Tests passed: $alias ($key)"
         ok=$((ok + 1))
     else
-        print_error "Tests failed: $key"
+        print_error "Tests failed: $alias ($key)"
     fi
 done
 
