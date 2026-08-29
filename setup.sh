@@ -18,6 +18,8 @@ MCP_CLIENT="${MCP_CLIENT:-}"
 PROFILE_ID="${PROFILE_ID:-}"
 NON_INTERACTIVE=false
 RECONFIGURE_ONLY=false
+DEV_MODE=false
+SNAPSHOT_TARGET=""
 
 OPENROUTER_KEY="${OPENROUTER_API_KEY:-}"
 GITHUB_TOKEN="${GITHUB_TOKEN:-}"
@@ -26,14 +28,19 @@ GOOGLE_CSE_ID="${GOOGLE_CSE_ID:-}"
 
 usage() {
     cat <<EOF
-Usage: $0 [OPTIONS]
+Usage: $0 [doctor | OPTIONS]
 
-Profile-driven installer and reconfigurator for the MCP server suite.
+Profile-driven installer and reconfigurator for the HeLa MCP Ecosystem.
+
+Commands:
+  doctor               Run comprehensive system, server, and runtime diagnostics
 
 Options:
   --profile ID         Select a profile (see config/profiles.json) instead of prompting
   --system SYS         Filter profiles by target: gui | headless | any
   --client C           Backend to configure: cursor | claude | gemini | antigravity | opencode | kilo | zed | codex | docker | skip
+  --snapshot FILE/TAG  Use exact pinned snapshot from config/snapshots/ (e.g. v1.0.0)
+  --dev                Development mode: track latest moving main/master branch instead of pins
   --reconfigure        Skip cloning and building; immediately reconfigure client & API keys
   --openrouter-key K   OpenRouter API key for chaining LLM features
   --github-token T     GitHub Personal Access Token for remote prompt syncing
@@ -51,6 +58,8 @@ parse_args() {
             --profile) PROFILE_ID="$2"; shift 2 ;;
             --system)  TARGET_SYSTEM="$2"; shift 2 ;;
             --client)  MCP_CLIENT="$2"; shift 2 ;;
+            --snapshot) SNAPSHOT_TARGET="$2"; shift 2 ;;
+            --dev) DEV_MODE=true; shift ;;
             --reconfigure) RECONFIGURE_ONLY=true; shift ;;
             --openrouter-key|--openrouter) OPENROUTER_KEY="$2"; shift 2 ;;
             --github-token|--github) GITHUB_TOKEN="$2"; shift 2 ;;
@@ -78,11 +87,12 @@ check_prereqs() {
 
 setup_server() {
     local key="$1"
-    local dir repo build alias target_dir short_dir
+    local dir repo build alias target_dir short_dir target_rev current_rev
     dir="$(inventory_field "$key" dir)"
     repo="$(inventory_field "$key" repo)"
     build="$(inventory_field "$key" build)"
     alias="$(inventory_field "$key" alias)"
+    target_rev="$(inventory_field "$key" revision)"
     [ -z "$alias" ] && alias="$key"
 
     short_dir="${dir%-mcp-server}"
@@ -102,22 +112,42 @@ setup_server() {
 
     print_status "Setting up $alias ($key) ..."
     if [ -d "$target_dir" ]; then
-        print_status "$dir exists. Pulling latest..."
-        if ( cd "$target_dir" && ( git pull --quiet origin main 2>/dev/null || git pull --quiet origin master 2>/dev/null || true ) ); then :; fi
+        current_rev="$(cd "$target_dir" && git rev-parse HEAD 2>/dev/null || echo "")"
+        if [ "$DEV_MODE" = true ]; then
+            print_status "$dir exists. Pulling latest development branch..."
+            ( cd "$target_dir" && ( git pull --quiet origin main 2>/dev/null || git pull --quiet origin master 2>/dev/null || true ) )
+        elif [ -n "$target_rev" ]; then
+            if [ "$current_rev" = "$target_rev" ]; then
+                print_status "$dir is already at pinned revision ${target_rev:0:7}."
+            else
+                print_status "Checking out pinned revision ${target_rev:0:7} for $dir ..."
+                ( cd "$target_dir" && git fetch --quiet origin "$target_rev" 2>/dev/null && git checkout --quiet "$target_rev" 2>/dev/null || true )
+            fi
+        else
+            ( cd "$target_dir" && ( git pull --quiet origin main 2>/dev/null || git pull --quiet origin master 2>/dev/null || true ) )
+        fi
     else
         print_status "Cloning $dir into $target_dir ..."
         git clone --quiet "$repo" "$target_dir" || { print_error "Failed to clone $repo"; return 1; }
+        if [ "$DEV_MODE" = false ] && [ -n "$target_rev" ]; then
+            ( cd "$target_dir" && git checkout --quiet "$target_rev" 2>/dev/null || true )
+        fi
     fi
 
     cd "$target_dir"
+    local entry="$(inventory_field "$key" entry)"
     if [ -f "package.json" ]; then
         if [ ! -d node_modules ]; then
             print_status "Installing dependencies for $dir ..."
             npm install --silent
         fi
         if [ -n "$build" ] && [ -n "$(node -e "try{const p=require('./package.json');console.log(p.scripts?.['$build']||'')}catch(e){}")" ]; then
-            print_status "Building $dir ($build) ..."
-            npm run "$build" || { print_error "Build failed for $dir"; cd "$MCP_ECOSYSTEM_ROOT"; return 1; }
+            if [ -n "$entry" ] && [ -f "$entry" ] && [ "$DEV_MODE" = false ]; then
+                print_status "$alias build artifact ($entry) already present."
+            else
+                print_status "Building $dir ($build) ..."
+                npm run "$build" || { print_error "Build failed for $dir"; cd "$MCP_ECOSYSTEM_ROOT"; return 1; }
+            fi
         fi
     else
         print_warning "No package.json in $dir; skipping npm."
@@ -190,8 +220,11 @@ generate_client_config() {
 }
 
 main() {
+    if [ "$1" = "doctor" ]; then
+        exec node "$SCRIPT_DIR/scripts/doctor.mjs" "${@:2}"
+    fi
     parse_args "$@"
-    print_status "mcp-ecosystem setup & configuration"
+    print_status "HeLa MCP Ecosystem setup & configuration"
     check_prereqs
 
     # Resolve profile

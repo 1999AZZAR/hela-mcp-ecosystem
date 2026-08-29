@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "project_name": "HeLa MCP Ecosystem",
+  "snapshot_version": "1.0.0",
+  "release_date": "2026-08-29",
+  "ecosystem_commit": "9dd4fc5",
+  "description": "Latest stable snapshot pointer for HeLa MCP Ecosystem.",
+  "servers": {
+    "hela-mitosis": {
+      "alias": "HeLa Mitosis",
+      "source": "chaining-mcp-server",
+      "repo": "https://github.com/1999AZZAR/chaining-mcp-server.git",
+      "revision": "9776015b9aa44d882dbe3c279a2c8a986f9ebe4b",
+      "scope": "core",
+      "role": "backbone-orchestration"
+    },
+    "hela-genome": {
+      "alias": "HeLa Genome",
+      "source": "Project-Guardian-mcp-server",
+      "repo": "https://github.com/1999AZZAR/project-guardian-mcp-server.git",
+      "revision": "72bca15ebe511575fd14d5b841d7973bfaf26ca1",
+      "scope": "core",
+      "role": "backbone-state"
+    },
+    "hela-membrane": {
+      "alias": "HeLa Membrane",
+      "source": "filesystem-mcp-server",
+      "repo": "https://github.com/1999AZZAR/filesystem-mcp-server.git",
+      "revision": "6f38f7d763cce79a57ce13383515b74269782f36",
+      "scope": "core",
+      "role": "workspace"
+    },
+    "hela-nucleus": {
+      "alias": "HeLa Nucleus",
+      "source": "terminal-mcp-server",
+      "repo": "https://github.com/1999AZZAR/terminal-mcp-server.git",
+      "revision": "e896c4fec5afc8d576df7d81d687b507a6a588b9",
+      "scope": "core",
+      "role": "workspace"
+    },
+    "hela-ribosome": {
+      "alias": "HeLa Ribosome",
+      "source": "menager-mcp-server",
+      "repo": "https://github.com/1999AZZAR/menager-mcp-server.git",
+      "revision": "9df80052ad7dbb8fb8c20aaf4a3c754f29ffca23",
+      "scope": "core",
+      "role": "workspace"
+    },
+    "hela-enzyme": {
+      "alias": "HeLa Enzyme",
+      "source": "research-mcp-server",
+      "repo": "https://github.com/1999AZZAR/research-assistant-mcp-server.git",
+      "revision": "e49522b4b4027a7702050167af7f7bdadff8d21a",
+      "scope": "core",
+      "role": "knowledge"
+    },
+    "hela-cytosol": {
+      "alias": "HeLa Cytosol",
+      "source": "browser-agent",
+      "repo": "https://github.com/1999AZZAR/Browser-Agent.git",
+      "revision": "d08f4cc463266d12e40f6131f552543ebbb98f3b",
+      "scope": "core",
+      "role": "interaction"
+    },
+    "hela-phenotype": {
+      "alias": "HeLa Phenotype",
+      "source": "the-designer",
+      "repo": "https://github.com/1999AZZAR/the-designer.git",
+      "revision": "0655c05c5df30898c7a6e442dfbb19eddebfe934",
+      "scope": "specialized",
+      "role": "design"
+    },
+    "hela-receptor": {
+      "alias": "HeLa Receptor",
+      "source": "scrcpy-mcp",
+      "repo": "https://github.com/1999AZZAR/scrcpy-mcp.git",
+      "revision": "116e74f36b9211b2cec5bfe1085363355d0d669f",
+      "scope": "specialized",
+      "role": "mobile"
+    },
+    "hela-plastid": {
+      "alias": "HeLa Plastid",
+      "source": "ll3m-agent",
+      "repo": "https://github.com/1999AZZAR/ll3m-agent.git",
+      "revision": "99b919da288cb8673e132ab7e809a71d1e6e9d5e",
+      "scope": "specialized",
+      "role": "3d"
+    }
+  },
+  "verified_profiles": [
+    "dev-workspace",
+    "headless-server",
+    "research",
+    "web-devops",
+    "android-testing",
+    "3d-modeling",
+    "all"
+  ]
+}

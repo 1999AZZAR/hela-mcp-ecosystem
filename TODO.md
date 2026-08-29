@@ -34,7 +34,7 @@ This document translates the complete specifications in `Refinement_plan.md` and
 | Milestone | Scope & Phases | Focus Area | Status | Target Deliverable |
 |---|---|---|:---:|---|
 | **M1: Baseline & HeLa Aliasing** | Phase 1, 2 & 3 | 10-MCP repository audit, canonical HeLa inventory, agent profiles & pre-validation | [✓ Completed] | Updated `inventory.json`, `profiles.json`, alias translation engine |
-| **M2: Determinism & Doctor** | Phase 4 & 5 | Ecosystem snapshot engine (`v1.0.0.json`), deterministic setup & diagnostic tool | 📋 Planned | `config/snapshots/`, `./setup.sh doctor` |
+| **M2: Determinism & Doctor** | Phase 4 & 5 | Ecosystem snapshot engine (`v1.0.0.json`), deterministic setup & diagnostic tool | [✓ Completed] | `config/snapshots/`, `./setup.sh doctor` |
 | **M3: Integration & Workflows** | Phase 6 & 7 | Backbone integration layer, output bounds, `test-integration.sh`, and Workflows A–F | 📋 Planned | `scripts/test-integration.sh`, `docs/workflows.md` |
 | **M4: Security, CI & Clients** | Phase 8, 9 & 10 | Security audit, multi-client configuration testing & GitHub Actions CI matrix | 📋 Planned | Hardened `.github/workflows/ci.yml`, security report |
 | **M5: Showcase & Release** | Phase 11 | Real workflow recordings, documentation website & v1.0.0 public launch | 📋 Planned | Documentation website (`docs/site`), GitHub Release |
@@ -117,57 +117,57 @@ This document translates the complete specifications in `Refinement_plan.md` and
 
 ## Phase 4: Deterministic Installation, Idempotence & Snapshot Management
 
-- [ ] **4.1. Ecosystem Snapshot Specification**
-  - [ ] Create `config/snapshots/` directory.
-  - [ ] Create `config/snapshots/v1.0.0.json` (and `config/snapshots/latest-stable.json`) recording:
-    - [ ] Ecosystem repository commit
-    - [ ] Pinned commit hashes for all 10 HeLa MCP servers
-    - [ ] Verified profile compatibility matrix
-  - [ ] Add snapshot selection support to `setup.sh` (`--snapshot <file|tag>`).
+- [x] **4.1. Ecosystem Snapshot Specification**
+  - [x] Create `config/snapshots/` directory.
+  - [x] Create `config/snapshots/v1.0.0.json` (and `config/snapshots/latest-stable.json`) recording:
+    - [x] Ecosystem repository commit
+    - [x] Pinned commit hashes for all 10 HeLa MCP servers
+    - [x] Verified profile compatibility matrix
+  - [x] Add snapshot selection support to `setup.sh` (`--snapshot <file|tag>`).
 
-- [ ] **4.2. Deterministic Installation Engine**
-  - [ ] Update `setup_server` in `setup.sh` and `scripts/lib.sh`:
-    - [ ] Clone or checkout exact pinned commit hash when specified in `inventory.json` / snapshot.
-    - [ ] Support `--dev` flag to track moving `main`/`master` branches for development.
-    - [ ] Install dependencies with clean, reproducible installs (`npm install` / `npm ci`).
-    - [ ] Verify build artifacts (`dist/index.js`, `build/index.js`) exist after build step.
+- [x] **4.2. Deterministic Installation Engine**
+  - [x] Update `setup_server` in `setup.sh` and `scripts/lib.sh`:
+    - [x] Clone or checkout exact pinned commit hash when specified in `inventory.json` / snapshot.
+    - [x] Support `--dev` flag to track moving `main`/`master` branches for development.
+    - [x] Install dependencies with clean, reproducible installs (`npm install` / `npm ci`).
+    - [x] Verify build artifacts (`dist/index.js`, `build/index.js`) exist after build step.
 
-- [ ] **4.3. Idempotency & Safe State Handling**
-  - [ ] If server directory exists at the exact requested revision and is already built, skip re-cloning and re-building.
-  - [ ] If revision differs, fetch and checkout the requested revision deterministically.
-  - [ ] Ensure repeated runs of `./setup.sh --profile <id>` produce identical environments without duplicate config entries.
-  - [ ] Retain previous known commit hash on updates for instant rollback capability.
+- [x] **4.3. Idempotency & Safe State Handling**
+  - [x] If server directory exists at the exact requested revision and is already built, skip re-cloning and re-building.
+  - [x] If revision differs, fetch and checkout the requested revision deterministically.
+  - [x] Ensure repeated runs of `./setup.sh --profile <id>` produce identical environments without duplicate config entries.
+  - [x] Retain previous known commit hash on updates for instant rollback capability.
 
 ---
 
 ## Phase 5: Diagnostic Health Command (`setup.sh doctor`)
 
-- [ ] **5.1. Create Comprehensive Diagnostics Engine (`scripts/doctor.sh` / `./setup.sh doctor`)**
-  - [ ] **Host System Checks**:
-    - [ ] Operating System, Architecture, Kernel
-    - [ ] Node.js version (>= 18.0.0, recommend 20+ LTS)
-    - [ ] npm / pnpm version
-    - [ ] Git version (>= 2.25.0)
-    - [ ] SQLite3 CLI availability & writable test
-    - [ ] Docker & Docker Compose availability (optional)
-  - [ ] **Server Health & Entrypoint Checks (for selected profile or inventory)**:
-    - [ ] Directory existence & Git commit verification
-    - [ ] `package.json` and build artifacts (`dist/index.js` or `build/index.js`)
-    - [ ] Permissions and executable bit check
-    - [ ] Smoke startup test (launch node subprocess, verify clean stdio transport, exit in <500ms)
-  - [ ] **External Runtime & Hardware Dependency Checks**:
-    - [ ] Playwright / Chromium browser binary check (for `hela-cytosol`)
-    - [ ] Android Debug Bridge (`adb`) and device detection (for `hela-receptor`)
-    - [ ] Blender CLI executable check (`blender --version`) (for `hela-plastid`)
-    - [ ] PTY / POSIX pseudo-terminal support (for `hela-ribosome`)
-  - [ ] **Secret & API Key Checks**:
-    - [ ] OpenRouter API Key (sk-or-v1-...) -> Valid / Free offline fallback active
-    - [ ] GitHub Token (ghp_...) -> Valid / Bundled offline catalog active
-    - [ ] Google API Key & CSE ID -> Valid / Wikipedia fallback active
-    - [ ] Ensure keys and tokens are NEVER printed or exposed in logs.
-  - [ ] **Actionable Diagnostics Output**:
-    - [ ] Display clean summary table (`[READY]`, `[OPTIONAL MISSING]`, `[ERROR - REQUIRED MISSING]`).
-    - [ ] Return exit code 0 when all required components pass, non-zero when required dependencies fail.
+- [x] **5.1. Create Comprehensive Diagnostics Engine (`scripts/doctor.sh` / `./setup.sh doctor`)**
+  - [x] **Host System Checks**:
+    - [x] Operating System, Architecture, Kernel
+    - [x] Node.js version (>= 18.0.0, recommend 20+ LTS)
+    - [x] npm / pnpm version
+    - [x] Git version (>= 2.25.0)
+    - [x] SQLite3 CLI availability & writable test
+    - [x] Docker & Docker Compose availability (optional)
+  - [x] **Server Health & Entrypoint Checks (for selected profile or inventory)**:
+    - [x] Directory existence & Git commit verification
+    - [x] `package.json` and build artifacts (`dist/index.js` or `build/index.js`)
+    - [x] Permissions and executable bit check
+    - [x] Smoke startup test (launch node subprocess, verify clean stdio transport, exit in <500ms)
+  - [x] **External Runtime & Hardware Dependency Checks**:
+    - [x] Playwright / Chromium browser binary check (for `hela-cytosol`)
+    - [x] Android Debug Bridge (`adb`) and device detection (for `hela-receptor`)
+    - [x] Blender CLI executable check (`blender --version`) (for `hela-plastid`)
+    - [x] PTY / POSIX pseudo-terminal support (for `hela-ribosome`)
+  - [x] **Secret & API Key Checks**:
+    - [x] OpenRouter API Key (sk-or-v1-...) -> Valid / Free offline fallback active
+    - [x] GitHub Token (ghp_...) -> Valid / Bundled offline catalog active
+    - [x] Google API Key & CSE ID -> Valid / Wikipedia fallback active
+    - [x] Ensure keys and tokens are NEVER printed or exposed in logs.
+  - [x] **Actionable Diagnostics Output**:
+    - [x] Display clean summary table (`[READY]`, `[OPTIONAL MISSING]`, `[ERROR - REQUIRED MISSING]`).
+    - [x] Return exit code 0 when all required components pass, non-zero when required dependencies fail.
 
 ---
 
