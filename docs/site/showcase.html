@@ -36,8 +36,8 @@
     <div class="page-banner">
       <div class="container">
         <div class="page-label">Demonstration Gallery</div>
-        <h1 class="page-title">Video Showcases & Terminal Casts</h1>
-        <p class="page-lead">Live recorded demonstrations of UI/UX design generation, persistent knowledge memory graphs, automated diagnostics, and master integration test runs.</p>
+        <h1 class="page-title">Video Showcases & Terminal Recordings</h1>
+        <p class="page-lead">Live recorded demonstrations of UI/UX design synthesis, persistent SQLite knowledge graphs, automated diagnostics, and 70-combination matrix test runs.</p>
       </div>
     </div>
 
@@ -45,8 +45,8 @@
     <section class="section">
       <div class="container">
         <div class="section-title-wrap">
-          <div class="section-label">Video Demos</div>
-          <h2 class="section-heading">Workflow Walkthroughs</h2>
+          <div class="section-label">Video Walkthroughs</div>
+          <h2 class="section-heading">Autonomous Workflow Showcases</h2>
         </div>
 
         <div class="showcase-grid">
@@ -69,33 +69,70 @@
       </div>
     </section>
 
-    <!-- Asciinema Terminal Casts -->
+    <!-- Large Interactive Terminal Player -->
     <section class="section">
       <div class="container">
         <div class="section-title-wrap">
-          <div class="section-label">Terminal Recordings</div>
-          <h2 class="section-heading">Asciinema Casts</h2>
+          <div class="section-label">Live Terminal Workbench</div>
+          <h2 class="section-heading">Full-Scale Execution Records</h2>
         </div>
 
-        <div class="asciinema-row">
+        <div class="showcase-terminal-large">
+          <div class="terminal-header">
+            <div class="terminal-tabs">
+              <button class="term-tab active" data-tab="doctor">setup.sh doctor</button>
+              <button class="term-tab" data-tab="matrix">test:matrix (70/70)</button>
+              <button class="term-tab" data-tab="integration">npm test (295 tools)</button>
+            </div>
+            <div class="term-dots">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+          <pre class="showcase-terminal-body" id="terminalBody">$ ./setup.sh doctor
+=== HeLa MCP Ecosystem — Diagnostic Report ===
+Node.js:     ✓ v20+ LTS
+Git:         ✓ 2.25+
+SQLite3:     ✓ Ready (WAL mode active)
+
+=== Component Health (All 10 Servers) ===
+Component          Scope        Entrypoint   Diagnostics
+-----------------------------------------------------------------
+HeLa Mitosis       core         present      [READY] Stdio JSON-RPC OK
+HeLa Genome        core         present      [READY] Stdio JSON-RPC OK
+HeLa Membrane      core         present      [READY] Stdio JSON-RPC OK
+HeLa Nucleus       core         present      [READY] Stdio JSON-RPC OK
+HeLa Ribosome      core         present      [READY] Stdio JSON-RPC OK
+HeLa Enzyme        core         present      [READY] Stdio JSON-RPC OK
+HeLa Cytosol       core         present      [READY] Stdio JSON-RPC OK
+HeLa Phenotype     specialized  present      [READY] Stdio JSON-RPC OK
+HeLa Receptor      specialized  present      [READY] Stdio JSON-RPC OK
+HeLa Plastid       specialized  present      [READY] Stdio JSON-RPC OK
+
+SUCCESS: All required HeLa MCP servers and dependencies are healthy!</pre>
+        </div>
+
+        <!-- Asciinema Public Recording Links -->
+        <div class="asciinema-row" style="margin-top: 28px;">
           <a href="https://asciinema.org/a/uJ2E76GydNNgGdhI" target="_blank" class="asciinema-box">
-            <div class="asciinema-title">🩺 Diagnostics Doctor</div>
-            <div class="asciinema-desc">./setup.sh doctor • 10-server health check</div>
+            <div class="asciinema-title">🩺 Diagnostics Doctor Cast ↗</div>
+            <div class="asciinema-desc">asciinema.org/a/uJ2E76GydNNgGdhI</div>
           </a>
 
           <a href="https://asciinema.org/a/FSPKc53pFfHdFA7S" target="_blank" class="asciinema-box">
-            <div class="asciinema-title">🧪 70-Combination Matrix</div>
-            <div class="asciinema-desc">npm run test:matrix • 10 clients x 7 profiles</div>
+            <div class="asciinema-title">🧪 70-Combination Matrix Cast ↗</div>
+            <div class="asciinema-desc">asciinema.org/a/FSPKc53pFfHdFA7S</div>
           </a>
 
           <a href="https://asciinema.org/a/2uUsoWWED5HsiWJy" target="_blank" class="asciinema-box">
-            <div class="asciinema-title">⚡ Master Integration Suite</div>
-            <div class="asciinema-desc">npm test • 295 active tools in 2.5s</div>
+            <div class="asciinema-title">⚡ Master Integration Cast ↗</div>
+            <div class="asciinema-desc">asciinema.org/a/2uUsoWWED5HsiWJy</div>
           </a>
 
           <a href="https://asciinema.org/a/vhYxgExIp5UV3WCg" target="_blank" class="asciinema-box">
-            <div class="asciinema-title">⚙️ Setup CLI & Help</div>
-            <div class="asciinema-desc">./setup.sh --help • Snapshot pinning & profiles</div>
+            <div class="asciinema-title">⚙️ Setup CLI Cast ↗</div>
+            <div class="asciinema-desc">asciinema.org/a/vhYxgExIp5UV3WCg</div>
           </a>
         </div>
       </div>
