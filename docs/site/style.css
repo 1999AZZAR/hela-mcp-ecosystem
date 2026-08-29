@@ -1,6 +1,6 @@
 /* ==========================================================================
-   HeLa MCP Ecosystem — Technical Workbench & Documentation Site
-   Design Language: Swiss Technical / Developer Craft (Anti-Slop Edition)
+   HeLa MCP Ecosystem — Master Developer Platform
+   Design Language: Swiss Technical / Developer Craft
    ========================================================================== */
 
 :root {
@@ -48,7 +48,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Container */
 .container {
   max-width: 1240px;
   margin: 0 auto;
@@ -58,7 +57,7 @@ body {
 /* Header */
 header {
   border-bottom: 1px solid var(--border-subtle);
-  background: rgba(6, 8, 12, 0.92);
+  background: rgba(6, 8, 12, 0.94);
   backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
@@ -144,7 +143,7 @@ header {
   background: var(--bg-panel-subtle);
 }
 
-/* Hero Section (Workbench Grid) */
+/* Hero Section */
 .hero-section {
   padding: 64px 0 48px;
 }
@@ -166,16 +165,16 @@ header {
 }
 
 .hero-tagline {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--text-muted);
   line-height: 1.6;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .hero-actions {
   display: flex;
   gap: 12px;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   flex-wrap: wrap;
 }
 
@@ -248,7 +247,7 @@ header {
   border-color: var(--border-active);
 }
 
-/* Interactive Workbench Terminal */
+/* Workbench Terminal */
 .workbench-terminal {
   background: var(--bg-terminal);
   border: 1px solid var(--border-subtle);
@@ -319,7 +318,7 @@ header {
 }
 
 .section-title-wrap {
-  margin-bottom: 36px;
+  margin-bottom: 32px;
 }
 
 .section-label {
@@ -337,6 +336,150 @@ header {
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--text-white);
+}
+
+/* Workflows Interactive Layout */
+.wf-container {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 24px;
+}
+
+.wf-tabs-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.wf-tab-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  text-align: left;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.wf-tab-btn:hover {
+  background: var(--bg-panel-subtle);
+  color: var(--text-white);
+}
+
+.wf-tab-btn.active {
+  background: var(--bg-panel-subtle);
+  border-color: var(--border-active);
+  color: var(--accent-cyan);
+}
+
+.wf-detail-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 12px;
+}
+
+.wf-header h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-white);
+}
+
+.wf-profiles {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+  background: var(--bg-panel-subtle);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.wf-desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.wf-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.wf-steps-list h4 {
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.wf-step-item {
+  display: flex;
+  gap: 12px;
+  background: var(--bg-terminal);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  align-items: flex-start;
+}
+
+.step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--bg-panel-subtle);
+  border: 1px solid var(--border-subtle);
+  color: var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2px;
+}
+
+.step-title strong {
+  font-size: 0.88rem;
+  color: var(--text-white);
+}
+
+.step-title code {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent-cyan);
+}
+
+.step-purpose {
+  font-size: 0.82rem;
+  color: var(--text-muted);
 }
 
 /* Architecture Topology */
@@ -571,7 +714,7 @@ header {
   color: var(--text-dim);
 }
 
-/* Component Taxonomy Table */
+/* Table */
 .table-wrap {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
@@ -692,6 +835,9 @@ footer {
 /* Responsive */
 @media (max-width: 900px) {
   .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .wf-container {
     grid-template-columns: 1fr;
   }
   .arch-dual-grid {
