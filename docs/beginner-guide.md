@@ -31,8 +31,8 @@ The **HeLa MCP Ecosystem** gives your AI assistant **hands, tools, and long-term
 Paste this command into your terminal and press `Enter`:
 
 ```bash
-git clone https://github.com/1999AZZAR/mcp-ecosystem.git
-cd mcp-ecosystem
+git clone https://github.com/1999AZZAR/hela-mcp-ecosystem.git
+cd hela-mcp-ecosystem
 ./setup.sh
 ```
 
