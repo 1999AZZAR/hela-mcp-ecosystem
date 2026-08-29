@@ -3,230 +3,176 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HeLa MCP Ecosystem — Immortal Cellular AI Tooling</title>
-  <meta name="description" content="A modular, immortal cellular AI tooling ecosystem built on the Model Context Protocol (MCP) with dual-backbone orchestration and living memory graphs.">
+  <title>HeLa MCP Ecosystem — 10-Server Cellular Distribution Suite</title>
+  <meta name="description" content="A reproducible, 10-server MCP distribution suite for AI agents with dual-backbone orchestration and living memory graphs.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- Navigation -->
   <header>
-    <div class="container nav-wrapper">
-      <a href="#" class="logo">
-        <span>HeLa MCP Ecosystem</span>
-        <span class="logo-badge">v1.0.0</span>
-      </a>
-      <nav class="nav-links">
+    <div class="container header-inner">
+      <div class="brand-block">
+        <a href="#" class="brand-title">HeLa MCP Ecosystem</a>
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span>v1.0.0 (c2cdf68)</span>
+        </div>
+      </div>
+      <nav class="nav-menu">
         <a href="#architecture">Architecture</a>
-        <a href="#showcase">Showcase</a>
         <a href="#configurator">Configurator</a>
+        <a href="#showcase">Showcases</a>
         <a href="#components">Components</a>
-        <a href="#tribute">Attribution</a>
-        <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" class="btn-github">GitHub</a>
+        <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" class="gh-link">GitHub ↗</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero -->
   <main>
-    <section class="hero">
-      <div class="container">
-        <div class="hero-pill">Model Context Protocol • 10-MCP Cellular Stack</div>
-        <h1>Immortal <span class="hero-highlight">Cellular AI Tooling</span> for Autonomous Agents</h1>
-        <p>A hardened, reproducible 10-server MCP distribution suite engineered by Azzar. Anchored by a dual-backbone for dynamic reasoning and living memory graphs across software engineering, research, design, device automation, and 3D modeling.</p>
+    <!-- Hero Workbench Section -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <h1>Cellular AI Tooling for Model Context Protocol</h1>
+          <p class="hero-tagline">A hardened 10-server MCP distribution suite. Grounded by a dual-backbone for dynamic reasoning and SQLite memory graphs across full-stack engineering, research, design, device automation, and 3D modeling.</p>
 
-        <div class="hero-cta">
-          <a href="#configurator" class="btn-primary">Generate Client Config</a>
-          <a href="#showcase" class="btn-secondary">Watch Showcases</a>
+          <div class="hero-actions">
+            <a href="#configurator" class="btn btn-cyan">Configure Client</a>
+            <a href="#showcase" class="btn btn-outline">View Showcases</a>
+          </div>
+
+          <div class="quick-bar">
+            <span class="quick-cmd" id="heroCmd">git clone https://github.com/1999AZZAR/hela-mcp-ecosystem.git && cd hela-mcp-ecosystem && ./setup.sh</span>
+            <button class="copy-mini" id="heroCopyBtn">Copy</button>
+          </div>
         </div>
 
-        <div class="terminal-install">
-          <span class="terminal-cmd" id="heroCmd">git clone https://github.com/1999AZZAR/hela-mcp-ecosystem.git && cd hela-mcp-ecosystem && ./setup.sh</span>
-          <button class="copy-btn" id="heroCopyBtn">Copy</button>
+        <!-- Interactive Workbench Terminal -->
+        <div class="workbench-terminal">
+          <div class="terminal-header">
+            <div class="terminal-tabs">
+              <button class="term-tab active" data-tab="doctor">setup.sh doctor</button>
+              <button class="term-tab" data-tab="matrix">test:matrix (70/70)</button>
+              <button class="term-tab" data-tab="integration">npm test (295 tools)</button>
+            </div>
+            <div class="term-dots">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+          <pre class="terminal-body" id="terminalBody">$ ./setup.sh doctor
+=== HeLa MCP Ecosystem — Diagnostic Report ===
+Node.js:     ✓ v20+ LTS
+Git:         ✓ 2.25+
+SQLite3:     ✓ Ready (WAL mode active)
+
+=== Component Health (All 10 Servers) ===
+Component          Scope        Entrypoint   Diagnostics
+-----------------------------------------------------------------
+HeLa Mitosis       core         present      [READY] Stdio JSON-RPC OK
+HeLa Genome        core         present      [READY] Stdio JSON-RPC OK
+HeLa Membrane      core         present      [READY] Stdio JSON-RPC OK
+HeLa Nucleus       core         present      [READY] Stdio JSON-RPC OK
+HeLa Ribosome      core         present      [READY] Stdio JSON-RPC OK
+HeLa Enzyme        core         present      [READY] Stdio JSON-RPC OK
+HeLa Cytosol       core         present      [READY] Stdio JSON-RPC OK
+HeLa Phenotype     specialized  present      [READY] Stdio JSON-RPC OK
+HeLa Receptor      specialized  present      [READY] Stdio JSON-RPC OK
+HeLa Plastid       specialized  present      [READY] Stdio JSON-RPC OK
+
+SUCCESS: All required HeLa MCP servers and dependencies are healthy!</pre>
         </div>
       </div>
     </section>
 
     <!-- Architecture Section -->
-    <section id="architecture">
+    <section class="section" id="architecture">
       <div class="container">
-        <div class="section-header">
-          <div class="section-tag">Cellular Architecture</div>
-          <h2 class="section-title">The Dual-Backbone Foundation</h2>
-          <p class="section-desc">Just as biological cells coordinate specialized organelles via the nucleus and genome, every HeLa profile is grounded by an intelligent orchestration and memory backbone.</p>
+        <div class="section-title-wrap">
+          <div class="section-label">Topology</div>
+          <h2 class="section-heading">Dual-Backbone Foundation</h2>
         </div>
 
-        <div class="arch-grid">
-          <div class="card card-backbone">
-            <div class="card-title">
-              <span>HeLa Mitosis</span>
-              <span class="badge badge-core">Orchestrator Backbone</span>
+        <div class="arch-dual-grid">
+          <div class="backbone-card">
+            <div class="card-meta">
+              <span class="card-name">HeLa Mitosis</span>
+              <span class="card-tag">chaining-mcp-server</span>
             </div>
-            <p>Dynamic peer tool discovery, step-by-step reasoning via <code>sequentialthinking</code>, task decomposition, and 42 curated domain prompts.</p>
-            <div style="margin-top: 16px; font-size: 0.82rem; color: var(--color-accent); font-family: var(--font-mono);">
-              Source: chaining-mcp-server • Core Scope
-            </div>
+            <p>Orchestration backbone. Dynamic peer tool discovery, step-by-step reasoning via <code>sequentialthinking</code>, task decomposition, and 42 domain prompt templates.</p>
           </div>
 
-          <div class="card card-backbone">
-            <div class="card-title">
-              <span>HeLa Genome</span>
-              <span class="badge badge-core">State & Memory Backbone</span>
+          <div class="backbone-card genome">
+            <div class="card-meta">
+              <span class="card-name">HeLa Genome</span>
+              <span class="card-tag">Project-Guardian</span>
             </div>
-            <p>Persistent SQLite knowledge graph (<code>memory.db</code>) with FTS5 search, entity-relation tracking, cross-session context restoration, and decision memory.</p>
-            <div style="margin-top: 16px; font-size: 0.82rem; color: var(--color-accent); font-family: var(--font-mono);">
-              Source: Project-Guardian-mcp-server • Core Scope
-            </div>
+            <p>State and memory backbone. SQLite knowledge graph with FTS5 search, entity-relation tracking, cross-session context restoration, and decision memory.</p>
           </div>
         </div>
 
-        <!-- Capability Cards Grid -->
-        <div class="arch-grid" style="margin-top: 24px;">
-          <div class="card">
-            <div class="card-title">
-              <span>HeLa Membrane</span>
-              <span class="badge badge-core">Workspace</span>
-            </div>
-            <p>Sandboxed filesystem boundary, recursive search, file watching, and atomic archive manipulation.</p>
+        <div class="organelles-grid">
+          <div class="organelle-card">
+            <h4><span>HeLa Membrane</span> <span class="badge-core">Workspace</span></h4>
+            <p>Sandboxed filesystem boundary, recursive search, file watching, and archives.</p>
           </div>
 
-          <div class="card">
-            <div class="card-title">
-              <span>HeLa Nucleus</span>
-              <span class="badge badge-core">Execution</span>
-            </div>
-            <p>Isolated command execution, environment sanitization, and RTK token-optimized execution.</p>
+          <div class="organelle-card">
+            <h4><span>HeLa Nucleus</span> <span class="badge-core">Execution</span></h4>
+            <p>Isolated command execution, subshell containment, and RTK token optimization.</p>
           </div>
 
-          <div class="card">
-            <div class="card-title">
-              <span>HeLa Ribosome</span>
-              <span class="badge badge-core">Process Harness</span>
-            </div>
-            <p>Polyglot interactive PTY session multiplexing, Regex hooks, and process lifecycle management.</p>
+          <div class="organelle-card">
+            <h4><span>HeLa Ribosome</span> <span class="badge-core">Process Harness</span></h4>
+            <p>Polyglot interactive PTY multiplexing, Regex hooks, and lifecycle teardown.</p>
           </div>
 
-          <div class="card">
-            <div class="card-title">
-              <span>HeLa Enzyme</span>
-              <span class="badge badge-core">Knowledge</span>
-            </div>
-            <p>Unified Google Search and Wikipedia caching, fact-checking, and deep-content extraction.</p>
+          <div class="organelle-card">
+            <h4><span>HeLa Enzyme</span> <span class="badge-core">Knowledge</span></h4>
+            <p>Unified Google Search & Wikipedia caching, fact-checking, and summarization.</p>
           </div>
 
-          <div class="card">
-            <div class="card-title">
-              <span>HeLa Cytosol</span>
-              <span class="badge badge-core">Interaction</span>
-            </div>
-            <p>Playwright browser automation, DOM accessibility tree perception, network interception, and scraping.</p>
+          <div class="organelle-card">
+            <h4><span>HeLa Cytosol</span> <span class="badge-core">Interaction</span></h4>
+            <p>Playwright browser automation, accessibility trees, and DOM perception.</p>
           </div>
 
-          <div class="card">
-            <div class="card-title">
-              <span>HeLa Phenotype</span>
-              <span class="badge badge-specialized">Design</span>
-            </div>
-            <p>UI/UX design system tokens, OKLCH palettes, Tailwind CSS synthesis, and 8-state component generation.</p>
+          <div class="organelle-card">
+            <h4><span>HeLa Phenotype</span> <span class="badge-spec">Design</span></h4>
+            <p>UI/UX design system tokens, OKLCH palettes, and Tailwind component synthesis.</p>
           </div>
 
-          <div class="card">
-            <div class="card-title">
-              <span>HeLa Receptor</span>
-              <span class="badge badge-specialized">Mobile</span>
-            </div>
-            <p>Android mobile device automation via ADB bridge, XML view hierarchy inspection, and UI tapping.</p>
+          <div class="organelle-card">
+            <h4><span>HeLa Receptor</span> <span class="badge-spec">Mobile</span></h4>
+            <p>Android mobile automation via ADB bridge, XML inspection, and UI tapping.</p>
           </div>
 
-          <div class="card">
-            <div class="card-title">
-              <span>HeLa Plastid</span>
-              <span class="badge badge-specialized">3D Modeling</span>
-            </div>
-            <p>Autonomous Blender procedural 3D modeling, materials, scene generation, and rendering pipeline.</p>
+          <div class="organelle-card">
+            <h4><span>HeLa Plastid</span> <span class="badge-spec">3D Modeling</span></h4>
+            <p>Autonomous Blender procedural 3D modeling, materials, and rendering pipeline.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Showcase Section (YouTube Videos + Asciinema Casts) -->
-    <section id="showcase">
+    <!-- Configurator Workbench -->
+    <section class="section" id="configurator">
       <div class="container">
-        <div class="section-header">
-          <div class="section-tag">Live Showcases</div>
-          <h2 class="section-title">See the Ecosystem in Action</h2>
-          <p class="section-desc">Watch real autonomous workflows demonstrating UI/UX design generation, persistent knowledge memory, diagnostics, and multi-server integration.</p>
+        <div class="section-title-wrap">
+          <div class="section-label">Config Generator</div>
+          <h2 class="section-heading">Client Configuration Workbench</h2>
         </div>
 
-        <div class="showcase-grid">
-          <!-- Video 1 -->
-          <div class="showcase-card">
-            <div class="video-container">
-              <iframe src="https://www.youtube-nocookie.com/embed/BnbDg1-be4g" title="HeLa Phenotype UI/UX Showcase" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="showcase-info">
-              <h3>HeLa Phenotype & The Designer Showcase</h3>
-              <p>Autonomous generation of design tokens, OKLCH color palettes, and component synthesis from high-level specifications.</p>
-            </div>
-          </div>
-
-          <!-- Video 2 -->
-          <div class="showcase-card">
-            <div class="video-container">
-              <iframe src="https://www.youtube-nocookie.com/embed/O6nYKjmlaGk" title="HeLa Genome Project Guardian Showcase" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="showcase-info">
-              <h3>HeLa Genome & Project Guardian Memory</h3>
-              <p>Living SQLite knowledge graph demonstration: tracking entities, architectural decisions, and cross-session task state.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Asciinema Terminal Casts -->
-        <div style="margin-top: 48px;">
-          <h3 style="font-size: 1.35rem; font-weight: 700; text-align: center; margin-bottom: 20px; color: var(--color-text);">Recorded Terminal Demonstrations</h3>
-          <div class="cast-grid">
-            <a href="https://asciinema.org/a/uJ2E76GydNNgGdhI" target="_blank" class="cast-card">
-              <div class="cast-title">Ecosystem Diagnostic Doctor</div>
-              <div class="cast-meta"><code>./setup.sh doctor</code> • System health, stdio JSON-RPC checks, and zero-key fallbacks.</div>
-            </a>
-
-            <a href="https://asciinema.org/a/FSPKc53pFfHdFA7S" target="_blank" class="cast-card">
-              <div class="cast-title">70-Combination Client Matrix</div>
-              <div class="cast-meta"><code>npm run test:matrix</code> • Validates 10 client backends across 7 profiles.</div>
-            </a>
-
-            <a href="https://asciinema.org/a/2uUsoWWED5HsiWJy" target="_blank" class="cast-card">
-              <div class="cast-title">Master Integration Suite</div>
-              <div class="cast-meta"><code>npm test</code> • Discovers 295 active tools across all 10 servers in 2.5s.</div>
-            </a>
-
-            <a href="https://asciinema.org/a/vhYxgExIp5UV3WCg" target="_blank" class="cast-card">
-              <div class="cast-title">Deterministic Setup & CLI</div>
-              <div class="cast-meta"><code>./setup.sh --help</code> • Profile-driven setup with snapshot pinning.</div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Interactive Configurator -->
-    <section id="configurator">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-tag">Interactive Configurator</div>
-          <h2 class="section-title">Generate Your Client Configuration</h2>
-          <p class="section-desc">Select your target AI agent environment and profile to generate live configuration snippets with absolute path resolution.</p>
-        </div>
-
-        <div class="configurator-wrapper">
-          <div class="configurator-controls">
-            <div class="control-group">
-              <label class="control-label" for="profileSelect">Select Agent Profile:</label>
+        <div class="config-workbench">
+          <div class="config-sidebar">
+            <div class="control-item">
+              <label for="profileSelect">Target Profile</label>
               <select id="profileSelect">
-                <option value="dev-workspace">Dev Workspace (Full Desktop Workstation)</option>
-                <option value="headless-server">Headless Server (Core 7 Servers)</option>
-                <option value="research">Research Terminal (Dedicated Research)</option>
+                <option value="dev-workspace">Dev Workspace (Full Desktop)</option>
+                <option value="headless-server">Headless Server (Core 7)</option>
+                <option value="research">Research Terminal</option>
                 <option value="web-devops">Web Dev & Browser Verification</option>
                 <option value="android-testing">Android Mobile QA</option>
                 <option value="3d-modeling">Blender 3D Modeling</option>
@@ -234,8 +180,8 @@
               </select>
             </div>
 
-            <div class="control-group">
-              <label class="control-label" for="clientSelect">Select AI Client Backend:</label>
+            <div class="control-item">
+              <label for="clientSelect">Target AI Client</label>
               <select id="clientSelect">
                 <option value="cursor">Cursor IDE (~/.cursor/mcp.json)</option>
                 <option value="claude">Claude Desktop (~/.claude.json)</option>
@@ -249,103 +195,155 @@
             </div>
           </div>
 
-          <div class="configurator-output">
-            <button class="copy-btn output-copy" id="copyConfigBtn">Copy Config</button>
-            <pre><code id="configCode">// Configuration will appear here...</code></pre>
+          <div class="config-code-pane">
+            <div class="code-pane-header">
+              <span class="code-title">Configuration Output</span>
+              <button class="copy-mini" id="copyConfigBtn">Copy</button>
+            </div>
+            <pre><code id="configCode">// Configuration output will render here...</code></pre>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 10-MCP Component Taxonomy -->
-    <section id="components">
+    <!-- Showcases Section -->
+    <section class="section" id="showcase">
       <div class="container">
-        <div class="section-header">
-          <div class="section-tag">Component Reference</div>
-          <h2 class="section-title">The 10-MCP Cellular Taxonomy</h2>
-          <p class="section-desc">Every server focuses on an isolated domain while maintaining 100% interoperability over standard JSON-RPC 2.0 stdio protocols.</p>
+        <div class="section-title-wrap">
+          <div class="section-label">Demonstrations</div>
+          <h2 class="section-heading">Workflow Recordings</h2>
         </div>
 
-        <div style="overflow-x: auto; background: var(--color-paper-2); border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+        <div class="showcase-grid">
+          <div class="showcase-card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/BnbDg1-be4g" title="The Designer Showcase" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <h3>HeLa Phenotype / The Designer</h3>
+            <p>Autonomous design token generation, OKLCH palette synthesis, and component layout.</p>
+          </div>
+
+          <div class="showcase-card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/O6nYKjmlaGk" title="Project Guardian Memory Showcase" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <h3>HeLa Genome / Project Guardian</h3>
+            <p>Living SQLite memory graph tracking entity relations, decisions, and task state.</p>
+          </div>
+        </div>
+
+        <div class="asciinema-row">
+          <a href="https://asciinema.org/a/uJ2E76GydNNgGdhI" target="_blank" class="asciinema-box">
+            <div class="asciinema-title">Diagnostics Doctor</div>
+            <div class="asciinema-desc">./setup.sh doctor • 10-server health check</div>
+          </a>
+
+          <a href="https://asciinema.org/a/FSPKc53pFfHdFA7S" target="_blank" class="asciinema-box">
+            <div class="asciinema-title">70-Combination Matrix</div>
+            <div class="asciinema-desc">npm run test:matrix • 10 clients x 7 profiles</div>
+          </a>
+
+          <a href="https://asciinema.org/a/2uUsoWWED5HsiWJy" target="_blank" class="asciinema-box">
+            <div class="asciinema-title">Integration Suite</div>
+            <div class="asciinema-desc">npm test • 295 active tools in 2.5s</div>
+          </a>
+
+          <a href="https://asciinema.org/a/vhYxgExIp5UV3WCg" target="_blank" class="asciinema-box">
+            <div class="asciinema-title">Setup CLI</div>
+            <div class="asciinema-desc">./setup.sh --help • Snapshot pinning & profiles</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Component Taxonomy Table -->
+    <section class="section" id="components">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-label">Directory</div>
+          <h2 class="section-heading">10-MCP Component Taxonomy</h2>
+        </div>
+
+        <div class="table-wrap">
           <table>
             <thead>
-              <tr style="border-bottom: 1px solid var(--color-border); background: rgba(0,0,0,0.25);">
+              <tr>
                 <th>Component Identity</th>
                 <th>Machine ID</th>
-                <th>Technical Source Repo</th>
+                <th>Source Repository</th>
                 <th>Scope</th>
                 <th>Cellular Role</th>
               </tr>
             </thead>
             <tbody>
-              <tr style="border-bottom: 1px solid var(--color-border);">
-                <td style="font-weight: 700; color: var(--color-text);">HeLa Mitosis</td>
+              <tr>
+                <td style="font-weight: 700; color: var(--text-white);">HeLa Mitosis</td>
                 <td><code>hela-mitosis</code></td>
-                <td><a href="https://github.com/1999AZZAR/chaining-mcp-server" target="_blank" style="color: var(--color-accent); text-decoration: none;">chaining-mcp-server</a></td>
-                <td><span class="badge badge-core">Core</span></td>
+                <td><a href="https://github.com/1999AZZAR/chaining-mcp-server" target="_blank" style="color: var(--accent-cyan); text-decoration: none;">chaining-mcp-server</a></td>
+                <td><span class="badge-core">Core</span></td>
                 <td>Orchestrator Backbone: dynamic routing, step reasoning, 42 prompt templates</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--color-border);">
-                <td style="font-weight: 700; color: var(--color-text);">HeLa Genome</td>
+              <tr>
+                <td style="font-weight: 700; color: var(--text-white);">HeLa Genome</td>
                 <td><code>hela-genome</code></td>
-                <td><a href="https://github.com/1999AZZAR/Project-Guardian" target="_blank" style="color: var(--color-accent); text-decoration: none;">Project-Guardian-mcp-server</a></td>
-                <td><span class="badge badge-core">Core</span></td>
+                <td><a href="https://github.com/1999AZZAR/Project-Guardian" target="_blank" style="color: var(--accent-cyan); text-decoration: none;">Project-Guardian-mcp-server</a></td>
+                <td><span class="badge-core">Core</span></td>
                 <td>State Backbone: living SQLite knowledge graph, cross-session memory</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--color-border);">
-                <td style="font-weight: 700; color: var(--color-text);">HeLa Membrane</td>
+              <tr>
+                <td style="font-weight: 700; color: var(--text-white);">HeLa Membrane</td>
                 <td><code>hela-membrane</code></td>
-                <td><a href="https://github.com/1999AZZAR/filesystem-mcp-server" target="_blank" style="color: var(--color-accent); text-decoration: none;">filesystem-mcp-server</a></td>
-                <td><span class="badge badge-core">Core</span></td>
+                <td><a href="https://github.com/1999AZZAR/filesystem-mcp-server" target="_blank" style="color: var(--accent-cyan); text-decoration: none;">filesystem-mcp-server</a></td>
+                <td><span class="badge-core">Core</span></td>
                 <td>Workspace: sandboxed filesystem, recursive file discovery & archives</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--color-border);">
-                <td style="font-weight: 700; color: var(--color-text);">HeLa Nucleus</td>
+              <tr>
+                <td style="font-weight: 700; color: var(--text-white);">HeLa Nucleus</td>
                 <td><code>hela-nucleus</code></td>
-                <td><a href="https://github.com/1999AZZAR/terminal-mcp-server" target="_blank" style="color: var(--color-accent); text-decoration: none;">terminal-mcp-server</a></td>
-                <td><span class="badge badge-core">Core</span></td>
+                <td><a href="https://github.com/1999AZZAR/terminal-mcp-server" target="_blank" style="color: var(--accent-cyan); text-decoration: none;">terminal-mcp-server</a></td>
+                <td><span class="badge-core">Core</span></td>
                 <td>Execution: command execution, subshell isolation, RTK token savings</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--color-border);">
-                <td style="font-weight: 700; color: var(--color-text);">HeLa Ribosome</td>
+              <tr>
+                <td style="font-weight: 700; color: var(--text-white);">HeLa Ribosome</td>
                 <td><code>hela-ribosome</code></td>
-                <td><a href="https://github.com/1999AZZAR/menager-mcp-server" target="_blank" style="color: var(--color-accent); text-decoration: none;">menager-mcp-server</a></td>
-                <td><span class="badge badge-core">Core</span></td>
+                <td><a href="https://github.com/1999AZZAR/menager-mcp-server" target="_blank" style="color: var(--accent-cyan); text-decoration: none;">menager-mcp-server</a></td>
+                <td><span class="badge-core">Core</span></td>
                 <td>Process Harness: interactive PTY multiplexing, Regex hooks, lifecycle teardown</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--color-border);">
-                <td style="font-weight: 700; color: var(--color-text);">HeLa Enzyme</td>
+              <tr>
+                <td style="font-weight: 700; color: var(--text-white);">HeLa Enzyme</td>
                 <td><code>hela-enzyme</code></td>
-                <td><a href="https://github.com/1999AZZAR/research-mcp-server" target="_blank" style="color: var(--color-accent); text-decoration: none;">research-assistant-mcp-server</a></td>
-                <td><span class="badge badge-core">Core</span></td>
+                <td><a href="https://github.com/1999AZZAR/research-mcp-server" target="_blank" style="color: var(--accent-cyan); text-decoration: none;">research-assistant-mcp-server</a></td>
+                <td><span class="badge-core">Core</span></td>
                 <td>Knowledge: unified Google Search & Wikipedia caching and fact-checking</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--color-border);">
-                <td style="font-weight: 700; color: var(--color-text);">HeLa Cytosol</td>
+              <tr>
+                <td style="font-weight: 700; color: var(--text-white);">HeLa Cytosol</td>
                 <td><code>hela-cytosol</code></td>
-                <td><a href="https://github.com/1999AZZAR/Browser-Agent" target="_blank" style="color: var(--color-accent); text-decoration: none;">Browser-Agent</a></td>
-                <td><span class="badge badge-core">Core</span></td>
+                <td><a href="https://github.com/1999AZZAR/Browser-Agent" target="_blank" style="color: var(--accent-cyan); text-decoration: none;">Browser-Agent</a></td>
+                <td><span class="badge-core">Core</span></td>
                 <td>Interaction: Playwright browser automation, DOM accessibility perception</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--color-border);">
-                <td style="font-weight: 700; color: var(--color-text);">HeLa Phenotype</td>
+              <tr>
+                <td style="font-weight: 700; color: var(--text-white);">HeLa Phenotype</td>
                 <td><code>hela-phenotype</code></td>
-                <td><a href="https://github.com/1999AZZAR/the-designer" target="_blank" style="color: var(--color-accent); text-decoration: none;">the-designer</a></td>
-                <td><span class="badge badge-specialized">Specialized</span></td>
+                <td><a href="https://github.com/1999AZZAR/the-designer" target="_blank" style="color: var(--accent-cyan); text-decoration: none;">the-designer</a></td>
+                <td><span class="badge-spec">Specialized</span></td>
                 <td>Design: UI/UX design tokens, OKLCH palettes, Tailwind CSS synthesis</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--color-border);">
-                <td style="font-weight: 700; color: var(--color-text);">HeLa Receptor</td>
+              <tr>
+                <td style="font-weight: 700; color: var(--text-white);">HeLa Receptor</td>
                 <td><code>hela-receptor</code></td>
-                <td><a href="https://github.com/1999AZZAR/scrcpy-mcp" target="_blank" style="color: var(--color-accent); text-decoration: none;">scrcpy-mcp</a></td>
-                <td><span class="badge badge-specialized">Specialized</span></td>
+                <td><a href="https://github.com/1999AZZAR/scrcpy-mcp" target="_blank" style="color: var(--accent-cyan); text-decoration: none;">scrcpy-mcp</a></td>
+                <td><span class="badge-spec">Specialized</span></td>
                 <td>Mobile: Android device automation, ADB bridge, XML view inspection</td>
               </tr>
               <tr>
-                <td style="font-weight: 700; color: var(--color-text);">HeLa Plastid</td>
+                <td style="font-weight: 700; color: var(--text-white);">HeLa Plastid</td>
                 <td><code>hela-plastid</code></td>
-                <td><a href="https://github.com/1999AZZAR/ll3m-agent" target="_blank" style="color: var(--color-accent); text-decoration: none;">ll3m-agent</a></td>
-                <td><span class="badge badge-specialized">Specialized</span></td>
+                <td><a href="https://github.com/1999AZZAR/ll3m-agent" target="_blank" style="color: var(--accent-cyan); text-decoration: none;">ll3m-agent</a></td>
+                <td><span class="badge-spec">Specialized</span></td>
                 <td>3D: autonomous Blender procedural modeling, materials, and rendering</td>
               </tr>
             </tbody>
@@ -354,13 +352,12 @@
       </div>
     </section>
 
-    <!-- Respectful Tribute Section -->
-    <section id="tribute">
+    <!-- Attribution -->
+    <section class="section">
       <div class="container">
-        <div class="tribute-box">
-          <h2>In Respectful Recognition of Henrietta Lacks</h2>
-          <p>The <strong>HeLa MCP Ecosystem</strong> is named in honor and respectful recognition of <strong>Henrietta Lacks</strong> (1920–1951) and the immortal scientific legacy of HeLa cells, which transformed global biomedical research, vaccine development, and cellular biology.</p>
-          <p>In this architecture, HeLa serves as an architectural cellular metaphor: representing modular specialization, deterministic replicability, and immortal longevity in autonomous software systems.</p>
+        <div class="tribute-section">
+          <h3>In Recognition of Henrietta Lacks</h3>
+          <p>The HeLa MCP Ecosystem is named in respectful recognition of <strong>Henrietta Lacks</strong> (1920–1951) and the immortal scientific legacy of HeLa cells, which transformed global biomedical research. In this architecture, HeLa represents modular specialization, deterministic replicability, and software longevity.</p>
         </div>
       </div>
     </section>
@@ -369,11 +366,8 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <div class="footer-content">
-        <div class="logo">
-          <span>HeLa MCP Ecosystem</span>
-        </div>
-        <div class="footer-links">
+      <div class="footer-row">
+        <div class="footer-nav">
           <a href="../beginner-guide.md">Beginner Guide</a>
           <a href="../architecture.md">Architecture</a>
           <a href="../workflows.md">Workflows</a>
@@ -381,9 +375,9 @@
           <a href="../troubleshooting.md">Troubleshooting</a>
           <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank">GitHub</a>
         </div>
-      </div>
-      <div class="footer-bottom">
-        &copy; 2026 HeLa MCP Ecosystem. Developed by Azzar. Released under MIT License.
+        <div class="footer-copy">
+          MIT License • Developed by Azzar
+        </div>
       </div>
     </div>
   </footer>

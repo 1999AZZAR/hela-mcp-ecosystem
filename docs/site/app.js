@@ -1,5 +1,5 @@
 /**
- * HeLa MCP Ecosystem — Interactive Landing Page Application
+ * HeLa MCP Ecosystem — Interactive Developer Workbench Application
  */
 
 const INVENTORY = {
@@ -7,91 +7,81 @@ const INVENTORY = {
     "alias": "HeLa Mitosis",
     "source": "chaining-mcp-server",
     "scope": "core",
-    "role": "backbone-orchestration",
+    "role": "Orchestrator Backbone",
     "entry": "dist/index.js",
-    "runtime": "node",
-    "desc": "Intelligent orchestrator, dynamic peer discovery, sequential thinking, task decomposition."
+    "desc": "Dynamic peer discovery, sequential reasoning, prompt templates"
   },
   "hela-genome": {
     "alias": "HeLa Genome",
     "source": "Project-Guardian-mcp-server",
     "scope": "core",
-    "role": "backbone-state",
+    "role": "State & Memory Backbone",
     "entry": "dist/index.js",
-    "runtime": "node",
-    "desc": "Living SQLite knowledge graph, cross-session memory, task & milestone tracking."
+    "desc": "Living SQLite knowledge graph, decision memory, task tracking"
   },
   "hela-membrane": {
     "alias": "HeLa Membrane",
     "source": "filesystem-mcp-server",
     "scope": "core",
-    "role": "workspace",
+    "role": "Workspace Filesystem",
     "entry": "dist/index.js",
-    "runtime": "node",
-    "desc": "Sandboxed filesystem operations, deep directory search, file watching, and archives."
+    "desc": "Sandboxed filesystem operations, file search & archives"
   },
   "hela-nucleus": {
     "alias": "HeLa Nucleus",
     "source": "terminal-mcp-server",
     "scope": "core",
-    "role": "execution",
+    "role": "Execution Boundary",
     "entry": "build/index.js",
-    "runtime": "node",
-    "desc": "Isolated terminal execution, command sanitization, and RTK token optimization."
+    "desc": "Isolated command execution, subshell containment, RTK optimization"
   },
   "hela-ribosome": {
     "alias": "HeLa Ribosome",
     "source": "menager-mcp-server",
     "scope": "core",
-    "role": "process-harness",
+    "role": "Process Harness",
     "entry": "build/index.js",
-    "runtime": "node",
-    "desc": "Polyglot interactive PTY multiplexing, Regex hooks, and process lifecycle teardown."
+    "desc": "Polyglot interactive PTY multiplexing, Regex hooks & teardown"
   },
   "hela-enzyme": {
     "alias": "HeLa Enzyme",
     "source": "research-assistant-mcp-server",
     "scope": "core",
-    "role": "knowledge",
+    "role": "Knowledge Synthesis",
     "entry": "dist/index.js",
-    "runtime": "node",
-    "desc": "Unified Google Custom Search and Wikipedia caching, fact-checking, and summarization."
+    "desc": "Unified Google Search & cached Wikipedia fact-checking"
   },
   "hela-cytosol": {
     "alias": "HeLa Cytosol",
     "source": "Browser-Agent",
     "scope": "core",
-    "role": "interaction",
+    "role": "Browser Interaction",
     "entry": "src/server.js",
-    "runtime": "node",
-    "desc": "Playwright browser automation, accessibility trees, DOM perception, and screenshots."
+    "desc": "Playwright browser automation & accessibility tree perception"
   },
   "hela-phenotype": {
     "alias": "HeLa Phenotype",
     "source": "the-designer",
     "scope": "specialized",
-    "role": "design",
+    "role": "Design & Tokens",
     "entry": "dist/index.js",
-    "runtime": "node",
-    "desc": "UI/UX design tokens, OKLCH palettes, Tailwind CSS synthesis, and 8-state components."
+    "desc": "UI/UX design system tokens, OKLCH palettes, Tailwind synthesis"
   },
   "hela-receptor": {
     "alias": "HeLa Receptor",
     "source": "scrcpy-mcp",
     "scope": "specialized",
-    "role": "mobile",
+    "role": "Mobile Automation",
     "entry": "dist/server.js",
-    "runtime": "node",
-    "desc": "Physical Android device control, ADB bridge, XML view hierarchy inspection, and UI tapping."
+    "desc": "Android device control, ADB bridge & XML view inspection"
   },
   "hela-plastid": {
     "alias": "HeLa Plastid",
     "source": "ll3m-agent",
     "scope": "specialized",
-    "role": "3d",
+    "role": "3D Blender Modeling",
     "entry": "dist/index.js",
-    "runtime": "node",
-    "desc": "Autonomous Blender procedural 3D modeling, materials, lighting, and rendering."
+    "desc": "Autonomous Blender procedural 3D modeling & render pipeline"
   }
 };
 
@@ -109,7 +99,7 @@ const PROFILES = {
     "servers": ["hela-mitosis", "hela-genome", "hela-enzyme", "hela-membrane", "hela-cytosol"]
   },
   "web-devops": {
-    "name": "Web Dev + Verification",
+    "name": "Web Dev & Verification",
     "servers": ["hela-mitosis", "hela-genome", "hela-membrane", "hela-nucleus", "hela-phenotype", "hela-cytosol"]
   },
   "android-testing": {
@@ -124,6 +114,73 @@ const PROFILES = {
     "name": "All (Full 10-MCP Stack)",
     "servers": Object.keys(INVENTORY)
   }
+};
+
+const TERMINAL_OUTPUTS = {
+  "doctor": `$ ./setup.sh doctor
+=== HeLa MCP Ecosystem — Diagnostic Report ===
+Node.js:     ✓ v20+ LTS
+Git:         ✓ 2.25+
+SQLite3:     ✓ Ready (WAL mode active)
+
+=== Component Health (All 10 Servers) ===
+Component          Scope        Entrypoint   Diagnostics
+-----------------------------------------------------------------
+HeLa Mitosis       core         present      [READY] Stdio JSON-RPC OK
+HeLa Genome        core         present      [READY] Stdio JSON-RPC OK
+HeLa Membrane      core         present      [READY] Stdio JSON-RPC OK
+HeLa Nucleus       core         present      [READY] Stdio JSON-RPC OK
+HeLa Ribosome      core         present      [READY] Stdio JSON-RPC OK
+HeLa Enzyme        core         present      [READY] Stdio JSON-RPC OK
+HeLa Cytosol       core         present      [READY] Stdio JSON-RPC OK
+HeLa Phenotype     specialized  present      [READY] Stdio JSON-RPC OK
+HeLa Receptor      specialized  present      [READY] Stdio JSON-RPC OK
+HeLa Plastid       specialized  present      [READY] Stdio JSON-RPC OK
+
+SUCCESS: All required HeLa MCP servers and dependencies are healthy!`,
+
+  "matrix": `$ npm run test:matrix
+=== 70-Combination Client Matrix Validator ===
+
+Profile            Client         Format     Status     Details
+-----------------------------------------------------------------
+dev-workspace      cursor         JSON       PASS       8 servers
+dev-workspace      claude         JSON       PASS       8 servers
+dev-workspace      gemini         JSON       PASS       8 servers
+dev-workspace      antigravity    JSON       PASS       8 servers
+dev-workspace      opencode       JSON       PASS       8 servers
+dev-workspace      kilo           JSON       PASS       8 servers
+dev-workspace      zed            JSON       PASS       8 servers
+dev-workspace      codex          TOML       PASS       8 servers
+dev-workspace      docker         DOCKER     PASS       8 services
+... (60 more combinations) ...
+
+Matrix Test Summary: 70 passed, 0 failed in 3.1s.
+SUCCESS: 100% schema accuracy across all client backends!`,
+
+  "integration": `$ npm test
+=== HeLa Master Integration Test Suite ===
+
+Section 1: Individual Server Handshake & Tools Discovery
+-----------------------------------------------------------------
+ ✓ HeLa Mitosis       [18 tools] (202ms)
+ ✓ HeLa Genome        [34 tools] (425ms)
+ ✓ HeLa Membrane      [16 tools] (178ms)
+ ✓ HeLa Nucleus       [5 tools]  (138ms)
+ ✓ HeLa Ribosome      [11 tools] (176ms)
+ ✓ HeLa Enzyme        [28 tools] (332ms)
+ ✓ HeLa Cytosol       [93 tools] (501ms)
+ ✓ HeLa Phenotype     [29 tools] (184ms)
+ ✓ HeLa Receptor      [46 tools] (233ms)
+ ✓ HeLa Plastid       [15 tools] (178ms)
+
+Section 2: Cross-MCP Workflow Synergies
+-----------------------------------------------------------------
+ ✓ Backbone Synergy: Mitosis (reasoning) + Genome (state)
+ ✓ Research Synergy: Enzyme (search) + Cytosol (browser)
+ ✓ Workspace Synergy: Membrane (FS) + Nucleus (exec) + Ribosome (PTY)
+
+Summary: 13 passed, 0 failed across 10 servers (295 tools) in 2.5s.`
 };
 
 function renderConfig(profileKey, clientKey) {
@@ -202,10 +259,11 @@ function renderConfig(profileKey, clientKey) {
     }, null, 2);
   }
 
-  return "// Select a client and profile above.";
+  return "// Select a client and profile.";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Configurator
   const profileSelect = document.getElementById("profileSelect");
   const clientSelect = document.getElementById("clientSelect");
   const codeOutput = document.getElementById("configCode");
@@ -213,9 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateOutput() {
     if (!profileSelect || !clientSelect || !codeOutput) return;
-    const prof = profileSelect.value;
-    const client = clientSelect.value;
-    codeOutput.textContent = renderConfig(prof, client);
+    codeOutput.textContent = renderConfig(profileSelect.value, clientSelect.value);
   }
 
   if (profileSelect && clientSelect) {
@@ -229,14 +285,12 @@ document.addEventListener("DOMContentLoaded", () => {
       navigator.clipboard.writeText(codeOutput.textContent).then(() => {
         const orig = copyBtn.textContent;
         copyBtn.textContent = "Copied!";
-        setTimeout(() => {
-          copyBtn.textContent = orig;
-        }, 2000);
+        setTimeout(() => { copyBtn.textContent = orig; }, 2000);
       });
     });
   }
 
-  // Hero Copy Button
+  // Hero Quick Copy
   const heroCopyBtn = document.getElementById("heroCopyBtn");
   const heroCmd = document.getElementById("heroCmd");
   if (heroCopyBtn && heroCmd) {
@@ -244,10 +298,22 @@ document.addEventListener("DOMContentLoaded", () => {
       navigator.clipboard.writeText(heroCmd.textContent.trim()).then(() => {
         const orig = heroCopyBtn.textContent;
         heroCopyBtn.textContent = "Copied!";
-        setTimeout(() => {
-          heroCopyBtn.textContent = orig;
-        }, 2000);
+        setTimeout(() => { heroCopyBtn.textContent = orig; }, 2000);
       });
     });
   }
+
+  // Interactive Workbench Terminal Tabs
+  const termBody = document.getElementById("terminalBody");
+  const tabs = document.querySelectorAll(".term-tab");
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach((t) => t.classList.remove("active"));
+      tab.classList.add("active");
+      const key = tab.getAttribute("data-tab");
+      if (termBody && TERMINAL_OUTPUTS[key]) {
+        termBody.textContent = TERMINAL_OUTPUTS[key];
+      }
+    });
+  });
 });
