@@ -3,59 +3,68 @@
     "chaining": {
       "command": "node",
       "args": [
-        "/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"
+        "/home/azzar/project/MCPservers/mcp-ecosystem/chaining-mcp-server/dist/index.js"
       ],
       "env": {
+        "MEMORY_FILE_PATH": "/home/azzar/project/MCPservers/mcp-ecosystem/chaining-mcp-server/data/memory.json",
         "SEQUENTIAL_THINKING_AVAILABLE": "true",
         "AWESOME_COPILOT_ENABLED": "true",
         "RELIABILITY_MONITORING_ENABLED": "true",
+        "CHAINING_TOOL_TIMEOUT_MS": "10000",
+        "CHAINING_LLM_ENABLED": "true",
+        "OPENROUTER_API_KEY": "your-openrouter-api-key",
+        "CHAINING_LLM_MODEL": "openrouter/free",
+        "CHAINING_LLM_BASE_URL": "https://openrouter.ai/api/v1",
         "GITHUB_TOKEN": "your-github-token"
       }
     },
     "filesystem": {
       "command": "node",
       "args": [
-        "/absolute/path/to/mcp-ecosystem/filesystem-mcp-server/dist/index.js"
+        "/home/azzar/project/MCPservers/mcp-ecosystem/filesystem-mcp-server/dist/index.js"
       ]
     },
     "Project-Guardian": {
       "command": "node",
       "args": [
-        "/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"
+        "/home/azzar/project/MCPservers/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"
       ]
     },
     "terminal": {
       "command": "node",
       "args": [
-        "/absolute/path/to/mcp-ecosystem/terminal-mcp-server/build/index.js"
+        "/home/azzar/project/MCPservers/mcp-ecosystem/terminal-mcp-server/build/index.js"
       ]
     },
     "menager": {
       "command": "node",
       "args": [
-        "/absolute/path/to/mcp-ecosystem/menager-mcp-server/build/index.js"
+        "/home/azzar/project/MCPservers/mcp-ecosystem/menager-mcp-server/build/index.js"
       ]
     },
     "research": {
       "command": "node",
       "args": [
-        "/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"
+        "/home/azzar/project/MCPservers/mcp-ecosystem/research-mcp-server/dist/index.js"
       ],
       "env": {
         "GOOGLE_API_KEY": "your-google-api-key",
-        "GOOGLE_CSE_ID": "your-google-cse-id"
+        "GOOGLE_CSE_ID": "your-google-cse-id",
+        "WIKIPEDIA_CACHE_MAX": "100",
+        "WIKIPEDIA_CACHE_TTL": "300000",
+        "WIKIPEDIA_DEFAULT_LANGUAGE": "en"
       }
-    },
-    "browser-agent": {
-      "command": "node",
-      "args": [
-        "/absolute/path/to/mcp-ecosystem/browser-agent/src/server.js"
-      ]
     },
     "the-designer": {
       "command": "node",
       "args": [
-        "/absolute/path/to/mcp-ecosystem/the-designer/dist/index.js"
+        "/home/azzar/project/MCPservers/mcp-ecosystem/the-designer/dist/index.js"
+      ]
+    },
+    "browser-agent": {
+      "command": "node",
+      "args": [
+        "/home/azzar/project/MCPservers/mcp-ecosystem/browser-agent/src/server.js"
       ]
     }
   }

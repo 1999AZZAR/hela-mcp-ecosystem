@@ -5,15 +5,15 @@
       "id": "dev-workspace",
       "name": "Dev Workspace",
       "system": "gui",
-      "description": "Full desktop development workstation: orchestration, files, project memory, terminal, research, browser and design.",
-      "servers": ["chaining-mcp-server", "filesystem-mcp-server", "Project-Guardian-mcp-server", "terminal-mcp-server", "menager-mcp-server", "research-mcp-server", "browser-agent", "the-designer"]
+      "description": "Full desktop development workstation: orchestration, files, project memory, terminal, menager, research, design, and browser automation.",
+      "servers": ["chaining-mcp-server", "filesystem-mcp-server", "Project-Guardian-mcp-server", "terminal-mcp-server", "menager-mcp-server", "research-mcp-server", "the-designer", "browser-agent"]
     },
     {
       "id": "headless-server",
-      "name": "Headless Server",
+      "name": "Headless Server (Core 7)",
       "system": "headless",
-      "description": "Client-oriented core for server OS / CI boxes: orchestration, files, memory, terminal, menager and research. No GUI or device servers.",
-      "servers": ["chaining-mcp-server", "filesystem-mcp-server", "Project-Guardian-mcp-server", "terminal-mcp-server", "menager-mcp-server", "research-mcp-server"]
+      "description": "Client-oriented 7-server core for server OS / CI boxes / headless rigs: chaining, filesystem, memory, terminal, menager, research, and design.",
+      "servers": ["chaining-mcp-server", "filesystem-mcp-server", "Project-Guardian-mcp-server", "terminal-mcp-server", "menager-mcp-server", "research-mcp-server", "the-designer"]
     },
     {
       "id": "research",

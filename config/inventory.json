@@ -10,8 +10,19 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "env": ["SEQUENTIAL_THINKING_AVAILABLE", "AWESOME_COPILOT_ENABLED", "RELIABILITY_MONITORING_ENABLED", "GITHUB_TOKEN"],
-      "description": "Intelligent tool orchestration, route optimization, sequential thinking and multi-server workflow management."
+      "env": [
+        "MEMORY_FILE_PATH",
+        "SEQUENTIAL_THINKING_AVAILABLE",
+        "AWESOME_COPILOT_ENABLED",
+        "RELIABILITY_MONITORING_ENABLED",
+        "CHAINING_TOOL_TIMEOUT_MS",
+        "CHAINING_LLM_ENABLED",
+        "OPENROUTER_API_KEY",
+        "CHAINING_LLM_MODEL",
+        "CHAINING_LLM_BASE_URL",
+        "GITHUB_TOKEN"
+      ],
+      "description": "Intelligent tool orchestration, route optimization, sequential thinking, 42 prebuilt prompts, and native OpenRouter LLM intelligence engine."
     },
     "filesystem-mcp-server": {
       "name": "Filesystem MCP",
@@ -27,7 +38,7 @@
     },
     "Project-Guardian-mcp-server": {
       "name": "Project Guardian",
-      "repo": "https://github.com/1999AZZAR/database-mcp-server.git",
+      "repo": "https://github.com/1999AZZAR/Project-Guardian.git",
       "dir": "Project-Guardian-mcp-server",
       "runtime": "node",
       "entry": "dist/index.js",
@@ -47,7 +58,7 @@
       "needsGui": false,
       "needsDevice": false,
       "env": [],
-      "description": "System command execution with local/remote (SSH) support, sessions, timeouts and env control."
+      "description": "System command execution with local/remote (SSH) support, sessions, timeouts and env control with deep RTK integration."
     },
     "menager-mcp-server": {
       "name": "Menager MCP",
@@ -70,8 +81,20 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "env": ["GOOGLE_API_KEY", "GOOGLE_CSE_ID"],
+      "env": ["GOOGLE_API_KEY", "GOOGLE_CSE_ID", "WIKIPEDIA_CACHE_MAX", "WIKIPEDIA_CACHE_TTL", "WIKIPEDIA_DEFAULT_LANGUAGE"],
       "description": "Combined research platform: Google Search + Wikipedia with analysis, fact-checking and research sessions."
+    },
+    "the-designer": {
+      "name": "The Designer",
+      "repo": "https://github.com/1999AZZAR/the-designer.git",
+      "dir": "the-designer",
+      "runtime": "node",
+      "entry": "dist/index.js",
+      "build": "build",
+      "needsGui": false,
+      "needsDevice": false,
+      "env": [],
+      "description": "UI/UX design system selector, token generation, brand cloning and component preview generation."
     },
     "browser-agent": {
       "name": "Browser Agent",
@@ -108,18 +131,6 @@
       "needsDevice": false,
       "env": [],
       "description": "Autonomous 3D modeling system for Blender with iterative refinement and multi-agent reasoning. Requires local Blender installation."
-    },
-    "the-designer": {
-      "name": "The Designer",
-      "repo": "https://github.com/1999AZZAR/the-designer.git",
-      "dir": "the-designer",
-      "runtime": "node",
-      "entry": "dist/index.js",
-      "build": "build",
-      "needsGui": false,
-      "needsDevice": false,
-      "env": [],
-      "description": "UI/UX design system selector, token generation, brand cloning and component preview generation."
     }
   }
 }

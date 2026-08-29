@@ -61,6 +61,38 @@ function entryArgs(server, root) {
   return [path.join(root, server.dir, server.entry)];
 }
 
+function buildServerEnv(s, root) {
+  const env = {};
+  for (const key of (s.env || [])) {
+    if (key === 'MEMORY_FILE_PATH') {
+      env[key] = path.join(root, s.dir, 'data/memory.json');
+    } else if (key === 'CHAINING_TOOL_TIMEOUT_MS') {
+      env[key] = '10000';
+    } else if (key === 'CHAINING_LLM_ENABLED') {
+      env[key] = 'true';
+    } else if (key === 'CHAINING_LLM_MODEL') {
+      env[key] = 'openrouter/free';
+    } else if (key === 'CHAINING_LLM_BASE_URL') {
+      env[key] = 'https://openrouter.ai/api/v1';
+    } else if (key === 'OPENROUTER_API_KEY') {
+      env[key] = 'your-openrouter-api-key';
+    } else if (key === 'GITHUB_TOKEN') {
+      env[key] = 'your-github-token';
+    } else if (key === 'WIKIPEDIA_CACHE_MAX') {
+      env[key] = '100';
+    } else if (key === 'WIKIPEDIA_CACHE_TTL') {
+      env[key] = '300000';
+    } else if (key === 'WIKIPEDIA_DEFAULT_LANGUAGE') {
+      env[key] = 'en';
+    } else if (/_AVAILABLE$|_ENABLED$/.test(key)) {
+      env[key] = 'true';
+    } else {
+      env[key] = 'your-' + key.toLowerCase().replace(/_/g, '-');
+    }
+  }
+  return env;
+}
+
 function renderOpencode(servers, root) {
   const mcp = {};
   for (const s of servers) {
@@ -71,11 +103,24 @@ function renderOpencode(servers, root) {
       enabled: !!entry,
       command: entry ? [s.runtime || 'node', entry] : [],
     };
-    const env = {};
-    for (const key of (s.env || [])) {
-      if (/_AVAILABLE$|_ENABLED$/.test(key)) env[key] = 'true';
-      else env[key] = 'your-' + key.toLowerCase().replace(/_/g, '-');
-    }
+    const env = buildServerEnv(s, root);
+    if (Object.keys(env).length) block.environment = env;
+    mcp[name] = block;
+  }
+  return JSON.stringify({ mcp }, null, 2);
+}
+
+function renderKilo(servers, root) {
+  const mcp = {};
+  for (const s of servers) {
+    const name = s.id.replace('-mcp-server', '').replace('-mcp', '');
+    const entry = s.entry ? path.join(root, s.dir, s.entry) : null;
+    const block = {
+      type: 'local',
+      enabled: true,
+      command: entry ? [s.runtime || 'node', entry] : [],
+    };
+    const env = buildServerEnv(s, root);
     if (Object.keys(env).length) block.environment = env;
     mcp[name] = block;
   }
@@ -86,11 +131,7 @@ function renderNode(servers, root, keyName = 'mcpServers') {
   const serversObj = {};
   for (const s of servers) {
     const name = s.id.replace('-mcp-server', '').replace('-mcp', '');
-    const env = {};
-    for (const key of (s.env || [])) {
-      if (/_AVAILABLE$|_ENABLED$/.test(key)) env[key] = 'true';
-      else env[key] = 'your-' + key.toLowerCase().replace(/_/g, '-');
-    }
+    const env = buildServerEnv(s, root);
     serversObj[name] = {
       command: s.runtime || 'node',
       args: entryArgs(s, root),
@@ -98,6 +139,26 @@ function renderNode(servers, root, keyName = 'mcpServers') {
     };
   }
   return JSON.stringify({ [keyName]: serversObj }, null, 2);
+}
+
+function renderCodexToml(servers, root) {
+  const lines = ['# Generated Codex / ChatGPT MCP Server Configuration\n'];
+  for (const s of servers) {
+    const name = s.id.replace('-mcp-server', '').replace('-mcp', '');
+    const entry = s.entry ? path.join(root, s.dir, s.entry) : '';
+    lines.push(`[mcpServers.${name}]`);
+    lines.push(`command = "${s.runtime || 'node'}"`);
+    lines.push(`args = ["${entry}"]`);
+    const env = buildServerEnv(s, root);
+    if (Object.keys(env).length > 0) {
+      lines.push(`[mcpServers.${name}.env]`);
+      for (const [k, v] of Object.entries(env)) {
+        lines.push(`${k} = "${v}"`);
+      }
+    }
+    lines.push('');
+  }
+  return lines.join('\n');
 }
 
 function renderDocker(servers) {
@@ -131,7 +192,7 @@ function renderPrint(servers, root) {
 function main() {
   const args = parseArgs(process.argv.slice(2));
   if (!args.profile || !args.backend) {
-    console.error('Usage: node scripts/generate-config.mjs <profileId> --backend <cursor|claude|opencode|zed|docker|print> [--root <path>] [--out <file>]');
+    console.error('Usage: node scripts/generate-config.mjs <profileId> --backend <cursor|claude|gemini|antigravity|opencode|kilo|zed|codex|docker|print> [--root <path>] [--out <file>]');
     process.exit(1);
   }
 
@@ -150,6 +211,8 @@ function main() {
   switch (args.backend) {
     case 'cursor':
     case 'claude':
+    case 'gemini':
+    case 'antigravity':
       out = renderNode(servers, root, 'mcpServers') + '\n';
       break;
     case 'zed':
@@ -158,6 +221,12 @@ function main() {
     case 'opencode':
       out = renderOpencode(servers, root) + '\n';
       break;
+    case 'kilo':
+      out = renderKilo(servers, root) + '\n';
+      break;
+    case 'codex':
+      out = renderCodexToml(servers, root) + '\n';
+      break;
     case 'docker':
       out = renderDocker(servers) + '\n';
       break;
@@ -165,7 +234,7 @@ function main() {
       out = renderPrint(servers, root) + '\n';
       break;
     default:
-      console.error(`Unknown backend "${args.backend}". Use cursor|claude|opencode|zed|docker|print.`);
+      console.error(`Unknown backend "${args.backend}". Use cursor|claude|gemini|antigravity|opencode|kilo|zed|codex|docker|print.`);
       process.exit(1);
   }
 

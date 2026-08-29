@@ -48,20 +48,20 @@ See [Profiles](docs/profiles.md) for the full profile reference and custom-profi
 
 ### Core Servers
 
-| Server                                                                                  | Purpose                        | Key Features                                                    |
-| --------------------------------------------------------------------------------------- | ------------------------------ | --------------------------------------------------------------- |
-| [**Chaining MCP**](https://github.com/1999AZZAR/chaining-mcp-server)                 | Intelligent tool orchestration | Route optimization, sequential thinking, workflow orchestration |
-| [**Filesystem MCP**](https://github.com/1999AZZAR/filesystem-mcp-server)             | Advanced file operations       | File manipulation, directory operations, search capabilities    |
-| [**Project Guardian MCP**](https://github.com/1999AZZAR/Project-Guardian-mcp-server) | Project memory management      | Knowledge graphs, task tracking, database operations            |
-| [**Terminal MCP**](https://github.com/1999AZZAR/terminal-mcp-server)                 | System command execution       | Remote execution, session management, cross-platform support    |
-| [**Menager MCP**](https://github.com/1999AZZAR/menager-mcp-server)                 | Terminal Orchestration         | Polyglot harness multiplexing, Regex hooks, PTY session management |
-| [**Researcher MCP**](https://github.com/1999AZZAR/research-assistant-mcp-server)    | Combined research platform     | Unified Google Search + Wikipedia with additional analysis tools |
-| [**Browser Agent MCP**](https://github.com/1999AZZAR/browser-agent)             | Browser automation             | Playwright-based web interaction, scraping, automation          |
-| [**The Designer MCP**](https://github.com/1999AZZAR/the-designer)              | UI/UX design tooling           | Style evaluation, tokens, component + Tailwind generation       |
-| [**scrcpy MCP**](https://github.com/1999AZZAR/scrcpy-mcp) *(GUI/device)*        | Android device control         | ADB + scrcpy automation, UI inspection, app control             |
-| [**LL3M Agent MCP**](https://github.com/1999AZZAR/ll3m-agent) *(GUI)*          | Autonomous 3D modeling         | Blender scene generation, iterative refinement                  |
+| Server | Purpose | Key Features |
+| --- | --- | --- |
+| [**Chaining MCP**](https://github.com/1999AZZAR/chaining-mcp-server) | Intelligent tool orchestration & routing | OpenRouter LLM engine, task decomposition, sequential thinking, 42 prompts |
+| [**Filesystem MCP**](https://github.com/1999AZZAR/filesystem-mcp-server) | Advanced file operations | File manipulation, directory search, archive, watching |
+| [**Project Guardian MCP**](https://github.com/1999AZZAR/Project-Guardian) | Project memory management | Knowledge graphs, task tracking, living memory SQLite operations |
+| [**Terminal MCP**](https://github.com/1999AZZAR/terminal-mcp-server) | System command execution | Remote execution, session management, RTK token-optimized execution |
+| [**Menager MCP**](https://github.com/1999AZZAR/menager-mcp-server) | Terminal Orchestration | Polyglot harness multiplexing, Regex hooks, PTY session management |
+| [**Researcher MCP**](https://github.com/1999AZZAR/research-mcp-server) | Combined research platform | Unified Google Search + Wikipedia with analysis and fact-checking |
+| [**The Designer MCP**](https://github.com/1999AZZAR/the-designer) | UI/UX design tooling | Style evaluation, design tokens, component + Tailwind generation |
+| [**Browser Agent MCP**](https://github.com/1999AZZAR/Browser-Agent) | Browser automation | Playwright-based web interaction, scraping, automation (88 tools) |
+| [**scrcpy MCP**](https://github.com/1999AZZAR/scrcpy-mcp) *(GUI/device)* | Android device control | ADB + scrcpy automation, UI inspection, app control |
+| [**LL3M Agent MCP**](https://github.com/1999AZZAR/ll3m-agent) *(GUI)* | Autonomous 3D modeling | Blender scene generation, iterative refinement |
 
-All servers are listed in `config/inventory.json`; *(GUI)*/*(device)* servers ship only in matching headless-appropriate profiles.
+All servers are listed in `config/inventory.json`; *(GUI)*/*(device)* servers ship only in matching profiles.
 
 ## Quick Start
 
@@ -83,28 +83,33 @@ All servers are listed in `config/inventory.json`; *(GUI)*/*(device)* servers sh
 
 2. **Interactive Setup:**
 
-   The setup script will guide you through the installation:
+   The setup script will guide you through installation and client configuration:
 
    ```bash
    ./setup.sh
    ```
 
-   **Setup Process:**
-   - Checks prerequisites (Node.js, Git)
-   - Prompts for target system and use-case **profile**
-   - Clones/builds only the servers in that profile
-   - Prompts for MCP client selection:
-     - **Cursor IDE** - Automatic configuration
-     - **Claude Desktop** - Automatic configuration
-     - **OpenCode** - Automatic configuration
-     - **Docker Compose** - Container setup
+   **Non-interactive one-liner:**
+   ```bash
+   ./setup.sh --profile headless-server --client cursor
+   ```
+
+   **Supported MCP Clients:**
+   - **Cursor IDE** (`~/.cursor/mcp.json`)
+   - **Claude Desktop / CLI** (`~/.claude.json`)
+   - **Antigravity CLI / Gemini** (`~/.gemini/antigravity-cli/mcp_config.json`)
+   - **OpenCode** (`config/opencode.generated.json`)
+   - **Kilo CLI** (`~/.config/kilo/config.json`)
+   - **Zed Editor** (`~/.config/zed/settings.json`)
+   - **Codex / ChatGPT** (`~/.codex/config.toml`)
+   - **Docker Compose** (`config/docker-compose.generated.yml`)
 
 ### MCP Client Configuration
 
-The example configs below reflect the `dev-workspace` profile. To generate config for a different profile/client, use the generator:
+The example configs below reflect the `dev-workspace` profile. To generate a custom configuration for any profile/client:
 
 ```bash
-node scripts/generate-config.mjs <profile> --backend <cursor|claude|opencode|zed|docker|print>
+node scripts/generate-config.mjs <profile> --backend <cursor|claude|gemini|antigravity|opencode|kilo|zed|codex|docker|print>
 ```
 
 The full, current examples are also checked in as `config/cursor-example.json`, `config/claude-example.json`, `config/opencode-example.json`, and `config/zed-example.json`.
@@ -260,14 +265,15 @@ All servers are defined in `config/inventory.json`; a server can be added to any
 
 **Repository:** [chaining-mcp-server](https://github.com/1999AZZAR/chaining-mcp-server)
 
-Intelligent tool orchestration and workflow management server featuring:
+Intelligent tool orchestration, route optimization, and autonomous workflow server featuring:
 
-- Server discovery and tool analysis
-- Route optimization with complexity assessment
-- Sequential thinking and brainstorming capabilities
-- Multi-server workflow orchestration
-- Time zone management and conversion
-- Awesome Copilot integration for development guidance
+- **Built-in OpenRouter LLM Engine**: Task decomposition (`llm_decompose_task`), AI route ranking (`llm_suggest_route`), high-density summarization (`llm_summarize`), and prompt execution (`llm_query`)
+- **Resilient Fallback**: 100% offline zero-key operation with instant local heuristic planning (<30ms)
+- **TTL Caching & Fast Discovery**: 60s in-memory discovery caching with bounded path traversal
+- **Sequential Thinking & Brainstorming**: Bounded multi-branch reasoning trees with revision tracking
+- **Workflow Orchestration**: Linear and staged execution engine with dynamic variable substitution
+- **42 Prebuilt Prompts & 12 Resource Sets**: Multi-token search for architecture, development, security, and verification templates
+- **Telemetry & Health Endpoints**: Real-time resources (`chaining://health`, `chaining://cache/stats`, `chaining://llm/*`)
 
 ![Blotcat orchestrating multiple tools and routing workflow traffic](assets/blotcat-illustrations/02-chaining-orchestration.jpg)
 

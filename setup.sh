@@ -101,7 +101,11 @@ generate_client_config() {
         claude)
             if [[ "$OSTYPE" == "darwin"* ]]; then out="$HOME/Library/Application Support/Claude/claude_desktop_config.json";
             elif [[ "$OSTYPE" == "msys"* ]] || [[ "$OSTYPE" == "win32" ]]; then out="$APPDATA/Claude/claude_desktop_config.json";
-            else out="$HOME/.config/Claude/claude_desktop_config.json"; fi ;;
+            else out="$HOME/.claude.json"; fi ;;
+        gemini|antigravity) out="$HOME/.gemini/antigravity-cli/mcp_config.json" ;;
+        kilo) out="$HOME/.config/kilo/config.json" ;;
+        zed) out="$HOME/.config/zed/settings.json" ;;
+        codex) out="$HOME/.codex/config.toml" ;;
         opencode) out="$MCP_ECOSYSTEM_ROOT/config/opencode.generated.json" ;;
         docker)   out="$MCP_ECOSYSTEM_ROOT/config/docker-compose.generated.yml" ;;
         skip) return 0 ;;
@@ -147,14 +151,28 @@ main() {
     if [ -z "$MCP_CLIENT" ]; then
         echo
         print_status "Generate MCP client config?"
-        echo "  1) Cursor IDE"
-        echo "  2) Claude Desktop"
-        echo "  3) OpenCode"
-        echo "  4) Docker Compose"
-        echo "  5) Skip"
-        print_question "Choice (1-5): "
+        echo "  1) Cursor IDE (~/.cursor/mcp.json)"
+        echo "  2) Claude Desktop (~/.claude.json)"
+        echo "  3) Antigravity CLI / Gemini (~/.gemini/antigravity-cli/mcp_config.json)"
+        echo "  4) OpenCode (config/opencode.generated.json)"
+        echo "  5) Kilo CLI (~/.config/kilo/config.json)"
+        echo "  6) Zed Editor (~/.config/zed/settings.json)"
+        echo "  7) Codex / ChatGPT (~/.codex/config.toml)"
+        echo "  8) Docker Compose"
+        echo "  9) Skip"
+        print_question "Choice (1-9): "
         read -r MCP_CLIENT
-        case "$MCP_CLIENT" in 1) MCP_CLIENT=cursor;; 2) MCP_CLIENT=claude;; 3) MCP_CLIENT=opencode;; 4) MCP_CLIENT=docker;; *) MCP_CLIENT=skip;; esac
+        case "$MCP_CLIENT" in
+            1) MCP_CLIENT=cursor;;
+            2) MCP_CLIENT=claude;;
+            3) MCP_CLIENT=antigravity;;
+            4) MCP_CLIENT=opencode;;
+            5) MCP_CLIENT=kilo;;
+            6) MCP_CLIENT=zed;;
+            7) MCP_CLIENT=codex;;
+            8) MCP_CLIENT=docker;;
+            *) MCP_CLIENT=skip;;
+        esac
     fi
     generate_client_config "$MCP_CLIENT"
     print_success "Done. Restart your MCP client to pick up the new config."
