@@ -1,6 +1,88 @@
 /**
- * HeLa MCP Ecosystem — Interactive Developer Workbench Application
+ * HeLa MCP Ecosystem — Master Documentation & Developer Platform
+ * Powered by canonical specs from docs/architecture.md, docs/workflows.md, docs/profiles.md
  */
+
+const WORKFLOWS = {
+  "workflow-a": {
+    "title": "Workflow A: Autonomous Feature Engineering",
+    "profiles": ["dev-workspace", "headless-server"],
+    "components": ["hela-genome", "hela-mitosis", "hela-membrane", "hela-nucleus"],
+    "desc": "Full-stack code modification with context restoration, step-by-step reasoning, workspace edits, and test execution.",
+    "sequence": [
+      { "step": 1, "target": "HeLa Genome", "tool": "get_session_context", "purpose": "Restore architectural constraints & dependencies from memory.db" },
+      { "step": 2, "target": "HeLa Mitosis", "tool": "analyze_with_sequential_thinking", "purpose": "Decompose feature requirements into atomic implementation steps" },
+      { "step": 3, "target": "HeLa Membrane", "tool": "write_file", "purpose": "Apply minimal, production-ready code changes to workspace" },
+      { "step": 4, "target": "HeLa Nucleus", "tool": "execute_command", "purpose": "Run automated test suite (e.g. npm test or pytest)" },
+      { "step": 5, "target": "HeLa Genome", "tool": "add_observation", "purpose": "Commit task completion and new relations to knowledge graph" }
+    ]
+  },
+  "workflow-b": {
+    "title": "Workflow B: Deep Research & Architecture Synthesis",
+    "profiles": ["research", "dev-workspace"],
+    "components": ["hela-enzyme", "hela-cytosol", "hela-mitosis", "hela-genome", "hela-membrane"],
+    "desc": "Aggregated search across Wikipedia and Google, live web scraping via Playwright, and knowledge graph ingestion.",
+    "sequence": [
+      { "step": 1, "target": "HeLa Enzyme", "tool": "wikipedia_search / google_search", "purpose": "Query technical literature and API reference documentation" },
+      { "step": 2, "target": "HeLa Cytosol", "tool": "browser_navigate -> browser_get_page_markdown", "purpose": "Extract structured documentation from target URLs" },
+      { "step": 3, "target": "HeLa Mitosis", "tool": "llm_summarize", "purpose": "Synthesize comparative analysis of architectural trade-offs" },
+      { "step": 4, "target": "HeLa Genome", "tool": "create_entity + add_observation", "purpose": "Store technical entities and observations in memory.db" },
+      { "step": 5, "target": "HeLa Membrane", "tool": "write_file", "purpose": "Save markdown summary document to workspace docs/" }
+    ]
+  },
+  "workflow-c": {
+    "title": "Workflow C: UI Design Synthesis & Browser Verification",
+    "profiles": ["web-devops", "dev-workspace"],
+    "components": ["hela-phenotype", "hela-membrane", "hela-nucleus", "hela-cytosol", "hela-genome"],
+    "desc": "Automated design token generation, OKLCH palette synthesis, live dev server launch, and DOM visual verification.",
+    "sequence": [
+      { "step": 1, "target": "HeLa Phenotype", "tool": "generate_tokens / palette_fetch", "purpose": "Generate OKLCH color tokens, typography scales, and Tailwind config" },
+      { "step": 2, "target": "HeLa Membrane", "tool": "write_file", "purpose": "Create component JSX and tailwind.config.js" },
+      { "step": 3, "target": "HeLa Nucleus", "tool": "execute_command", "purpose": "Spawn local development web server" },
+      { "step": 4, "target": "HeLa Cytosol", "tool": "browser_navigate -> browser_screenshot", "purpose": "Verify DOM accessibility tree and take rendered screenshot" },
+      { "step": 5, "target": "HeLa Genome", "tool": "add_observation", "purpose": "Record verified design milestone and snapshot reference in memory.db" }
+    ]
+  },
+  "workflow-d": {
+    "title": "Workflow D: Mobile Device Automation & UI Testing",
+    "profiles": ["android-testing", "all"],
+    "components": ["hela-genome", "hela-nucleus", "hela-receptor"],
+    "desc": "Hardware Android bridge, XML view hierarchy inspection, and physical interaction without token-heavy screenshot loops.",
+    "sequence": [
+      { "step": 1, "target": "HeLa Receptor", "tool": "device_list", "purpose": "Discover connected physical/emulated Android devices via ADB" },
+      { "step": 2, "target": "HeLa Receptor", "tool": "start_session", "purpose": "Initialize scrcpy control stream and input handler" },
+      { "step": 3, "target": "HeLa Receptor", "tool": "ui_dump", "purpose": "Inspect structural XML/axtree view hierarchy token-efficiently" },
+      { "step": 4, "target": "HeLa Receptor", "tool": "tap / input_text", "purpose": "Execute touch coordinates and automated form inputs" },
+      { "step": 5, "target": "HeLa Genome", "tool": "add_observation", "purpose": "Commit test execution results and state to SQLite memory graph" }
+    ]
+  },
+  "workflow-e": {
+    "title": "Workflow E: Interactive PTY Process Orchestration",
+    "profiles": ["dev-workspace", "headless-server"],
+    "components": ["hela-ribosome", "hela-nucleus", "hela-genome"],
+    "desc": "Long-running build management, interactive REPLs, and Regex-driven lifecycle automation.",
+    "sequence": [
+      { "step": 1, "target": "HeLa Ribosome", "tool": "session_spawn", "purpose": "Spawn interactive background PTY process (e.g. build tool, REPL)" },
+      { "step": 2, "target": "HeLa Ribosome", "tool": "session_read", "purpose": "Stream bounded stdout/stderr output chunks" },
+      { "step": 3, "target": "HeLa Ribosome", "tool": "session_hook", "purpose": "Attach Regex patterns to trigger automated responses on match" },
+      { "step": 4, "target": "HeLa Ribosome", "tool": "session_close", "purpose": "Gracefully terminate process and clean up PTY harness" },
+      { "step": 5, "target": "HeLa Genome", "tool": "add_observation", "purpose": "Record process build logs and exit status in memory.db" }
+    ]
+  },
+  "workflow-f": {
+    "title": "Workflow F: Autonomous Blender 3D Procedural Modeling",
+    "profiles": ["3d-modeling", "all"],
+    "components": ["hela-genome", "hela-mitosis", "hela-plastid", "hela-membrane"],
+    "desc": "High-fidelity procedural 3D modeling, material generation, lighting, and rendering directly in Blender.",
+    "sequence": [
+      { "step": 1, "target": "HeLa Plastid", "tool": "generate_modeling_plan", "purpose": "Decompose 3D prompt into phased procedural Blender scripts" },
+      { "step": 2, "target": "HeLa Plastid", "tool": "execute_blender_code", "purpose": "Execute Python script to create geometry, materials, and lighting" },
+      { "step": 3, "target": "HeLa Plastid", "tool": "render_output", "purpose": "Render high-resolution PNG snapshot from camera perspective" },
+      { "step": 4, "target": "HeLa Plastid", "tool": "save_blend", "purpose": "Save binary .blend file into workspace assets/" },
+      { "step": 5, "target": "HeLa Genome", "tool": "add_observation", "purpose": "Record 3D asset metadata and render path in memory.db" }
+    ]
+  }
+};
 
 const INVENTORY = {
   "hela-mitosis": {
@@ -9,7 +91,9 @@ const INVENTORY = {
     "scope": "core",
     "role": "Orchestrator Backbone",
     "entry": "dist/index.js",
-    "desc": "Dynamic peer discovery, sequential reasoning, prompt templates"
+    "toolsCount": 18,
+    "tools": ["analyze_with_sequential_thinking", "sequentialthinking", "workflow_orchestrator", "llm_decompose_task", "llm_query", "llm_summarize", "search_prompts", "get_prompt", "list_mcp_servers", "validate_tool_chain"],
+    "desc": "Cellular division & orchestration backbone. Dynamic peer tool discovery, step-by-step reasoning, task decomposition, and 42 domain prompt templates."
   },
   "hela-genome": {
     "alias": "HeLa Genome",
@@ -17,7 +101,9 @@ const INVENTORY = {
     "scope": "core",
     "role": "State & Memory Backbone",
     "entry": "dist/index.js",
-    "desc": "Living SQLite knowledge graph, decision memory, task tracking"
+    "toolsCount": 34,
+    "tools": ["initialize_memory", "create_entity", "create_relation", "add_observation", "search_nodes", "open_node", "get_session_context", "sync_central_memory", "execute_sql", "query_data", "inspect_untrusted_text", "scan_project_secrets"],
+    "desc": "Living SQLite knowledge graph (memory.db) with FTS5 search, entity-relation tracking, cross-session context restoration, and decision memory."
   },
   "hela-membrane": {
     "alias": "HeLa Membrane",
@@ -25,7 +111,9 @@ const INVENTORY = {
     "scope": "core",
     "role": "Workspace Filesystem",
     "entry": "dist/index.js",
-    "desc": "Sandboxed filesystem operations, file search & archives"
+    "toolsCount": 16,
+    "tools": ["read_file", "write_file", "copy_file", "move_file", "delete_file", "get_file_info", "create_directory", "list_directory", "find_files", "search_in_files", "watch_file", "archive_files", "extract_archive"],
+    "desc": "Sandboxed filesystem boundary. Deep recursive directory search, file watching, binary inspection, and archive manipulation."
   },
   "hela-nucleus": {
     "alias": "HeLa Nucleus",
@@ -33,7 +121,9 @@ const INVENTORY = {
     "scope": "core",
     "role": "Execution Boundary",
     "entry": "build/index.js",
-    "desc": "Isolated command execution, subshell containment, RTK optimization"
+    "toolsCount": 5,
+    "tools": ["execute_command", "transfer_file", "terminal_ls", "terminal_grep", "terminal_cat"],
+    "desc": "Isolated command execution, subshell containment, environment sanitization, and RTK token optimization."
   },
   "hela-ribosome": {
     "alias": "HeLa Ribosome",
@@ -41,7 +131,9 @@ const INVENTORY = {
     "scope": "core",
     "role": "Process Harness",
     "entry": "build/index.js",
-    "desc": "Polyglot interactive PTY multiplexing, Regex hooks & teardown"
+    "toolsCount": 11,
+    "tools": ["session_spawn", "session_resize", "session_wait", "session_write", "session_read", "session_hook", "session_close", "session_signal", "session_info", "session_prune", "session_list"],
+    "desc": "Polyglot interactive PTY session multiplexing, Regex-driven automated hooks, and process lifecycle teardown."
   },
   "hela-enzyme": {
     "alias": "HeLa Enzyme",
@@ -49,7 +141,9 @@ const INVENTORY = {
     "scope": "core",
     "role": "Knowledge Synthesis",
     "entry": "dist/index.js",
-    "desc": "Unified Google Search & cached Wikipedia fact-checking"
+    "toolsCount": 28,
+    "tools": ["google_search", "wikipedia_search", "wikipedia_get_summary", "fact_checker", "academic_search", "content_summarizer", "extract_content", "research_assistant", "keyword_extraction", "content_sentiment_analysis"],
+    "desc": "Unified Google Search and Wikipedia caching, academic paper search, automated fact-checking, and content extraction."
   },
   "hela-cytosol": {
     "alias": "HeLa Cytosol",
@@ -57,7 +151,9 @@ const INVENTORY = {
     "scope": "core",
     "role": "Browser Interaction",
     "entry": "src/server.js",
-    "desc": "Playwright browser automation & accessibility tree perception"
+    "toolsCount": 93,
+    "tools": ["browser_navigate", "browser_click", "browser_fill_form", "browser_screenshot", "browser_get_page_markdown", "browser_get_accessibility_tree", "browser_intercept", "browser_generate_playwright_test", "browser_extract_schema", "browser_ocr"],
+    "desc": "Full Playwright browser automation, DOM accessibility tree perception, network request interception, and screenshot capture."
   },
   "hela-phenotype": {
     "alias": "HeLa Phenotype",
@@ -65,7 +161,9 @@ const INVENTORY = {
     "scope": "specialized",
     "role": "Design & Tokens",
     "entry": "dist/index.js",
-    "desc": "UI/UX design system tokens, OKLCH palettes, Tailwind synthesis"
+    "toolsCount": 29,
+    "tools": ["generate_rules", "generate_tokens", "palette_fetch", "brand_fetch_design_md", "generate_tailwind_config", "generate_8state_component", "audit_accessibility", "evaluate_style", "generate_motion_snippet"],
+    "desc": "UI/UX design system tokens, OKLCH palettes, brand-clone patterns (Linear, Vercel, Stripe), Tailwind CSS synthesis, and 8-state components."
   },
   "hela-receptor": {
     "alias": "HeLa Receptor",
@@ -73,7 +171,9 @@ const INVENTORY = {
     "scope": "specialized",
     "role": "Mobile Automation",
     "entry": "dist/server.js",
-    "desc": "Android device control, ADB bridge & XML view inspection"
+    "toolsCount": 46,
+    "tools": ["start_session", "device_list", "device_info", "ui_dump", "ui_find_element", "tap", "swipe", "input_text", "key_event", "screenshot", "screen_record_start", "app_install", "shell_exec"],
+    "desc": "Android physical and emulated device automation via ADB bridge, structural XML view hierarchy inspection, and UI tapping."
   },
   "hela-plastid": {
     "alias": "HeLa Plastid",
@@ -81,38 +181,61 @@ const INVENTORY = {
     "scope": "specialized",
     "role": "3D Blender Modeling",
     "entry": "dist/index.js",
-    "desc": "Autonomous Blender procedural 3D modeling & render pipeline"
+    "toolsCount": 15,
+    "tools": ["generate_modeling_plan", "execute_blender_code", "get_scene_summary", "render_output", "save_blend", "get_screenshot", "get_fast_feedback", "execute_staged_refinement"],
+    "desc": "Autonomous Blender procedural 3D modeling, material shaders, studio lighting setups, and automated rendering pipeline."
   }
 };
 
 const PROFILES = {
   "dev-workspace": {
     "name": "Dev Workspace (Full Desktop)",
-    "servers": ["hela-mitosis", "hela-genome", "hela-membrane", "hela-nucleus", "hela-ribosome", "hela-enzyme", "hela-phenotype", "hela-cytosol"]
+    "target": "Desktop / Full-Stack Workstation",
+    "servers": ["hela-mitosis", "hela-genome", "hela-membrane", "hela-nucleus", "hela-ribosome", "hela-enzyme", "hela-phenotype", "hela-cytosol"],
+    "totalTools": 234,
+    "desc": "Complete workstation environment with full-stack coding, browser testing, knowledge graphs, interactive PTY, and UI design token synthesis."
   },
   "headless-server": {
     "name": "Headless Server (Core 7)",
-    "servers": ["hela-mitosis", "hela-genome", "hela-membrane", "hela-nucleus", "hela-ribosome", "hela-enzyme", "hela-phenotype"]
+    "target": "CI/CD / Cloud VPS / Remote Server",
+    "servers": ["hela-mitosis", "hela-genome", "hela-membrane", "hela-nucleus", "hela-ribosome", "hela-enzyme", "hela-phenotype"],
+    "totalTools": 141,
+    "desc": "Hardened server profile with zero GUI dependencies (no Playwright/Chromium, ADB, or Blender required). Instant startup."
   },
   "research": {
     "name": "Research Terminal",
-    "servers": ["hela-mitosis", "hela-genome", "hela-enzyme", "hela-membrane", "hela-cytosol"]
+    "target": "Literature & Knowledge Synthesis",
+    "servers": ["hela-mitosis", "hela-genome", "hela-enzyme", "hela-membrane", "hela-cytosol"],
+    "totalTools": 189,
+    "desc": "Specialized in academic discovery, fact-checking, web crawling, and knowledge graph mapping."
   },
   "web-devops": {
     "name": "Web Dev & Verification",
-    "servers": ["hela-mitosis", "hela-genome", "hela-membrane", "hela-nucleus", "hela-phenotype", "hela-cytosol"]
+    "target": "Frontend / DevOps / QA Automation",
+    "servers": ["hela-mitosis", "hela-genome", "hela-membrane", "hela-nucleus", "hela-phenotype", "hela-cytosol"],
+    "totalTools": 195,
+    "desc": "Tailored for frontend feature development, Tailwind CSS token synthesis, live DOM inspection, and Playwright verification."
   },
   "android-testing": {
     "name": "Android Mobile QA",
-    "servers": ["hela-mitosis", "hela-genome", "hela-nucleus", "hela-receptor", "hela-enzyme"]
+    "target": "Mobile QA Engineers",
+    "servers": ["hela-mitosis", "hela-genome", "hela-nucleus", "hela-receptor", "hela-enzyme"],
+    "totalTools": 131,
+    "desc": "Dedicated Android hardware testing with ADB bridge, structural XML view hierarchy parsing, and touch automation."
   },
   "3d-modeling": {
     "name": "Blender 3D Modeling",
-    "servers": ["hela-mitosis", "hela-genome", "hela-plastid", "hela-membrane", "hela-nucleus"]
+    "target": "3D Designers / Game Devs",
+    "servers": ["hela-mitosis", "hela-genome", "hela-plastid", "hela-membrane", "hela-nucleus"],
+    "totalTools": 88,
+    "desc": "Specialized in autonomous Blender procedural 3D modeling, material generation, and camera rendering pipelines."
   },
   "all": {
     "name": "All (Full 10-MCP Stack)",
-    "servers": Object.keys(INVENTORY)
+    "target": "Unrestricted Master Agent",
+    "servers": Object.keys(INVENTORY),
+    "totalTools": 295,
+    "desc": "The complete 10-server ecosystem with all 295 active tools enabled across all specialized capabilities."
   }
 };
 
@@ -262,6 +385,45 @@ function renderConfig(profileKey, clientKey) {
   return "// Select a client and profile.";
 }
 
+function renderWorkflow(wfKey) {
+  const wf = WORKFLOWS[wfKey];
+  if (!wf) return "";
+
+  let html = `
+    <div class="wf-detail-card">
+      <div class="wf-header">
+        <h3>${wf.title}</h3>
+        <span class="wf-profiles">Profiles: ${wf.profiles.join(", ")}</span>
+      </div>
+      <p class="wf-desc">${wf.desc}</p>
+
+      <div class="wf-steps-list">
+        <h4>Step-by-Step Tool Invocation Pipeline</h4>
+  `;
+
+  wf.sequence.forEach((s) => {
+    html += `
+      <div class="wf-step-item">
+        <div class="step-num">${s.step}</div>
+        <div class="step-content">
+          <div class="step-title">
+            <strong>${s.target}</strong>
+            <code>${s.tool}</code>
+          </div>
+          <div class="step-purpose">${s.purpose}</div>
+        </div>
+      </div>
+    `;
+  });
+
+  html += `
+      </div>
+    </div>
+  `;
+
+  return html;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   // Configurator
   const profileSelect = document.getElementById("profileSelect");
@@ -316,4 +478,19 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  // Workflows Interactive Tabs
+  const wfContainer = document.getElementById("workflowDisplay");
+  const wfTabs = document.querySelectorAll(".wf-tab-btn");
+  if (wfContainer && wfTabs.length > 0) {
+    wfContainer.innerHTML = renderWorkflow("workflow-a");
+    wfTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        wfTabs.forEach((t) => t.classList.remove("active"));
+        tab.classList.add("active");
+        const wfId = tab.getAttribute("data-wf");
+        wfContainer.innerHTML = renderWorkflow(wfId);
+      });
+    });
+  }
 });

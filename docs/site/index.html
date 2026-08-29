@@ -20,6 +20,7 @@
         </div>
       </div>
       <nav class="nav-menu">
+        <a href="#workflows">Workflows</a>
         <a href="#architecture">Architecture</a>
         <a href="#configurator">Configurator</a>
         <a href="#showcase">Showcases</a>
@@ -39,7 +40,7 @@
 
           <div class="hero-actions">
             <a href="#configurator" class="btn btn-cyan">Configure Client</a>
-            <a href="#showcase" class="btn btn-outline">View Showcases</a>
+            <a href="#workflows" class="btn btn-outline">Explore Workflows</a>
           </div>
 
           <div class="quick-bar">
@@ -83,6 +84,31 @@ HeLa Receptor      specialized  present      [READY] Stdio JSON-RPC OK
 HeLa Plastid       specialized  present      [READY] Stdio JSON-RPC OK
 
 SUCCESS: All required HeLa MCP servers and dependencies are healthy!</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflows A–F Section -->
+    <section class="section" id="workflows">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-label">Operational Pipelines</div>
+          <h2 class="section-heading">Cross-MCP Workflow Engine</h2>
+        </div>
+
+        <div class="wf-container">
+          <div class="wf-tabs-nav">
+            <button class="wf-tab-btn active" data-wf="workflow-a">Workflow A: Feature Engineering</button>
+            <button class="wf-tab-btn" data-wf="workflow-b">Workflow B: Deep Research</button>
+            <button class="wf-tab-btn" data-wf="workflow-c">Workflow C: Web UI & Design</button>
+            <button class="wf-tab-btn" data-wf="workflow-d">Workflow D: Mobile Device QA</button>
+            <button class="wf-tab-btn" data-wf="workflow-e">Workflow E: Interactive PTY</button>
+            <button class="wf-tab-btn" data-wf="workflow-f">Workflow F: Blender 3D</button>
+          </div>
+
+          <div id="workflowDisplay">
+            <!-- Rendered by app.js -->
+          </div>
         </div>
       </div>
     </section>
