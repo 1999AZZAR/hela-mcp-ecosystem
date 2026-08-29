@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagnostics & Troubleshooting — HeLa MCP Ecosystem</title>
+  <meta name="description" content="Doctor diagnostics, error resolution guide, and security audit principles for the HeLa MCP Ecosystem.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container header-inner">
+      <div class="brand-block">
+        <a href="index.html" class="brand-title">HeLa MCP Ecosystem</a>
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span>v1.0.0 (c2cdf68)</span>
+        </div>
+      </div>
+      <nav class="nav-menu">
+        <a href="index.html">Workbench</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="workflows.html">Workflows</a>
+        <a href="profiles.html">Profiles</a>
+        <a href="showcase.html">Showcases</a>
+        <a href="troubleshooting.html" class="nav-active">Diagnostics</a>
+        <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" class="gh-link">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Banner -->
+    <div class="page-banner">
+      <div class="container">
+        <div class="page-label">Health & Reliability</div>
+        <h1 class="page-title">Diagnostics & Troubleshooting</h1>
+        <p class="page-lead">Comprehensive automated diagnostic suite and guided playbooks for resolving common environment, runtime, database, and client communication issues.</p>
+      </div>
+    </div>
+
+    <!-- Doctor Diagnostic Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-label">Diagnostic Tool</div>
+          <h2 class="section-heading">Running Doctor Diagnostics</h2>
+        </div>
+
+        <p style="color: var(--text-muted); margin-bottom: 20px;">The fastest way to diagnose your ecosystem is running the built-in diagnostic tool:</p>
+
+        <div class="quick-bar" style="margin-bottom: 24px;">
+          <span class="quick-cmd">./setup.sh doctor</span>
+        </div>
+
+        <p style="color: var(--text-muted); margin-bottom: 24px;">Doctor automatically audits 5 core subsystems:</p>
+
+        <div class="arch-dual-grid">
+          <div class="organelle-card">
+            <h4>1. Host Prerequisites</h4>
+            <p>Checks Node.js (>=18.0.0), npm, Git, SQLite3 CLI, and optional Python 3.</p>
+          </div>
+
+          <div class="organelle-card">
+            <h4>2. Server Builds & Entries</h4>
+            <p>Verifies <code>dist/index.js</code> or <code>build/index.js</code> artifacts across all 10 repositories.</p>
+          </div>
+
+          <div class="organelle-card">
+            <h4>3. Stdio Smoke Tests</h4>
+            <p>Performs non-blocking stdio JSON-RPC handshake with each server (&lt;300ms timeout).</p>
+          </div>
+
+          <div class="organelle-card">
+            <h4>4. External Runtimes & Fallbacks</h4>
+            <p>Audits Playwright/Chromium, ADB, and Blender with graceful offline warnings.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Common Issues & Solutions -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-label">Playbooks</div>
+          <h2 class="section-heading">Common Scenarios & Instant Fixes</h2>
+        </div>
+
+        <div class="trouble-grid">
+          <!-- Issue 1 -->
+          <div class="trouble-card">
+            <h4>1. Playwright / Chromium Missing (HeLa Cytosol)</h4>
+            <p>Occurs on fresh systems or minimal cloud servers when browser binaries haven't been installed.</p>
+            <div class="trouble-fix">npx playwright install --with-deps chromium</div>
+          </div>
+
+          <!-- Issue 2 -->
+          <div class="trouble-card">
+            <h4>2. SQLite Database Lock / Recovery (HeLa Genome)</h4>
+            <p>If an abnormal termination locks SQLite <code>memory.db</code>, force WAL mode and integrity verification:</p>
+            <div class="trouble-fix">sqlite3 memory.db "PRAGMA journal_mode=WAL; PRAGMA integrity_check;"</div>
+          </div>
+
+          <!-- Issue 3 -->
+          <div class="trouble-card">
+            <h4>3. Deterministic Snapshot Rollback</h4>
+            <p>If an upstream repository introduces a breaking change in dev mode, pin immediately to the certified release snapshot:</p>
+            <div class="trouble-fix">./setup.sh --snapshot v1.0.0 --reconfigure</div>
+          </div>
+
+          <!-- Issue 4 -->
+          <div class="trouble-card">
+            <h4>4. Android ADB Offline or Unauthorized (HeLa Receptor)</h4>
+            <p>If physical device is not recognized by ADB daemon, restart ADB and accept the RSA host prompt on device:</p>
+            <div class="trouble-fix">adb kill-server && adb start-server && adb devices</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div class="footer-nav">
+          <a href="index.html">Workbench</a>
+          <a href="architecture.html">Architecture</a>
+          <a href="workflows.html">Workflows</a>
+          <a href="profiles.html">Profiles</a>
+          <a href="showcase.html">Showcases</a>
+          <a href="troubleshooting.html">Diagnostics</a>
+          <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank">GitHub</a>
+        </div>
+        <div class="footer-copy">MIT License • Developed by Azzar</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
