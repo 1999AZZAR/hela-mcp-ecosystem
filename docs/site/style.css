@@ -294,22 +294,57 @@ header {
   font-size: 0.82rem;
 }
 
-/* Blotcat Doc & Web Illustrations */
-.doc-illustration {
+/* Studio Blueprint Illustration Frame */
+.illustration-card {
   width: 100%;
-  max-width: 900px;
-  margin: 0 auto 32px;
-  border-radius: var(--radius-md);
+  max-width: 860px;
+  margin: 0 auto 36px;
+  background: var(--bg-surface);
   border: 1px solid var(--border-hairline);
-  overflow: hidden;
-  background: #ffffff;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+  border-radius: var(--radius-lg);
+  padding: 12px;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+  transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
-.doc-illustration img {
+.illustration-card:hover {
+  border-color: var(--border-medium);
+}
+
+.illustration-mat {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: block;
+}
+
+.illustration-mat img {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.illustration-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 8px 4px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.illustration-caption {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.illustration-tag {
+  color: var(--accent-cyan);
+  background: var(--bg-surface-elevated);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-hairline);
 }
 
 .quick-cmd {
