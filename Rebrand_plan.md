@@ -1,792 +1,229 @@
 # HeLa MCP Ecosystem — Rebrand Specification
 
-## 1. Rebrand Objective
+## 1. Executive Summary & Objective
 
-Rebrand the public-facing MCP stack as:
+Rebrand the public-facing 10-server MCP stack as:
 
 **HeLa MCP Ecosystem**
 
-The rebrand applies **only to the ecosystem/stack layer**.
+The rebrand operates strictly at the **ecosystem distribution and configuration layer**. Individual MCP repositories, source code implementations, package identities, repository names, development workflows, Git histories, and technical ownership remain 100% independent and unchanged.
 
-The individual MCP repositories, source code, package identities, repository names, development workflows, Git history, and technical ownership remain unchanged.
-
-The purpose of the rebrand is to give the 10-MCP stack a single coherent identity while preserving the independence and maintainability of every underlying MCP.
-
-The name **HeLa** is chosen as a respectful recognition of **Henrietta Lacks** and the extraordinary scientific impact of HeLa cells.
-
-The biological terminology is used as an architectural metaphor, not as a claim of scientific equivalence.
+The name **HeLa** is adopted as a respectful recognition of **Henrietta Lacks** and the profound scientific legacy of HeLa cells in modern biomedical research. Biological terminology is used exclusively as an architectural cellular metaphor for a modular, resilient AI agent harness stack.
 
 ---
 
-# 2. Naming Architecture
+## 2. Naming Architecture (The 4-Tier Model)
 
-Use three distinct naming layers.
+The ecosystem establishes a clean 4-tier naming separation:
 
 ```text
-Public Identity
+Tier 1: Public Identity (Human-facing documentation & landing pages)
     ↓
 HeLa Genome
 
-Ecosystem Identifier
+Tier 2: Machine-Readable Identifier (CLI, profiles, and config keys)
     ↓
 hela-genome
 
-Technical Source
+Tier 3: Technical Source Repository (Implementation origin & directory)
     ↓
 Project-Guardian-mcp-server
-```
 
-The same model applies to every MCP.
-
-### Rules
-
-* Human-facing documentation uses the `HeLa <Component>` name.
-* Configuration and machine-readable identifiers use the `hela-*` identifier.
-* Source repositories retain their existing names.
-* GitHub repository URLs remain unchanged.
-* Package names remain unchanged unless an individual MCP independently changes them.
-* Existing source-level imports and technical references remain unchanged.
-* Commit-based revision pinning remains unchanged.
-* Do not rename repositories solely because of the HeLa rebrand.
-
-The ecosystem acts as an **alias layer**, not a fork or replacement identity.
-
----
-
-# 3. Canonical HeLa Inventory
-
-The public stack contains 10 MCPs.
-
-```json
-{
-  "project_name": "HeLa MCP Ecosystem",
-  "total_servers": 10,
-  "core_headless_count": 7,
-  "specialized_gui_count": 3,
-  "inventory": {
-    "hela-mitosis": {
-      "alias": "HeLa Mitosis",
-      "source": "chaining-mcp-server",
-      "scope": "core"
-    },
-    "hela-membrane": {
-      "alias": "HeLa Membrane",
-      "source": "filesystem-mcp-server",
-      "scope": "core"
-    },
-    "hela-genome": {
-      "alias": "HeLa Genome",
-      "source": "Project-Guardian-mcp-server",
-      "scope": "core"
-    },
-    "hela-nucleus": {
-      "alias": "HeLa Nucleus",
-      "source": "terminal-mcp-server",
-      "scope": "core"
-    },
-    "hela-ribosome": {
-      "alias": "HeLa Ribosome",
-      "source": "menager-mcp-server",
-      "scope": "core"
-    },
-    "hela-enzyme": {
-      "alias": "HeLa Enzyme",
-      "source": "research-assistant-mcp-server",
-      "scope": "core"
-    },
-    "hela-cytosol": {
-      "alias": "HeLa Cytosol",
-      "source": "browser-agent",
-      "scope": "core"
-    },
-    "hela-phenotype": {
-      "alias": "HeLa Phenotype",
-      "source": "the-designer",
-      "scope": "specialized"
-    },
-    "hela-receptor": {
-      "alias": "HeLa Receptor",
-      "source": "scrcpy-mcp",
-      "scope": "specialized"
-    },
-    "hela-plastid": {
-      "alias": "HeLa Plastid",
-      "source": "ll3m-agent",
-      "scope": "specialized"
-    }
-  }
-}
-```
-
-This inventory becomes the authoritative mapping between the HeLa public identity and the existing MCP repositories.
-
----
-
-# 4. Component Naming
-
-## HeLa Mitosis
-
-**Source:** Chaining MCP Server
-**Identifier:** `hela-mitosis`
-**Scope:** Core
-
-Role:
-
-> Orchestrates MCP capabilities and coordinates multi-step workflows.
-
-The name references mitosis as a coordinated cellular process.
-
-Do not describe it as literally performing biological mitosis.
-
----
-
-## HeLa Membrane
-
-**Source:** Filesystem MCP Server
-**Identifier:** `hela-membrane`
-**Scope:** Core
-
-Role:
-
-> Provides controlled interaction with the project's filesystem and workspace.
-
-The membrane metaphor represents the boundary between the agent and its working environment.
-
----
-
-## HeLa Genome
-
-**Source:** Project Guardian MCP Server
-**Identifier:** `hela-genome`
-**Scope:** Core
-
-Role:
-
-> Preserves persistent project knowledge, state, decisions, and continuity.
-
-This is one of the two backbone components.
-
-The genome metaphor represents the information that carries the project's identity and accumulated state.
-
----
-
-## HeLa Nucleus
-
-**Source:** Terminal MCP Server
-**Identifier:** `hela-nucleus`
-**Scope:** Core
-
-Role:
-
-> Provides command execution and direct system interaction.
-
-The nucleus represents a central control and execution environment.
-
----
-
-## HeLa Ribosome
-
-**Source:** Menager MCP Server
-**Identifier:** `hela-ribosome`
-**Scope:** Core
-
-Role:
-
-> Manages and coordinates processes involved in executing work.
-
-The biological analogy should remain conceptual and should not imply that the MCP reproduces ribosomal biology.
-
----
-
-## HeLa Enzyme
-
-**Source:** Research Assistant MCP Server
-**Identifier:** `hela-enzyme`
-**Scope:** Core
-
-Role:
-
-> Performs specialized research and information-processing operations.
-
-The enzyme metaphor represents specialized transformations that enable larger workflows.
-
----
-
-## HeLa Cytosol
-
-**Source:** Browser Agent
-**Identifier:** `hela-cytosol`
-**Scope:** Core
-
-Role:
-
-> Provides interaction with the web and browser-based environments.
-
-The cytosol represents the surrounding operational environment in which many cellular processes occur.
-
----
-
-## HeLa Phenotype
-
-**Source:** The Designer
-**Identifier:** `hela-phenotype`
-**Scope:** Specialized
-
-Role:
-
-> Produces and manipulates visible design and interface outcomes.
-
-The phenotype represents the externally observable result of underlying processes.
-
----
-
-## HeLa Receptor
-
-**Source:** scrcpy MCP
-**Identifier:** `hela-receptor`
-**Scope:** Specialized
-
-Role:
-
-> Provides interaction with external Android devices.
-
-The receptor metaphor represents an interface through which the system interacts with an external environment.
-
----
-
-## HeLa Plastid
-
-**Source:** LL3M Agent
-**Identifier:** `hela-plastid`
-**Scope:** Specialized
-
-Role:
-
-> Provides specialized 3D/Blender-oriented capabilities.
-
-The plastid metaphor represents a specialized production subsystem.
-
----
-
-# 5. Backbone Identity
-
-The HeLa ecosystem should explicitly identify two backbone MCPs:
-
-```text
-HeLa Mitosis
-       +
-HeLa Genome
-```
-
-Their roles are:
-
-```text
-HeLa Mitosis
-    orchestration
-
-HeLa Genome
-    persistence
-```
-
-Together:
-
-```text
-              HeLa MCP Ecosystem
-                       │
-              ┌────────┴────────┐
-              │                 │
-        HeLa Mitosis      HeLa Genome
-        orchestrate          remember
-              │                 │
-              └────────┬────────┘
-                       │
-                8 capabilities
-```
-
-This distinction should appear consistently across the README, website, diagrams, profile documentation, and promotional material.
-
----
-
-# 6. Public Naming Rules
-
-Always prefer:
-
-```text
-HeLa Mitosis
-HeLa Membrane
-HeLa Genome
-HeLa Nucleus
-HeLa Ribosome
-HeLa Enzyme
-HeLa Cytosol
-HeLa Phenotype
-HeLa Receptor
-HeLa Plastid
-```
-
-For CLI/configuration:
-
-```text
-hela-mitosis
-hela-membrane
-hela-genome
-hela-nucleus
-hela-ribosome
-hela-enzyme
-hela-cytosol
-hela-phenotype
-hela-receptor
-hela-plastid
-```
-
-When technical clarity is required, expose the original source:
-
-```text
-HeLa Genome
-Project Guardian MCP
-```
-
-or:
-
-```text
-HeLa Genome
-source: Project-Guardian-mcp-server
-```
-
-Do not force users to learn the biological alias without giving them a way to identify the underlying implementation.
-
----
-
-# 7. Repository Preservation
-
-The following must remain unchanged unless independently required by the underlying project:
-
-```text
-repository names
-repository URLs
-Git history
-branches
-source package names
-MCP implementation names
-issue trackers
-pull requests
-release history
-development commands
-```
-
-For example:
-
-```text
-HeLa Genome
+Tier 4: Exact Implementation Pin (Immutable reproducibility)
     ↓
-Project-Guardian-mcp-server
+commit 72bca15...
 ```
 
-does not mean:
-
-```text
-Project-Guardian-mcp-server
-    ↓
-HeLa-Genome-mcp-server
-```
-
-The former is an ecosystem alias.
-
-The latter would be an unnecessary repository migration.
-
-Do not perform the latter.
+### Architectural Rules
+1. **Public Documentation**: Uses canonical `HeLa <Component>` names (e.g. `HeLa Mitosis`, `HeLa Genome`).
+2. **Configuration & Scripting**: Uses `hela-*` machine identifiers while maintaining transparent backward compatibility with legacy source keys.
+3. **Repository Preservation**: Source repositories retain their existing GitHub repository names, package names, branches, and issue trackers.
+4. **No Repository Migrations**: The ecosystem acts as an **alias and distribution layer**, not a fork or invasive rename.
 
 ---
 
-# 8. Inventory as the Alias Boundary
+## 3. Canonical HeLa Component Catalog (10 MCPs)
 
-The ecosystem inventory should explicitly contain:
-
-```text
-ecosystem identifier
-human-facing alias
-source repository
-revision
-scope
-role
 ```
-
-Example:
-
-```json
-{
-  "id": "hela-genome",
-  "alias": "HeLa Genome",
-  "source": "Project-Guardian-mcp-server",
-  "scope": "core",
-  "role": "persistent-state",
-  "revision": "<git-commit>"
-}
-```
-
-The inventory therefore becomes the translation boundary:
-
-```text
-HeLa identity
-      ↓
-ecosystem inventory
-      ↓
-existing MCP repository
-      ↓
-exact Git revision
-```
-
-This allows the public naming system to evolve independently from the implementation repositories.
-
----
-
-# 9. Commit-Based Identity Remains Unchanged
-
-The rebrand must not alter the existing commit-based revision strategy.
-
-A HeLa component still resolves to an exact Git revision:
-
-```text
-HeLa Genome
-    ↓
-Project-Guardian-mcp-server
-    ↓
-commit abc123...
-```
-
-The alias identifies **what the component is called in the ecosystem**.
-
-The commit identifies **exactly what implementation is being used**.
-
-These are separate concerns.
-
----
-
-# 10. Backward Compatibility
-
-Existing technical references should continue working.
-
-Where documentation currently says:
-
-```text
-Project Guardian
-```
-
-the ecosystem documentation may introduce:
-
-```text
-HeLa Genome
-(Project Guardian MCP)
-```
-
-Then progressively use:
-
-```text
-HeLa Genome
-```
-
-as the primary public name.
-
-Do not abruptly remove technical names from documentation.
-
-For migration purposes, maintain an explicit mapping table.
-
-```text
-HeLa Mitosis    → Chaining MCP
-HeLa Membrane   → Filesystem MCP
-HeLa Genome     → Project Guardian MCP
-HeLa Nucleus    → Terminal MCP
-HeLa Ribosome   → Menager MCP
-HeLa Enzyme     → Research Assistant MCP
-HeLa Cytosol    → Browser Agent
-HeLa Phenotype  → The Designer
-HeLa Receptor   → scrcpy MCP
-HeLa Plastid    → LL3M Agent
+┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                       HELA MCP ECOSYSTEM TAXONOMY                                      │
+├─────────────────┬───────────────┬──────────────────────────────┬─────────────┬────────────────────────┤
+│ Public Name     │ Machine ID    │ Technical Source Repo        │ Scope       │ Architectural Role     │
+├─────────────────┼───────────────┼──────────────────────────────┼─────────────┼────────────────────────┤
+│ HeLa Mitosis    │ hela-mitosis  │ chaining-mcp-server          │ Core        │ Backbone: Orchestrator │
+│ HeLa Genome     │ hela-genome   │ Project-Guardian-mcp-server  │ Core        │ Backbone: State/Memory │
+│ HeLa Membrane   │ hela-membrane │ filesystem-mcp-server        │ Core        │ Workspace Filesystem   │
+│ HeLa Nucleus    │ hela-nucleus  │ terminal-mcp-server          │ Core        │ Command Execution      │
+│ HeLa Ribosome   │ hela-ribosome │ menager-mcp-server           │ Core        │ PTY Harness Lifecycle  │
+│ HeLa Enzyme     │ hela-enzyme   │ research-mcp-server          │ Core        │ Search & Fact Checking │
+│ HeLa Cytosol    │ hela-cytosol  │ browser-agent                │ Core        │ Web & DOM Interaction  │
+│ HeLa Phenotype  │ hela-phenotype│ the-designer                 │ Specialized │ UI/UX Design & Tokens  │
+│ HeLa Receptor   │ hela-receptor │ scrcpy-mcp                   │ Specialized │ Android Device Control │
+│ HeLa Plastid    │ hela-plastid  │ ll3m-agent                   │ Specialized │ 3D Blender Modeling    │
+└─────────────────┴───────────────┴──────────────────────────────┴─────────────┴────────────────────────┘
 ```
 
 ---
 
-# 11. Website Branding
+## 4. Component Metaphors & Technical Roles
 
-The dedicated website should use **HeLa MCP Ecosystem** as the primary product identity.
+### Backbone Components (The Core Duo)
 
-The website should explain the naming directly.
+#### HeLa Mitosis (`hela-mitosis`)
+* **Source:** `chaining-mcp-server` (`1999AZZAR/chaining-mcp-server`)
+* **Metaphor:** Mitosis as a coordinated, multi-stage cellular division process.
+* **Technical Role:** Central orchestration plane. Discovers available peer MCP servers, decomposes complex tasks into execution trees, performs AI-assisted route ranking, runs sequential thinking chains, and coordinates multi-MCP workflows. Operates with 100% offline fallback (<30ms heuristic planning).
 
-Suggested section:
-
-## Why HeLa?
-
-HeLa cells are one of the most significant human cell lines in modern biomedical research. The project adopts the cellular architecture as a metaphor for a modular AI tooling ecosystem, where specialized components perform distinct functions while operating together as one system.
-
-The name is intended as a respectful recognition of **Henrietta Lacks** and the profound scientific legacy associated with HeLa cells.
-
-Do not imply:
-
-* endorsement by Henrietta Lacks' family
-* ownership of HeLa
-* scientific equivalence between the MCP ecosystem and biological cells
-* that the project is affiliated with biomedical institutions working with HeLa cells
-
-The reference should be respectful and factual.
+#### HeLa Genome (`hela-genome`)
+* **Source:** `Project-Guardian-mcp-server` (`1999AZZAR/Project-Guardian`)
+* **Metaphor:** The genome carrying persistent genetic code, accumulated cellular identity, and generational state.
+* **Technical Role:** Long-term project memory plane. Maintains SQLite-backed knowledge graphs (`memory.db`), tracks entities, relations, observations, active tasks, architectural decisions, and restores session continuity across chats.
 
 ---
 
-# 12. Website Visual Language
+### Core Workspace & Knowledge Capabilities
 
-The visual identity should communicate:
+#### HeLa Membrane (`hela-membrane`)
+* **Source:** `filesystem-mcp-server` (`1999AZZAR/filesystem-mcp-server`)
+* **Metaphor:** The selective cellular membrane regulating traffic between the cell and its environment.
+* **Technical Role:** Secure workspace filesystem operations: reading, writing, searching, regex patching, directory watching, and safe archive extraction.
 
-```text
-cellular system
-+
-modular components
-+
-technical infrastructure
-```
+#### HeLa Nucleus (`hela-nucleus`)
+* **Source:** `terminal-mcp-server` (`1999AZZAR/terminal-mcp-server`)
+* **Metaphor:** The cellular nucleus controlling command execution and transcription.
+* **Technical Role:** Direct system command execution, local/remote SSH session handling, and RTK token-optimized execution.
 
-Avoid making the website look like a medical or pharmaceutical product.
+#### HeLa Ribosome (`hela-ribosome`)
+* **Source:** `menager-mcp-server` (`1999AZZAR/menager-mcp-server`)
+* **Metaphor:** Ribosomes actively translating genetic code into functional proteins.
+* **Technical Role:** PTY pseudo-terminal harness multiplexing, child process lifecycle supervision, non-blocking regex event hooks, and circular buffer log telemetry.
 
-The goal is:
+#### HeLa Enzyme (`hela-enzyme`)
+* **Source:** `research-mcp-server` (`1999AZZAR/research-mcp-server`)
+* **Metaphor:** Enzymes catalyzing targeted biochemical transformations.
+* **Technical Role:** Deep research operations: unified Google Custom Search, Wikipedia API queries, article content extraction, sentiment analysis, and multi-source fact checking.
 
-```text
-biological inspiration
-        +
-developer tooling
-```
-
-rather than:
-
-```text
-medical branding
-```
-
-The 10 HeLa components can each have a consistent visual representation while retaining their technical descriptions.
+#### HeLa Cytosol (`hela-cytosol`)
+* **Source:** `browser-agent` (`1999AZZAR/browser-agent`)
+* **Metaphor:** The cytosol providing the active fluid medium in which cellular organelles operate.
+* **Technical Role:** Playwright-based browser automation, interactive navigation, form filling, visual QA screenshot verification, and DOM table extraction.
 
 ---
 
-# 13. Documentation Presentation
+### Specialized Capabilities
 
-Every public-facing component page should follow the same structure:
+#### HeLa Phenotype (`hela-phenotype`)
+* **Source:** `the-designer` (`1999AZZAR/the-designer`)
+* **Metaphor:** The physical, externally observable traits of an organism.
+* **Technical Role:** UI/UX design system analysis, color palette extraction, OKLCH design tokens, Tailwind CSS generation, and 8-state component verification.
 
-```text
-HeLa Genome
+#### HeLa Receptor (`hela-receptor`)
+* **Source:** `scrcpy-mcp` (`1999AZZAR/scrcpy-mcp`)
+* **Metaphor:** Surface receptors receiving signals from the external environment.
+* **Technical Role:** Android mobile device automation via ADB and scrcpy: element inspection, touch gestures, screen capture, and app management.
 
-Project Guardian MCP
-
-Persistent project state and knowledge.
-
-Scope:
-Core
-
-Role:
-Backbone
-
-Source:
-Project-Guardian-mcp-server
-
-Revision:
-<commit>
-
-Used by:
-<profiles>
-```
-
-This gives the biological identity immediate technical grounding.
+#### HeLa Plastid (`hela-plastid`)
+* **Source:** `ll3m-agent` (`1999AZZAR/ll3m-agent`)
+* **Metaphor:** Specialized organelle subsystems for synthesis and structural fabrication.
+* **Technical Role:** Autonomous 3D Blender modeling: natural language scene generation, mesh/material manipulation, iterative refinement, and rendering.
 
 ---
 
-# 14. Marketing Language
+## 5. Backbone Operational Model
 
-Prefer concrete statements.
-
-Good:
-
-> A 10-MCP stack organized around two backbone components: orchestration and persistent project state.
-
-Good:
-
-> Choose a profile and deploy a complete MCP environment built from independently maintained servers.
-
-Good:
-
-> HeLa Mitosis coordinates capabilities while HeLa Genome preserves project continuity.
-
-Avoid:
-
-> The revolutionary biological AI operating system.
-
-Avoid exaggerated claims that rely on the biological metaphor.
-
-The name should make the project memorable; the implementation should make it credible.
-
----
-
-# 15. Source Attribution
-
-Each HeLa component must retain a visible connection to its original project.
-
-For example:
+The HeLa MCP Ecosystem organizes all workflows through the Backbone:
 
 ```text
-HeLa Genome
-Project Guardian MCP
-
-Source repository:
-1999AZZAR/Project-Guardian-mcp-server
-```
-
-The same pattern should be applied to all 10 components.
-
-This ensures that contributors can always move from the ecosystem abstraction to the actual implementation.
-
----
-
-# 16. Rebrand Migration
-
-Perform the rebrand in this order:
-
-```text
-1. Define canonical HeLa names
-        ↓
-2. Add alias mappings to inventory
-        ↓
-3. Update ecosystem configuration
-        ↓
-4. Update profile references
-        ↓
-5. Update CLI output
-        ↓
-6. Update README
-        ↓
-7. Update ecosystem documentation
-        ↓
-8. Update diagrams
-        ↓
-9. Update website branding
-        ↓
-10. Record real-world demos using HeLa names
-```
-
-Do not modify individual MCP repositories merely to accomplish these steps.
-
----
-
-# 17. Validation
-
-After the rebrand, verify that:
-
-```text
-[ ] All 10 MCPs have exactly one canonical HeLa alias
-[ ] All aliases use consistent naming
-[ ] All machine identifiers use hela-* naming
-[ ] All aliases resolve to the correct source repositories
-[ ] Existing repository names remain unchanged
-[ ] Existing commit pins remain valid
-[ ] Profiles still resolve correctly
-[ ] Installation still works
-[ ] Generated configurations still work
-[ ] CLI output uses the intended public names
-[ ] Technical source names remain discoverable
-[ ] Documentation contains no stale ecosystem naming
-[ ] Website uses the same canonical aliases
-[ ] Backbone distinction is visible
-[ ] Henrietta Lacks / HeLa attribution is respectful and accurate
-```
-
----
-
-# 18. Final Naming Model
-
-The completed public identity should look like:
-
-```text
-                         HeLa MCP Ecosystem
-                                  │
-                  ┌───────────────┴───────────────┐
-                  │                               │
-             BACKBONE                       CAPABILITIES
-                  │                               │
-          ┌───────┴───────┐              ┌────────┴────────┐
-          │               │              │                 │
-     HeLa Mitosis    HeLa Genome      Core capabilities   Specialized
-     Orchestration   Project State                         capabilities
-          │               │
-          └───────┬───────┘
-                  │
-             8 other MCPs
-```
-
-Public:
-
-```text
-HeLa Genome
-```
-
-Machine-readable:
-
-```text
-hela-genome
-```
-
-Technical:
-
-```text
-Project-Guardian-mcp-server
-```
-
-Implementation:
-
-```text
-exact Git commit
-```
-
-These four layers should remain distinct.
-
----
-
-# 19. Definition of Done
-
-The rebrand is complete when a new user can interact entirely with:
-
-```text
-HeLa MCP Ecosystem
-HeLa Mitosis
-HeLa Membrane
-HeLa Genome
-HeLa Nucleus
-HeLa Ribosome
-HeLa Enzyme
-HeLa Cytosol
-HeLa Phenotype
-HeLa Receptor
-HeLa Plastid
-```
-
-while a developer can immediately trace every component back to:
-
-```text
-original repository
-+
-exact Git revision
-```
-
-No underlying MCP project needs to be renamed, forked, reorganized, or rewritten.
-
-The final relationship is:
-
-```text
-                     HeLa MCP Ecosystem
+                           AI HOST
                               │
-                       public identity
+                              ▼
+                         HeLa Mitosis
+                       (Orchestration)
                               │
-                       alias/inventory
+                              ▼
+                         HeLa Genome
+                      (State & Memory)
                               │
-                ┌─────────────┴─────────────┐
-                │                           │
-          HeLa component              Git revision
-                │                           │
-                └─────────────┬─────────────┘
-                              │
-                    existing MCP repository
+         ┌────────────────────┼────────────────────┐
+         ▼                    ▼                    ▼
+    [Workspace]          [Knowledge]         [Interaction]
+         │                    │                    │
+   HeLa Membrane         HeLa Enzyme          HeLa Cytosol
+   HeLa Nucleus                               HeLa Phenotype
+   HeLa Ribosome                              HeLa Receptor
+                                              HeLa Plastid
 ```
 
-The HeLa name becomes the identity of the **stack**, while the existing repositories remain the identity of the **implementations**.
+---
+
+## 6. Profile Architecture under HeLa Rebrand
+
+All profiles compose subsets of the 10 HeLa components:
+
+1. **`dev-workspace` (Full Developer Workstation)**:
+   * Backbone: `HeLa Mitosis`, `HeLa Genome`
+   * Capabilities: `HeLa Membrane`, `HeLa Nucleus`, `HeLa Ribosome`, `HeLa Enzyme`, `HeLa Phenotype`, `HeLa Cytosol` (8 servers)
+2. **`headless-server` (Core Headless Stack)**:
+   * Backbone: `HeLa Mitosis`, `HeLa Genome`
+   * Capabilities: `HeLa Membrane`, `HeLa Nucleus`, `HeLa Ribosome`, `HeLa Enzyme`, `HeLa Phenotype` (7 servers)
+3. **`research` (Dedicated Research Node)**:
+   * Backbone: `HeLa Mitosis`, `HeLa Genome`
+   * Capabilities: `HeLa Enzyme`, `HeLa Membrane`, `HeLa Cytosol` (5 servers)
+4. **`web-devops` (Web Engineering & Verification)**:
+   * Backbone: `HeLa Mitosis`, `HeLa Genome`
+   * Capabilities: `HeLa Membrane`, `HeLa Nucleus`, `HeLa Phenotype`, `HeLa Cytosol` (6 servers)
+5. **`android-testing` (Mobile Automation Rig)**:
+   * Backbone: `HeLa Mitosis`, `HeLa Genome`
+   * Capabilities: `HeLa Nucleus`, `HeLa Receptor`, `HeLa Enzyme` (5 servers)
+6. **`3d-modeling` (Blender 3D Production)**:
+   * Backbone: `HeLa Mitosis`, `HeLa Genome`
+   * Capabilities: `HeLa Plastid`, `HeLa Membrane`, `HeLa Nucleus` (5 servers)
+7. **`all` (Complete 10-MCP Stack)**:
+   * All 10 HeLa servers.
+
+---
+
+## 7. Migration & Backward Compatibility Strategy
+
+To ensure zero breaking changes for existing users and automated pipelines:
+
+1. **Transparent Alias Resolution in `inventory.json`**:
+   Both `hela-mitosis` and `chaining-mcp-server` resolve to the same underlying directory and execution script.
+2. **Dual-Key Lookup in Config Generators**:
+   `scripts/generate-config.mjs` accepts both HeLa IDs and legacy repository names.
+3. **Progressive Documentation Updates**:
+   Documentation introduces `HeLa Genome (Project Guardian MCP)` before transitioning to `HeLa Genome` as the primary heading.
+4. **Attribution & Transparency**:
+   Every component page explicitly cites the original source repository:
+   ```text
+   HeLa Genome
+   Public Identity: HeLa Genome
+   Source: 1999AZZAR/Project-Guardian
+   Revision: <commit>
+   ```
+
+---
+
+## 8. Respectful Recognition & Ethical Framing
+
+The dedicated documentation and landing website will feature a prominent, respectful statement:
+
+> **About the HeLa Name**:
+> HeLa cells are among the most significant human cell lines in modern science, enabling pivotal breakthroughs in virology, cancer research, genetics, and medicine. The project adopts the cellular architecture as a metaphor for a cohesive, self-sustaining AI agent ecosystem. The name stands as a respectful recognition of **Henrietta Lacks** and her enduring scientific legacy.
+
+* **Strict Non-Claims**:
+  * No claim of medical or scientific equivalence.
+  * No claim of official endorsement by the family of Henrietta Lacks or biomedical institutions.
+  * Professional, technical developer presentation without medicalized marketing fluff.
+
+---
+
+## 9. Definition of Done for Rebrand
+
+The rebrand is complete when:
+- [ ] `config/inventory.json` defines all 10 canonical `hela-*` entries with alias mappings to source repositories.
+- [ ] `config/profiles.json` uses canonical HeLa machine identifiers.
+- [ ] `scripts/generate-config.mjs`, `setup.sh`, and `update.sh` display canonical HeLa names with source attribution.
+- [ ] `README.md` and `docs/` consistently communicate the HeLa MCP Ecosystem identity and 4-tier naming model.
+- [ ] All 8 client configuration targets render clean, verified configurations.
+- [ ] CI/CD pipeline validates both HeLa aliases and legacy backwards-compatibility keys.
