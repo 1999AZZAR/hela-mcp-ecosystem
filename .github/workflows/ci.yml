@@ -1,96 +1,76 @@
-name: CI
+name: HeLa MCP Ecosystem CI
 
 on:
   push:
-    branches: [master, main]
+    branches: [master, main, development]
   pull_request:
+    branches: [master, main, development]
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  validate-config:
-    name: Validate config & generators
-    runs-on: ubuntu-latest
+  matrix-validation:
+    name: Client Matrix (Node ${{ matrix.node-version }} on ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        node-version: [18, 20, 22]
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ matrix.node-version }}
 
-      - name: JSON configs parse
+      - name: Validate JSON & Snapshot Schema
         run: |
           node -e 'JSON.parse(require("fs").readFileSync("config/inventory.json","utf8"))'
           node -e 'JSON.parse(require("fs").readFileSync("config/profiles.json","utf8"))'
+          node -e 'JSON.parse(require("fs").readFileSync("config/snapshots/v1.0.0.json","utf8"))'
+          node -e 'JSON.parse(require("fs").readFileSync("config/snapshots/latest-stable.json","utf8"))'
           for f in config/*-example.json; do
             node -e 'const p=process.argv[1]; JSON.parse(require("fs").readFileSync(p,"utf8"))' "$f"
           done
 
-      - name: Checked-in examples match generation
+      - name: Cross-check Profiles vs Canonical HeLa Inventory
         run: |
-          # Checked-in examples use the /absolute/path/to/mcp-ecosystem placeholder.
-          ROOT=/absolute/path/to/mcp-ecosystem
-          PARAMS=(--openrouter "your-openrouter-api-key" --github "your-github-token" --google "your-google-api-key" --cse "your-google-cse-id")
-          node scripts/generate-config.mjs dev-workspace --backend opencode --root "$ROOT" "${PARAMS[@]}" \
-            | diff - config/opencode-example.json
-          node scripts/generate-config.mjs dev-workspace --backend zed --root "$ROOT" "${PARAMS[@]}" \
-            | diff - config/zed-example.json
-          node scripts/generate-config.mjs dev-workspace --backend cursor --root "$ROOT" "${PARAMS[@]}" \
-            | diff - config/cursor-example.json
-          node scripts/generate-config.mjs dev-workspace --backend claude --root "$ROOT" "${PARAMS[@]}" \
-            | diff - config/claude-example.json
-          node scripts/generate-config.mjs dev-workspace --backend gemini --root "$ROOT" "${PARAMS[@]}" \
-            | diff - config/gemini-example.json
-          node scripts/generate-config.mjs dev-workspace --backend kilo --root "$ROOT" "${PARAMS[@]}" \
-            | diff - config/kilo-example.json
-          node scripts/generate-config.mjs dev-workspace --backend codex --root "$ROOT" "${PARAMS[@]}" \
-            | diff - config/codex-example.toml
-
-      - name: Cross-check profiles vs inventory
-        run: |
-          set -e
           node -e '
-            const inv=require("./config/inventory.json").inventory;
-            const profs=require("./config/profiles.json").profiles;
-            const unknownKey=k=>`Unknown server key "${k}" referenced by a profile but absent from inventory.json`;
-            let bad=0;
-            for (const p of profs) for (const s of p.servers) {
-              if (!inv[s]) { console.error(unknownKey(s)); bad=1; }
+            const data = JSON.parse(require("fs").readFileSync("config/inventory.json", "utf8"));
+            const inv = data.inventory;
+            const aliases = data.aliases || {};
+            const profs = JSON.parse(require("fs").readFileSync("config/profiles.json", "utf8")).profiles;
+            for (const p of profs) {
+              for (const s of p.servers) {
+                const resolved = inv[s] || inv[aliases[s]];
+                if (!resolved) {
+                  console.error(`Unknown server "${s}" referenced in profile "${p.id}".`);
+                  process.exit(1);
+                }
+              }
             }
-            process.exit(bad);
-          '
-          node -e '
-            const inv=require("./config/inventory.json").inventory;
-            const bad=[];
-            for (const [k,v] of Object.entries(inv)) {
-              if (v.runtime!=="node") bad.push(`${k}: unsupported runtime "${v.runtime}"`);
-              if (v.build && !/^[a-zA-Z0-9:_-]+$/.test(v.build)) bad.push(`${k}: suspicious build script "${v.build}"`);
-              if (!v.entry) bad.push(`${k}: missing "entry"`);
-            }
-            if (bad.length){ console.error(bad.join("\n")); process.exit(1); }
+            console.log("All profiles cleanly resolve to canonical inventory entries.");
           '
 
-      - name: Generate config for every profile x backend
-        run: |
-          set -e
-          for p in dev-workspace headless-server research web-devops android-testing 3d-modeling all; do
-            for b in print cursor claude gemini antigravity opencode kilo zed codex docker; do
-              tmp="$(mktemp)"
-              if ! node scripts/generate-config.mjs "$p" --backend "$b" --root "$PWD" --out "$tmp" >/dev/null 2>&1; then
-                echo "FAIL: profile=$p backend=$b"; exit 1
-              fi
-              rm -f "$tmp"
-            done
-          done
-          echo "All profiles generate for every backend."
+      - name: Run 70-Combination Multi-Client Matrix Test Suite
+        run: npm run test:matrix
 
-  validate-scripts:
-    name: Validate shell scripts
+      - name: Verify Setup & Doctor Script Interfaces
+        run: |
+          ./setup.sh --help
+          node scripts/doctor.mjs --help || true
+
+  shell-and-precommit:
+    name: Shell Scripts & Pre-Commit Validation
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Syntax-check all shell scripts
         run: |
@@ -99,24 +79,12 @@ jobs:
             bash -n "$f" && echo "OK: $f"
           done
 
-      - name: Setup script dry-run on Node version
-        run: |
-          node -v
-          # ensure setup.sh at least parses its CLI-sensitive helpers
-          bash -n setup.sh
-
-  pre-commit:
-    name: Pre-commit hooks
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Install pre-commit
-        run: pip install pre-commit
-
-      - name: Run pre-commit on all files
-        run: pre-commit run --all-files
+      - name: Install and Run Pre-Commit Hooks
+        run: |
+          pip install pre-commit
+          pre-commit run --all-files

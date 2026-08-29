@@ -1,495 +1,195 @@
-# MCP Ecosystem Suite
+# HeLa MCP Ecosystem
 
-A collection of Model Context Protocol (MCP) servers developed by Azzar, designed to enhance AI agent harness capabilities across development, research, project management, and system operations.
+A modular, immortal cellular AI tooling ecosystem built on the Model Context Protocol (MCP), engineered by Azzar to equip AI agents with full-spectrum autonomous capabilities across reasoning, persistent memory, workspace management, system execution, research, design, device automation, and 3D modeling.
 
-> **New to MCP or non-technical?** Read our **[Beginner's Step-by-Step Guide](docs/beginner-guide.md)** for a 3-minute, zero-code visual walkthrough!
+> **New to MCP or non-technical?** Read the **[Beginner's Step-by-Step Guide](docs/beginner-guide.md)** for a 3-minute, zero-code onboarding walkthrough.
 
 ![Blotcat plugging MCP server cables into the central AI Hub](assets/blotcat-hero.jpg)
 
-## Table of Contents
+---
 
-- [Beginner's Guide](docs/beginner-guide.md)
-- [Overview](#overview)
-  - [Core Servers](#core-servers)
-- [Quick Start](#quick-start)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Supported MCP Clients](#supported-mcp-clients)
-  - [MCP Client Configuration](#mcp-client-configuration)
-- [Server Details](#server-details)
-  - [Chaining MCP Server](#chaining-mcp-server)
-  - [Filesystem MCP Server](#filesystem-mcp-server)
-  - [Project Guardian MCP Server](#project-guardian-mcp-server)
-  - [Terminal MCP Server](#terminal-mcp-server)
-  - [Menager MCP Server](#menager-mcp-server)
-  - [Researcher MCP Server](#researcher-mcp-server)
-  - [The Designer MCP Server](#the-designer-mcp-server)
-  - [Browser Agent MCP Server](#browser-agent-mcp-server)
-  - [scrcpy MCP Server](#scrcpy-mcp-server)
-  - [LL3M Agent MCP Server](#ll3m-agent-mcp-server)
-- [Repository Structure](#repository-structure)
-- [Managing Servers by Scope](#managing-servers-by-scope)
-- [Documentation Index](#documentation-index)
-  - [Beginner's Step-by-Step Guide](docs/beginner-guide.md)
-  - [Prerequisites & Secrets Guide](docs/keys-and-secrets.md)
-  - [Architecture Guide](docs/architecture.md)
-  - [Integration Guide](docs/integration.md)
-  - [Profiles Reference](docs/profiles.md)
-  - [Troubleshooting Guide](docs/troubleshooting.md)
-  - [Contributing Guidelines](CONTRIBUTING.md)
-- [License](#license)
-- [Support](#support)
-- [Updates](#updates)
+## Respectful Attribution & Metaphor
 
-## Overview
+The **HeLa MCP Ecosystem** is named in respectful recognition of **Henrietta Lacks** (1920–1951) and the immortal scientific legacy of HeLa cells, which transformed global biomedical research. In this software architecture, HeLa serves as a **cellular biology metaphor**:
 
-The MCP Ecosystem Suite provides a profile-driven collection of specialized MCP servers. Instead of installing one fixed stack, you pick a **profile** — a named subset of servers matched to your use case and target system (GUI desktop vs. headless server). Each server focuses on a specific domain while interoperating through the MCP protocol.
+* **Cellular Modularity**: Just as biological cells contain specialized organelles coordinated by the nucleus and genome, the HeLa MCP Ecosystem deploys specialized tool servers coordinated by a dual backbone.
+* **Continuous Replicability & Immortality**: Environments can be snapshot-pinned, reproduced deterministically on any machine, and restored cleanly without state degradation.
+* **Component Independence**: Underlying repositories, technical package names, and Git commit histories remain autonomous and unaltered while functioning as a harmonious organism.
 
-![Blotcat sorting server blocks into GUI and Headless profiles](assets/blotcat-illustrations/01-profile-selection.jpg)
+---
 
-See [Profiles](docs/profiles.md) for the full profile reference and custom-profile guide.
+## Dual-Backbone Architecture
 
-### Core Servers
+Every profile in the HeLa ecosystem is anchored by two core backbone servers:
 
-| Server | Purpose | Key Features |
-| --- | --- | --- |
-| [**Chaining MCP**](https://github.com/1999AZZAR/chaining-mcp-server) | Intelligent tool orchestration & routing | OpenRouter LLM engine, task decomposition, sequential thinking, 42 prompts |
-| [**Filesystem MCP**](https://github.com/1999AZZAR/filesystem-mcp-server) | Advanced file operations | File manipulation, directory search, archive, watching |
-| [**Project Guardian MCP**](https://github.com/1999AZZAR/Project-Guardian) | Project memory management | Knowledge graphs, task tracking, living memory SQLite operations |
-| [**Terminal MCP**](https://github.com/1999AZZAR/terminal-mcp-server) | System command execution | Remote execution, session management, RTK token-optimized execution |
-| [**Menager MCP**](https://github.com/1999AZZAR/menager-mcp-server) | Terminal Orchestration | Polyglot harness multiplexing, Regex hooks, PTY session management |
-| [**Researcher MCP**](https://github.com/1999AZZAR/research-mcp-server) | Combined research platform | Unified Google Search + Wikipedia with analysis and fact-checking |
-| [**The Designer MCP**](https://github.com/1999AZZAR/the-designer) | UI/UX design tooling | Style evaluation, design tokens, component + Tailwind generation |
-| [**Browser Agent MCP**](https://github.com/1999AZZAR/Browser-Agent) | Browser automation | Playwright-based web interaction, scraping, automation (88 tools) |
-| [**scrcpy MCP**](https://github.com/1999AZZAR/scrcpy-mcp) *(GUI/device)* | Android device control | ADB + scrcpy automation, UI inspection, app control |
-| [**LL3M Agent MCP**](https://github.com/1999AZZAR/ll3m-agent) *(GUI)* | Autonomous 3D modeling | Blender scene generation, iterative refinement |
+```
+                  ┌─────────────────────────────────┐
+                  │    Agent / LLM Orchestrator     │
+                  └───────────────┬─────────────────┘
+                                  │ stdio JSON-RPC
+         ┌────────────────────────┴────────────────────────┐
+         │                                                 │
+         ▼                                                 ▼
+┌──────────────────┐                              ┌──────────────────┐
+│   HeLa Mitosis   │                              │   HeLa Genome    │
+│  (Orchestrator)  │                              │ (State & Memory) │
+├──────────────────┤                              ├──────────────────┤
+│ • Dynamic Routing│                              │ • Knowledge Graph│
+│ • Step Reasoning │◄────── Shared Context ──────►│ • Entities/Relns │
+│ • Tool Planning  │                              │ • Observations   │
+└────────┬─────────┘                              └────────┬─────────┘
+         │                                                 │
+         └────────────────────────┬────────────────────────┘
+                                  │
+               Dispatches to Specialized Capability Cells
+                                  │
+    ┌──────────────┬──────────────┼──────────────┬──────────────┐
+    ▼              ▼              ▼              ▼              ▼
+[Membrane]     [Nucleus]      [Ribosome]      [Enzyme]      [Cytosol]
+Workspace FS   Command Exec   PTY Harness    Research/Wiki   Browser DOM
+```
 
-All servers are listed in `config/inventory.json`; *(GUI)*/*(device)* servers ship only in matching profiles.
+* **HeLa Mitosis (`hela-mitosis`)**: Cellular division and orchestration backbone. Handles dynamic tool routing, prompt decomposition, step-by-step reasoning (`sequentialthinking`), and multi-tool planning.
+* **HeLa Genome (`hela-genome`)**: Cellular memory and state backbone. Maintains the persistent SQLite knowledge graph (`memory.db`), entity-relation tracking, session restoration, and project milestones.
+
+---
+
+## 10-MCP Component Taxonomy
+
+| Canonical Identity | Machine ID (`id`) | Technical Source Repo | Scope | Cellular Metaphor & Role |
+|---|---|---|---|---|
+| **HeLa Mitosis** | `hela-mitosis` | [`chaining-mcp-server`](https://github.com/1999AZZAR/chaining-mcp-server) | Core | **Orchestrator**: Dynamic routing, sequential reasoning, 42 bundled prompt templates |
+| **HeLa Genome** | `hela-genome` | [`Project-Guardian-mcp-server`](https://github.com/1999AZZAR/project-guardian-mcp-server) | Core | **State Backbone**: Entity-relation knowledge graph, milestone tracking, memory persistence |
+| **HeLa Membrane** | `hela-membrane` | [`filesystem-mcp-server`](https://github.com/1999AZZAR/filesystem-mcp-server) | Core | **Workspace**: Sandboxed filesystem operations, recursive search, archive extraction |
+| **HeLa Nucleus** | `hela-nucleus` | [`terminal-mcp-server`](https://github.com/1999AZZAR/terminal-mcp-server) | Core | **Execution**: Command execution, subshell isolation, RTK token-optimized execution |
+| **HeLa Ribosome** | `hela-ribosome` | [`menager-mcp-server`](https://github.com/1999AZZAR/menager-mcp-server) | Core | **Process Harness**: Interactive PTY multiplexing, Regex hooks, lifecycle management |
+| **HeLa Enzyme** | `hela-enzyme` | [`research-assistant-mcp-server`](https://github.com/1999AZZAR/research-assistant-mcp-server) | Core | **Knowledge**: Unified Google Custom Search + cached Wikipedia synthesis and fact-checking |
+| **HeLa Cytosol** | `hela-cytosol` | [`Browser-Agent`](https://github.com/1999AZZAR/Browser-Agent) | Core | **Interaction**: Playwright browser automation, accessibility trees, DOM perception |
+| **HeLa Phenotype** | `hela-phenotype` | [`the-designer`](https://github.com/1999AZZAR/the-designer) | Specialized | **Design**: UI/UX design tokens, OKLCH color palettes, Tailwind and component synthesis |
+| **HeLa Receptor** | `hela-receptor` | [`scrcpy-mcp`](https://github.com/1999AZZAR/scrcpy-mcp) | Specialized | **Mobile**: Android device automation, ADB bridge, XML view hierarchy inspection |
+| **HeLa Plastid** | `hela-plastid` | [`ll3m-agent`](https://github.com/1999AZZAR/ll3m-agent) | Specialized | **3D Modeling**: Autonomous Blender procedural modeling, materials, and render pipeline |
+
+---
 
 ## Quick Start
 
-### Prerequisites
+### 1. Prerequisites
+* **Node.js**: `>= 18.0.0` (v20+ LTS recommended)
+* **Git**: `>= 2.25.0`
+* **SQLite3**: System CLI or built-in Node SQLite bindings
 
-- Node.js >= 18.0.0
-- npm or yarn
-- Git
-- **For Docker option:** Docker and Docker Compose
-
-### Installation
-
-1. **Clone the MCP Ecosystem Suite repository:**
-
-   ```bash
-   git clone https://github.com/1999AZZAR/mcp-ecosystem.git
-   cd mcp-ecosystem
-   ```
-
-2. **Interactive Setup:**
-
-   The setup script will guide you through installation and client configuration:
-
-   ```bash
-   ./setup.sh
-   ```
-
-   **Non-interactive one-liner:**
-   ```bash
-   ./setup.sh --profile headless-server --client cursor
-   ```
-
-   **Supported MCP Clients:**
-   - **Cursor IDE** (`~/.cursor/mcp.json`)
-   - **Claude Desktop / CLI** (`~/.claude.json`)
-   - **Antigravity CLI / Gemini** (`~/.gemini/antigravity-cli/mcp_config.json`)
-   - **OpenCode** (`config/opencode.generated.json`)
-   - **Kilo CLI** (`~/.config/kilo/config.json`)
-   - **Zed Editor** (`~/.config/zed/settings.json`)
-   - **Codex / ChatGPT** (`~/.codex/config.toml`)
-   - **Docker Compose** (`config/docker-compose.generated.yml`)
-
-### MCP Client Configuration
-
-The example configs below reflect the `dev-workspace` profile. To generate a custom configuration for any profile/client:
+### 2. Run Diagnostics (`setup.sh doctor`)
+Check your host environment, compiler readiness, external runtimes, and API key fallbacks:
 
 ```bash
-node scripts/generate-config.mjs <profile> --backend <cursor|claude|gemini|antigravity|opencode|kilo|zed|codex|docker|print>
+git clone https://github.com/1999AZZAR/mcp-ecosystem.git
+cd mcp-ecosystem
+./setup.sh doctor
 ```
 
-The full, current examples are also checked in as `config/cursor-example.json`, `config/claude-example.json`, `config/opencode-example.json`, and `config/zed-example.json`.
-
-#### For Cursor IDE
-
-Add the following to your `mcp.json` (the `dev-workspace` profile):
-
-```json
-{
-  "mcpServers": {
-    "chaining": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"],
-      "env": {
-        "SEQUENTIAL_THINKING_AVAILABLE": "true",
-        "AWESOME_COPILOT_ENABLED": "true",
-        "RELIABILITY_MONITORING_ENABLED": "true",
-        "GITHUB_TOKEN": "your-github-token"
-      }
-    },
-    "filesystem": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/filesystem-mcp-server/dist/index.js"]
-    },
-    "Project-Guardian": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"]
-    },
-    "terminal": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/build/index.js"]
-    },
-    "menager": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/menager-mcp-server/build/index.js"]
-    },
-    "research": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"],
-      "env": {
-        "GOOGLE_API_KEY": "your-google-api-key",
-        "GOOGLE_CSE_ID": "your-google-cse-id"
-      }
-    },
-    "browser-agent": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/browser-agent/src/server.js"]
-    },
-    "the-designer": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/the-designer/dist/index.js"]
-    }
-  }
-}
+### 3. Interactive Installation & Profile Selection
+```bash
+./setup.sh
 ```
 
-#### For Claude Desktop
+### 4. Non-Interactive One-Liners
 
-Add the following to your `claude_desktop_config.json` (the `dev-workspace` profile):
-
-```json
-{
-  "mcpServers": {
-    "chaining": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"],
-      "env": {
-        "SEQUENTIAL_THINKING_AVAILABLE": "true",
-        "AWESOME_COPILOT_ENABLED": "true",
-        "RELIABILITY_MONITORING_ENABLED": "true",
-        "GITHUB_TOKEN": "your-github-token"
-      }
-    },
-    "filesystem": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/filesystem-mcp-server/dist/index.js"]
-    },
-    "Project-Guardian": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/Project-Guardian-mcp-server/dist/index.js"]
-    },
-    "terminal": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/terminal-mcp-server/build/index.js"]
-    },
-    "menager": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/menager-mcp-server/build/index.js"]
-    },
-    "research": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"],
-      "env": {
-        "GOOGLE_API_KEY": "your-google-api-key",
-        "GOOGLE_CSE_ID": "your-google-cse-id"
-      }
-    },
-    "browser-agent": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/browser-agent/src/server.js"]
-    },
-    "the-designer": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/the-designer/dist/index.js"]
-    }
-  }
-}
+**Full Developer Desktop (Cursor IDE):**
+```bash
+./setup.sh --profile dev-workspace --client cursor --non-interactive
 ```
 
-#### For OpenCode
+**Headless Linux Server (Claude Desktop / CLI):**
+```bash
+./setup.sh --profile headless-server --client claude --non-interactive
+```
 
-OpenCode uses a different schema than Cursor/Claude: servers go under `mcp` with `type: "local"`, a `command` array, and `environment` instead of `env`. Generate it or let `setup.sh` do it:
+**Pinned Immutable Release Snapshot:**
+```bash
+./setup.sh --profile dev-workspace --client cursor --snapshot v1.0.0 --non-interactive
+```
+
+---
+
+## Supported AI Clients & Output Formats
+
+The HeLa MCP Ecosystem generates tailored, valid configuration formats across 10 client backends:
+
+| Client Platform | Output Config Location | Format |
+|---|---|---|
+| **Cursor IDE** | `~/.cursor/mcp.json` | JSON (`mcpServers`) |
+| **Claude Desktop / CLI** | `~/.claude.json` | JSON (`mcpServers`) |
+| **Gemini CLI** | `~/.gemini/antigravity-cli/mcp_config.json` | JSON (`mcpServers`) |
+| **Antigravity CLI** | `~/.gemini/antigravity-cli/mcp_config.json` | JSON (`mcpServers`) |
+| **OpenCode** | `~/.config/opencode/opencode.json` | JSON (`mcp`) |
+| **Kilo CLI** | `~/.config/kilo/config.json` | JSON (`mcp`) |
+| **Zed Editor** | `~/.config/zed/settings.json` | JSON (`context_servers`) |
+| **Codex / ChatGPT** | `~/.codex/config.toml` | TOML (`[mcpServers.*]`) |
+| **Docker Compose** | `config/docker-compose.generated.yml` | Docker Compose v3 |
+
+---
+
+## Available Agent Profiles
+
+| Profile ID | Target System | Backbone Included | Servers Included | Focus Area |
+|---|---|---|---|---|
+| `dev-workspace` | Any (GUI recommended) | Mitosis + Genome | Membrane, Nucleus, Ribosome, Enzyme, Phenotype, Cytosol | Full-stack software engineering, testing, web UI |
+| `headless-server` | Headless Linux | Mitosis + Genome | Membrane, Nucleus, Ribosome, Enzyme, Phenotype | Cloud server administration, CI/CD, headless dev |
+| `research` | Headless or GUI | Mitosis + Genome | Enzyme, Membrane, Cytosol | Deep literature research, document synthesis, web crawling |
+| `web-devops` | Headless or GUI | Mitosis + Genome | Membrane, Nucleus, Phenotype, Cytosol | Frontend development, Tailwind styling, DOM verification |
+| `android-testing` | Device connected | Mitosis + Genome | Nucleus, Receptor, Enzyme | Mobile QA testing, ADB automation, APK validation |
+| `3d-modeling` | GUI (Blender installed) | Mitosis + Genome | Plastid, Membrane, Nucleus | 3D procedural modeling, materials, rendering |
+| `all` | Full workstation | Mitosis + Genome | All 10 HeLa MCP servers | Complete full-spectrum AI agent capabilities |
+
+For complete persona guides and pipeline specifications, see **[Profiles Catalog](docs/profiles.md)**.
+
+---
+
+## Operational Workflows (Workflows A–F)
+
+The ecosystem is built for structured multi-server agent workflows:
+* **Workflow A: Autonomous Feature Engineering**: Genome (restore) → Mitosis (decompose) → Membrane (code) → Nucleus (test) → Genome (persist).
+* **Workflow B: Deep Research & Architecture Synthesis**: Enzyme (search) → Cytosol (scrape) → Mitosis (synthesize) → Genome (record) → Membrane (write).
+* **Workflow C: Web Feature with Design & Browser Verification**: Phenotype (tokens) → Membrane (build) → Nucleus (serve) → Cytosol (DOM QA) → Genome (record).
+* **Workflow D: Mobile App Test Automation**: Genome (issue) → Nucleus (adb) → Receptor (drive UI) → Genome (record pass).
+* **Workflow E: Autonomous 3D Asset Creation & Render Pipeline**: Genome (spec) → Mitosis (plan) → Plastid (Blender) → Membrane (save) → Genome (record).
+* **Workflow F: Long-Horizon Complex Refactor with PTY Harness**: Ribosome (PTY) → Nucleus (exec) → Genome (persist).
+
+For step-by-step tool invocation sequences, schemas, and diagrams, see **[Workflows & Integration Guide](docs/workflows.md)**.
+
+---
+
+## Project Health & Diagnostics
 
 ```bash
-node scripts/generate-config.mjs dev-workspace --backend opencode --root /absolute/path/to/mcp-ecosystem --out config/opencode-example.json
+# Run system and server diagnostic health check
+npm run doctor
+# or
+./setup.sh doctor
+
+# Run 70-combination multi-client matrix test suite
+npm run test:matrix
+
+# Run master integration test suite (295 tools across all 10 servers)
+npm test
 ```
 
-```json
-{
-  "mcp": {
-    "chaining": {
-      "type": "local",
-      "enabled": true,
-      "command": ["node", "/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"],
-      "environment": {
-        "SEQUENTIAL_THINKING_AVAILABLE": "true",
-        "AWESOME_COPILOT_ENABLED": "true",
-        "RELIABILITY_MONITORING_ENABLED": "true",
-        "GITHUB_TOKEN": "your-github-token"
-      }
-    },
-    "research": {
-      "type": "local",
-      "enabled": true,
-      "command": ["node", "/absolute/path/to/mcp-ecosystem/research-mcp-server/dist/index.js"],
-      "environment": {
-        "GOOGLE_API_KEY": "your-google-api-key",
-        "GOOGLE_CSE_ID": "your-google-cse-id"
-      }
-    }
-  }
-}
-```
-
-Merge this `mcp` object into your `~/.config/opencode/opencode.json` (it merges with existing settings rather than replacing them). The full `dev-workspace` example is at `config/opencode-example.json`.
-
-## Server Details
-
-All servers are defined in `config/inventory.json`; a server can be added to any number of profiles. Servers marked **GUI/device** are excluded from headless profiles by default.
-
-### Chaining MCP Server
-
-**Repository:** [chaining-mcp-server](https://github.com/1999AZZAR/chaining-mcp-server)
-
-Intelligent tool orchestration, route optimization, and autonomous workflow server featuring:
-
-- **Built-in OpenRouter LLM Engine**: Task decomposition (`llm_decompose_task`), AI route ranking (`llm_suggest_route`), high-density summarization (`llm_summarize`), and prompt execution (`llm_query`)
-- **Resilient Fallback**: 100% offline zero-key operation with instant local heuristic planning (<30ms)
-- **TTL Caching & Fast Discovery**: 60s in-memory discovery caching with bounded path traversal
-- **Sequential Thinking & Brainstorming**: Bounded multi-branch reasoning trees with revision tracking
-- **Workflow Orchestration**: Linear and staged execution engine with dynamic variable substitution
-- **42 Prebuilt Prompts & 12 Resource Sets**: Multi-token search for architecture, development, security, and verification templates
-- **Telemetry & Health Endpoints**: Real-time resources (`chaining://health`, `chaining://cache/stats`, `chaining://llm/*`)
-
-![Blotcat orchestrating multiple tools and routing workflow traffic](assets/blotcat-illustrations/02-chaining-orchestration.jpg)
-
-### Filesystem MCP Server
-
-**Repository:** [filesystem-mcp-server](https://github.com/1999AZZAR/filesystem-mcp-server)
-
-Advanced file system operations server providing:
-
-- File and directory operations
-- Content reading with encoding support
-- File search and filtering capabilities
-- Archive creation and extraction
-- File system monitoring and change detection
-
-### Project Guardian MCP Server
-
-**Repository:** [Project-Guardian-mcp-server](https://github.com/1999AZZAR/Project-Guardian-mcp-server)
-
-Project memory and knowledge management server featuring:
-
-- Knowledge graph for project entities and relationships
-- Task tracking and progress management
-- SQLite database operations
-- Data import/export capabilities
-- Project management workflows
-
-![Blotcat placing a memory orb into a connected knowledge graph](assets/blotcat-illustrations/03-project-guardian-memory.jpg)
-
-### Terminal MCP Server
-
-**Repository:** [terminal-mcp-server](https://github.com/1999AZZAR/terminal-mcp-server)
-
-System command execution server with:
-
-- Local and remote command execution
-- SSH session management
-- Cross-platform compatibility
-- Command timeout and error handling
-- Environment variable support
-
-### Menager MCP Server
-
-**Repository:** [menager-mcp-server](https://github.com/1999AZZAR/menager-mcp-server)
-
-Terminal orchestration server featuring:
-
-- Inter-session terminal orchestration via POSIX pseudo-terminals (`pty`)
-- AI agent control plane for spawning, monitoring, and driving child terminal harnesses
-- Predictable event interception with non-blocking regex hooks
-- Memory-bounded observability with token-efficient circular buffers
-- Simulated human typing (text, control sequences, raw keystrokes)
-
-### Researcher MCP Server
-
-**Repository:** [research-assistant-mcp-server](https://github.com/1999AZZAR/research-assistant-mcp-server)
-
-Unified research platform combining Google Search and Wikipedia functionality:
-
-- Combined Google Search and Wikipedia access
-- Enhanced analysis tools (sentiment analysis, keyword extraction)
-- Research workflow management
-- Academic research capabilities
-- Multi-source fact checking
-- Research session management
-
-### Browser Agent MCP Server
-
-**Repository:** [browser-agent](https://github.com/1999AZZAR/browser-agent)
-
-Browser automation and web interaction server featuring:
-
-- Playwright-based browser automation
-- Web scraping and content extraction
-- Interactive web navigation
-- Form filling and automated actions
-- Visual verification and screenshots
-- Session management for persistent browsing
-
-### The Designer MCP Server
-
-**Repository:** [the-designer](https://github.com/1999AZZAR/the-designer)
-
-UI/UX design system tooling:
-
-- Style evaluation and best-system recommendation
-- Design tokens and Tailwind config generation
-- HTML/CSS/React/Vue component generation
-- 8-state component demos and accessibility audit
-- Pre-flight scanning of existing projects
-
-### scrcpy MCP Server
-
-**Repository:** [scrcpy-mcp](https://github.com/1999AZZAR/scrcpy-mcp)
-
-Android device control (GUI/device target):
-
-- ADB + scrcpy device automation
-- UI hierarchy inspection and element control
-- App install/launch/stop and file transfer
-- Screen recording and screenshots
-
-### LL3M Agent MCP Server
-
-**Repository:** [ll3m-agent](https://github.com/1999AZZAR/ll3m-agent)
-
-Autonomous 3D modeling (GUI target, requires local Blender):
-
-- Blender scene generation via natural language
-- Multi-agent iterative refinement
-- Mesh/material inspection and rendering
-
-### Repository Structure
-
-```
-mcp-ecosystem/
-├── README.md                              # Main ecosystem hub documentation
-├── CONTRIBUTING.md                        # Contribution guidelines & adding servers
-├── LICENSE                                # MIT License
-├── setup.sh                               # Profile installer & interactive reconfigurator
-├── update.sh                              # Update & rebuild servers in a scope
-├── config/                                # Server registry + profiles + client examples
-│   ├── inventory.json                     # Server registry & environment metadata
-│   ├── profiles.json                      # Profile (stack) definitions
-│   ├── cursor-example.json                # Generated Cursor config (dev-workspace)
-│   ├── claude-example.json                # Generated Claude Desktop config (dev-workspace)
-│   ├── gemini-example.json                # Generated Antigravity / Gemini config (dev-workspace)
-│   ├── opencode-example.json              # Generated OpenCode config (dev-workspace)
-│   ├── kilo-example.json                  # Generated Kilo CLI config (dev-workspace)
-│   ├── zed-example.json                   # Generated Zed config (dev-workspace)
-│   ├── codex-example.toml                 # Generated Codex / ChatGPT config (dev-workspace)
-│   └── docker-compose.yml                 # Container deployment specification
-├── docs/                                  # Complete Documentation Suite
-│   ├── keys-and-secrets.md                # Prerequisites, API keys, signup links & fallbacks
-│   ├── architecture.md                    # System architecture & inter-server communication
-│   ├── integration.md                     # Client integration guides & custom setups
-│   ├── profiles.md                        # Profile reference & custom stack builder
-│   └── troubleshooting.md                 # Common issues, process hangs & solutions
-└── scripts/                               # Automation & Maintenance Tooling
-    ├── generate-config.mjs                # Multi-client configuration renderer
-    ├── lib.sh                             # Shared shell utilities & JSON resolvers
-    ├── build-all.sh                       # Batch server builder
-    ├── test-all.sh                        # Batch test runner
-    └── clean-all.sh                       # Clean node_modules & build artifacts
-```
-
-### Individual Server Development
-
-Each MCP server maintains its own repository for focused development:
-
-1. **Independent Development:** Each server can be developed, tested, and deployed independently
-2. **Version Management:** Individual versioning allows for flexible updates and rollbacks
-3. **Specialization:** Focused repositories enable domain-specific optimizations
-4. **Community Contributions:** Easier for contributors to focus on specific server improvements
-
-### Managing Servers by Scope
-
-Every utility script accepts a scope: the whole inventory, a profile, or explicit keys.
-
-```bash
-# Build / test / clean — interactive scope selection
-./scripts/build-all.sh
-./scripts/build-all.sh --all                    # every server in the inventory
-./scripts/build-all.sh --profile research       # only a profile's servers
-./scripts/build-all.sh chaining-mcp-server filesystem-mcp-server
-
-# Tests and cleanup use the same flags
-./scripts/test-all.sh --profile dev-workspace
-./scripts/clean-all.sh --all --full
-```
-
-For more information see the [Profiles Guide](docs/profiles.md) and [Development Documentation](docs/integration.md#development-integration).
-
-## Contributing
-
-We welcome contributions to the MCP Ecosystem Suite! See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+---
 
 ## Documentation Index
 
-For comprehensive guides across the ecosystem:
-
-- **[Beginner's Step-by-Step Guide](docs/beginner-guide.md)** - Visual 3-minute walkthrough for non-technical users and quick onboarding.
-- **[Prerequisites, Keys & Secrets Guide](docs/keys-and-secrets.md)** - System requirements, OpenRouter, GitHub & Google API keys, acquisition URLs, and zero-key offline fallback modes.
-- **[Architecture Guide](docs/architecture.md)** - System architecture, server components, and data flow diagrams.
-- **[Integration Guide](docs/integration.md)** - Detailed setup instructions for Cursor IDE, Claude Desktop, Antigravity, OpenCode, Kilo, Zed, Codex, and Docker.
-- **[Profiles Reference](docs/profiles.md)** - Profile reference, GUI vs. headless stacks, custom profiles guide.
-- **[Troubleshooting Guide](docs/troubleshooting.md)** - Common issues, error codes, and troubleshooting solutions.
-- **[Contributing Guidelines](CONTRIBUTING.md)** - Guide for adding new MCP servers and submitting improvements.
-
-## License
-
-The MCP Ecosystem Suite is licensed under the MIT License. See [LICENSE](LICENSE) for details. Individual servers may have their own licenses - please check each repository for specific licensing information.
-
-## Support
-
-- **Issues:** Report bugs and request features in individual server repositories
-- **Discussions:** Join community discussions in the respective GitHub repositories
-- **Documentation:**
-  - Check individual server READMEs for detailed usage instructions
-  - See [docs/keys-and-secrets.md](docs/keys-and-secrets.md) for API key setups
-  - See [docs/integration.md](docs/integration.md) for integration help
-  - See [docs/troubleshooting.md](docs/troubleshooting.md) for common issues
-
-## Updates
-
-To update servers to their latest versions (use `--all`, `--profile <id>`, or explicit keys, or let the menu prompt you):
-
-```bash
-./update.sh                 # interactive scope
-./update.sh --all           # every server in the inventory
-./update.sh --profile headless-server
-```
-
-This pulls the latest changes for the selected servers, reinstalls dependencies, and rebuilds them.
+* **[Beginner's Step-by-Step Guide](docs/beginner-guide.md)**: 3-minute, zero-code onboarding.
+* **[Keys & Secrets Guide](docs/keys-and-secrets.md)**: API key setup, sign-up URLs, and zero-key offline fallbacks.
+* **[Profiles Reference](docs/profiles.md)**: Full persona reference and capability mappings.
+* **[Workflows & Integration Guide](docs/workflows.md)**: Cross-MCP workflow pipelines (Workflows A–F).
+* **[Security & Reliability Audit](docs/security-audit.md)**: Threat model, sandboxing, and isolation standards.
+* **[Architecture Guide](docs/architecture.md)**: In-depth cellular architecture and communication topologies.
+* **[Troubleshooting Guide](docs/troubleshooting.md)**: Common issues, diagnostic codes, and recovery procedures.
 
 ---
+
+## License & Attribution
+
+Distributed under the MIT License. Underlying repositories remain independently copyrighted by their respective authors.
+
+The HeLa project respectfully recognizes **Henrietta Lacks** and the enduring scientific legacy of HeLa cells.

@@ -1,11 +1,11 @@
 version: '3.8'
 
-# Environment variables should be defined in ../.env file
-# Copy .env.example to .env and fill in your values
+# HeLa MCP Ecosystem — Docker Compose Configuration
+# Environment variables can be defined in a .env file
 
 services:
-  # Chaining MCP Server - Orchestrates all other servers
-  chaining-mcp:
+  # HeLa Mitosis (Chaining MCP) — Orchestration Backbone
+  hela-mitosis:
     build:
       context: ../chaining-mcp-server
       dockerfile: Dockerfile
@@ -19,16 +19,16 @@ services:
     volumes:
       - ./data:/app/data
     depends_on:
-      - filesystem-mcp
-      - project-guardian-mcp
-      - terminal-mcp
-      - researcher-mcp
-      - browser-mcp
+      - hela-membrane
+      - hela-genome
+      - hela-nucleus
+      - hela-enzyme
+      - hela-cytosol
     networks:
       - mcp-network
 
-  # Filesystem MCP Server - File operations
-  filesystem-mcp:
+  # HeLa Membrane (Filesystem MCP) — Workspace Boundary
+  hela-membrane:
     build:
       context: ../filesystem-mcp-server
       dockerfile: Dockerfile
@@ -39,8 +39,8 @@ services:
     networks:
       - mcp-network
 
-  # Project Guardian MCP Server - Knowledge management
-  project-guardian-mcp:
+  # HeLa Genome (Project Guardian) — Persistent State Backbone
+  hela-genome:
     build:
       context: ../Project-Guardian-mcp-server
       dockerfile: Dockerfile
@@ -51,8 +51,8 @@ services:
     networks:
       - mcp-network
 
-  # Terminal MCP Server - System commands
-  terminal-mcp:
+  # HeLa Nucleus (Terminal MCP) — Command Execution
+  hela-nucleus:
     build:
       context: ../terminal-mcp-server
       dockerfile: Dockerfile
@@ -62,8 +62,8 @@ services:
     networks:
       - mcp-network
 
-  # Menager MCP Server - Terminal Orchestration
-  menager-mcp:
+  # HeLa Ribosome (Menager MCP) — PTY Terminal Harness
+  hela-ribosome:
     build:
       context: ../menager-mcp-server
       dockerfile: Dockerfile
@@ -73,10 +73,10 @@ services:
     networks:
       - mcp-network
 
-  # Researcher MCP Server - Combined research platform
-  researcher-mcp:
+  # HeLa Enzyme (Researcher MCP) — Unified Research Engine
+  hela-enzyme:
     build:
-      context: ../research-assistant-mcp-server
+      context: ../research-mcp-server
       dockerfile: Dockerfile
     ports:
       - "3005:3005"
@@ -86,8 +86,8 @@ services:
     networks:
       - mcp-network
 
-  # Browser Agent MCP Server - Browser automation
-  browser-mcp:
+  # HeLa Cytosol (Browser Agent) — Web Interaction
+  hela-cytosol:
     build:
       context: ../browser-agent
       dockerfile: Dockerfile

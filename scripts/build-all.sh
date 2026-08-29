@@ -22,12 +22,14 @@ for entry in "${SERVERS[@]}"; do
     key="${entry%%:*}"; dir="${entry##*:}"
     if [ ! -d "$dir" ]; then print_warning "$key ($dir) not found. Skipping."; continue; fi
     if [ ! -f "$dir/package.json" ]; then print_warning "$key has no package.json. Skipping build."; continue; fi
-    print_status "Building $key ..."
+    alias="$(inventory_field "$key" alias)"
+    [ -z "$alias" ] && alias="$key"
+    print_status "Building $alias ($key) ..."
     if ( cd "$dir" && npm run build ); then
-        print_success "Built $key"
+        print_success "Built $alias ($key)"
         ok=$((ok + 1))
     else
-        print_error "Build failed: $key"
+        print_error "Build failed: $alias ($key)"
     fi
 done
 

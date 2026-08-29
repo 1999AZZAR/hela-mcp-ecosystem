@@ -46,9 +46,49 @@ profile_ids()         { node_query "$PROFILES" 'o.profiles.map(p => p.id)'; }
 profile_system()      { node_query "$PROFILES" "o.profiles.find(p => p.id === \"$1\")?.system"; }
 profile_name()        { node_query "$PROFILES" "o.profiles.find(p => p.id === \"$1\")?.name"; }
 profile_servers()     { node_query "$PROFILES" "o.profiles.find(p => p.id === \"$1\")?.servers ?? []"; }
-inventory_field()     { node_query "$INVENTORY" "o.inventory[\"$1\"]?.[\"$2\"] ?? \"\""; }
+inventory_field() {
+  node -e '
+    const fs = require("fs");
+    const invData = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
+    const key = process.argv[2];
+    const field = process.argv[3];
+    const canonicalKey = invData.aliases?.[key] || key;
+    const server = invData.inventory?.[canonicalKey] || invData.inventory?.[key];
+    console.log(server?.[field] ?? "");
+  ' "$INVENTORY" "$1" "$2"
+}
 all_servers() {
   node -e "const o=require('$INVENTORY');Object.keys(o.inventory).forEach(k=>console.log(k));"
+}
+
+validate_profile() {
+  local id="$1"
+  local exists
+  exists="$(node_query "$PROFILES" "o.profiles.some(p => p.id === \"$id\")")"
+  if [ "$exists" != "true" ]; then
+    print_error "Profile '$id' does not exist in $PROFILES"
+    return 1
+  fi
+  local missing=()
+  local s has_server
+  while IFS= read -r s; do
+    if [ -n "$s" ]; then
+      has_server="$(node -e '
+        const inv = require("'"$INVENTORY"'");
+        const key = "'"$s"'";
+        const cKey = inv.aliases?.[key] || key;
+        console.log(!!(inv.inventory?.[cKey] || inv.inventory?.[key]));
+      ')"
+      if [ "$has_server" != "true" ]; then
+        missing+=("$s")
+      fi
+    fi
+  done < <(profile_servers "$id")
+  if [ "${#missing[@]}" -gt 0 ]; then
+    print_error "Profile '$id' references unknown server(s): ${missing[*]}"
+    return 1
+  fi
+  return 0
 }
 
 backup_if_exists() {
@@ -136,10 +176,16 @@ materialize_servers() {
   local k rel_dir resolved_dir
   for k in "${keys[@]}"; do
     rel_dir="$(inventory_field "$k" dir)"
+    local short_dir="${rel_dir%-mcp-server}"
+    short_dir="${short_dir%-mcp}"
     if [ -n "$rel_dir" ] && [ -d "$MCP_ECOSYSTEM_ROOT/$rel_dir" ]; then
       resolved_dir="$MCP_ECOSYSTEM_ROOT/$rel_dir"
     elif [ -n "$rel_dir" ] && [ -d "$MCP_ECOSYSTEM_ROOT/../$rel_dir" ]; then
       resolved_dir="$MCP_ECOSYSTEM_ROOT/../$rel_dir"
+    elif [ -n "$short_dir" ] && [ -d "$MCP_ECOSYSTEM_ROOT/$short_dir" ]; then
+      resolved_dir="$MCP_ECOSYSTEM_ROOT/$short_dir"
+    elif [ -n "$short_dir" ] && [ -d "$MCP_ECOSYSTEM_ROOT/../$short_dir" ]; then
+      resolved_dir="$MCP_ECOSYSTEM_ROOT/../$short_dir"
     elif [ -d "$MCP_ECOSYSTEM_ROOT/$k" ]; then
       resolved_dir="$MCP_ECOSYSTEM_ROOT/$k"
     elif [ -d "$MCP_ECOSYSTEM_ROOT/../$k" ]; then

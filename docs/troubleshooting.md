@@ -1,164 +1,168 @@
-# Troubleshooting Guide
+# HeLa MCP Ecosystem Troubleshooting & Diagnostic Guide
+
+This guide provides systematic diagnostic procedures, error code explanations, and recovery workflows for the **HeLa MCP Ecosystem**.
 
 ![Blotcat wearing a hard hat, looking at a smoking server block while consulting a thick manual](../assets/blotcat-troubleshooting.jpg)
-## Table of Contents
 
-- [Setup Issues](#setup-issues)
-  - [Git Clone Failures](#git-clone-failures)
-  - [Node.js Version Issues](#nodejs-version-issues)
-  - [Permission Errors](#permission-errors)
-- [Build Issues](#build-issues)
-  - [Build Failures](#build-failures)
-  - [Missing Build Tools](#missing-build-tools)
-- [Configuration Issues](#configuration-issues)
-  - [MCP Client Configuration](#mcp-client-configuration)
-  - [Environment Variables](#environment-variables)
-- [Runtime Issues](#runtime-issues)
-  - [Server Won't Start](#server-wont-start)
-  - [Tool Calls Fail](#tool-calls-fail)
-  - [Performance Issues](#performance-issues)
-- [Network Issues](#network-issues)
-  - [External API Access](#external-api-access)
-  - [SSH Connection Issues (Terminal MCP)](#ssh-connection-issues-terminal-mcp)
-- [Database Issues (Project Guardian)](#database-issues-project-guardian)
-  - [Database Corruption](#database-corruption)
-  - [Permission Issues](#permission-issues)
-- [Update Issues](#update-issues)
-  - [Update Script Failures](#update-script-failures)
-- [Development Issues](#development-issues)
-  - [Testing Failures](#testing-failures)
-  - [Linting Errors](#linting-errors)
-- [Getting Help](#getting-help)
-  - [Debug Information](#debug-information)
-  - [Community Support](#community-support)
-  - [Emergency Recovery](#emergency-recovery)
+---
 
-This guide helps you resolve common issues when setting up and using the MCP Ecosystem Suite.
+## 1. Fast Diagnostic Workflow: `setup.sh doctor`
 
-## Setup Issues
+Before manual debugging, always run the automated diagnostic health check:
 
-### Git Clone Failures
+```bash
+./setup.sh doctor
+# or
+npm run doctor
+```
 
-**Problem**: `git clone` commands fail during setup.
+To run diagnostics against a specific profile:
+```bash
+./setup.sh doctor --profile dev-workspace
+```
 
-**Solutions**:
-1. Check internet connection.
-2. Verify repository URLs are accessible.
-3. Ensure you have proper SSH keys or use HTTPS.
+To output machine-readable JSON:
+```bash
+./setup.sh doctor --json
+```
 
-### Node.js Version Issues
+### Understanding Diagnostic Output
 
-**Problem**: "Node.js version 18.0.0 or higher is required"
+* **`[READY]`**: The server directory exists, Git commit matches pinned revision, entrypoint is compiled, and stdio JSON-RPC initialization succeeded in <300ms.
+* **`[OPTIONAL MISSING]`**: An optional external driver (e.g. Playwright, ADB, Blender) is not installed on the host. Non-core profiles will continue to work normally.
+* **`[WARNING]`**: The server is runnable but may differ from the pinned snapshot commit or has uncommitted development changes.
+* **`[ERROR - REQUIRED MISSING]`**: A core component or prerequisite failed. Review the actionable recovery steps below.
 
-**Solutions**:
-1. Check your current Node.js version with `node --version`.
-2. Install/update Node.js using your package manager or `nvm`.
+---
 
-### Permission Errors
+## 2. Common Issues & Recovery Procedures
 
-**Problem**: Permission denied when running setup scripts.
+### 2.1 Diagnostic Failure: Missing Entrypoint or Build Artifacts
 
-**Solutions**:
-1. Make scripts executable: `chmod +x setup.sh update.sh scripts/*.sh`.
-2. Ensure you have write permissions in the target directory.
+**Symptom**: `[ERROR] Entrypoint file missing` or `dist/index.js not found`.
 
-## Build Issues
+**Root Cause**: The TypeScript source code has not been compiled into JavaScript build artifacts.
 
-### Build Failures
+**Fix**:
+```bash
+# Rebuild all 10 servers automatically
+npm run build:all
 
-**Problem**: `npm run build` fails for individual servers.
+# Or build a single server manually
+cd <server-directory>
+npm run build
+```
 
-**Solutions**:
-1. Clean and reinstall dependencies:
+---
+
+### 2.2 Server Stdio JSON-RPC Hang or Crash
+
+**Symptom**: `[ERROR] Exited early with code 1` or tool timeouts during execution.
+
+**Root Cause**: Node module dependencies are missing, or environment variables are malformed.
+
+**Fix**:
+```bash
+# Reinstall dependencies for the failing server
+cd <server-directory>
+rm -rf node_modules package-lock.json
+npm install
+npm run build
+```
+
+Verify stdio responsiveness manually:
+```bash
+node <entrypoint-file>
+# The process should listen on stdin without throwing an uncaught exception. Press Ctrl+C to exit.
+```
+
+---
+
+### 2.3 Client Does Not Recognize Configured MCP Servers
+
+**Symptom**: Cursor, Claude, Gemini, or Zed reports that tools are not available.
+
+**Root Cause**: Configuration file was written to the wrong path, contains relative paths, or the client was not restarted.
+
+**Fix**:
+1. **Regenerate configuration with absolute paths**:
    ```bash
-   cd <server-name>
-   rm -rf node_modules package-lock.json
-   npm install
-   npm run build
+   ./setup.sh --reconfigure --profile dev-workspace --client cursor --non-interactive
    ```
-2. Check for TypeScript errors with `npx tsc --noEmit`.
+2. **Verify target configuration file**:
+   * **Cursor IDE**: `cat ~/.cursor/mcp.json`
+   * **Claude Desktop**: `cat ~/.claude.json`
+   * **Gemini / Antigravity**: `cat ~/.gemini/antigravity-cli/mcp_config.json`
+   * **OpenCode**: `cat ~/.config/opencode/opencode.json`
+   * **Kilo CLI**: `cat ~/.config/kilo/config.json`
+   * **Zed Editor**: `cat ~/.config/zed/settings.json`
+   * **Codex / ChatGPT**: `cat ~/.codex/config.toml`
+3. **Restart the AI Client / IDE**: MCP clients load server definitions only at startup. Fully restart the application after updating configs.
 
-## Configuration Issues
+---
 
-### MCP Client Configuration
+### 2.4 Pinned Snapshot Recovery & Rollback
 
-**Problem**: MCP client doesn't recognize servers.
+**Symptom**: Upstream repository changes broke a server build or altered expected tool schemas.
 
-**Solutions**:
-1. **Verify configuration file location**:
-   - Cursor IDE: `~/.cursor/mcp.json`
-   - Claude Desktop: Check app settings (`~/Library/Application Support/Claude/claude_desktop_config.json` on macOS, `~/.config/Claude/` on Linux)
-   - OpenCode: `~/.config/opencode/opencode.json`
-2. **Validate JSON syntax**: `cat ~/.cursor/mcp.json | python3 -m json.tool`.
-3. **Check absolute paths**: Ensure all paths in `args` are absolute.
-4. **Restart MCP client** after any changes.
-5. **Regenerate a profile config** instead of hand-editing:
+**Root Cause**: Moving `main`/`master` branch contains unreleased or breaking changes.
+
+**Fix**:
+Restore known-good, audited release snapshot:
+```bash
+./setup.sh --snapshot v1.0.0 --profile dev-workspace --non-interactive
+```
+
+---
+
+### 2.5 SQLite Database Lock or Corruption (`HeLa Genome`)
+
+**Symptom**: `database is locked` or `SQLite error` in `Project-Guardian-mcp-server`.
+
+**Root Cause**: Multiple concurrent processes accessed `memory.db` without WAL mode enabled, or an ungraceful shutdown occurred.
+
+**Fix**:
+1. Verify database integrity using the SQLite CLI:
    ```bash
-   node scripts/generate-config.mjs <profile> --backend <cursor|claude|opencode>
+   sqlite3 <server-dir>/memory.db "PRAGMA integrity_check;"
+   ```
+2. Enable Write-Ahead Logging (WAL) for robust concurrent reads/writes:
+   ```bash
+   sqlite3 <server-dir>/memory.db "PRAGMA journal_mode=WAL;"
+   ```
+3. If corrupted, restore from automated daily backups:
+   ```bash
+   cp <server-dir>/memory.db.bak <server-dir>/memory.db
    ```
 
-### Environment Variables
+---
 
-**Problem**: Servers fail due to missing environment variables.
+### 2.6 External Hardware Driver Issues
 
-**Solutions**:
-1. Add variables to MCP configuration `env` block.
-2. **Required**: `GITHUB_TOKEN` (Chaining), `GOOGLE_API_KEY` & `GOOGLE_SEARCH_ENGINE_ID` (Researcher).
+#### HeLa Receptor (Android / ADB)
+* **Verify ADB availability**: `adb version`
+* **Verify device connectivity**: `adb devices` (ensure device is authorized with USB debugging enabled).
 
-## Runtime Issues
+#### HeLa Cytosol (Browser Automation)
+* **Install Playwright browsers**:
+  ```bash
+  npx playwright install chromium
+  ```
 
-### Server Won't Start
+#### HeLa Plastid (Blender 3D)
+* **Verify Blender CLI in PATH**:
+  ```bash
+  blender --version
+  ```
+* If installed outside standard PATH, create a symlink:
+  ```bash
+  sudo ln -s /path/to/blender /usr/local/bin/blender
+  ```
 
-**Problem**: MCP server fails to start.
+---
 
-**Debugging Steps**:
-1. Test server manually: `cd <server-name> && node dist/index.js` (or `node src/server.js` for Browser Agent).
-2. For Browser Agent, ensure Playwright is initialized: `npx playwright install`.
+## 3. Getting Further Support
 
-### Tool Calls Fail
-
-**Problem**: Tool calls return errors.
-
-**Common Issues**:
-1. **Network connectivity** for external services.
-2. **API keys** for Researcher MCP.
-3. **File permissions** for Filesystem operations.
-
-## Network Issues
-
-### External API Access
-
-**Problem**: External services (Researcher MCP) fail.
-
-**Solutions**:
-1. Check internet connectivity.
-2. Verify API keys are valid and quotas aren't exceeded.
-3. Researcher MCP uses `GOOGLE_API_KEY` and `GOOGLE_CSE_ID` (mapped from `GOOGLE_SEARCH_ENGINE_ID` in Docker).
-
-### SSH Connection Issues (Terminal MCP)
-
-**Problem**: Remote command execution fails.
-
-**Solutions**:
-1. Verify SSH key configuration and test manual connection.
-
-## Database Issues (Project Guardian)
-
-### Database Corruption
-
-**Problem**: SQLite database corruption errors.
-
-**Recovery**:
-1. Backup `memory.db`.
-2. Repair or reinitialize: `rm memory.db && node dist/index.js`.
-
-## Getting Help
-
-### Debug Information
-
-Include system info, full error messages, and steps to reproduce when seeking support.
-
-### Community Support
-
-- Open issues in individual server repositories.
-- Review READMEs and documentation in each repository.
+* **Run Integration Tests**: `npm test` (executes 295 tool discovery tests across all 10 servers).
+* **Run Matrix Tests**: `npm run test:matrix` (verifies all 70 client configuration combinations).
+* **File an Issue**: Open an issue on GitHub at [`https://github.com/1999AZZAR/mcp-ecosystem/issues`](https://github.com/1999AZZAR/mcp-ecosystem/issues) with the output of `./setup.sh doctor --json`.

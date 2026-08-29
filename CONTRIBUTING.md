@@ -1,198 +1,64 @@
-# Contributing to MCP Ecosystem Suite
+# Contributing to the HeLa MCP Ecosystem
+
+Thank you for your interest in contributing to the **HeLa MCP Ecosystem**! This document provides guidelines and information for contributors and maintainers.
 
 ![Blotcat carefully placing a new, glowing building block on top of an established, complex structure](assets/blotcat-contributing.jpg)
-Thank you for your interest in contributing to the MCP Ecosystem Suite! This document provides guidelines and information for contributors.
 
-## Table of Contents
+---
 
-- [Ways to Contribute](#ways-to-contribute)
-  - [1. Code Contributions](#1-code-contributions)
-  - [2. Documentation](#2-documentation)
-  - [3. Testing](#3-testing)
-- [Development Workflow](#development-workflow)
-  - [For Existing Servers](#for-existing-servers)
-  - [For New Servers](#for-new-servers)
-- [Coding Standards](#coding-standards)
-  - [General Guidelines](#general-guidelines)
-  - [Code Style](#code-style)
-  - [Commit Messages](#commit-messages)
-- [Testing](#testing)
-  - [Unit Tests](#unit-tests)
-  - [Integration Tests](#integration-tests)
-  - [Manual Testing](#manual-testing)
-- [Documentation](#documentation)
-  - [Code Documentation](#code-documentation)
-  - [README Updates](#readme-updates)
-- [Pull Request Process](#pull-request-process)
-- [Review Process](#review-process)
-- [Community Guidelines](#community-guidelines)
-- [Getting Help](#getting-help)
-- [Recognition](#recognition)
+## 1. Architectural Boundaries & 10-MCP Ceiling
 
-## Ways to Contribute
+* **The 10-MCP Capability Ceiling**: The ecosystem maintains exactly 10 canonical MCP servers (7 core headless, 3 specialized GUI/device). Contributions focus on reliability, performance, tool quality, and testing rather than adding new server repositories.
+* **The 4-Tier Naming Architecture**:
+  * Tier 1: Public Identity (`HeLa <Component>`, e.g. *HeLa Mitosis*, *HeLa Genome*)
+  * Tier 2: Machine Identifier (`hela-*`, e.g. `hela-mitosis`, `hela-genome`)
+  * Tier 3: Technical Source Repository (`chaining-mcp-server`, `Project-Guardian-mcp-server`, etc.)
+  * Tier 4: Immutable Commit Hash (`config/snapshots/v1.0.0.json`)
+* **Repository Autonomy**: Upstream repositories remain independent and modular.
 
-### 1. Code Contributions
-- **Bug fixes**: Fix issues in existing MCP servers
-- **New features**: Add capabilities to existing servers
-- **New servers**: Propose and develop new MCP servers for the ecosystem
-- **Documentation**: Improve documentation and examples
-- **Tests**: Add or improve test coverage
+---
 
-### 2. Documentation
-- **README updates**: Keep documentation current
-- **Examples**: Provide usage examples and tutorials
-- **Troubleshooting**: Document common issues and solutions
+## 2. Development & Verification Workflow
 
-### 3. Testing
-- **Bug reports**: Report issues with detailed reproduction steps
-- **Compatibility testing**: Test with different MCP clients and environments
-
-## Development Workflow
-
-### For Existing Servers
-
-1. **Choose a server** to contribute to from `config/inventory.json`
-2. **Fork the repository** of the specific server you want to work on
-3. **Create a feature branch**:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-4. **Make your changes** following the coding standards
-5. **Add tests** if applicable
-6. **Run the test suite** (narrow to one server with a scope flag):
-   ```bash
-   ./scripts/test-all.sh my-server-key
-   npm test
-   ```
-7. **Build the project**:
-   ```bash
-   ./scripts/build-all.sh my-server-key
-   npm run build
-   ```
-8. **Submit a pull request** with a clear description
-
-### For New Servers
-
-1. **Propose the server** by creating an issue in this repository describing:
-   - Purpose and scope
-   - Why it fits the ecosystem
-   - GUI/device requirements (desktop-only vs. headless-friendly)
-   - Technical approach
-   - Integration points with existing servers
-
-2. **Create the repository** following the established patterns:
-   - Use TypeScript
-   - Follow MCP protocol specifications
-   - Include documentation
-   - Provide test coverage
-   - Use established project structure
-
-3. **Wire it into the ecosystem**:
-   - Add the server to `config/inventory.json` (repo URL, clone dir, entry file, build command, env vars, GUI/device flags). This makes it available to every profile and to the `--all` scope.
-   - Add it to one or more `profiles` in `config/profiles.json` (use `system: "gui"` if it needs a display/device, otherwise `headless` or `any`).
-   - Update the Server Details table and Core Servers list in `config/../README.md`.
-   - Verify config rendering:
-     ```bash
-     node scripts/generate-config.mjs <profile> --backend print
-     ```
-
-## Coding Standards
-
-### General Guidelines
-
-- **TypeScript**: Use TypeScript for all new code
-- **ESLint**: Follow the established linting rules
-- **Testing**: Maintain or improve test coverage
-- **Documentation**: Document all public APIs and complex logic
-- **Error Handling**: Provide meaningful error messages
-- **Security**: Follow security best practices
-
-### Code Style
-
-- Use 2 spaces for indentation
-- Use single quotes for strings
-- Use semicolons
-- Follow existing naming conventions
-- Keep functions small and focused
-- Add comments for complex logic
-
-### Commit Messages
-
-Use clear, descriptive commit messages:
-
-```
-feat: add new tool for file analysis
-fix: resolve memory leak in search operations
-docs: update API documentation
-test: add integration tests for new features
+### 2.1 Local Environment Setup
+```bash
+git clone https://github.com/1999AZZAR/mcp-ecosystem.git
+cd mcp-ecosystem
+./setup.sh --profile dev-workspace --client skip --non-interactive
 ```
 
-## Testing
+### 2.2 Running Diagnostics & Tests
+Before submitting changes, ensure all test suites pass locally:
 
-### Unit Tests
-- Test individual functions and modules
-- Mock external dependencies
-- Cover edge cases and error conditions
+```bash
+# 1. Run diagnostic health checks
+npm run doctor
 
-### Integration Tests
-- Test server startup and basic functionality
-- Test MCP protocol compliance
-- Test integration with MCP clients
+# 2. Run 70-combination multi-client matrix tests
+npm run test:matrix
 
-### Manual Testing
-- Test with actual MCP clients (Cursor, Claude Desktop, OpenCode)
-- Verify cross-platform compatibility
-- Test error scenarios
+# 3. Run master integration test suite (295 tools across all 10 servers)
+npm test
 
-## Documentation
+# 4. Run pre-commit linters
+pre-commit run --all-files
+```
 
-### Code Documentation
-- Use JSDoc comments for public APIs
-- Document parameters, return values, and exceptions
-- Provide usage examples where helpful
+---
 
-### README Updates
-- Keep server READMEs current
-- Update the main ecosystem README for new servers
-- Maintain accurate configuration examples
+## 3. Pull Request Guidelines
 
-## Pull Request Process
+1. **Target Branch**: Submit all pull requests against the `development` branch.
+2. **Commit Conventions**: Follow standard Conventional Commits:
+   * `feat(scope): ...`
+   * `fix(scope): ...`
+   * `docs(scope): ...`
+   * `test(scope): ...`
+   * `chore(scope): ...`
+3. **CI Matrix Conformance**: Ensure GitHub Actions passes across all matrix targets (`ubuntu-latest`, `macos-latest` on Node.js 18, 20, and 22).
 
-1. **Ensure CI passes** - All tests and linting must pass
-2. **Update documentation** - README, API docs, examples
-3. **Add tests** - For new features and bug fixes
-4. **Squash commits** - Combine related commits into logical units
-5. **Describe changes** - Provide clear PR description with:
-   - What changed
-   - Why it changed
-   - How to test
-   - Breaking changes (if any)
+---
 
-## Review Process
+## 4. Attribution & Recognition
 
-- All PRs require review from at least one maintainer
-- Reviews focus on code quality, testing, and adherence to standards
-- Constructive feedback is provided with suggestions for improvement
-- Changes may be requested before merging
-
-## Community Guidelines
-
-- **Be respectful** - Treat all contributors with respect
-- **Be constructive** - Provide helpful feedback and suggestions
-- **Be patient** - Allow time for reviews and responses
-- **Be collaborative** - Work together to improve the ecosystem
-
-## Getting Help
-
-- **Issues**: Use individual server repositories for bug reports and feature requests
-- **Discussions**: Use GitHub Discussions for questions and general discussion
-- **Documentation**: Check existing documentation first
-
-## Recognition
-
-Contributors are recognized through:
-- GitHub contributor statistics
-- Mention in release notes for significant contributions
-- Credit in documentation for major features
-
-Thank you for contributing to the MCP Ecosystem Suite! Your efforts help make AI agent harnesses more capable and useful.
+The HeLa project respectfully recognizes **Henrietta Lacks** and the enduring scientific legacy of HeLa cells as an inspiration for immortal, modular cellular architecture in software.

@@ -20,8 +20,12 @@ function readJson(p) {
   return JSON.parse(fs.readFileSync(p, 'utf8'));
 }
 
-function readInventory() {
-  return readJson(path.join(ECOSYSTEM_ROOT, 'config/inventory.json')).inventory;
+function readInventoryData() {
+  const data = readJson(path.join(ECOSYSTEM_ROOT, 'config/inventory.json'));
+  return {
+    inventory: data.inventory,
+    aliases: data.aliases || {},
+  };
 }
 
 function readProfiles() {
@@ -41,44 +45,62 @@ function parseArgs(argv) {
   };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    if (arg === '--backend') args.backend = argv[++i];
+    if (arg === '--backend' || arg === '--client') args.backend = argv[++i];
+    else if (arg === '--profile') args.profile = argv[++i];
     else if (arg === '--root') args.root = argv[++i];
     else if (arg === '--out') args.out = argv[++i];
+    else if (arg === '--stdout') args.out = null;
     else if (arg === '--openrouter-key' || arg === '--openrouter') args.openrouterKey = argv[++i];
     else if (arg === '--github-token' || arg === '--github') args.githubToken = argv[++i];
     else if (arg === '--google-key' || arg === '--google') args.googleKey = argv[++i];
     else if (arg === '--google-cse-id' || arg === '--cse') args.googleCseId = argv[++i];
-    else if (args.profile === null) args.profile = arg;
+    else if (args.profile === null && !arg.startsWith('-')) args.profile = arg;
   }
   return args;
 }
 
-function resolveServers(profile, inventory) {
+function resolveServers(profile, inventory, aliases = {}) {
   const resolved = [];
   const seen = new Set();
-  for (const id of profile.servers) {
+  for (const rawId of profile.servers) {
+    const id = aliases[rawId] || rawId;
     if (seen.has(id)) continue;
     seen.add(id);
-    const info = inventory[id];
+    const info = inventory[id] || inventory[rawId];
     if (!info) {
-      console.error(`[warn] Profile "${profile.id}" references unknown server "${id}". Skipping.`);
+      console.error(`[warn] Profile "${profile.id}" references unknown server "${rawId}". Skipping.`);
       continue;
     }
-    resolved.push({ id, ...info });
+    resolved.push({ id: info.id || id, ...info });
   }
   return resolved;
 }
 
+function resolveServerDir(s, root) {
+  const primary = path.join(root, s.dir);
+  if (fs.existsSync(primary)) return primary;
+  const sibling = path.join(root, '..', s.dir);
+  if (fs.existsSync(sibling)) return sibling;
+  const shortDir = s.dir.replace('-mcp-server', '').replace('-mcp', '');
+  const siblingShort = path.join(root, '..', shortDir);
+  if (fs.existsSync(siblingShort)) return siblingShort;
+  const primaryShort = path.join(root, shortDir);
+  if (fs.existsSync(primaryShort)) return primaryShort;
+  return primary;
+}
+
 function entryArgs(server, root) {
   if (!server.entry) return [];
-  return [path.join(root, server.dir, server.entry)];
+  const dir = resolveServerDir(server, root);
+  return [path.join(dir, server.entry)];
 }
 
 function buildServerEnv(s, root, options = {}) {
   const env = {};
+  const serverDir = resolveServerDir(s, root);
   for (const key of (s.env || [])) {
     if (key === 'MEMORY_FILE_PATH') {
-      env[key] = path.join(root, s.dir, 'data/memory.json');
+      env[key] = path.join(serverDir, 'data/memory.json');
     } else if (key === 'CHAINING_TOOL_TIMEOUT_MS') {
       env[key] = '10000';
     } else if (key === 'CHAINING_LLM_ENABLED') {
@@ -131,11 +153,11 @@ function renderKilo(servers, root, options) {
   const mcp = {};
   for (const s of servers) {
     const name = s.id.replace('-mcp-server', '').replace('-mcp', '');
-    const entry = s.entry ? path.join(root, s.dir, s.entry) : null;
+    const args = entryArgs(s, root);
     const block = {
       type: 'local',
       enabled: true,
-      command: entry ? [s.runtime || 'node', entry] : [],
+      command: args.length ? [s.runtime || 'node', ...args] : [],
     };
     const env = buildServerEnv(s, root, options);
     if (Object.keys(env).length) block.environment = env;
@@ -162,11 +184,12 @@ function renderCodexToml(servers, root, options) {
   const sections = ['# Generated Codex / ChatGPT MCP Server Configuration'];
   for (const s of servers) {
     const name = s.id.replace('-mcp-server', '').replace('-mcp', '');
-    const entry = s.entry ? path.join(root, s.dir, s.entry) : '';
+    const args = entryArgs(s, root);
+    const argStr = args.map((a) => `"${a}"`).join(', ');
     const sectionLines = [
       `[mcpServers.${name}]`,
       `command = "${s.runtime || 'node'}"`,
-      `args = ["${entry}"]`,
+      `args = [${argStr}]`,
     ];
     const env = buildServerEnv(s, root, options);
     if (Object.keys(env).length > 0) {
@@ -211,7 +234,7 @@ function renderPrint(servers, root) {
 function main() {
   const args = parseArgs(process.argv.slice(2));
   if (!args.profile || !args.backend) {
-    console.error('Usage: node scripts/generate-config.mjs <profileId> --backend <cursor|claude|gemini|antigravity|opencode|kilo|zed|codex|docker|print> [--root <path>] [--out <file>]');
+    console.error('Usage: node scripts/generate-config.mjs <profileId> --backend <cursor|claude|gemini|antigravity|opencode|kilo|zed|codex|docker|print|skip> [--root <path>] [--out <file>]');
     process.exit(1);
   }
 
@@ -222,8 +245,8 @@ function main() {
     process.exit(1);
   }
 
-  const inventory = readInventory();
-  const servers = resolveServers(profile, inventory);
+  const { inventory, aliases } = readInventoryData();
+  const servers = resolveServers(profile, inventory, aliases);
   const root = path.resolve(args.root);
 
   let out;
@@ -252,8 +275,11 @@ function main() {
     case 'print':
       out = renderPrint(servers, root) + '\n';
       break;
+    case 'skip':
+      out = 'Config generation skipped.\n';
+      break;
     default:
-      console.error(`Unknown backend "${args.backend}". Use cursor|claude|gemini|antigravity|opencode|kilo|zed|codex|docker|print.`);
+      console.error(`Unknown backend "${args.backend}". Use cursor|claude|gemini|antigravity|opencode|kilo|zed|codex|docker|print|skip.`);
       process.exit(1);
   }
 

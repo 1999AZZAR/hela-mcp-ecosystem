@@ -1,21 +1,22 @@
-# Beginner's Guide: How to Use the MCP Ecosystem
+# Beginner's Guide: How to Use the HeLa MCP Ecosystem
 
-> **Target Audience:** Anyone! No advanced coding, terminal expertise, or system administration experience required. If you can copy and paste a single command, you can set this up in under 3 minutes.
+> **Target Audience:** Anyone. No advanced coding, terminal expertise, or system administration experience required. If you can copy and paste a single command, you can set this up in under 3 minutes.
 
 ---
 
-## What is the MCP Ecosystem? (In Plain English)
+## What is the HeLa MCP Ecosystem? (In Plain English)
 
-Think of your AI assistant (like Claude, Cursor, ChatGPT, or Antigravity) like a brilliant mind in a room. By default, it can only talk to you.
+Think of your AI assistant (like Claude, Cursor, ChatGPT, Gemini, or Antigravity) like a brilliant mind in a room. By default, it can only talk to you.
 
-The **MCP Ecosystem** gives your AI assistant **hands, tools, and a long-term memory**:
-* **Project Guardian**: Gives your AI a persistent memory so it never forgets your project plans, notes, or tasks across chats.
-* **Chaining MCP**: Helps your AI think step-by-step, brainstorm multiple solutions, and pick the best strategy.
-* **Filesystem**: Lets your AI read, create, search, and organize project files on your computer.
-* **Terminal & Menager**: Lets your AI safely run commands and tests for you.
-* **Researcher**: Allows your AI to search Google and Wikipedia for real-time facts and documentation.
-* **The Designer**: Helps your AI create color palettes, design tokens, and modern user interfaces.
-* **Browser Agent**: Lets your AI open a browser, click buttons, and extract web data.
+The **HeLa MCP Ecosystem** gives your AI assistant **hands, tools, and long-term memory** through specialized cellular components:
+* **HeLa Genome**: Gives your AI persistent memory so it never forgets your project plans, architectural decisions, or open tasks across chats.
+* **HeLa Mitosis**: Helps your AI think step-by-step, brainstorm multiple solutions, and pick the best strategy.
+* **HeLa Membrane**: Lets your AI read, create, search, and organize project files on your computer safely.
+* **HeLa Nucleus & HeLa Ribosome**: Lets your AI safely run commands and terminal tests for you.
+* **HeLa Enzyme**: Allows your AI to search Google and Wikipedia for real-time facts and documentation.
+* **HeLa Phenotype**: Helps your AI create color palettes, design tokens, and modern user interfaces.
+* **HeLa Cytosol**: Lets your AI open a browser, click buttons, and inspect web pages.
+* **HeLa Receptor & HeLa Plastid**: Enables physical Android device control and 3D Blender modeling.
 
 ---
 
@@ -42,7 +43,7 @@ cd mcp-ecosystem
 When you run `./setup.sh`, you will see an interactive menu:
 
 ```
-[INFO] mcp-ecosystem setup & configuration
+[INFO] HeLa MCP Ecosystem setup & configuration
 [SUCCESS] Prerequisites OK (Node.js v20.x.x)
 
 [INFO] Available profiles:
@@ -56,7 +57,7 @@ When you run `./setup.sh`, you will see an interactive menu:
 
 [QUESTION] Enter profile number (1-7):
 ```
-**Selection:** Type `2` (or `1`) and press `Enter`.
+**Selection:** Type `1` (or `2`) and press `Enter`.
 
 ---
 
@@ -98,63 +99,28 @@ The wizard will ask if you have any optional API keys:
 ```
 
 **What to do:**
-* **If you have keys:** Paste your key and press `Enter`.
-* **If you do not have keys:** **Just press `Enter` on each question!** The system automatically configures free offline fallback mode with zero errors or crashes.
-* **Where to get keys:** If you want to obtain free API keys for additional features, see our detailed [Prerequisites, Keys & Secrets Guide](keys-and-secrets.md) for direct signup links and configuration instructions.
+* **If you have keys:** Paste them in.
+* **If you don't have keys:** Just press `Enter` to skip every prompt. The ecosystem will run in 100% offline fallback mode at no cost.
 
+---
+
+## Verifying Your Setup with `doctor`
+
+To verify that your installation is completely healthy, run:
+
+```bash
+./setup.sh doctor
 ```
-[SUCCESS] Wrote configuration to your AI app!
-[SUCCESS] Done. Restart your AI app to start using your new tools.
+
+When everything is ready, you will see a green success confirmation:
+```
+SUCCESS: All required HeLa MCP servers and dependencies are healthy and ready!
 ```
 
 ---
 
-## How to Talk to Your AI to Use the MCP Tools
+## Next Steps
 
-Once installed, **restart your AI app**. You do not need to learn special command syntax—just talk to your AI naturally.
-
-### 1. Step-by-Step Task Planning & Brainstorming
-> **Prompt:** *"I want to build a personal budget tracker web app. Use sequential thinking to analyze the architecture and give me 3 creative feature ideas using brainstorming."*
-
-### 2. Project Memory & Task Tracking
-> **Prompt:** *"Create an entity in memory called 'BudgetApp' and record our decision to use SQLite for local data storage."*
-
-### 3. Research & Documentation
-> **Prompt:** *"Search Wikipedia for best practices on REST API authentication and summarize the key security principles."*
-
-### 4. UI/UX Design & Color Palettes
-> **Prompt:** *"Generate an emerald green color palette with design tokens and Tailwind CSS classes for a modern financial dashboard."*
-
-### 5. File & Project Operations
-> **Prompt:** *"Search our project folder for all configuration files and summarize what each one does."*
-
----
-
-## Frequently Asked Questions (FAQ)
-
-### Do I need to pay for any API keys?
-**No.** All servers work 100% offline without any paid subscriptions or credit cards:
-* If you don't have an OpenRouter key, routing uses smart local heuristics.
-* If you don't have a GitHub token, prompt guides load from the bundled local library.
-* If you don't have a Google API key, research uses free Wikipedia search.
-* For a full breakdown of each key, its purpose, and free signup links, see the [Prerequisites, Keys & Secrets Guide](keys-and-secrets.md).
-
-### How do I change my settings or add an API key later?
-You never need to edit configuration files manually. Open your terminal and run:
-```bash
-cd mcp-ecosystem
-./setup.sh --reconfigure
-```
-This opens the configuration wizard instantly without re-downloading anything.
-
-### How do I get the latest updates?
-Run this single command whenever you want to update all servers:
-```bash
-cd mcp-ecosystem
-./update.sh --all --test
-```
-
-### What if my AI app doesn't see the tools?
-1. Make sure you completely quit and restart your AI app (e.g. Cursor or Claude Desktop).
-2. Check your app's Settings -> MCP section to verify that the server status indicators are active.
-3. If you encounter issues, refer to our [Troubleshooting Guide](troubleshooting.md).
+1. **Restart your AI app** (Cursor, Claude, Zed, etc.).
+2. Ask your AI: *"What MCP tools do you have available?"*
+3. Read the **[Workflows Guide](workflows.md)** to see examples of autonomous feature development, research, and design.

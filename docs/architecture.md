@@ -1,376 +1,166 @@
-# MCP Ecosystem Suite Architecture
+# HeLa MCP Ecosystem Architecture
+
+This document provides a comprehensive architectural reference for the **HeLa MCP Ecosystem**, detailing its cellular design principles, dual-backbone topology, component taxonomies, and cross-MCP communication mechanisms.
 
 ![Blotcat acting as a conductor in front of a modular system of interconnected server blocks](../assets/blotcat-architecture.jpg)
-## Table of Contents
 
-- [Overview](#overview)
-- [Core Principles](#core-principles)
-  - [1. Modularity](#1-modularity)
-  - [2. Interoperability](#2-interoperability)
-  - [3. Specialization](#3-specialization)
-- [Profile-Driven Architecture](#profile-driven-architecture)
-  - [Inventory](#inventory)
-  - [Profiles](#profiles)
-- [Server Architecture](#server-architecture)
-  - [The MCP Servers](#the-mcp-servers)
-  - [Chaining MCP Server](#chaining-mcp-server)
-  - [Filesystem MCP Server](#filesystem-mcp-server)
-  - [Project Guardian MCP Server](#project-guardian-mcp-server)
-  - [Terminal MCP Server](#terminal-mcp-server)
-  - [Menager MCP Server](#menager-mcp-server)
-  - [Researcher MCP Server](#researcher-mcp-server)
-  - [Browser Agent MCP Server](#browser-agent-mcp-server)
-  - [The Designer MCP Server](#the-designer-mcp-server)
-  - [scrcpy MCP Server](#scrcpy-mcp-server)
-  - [LL3M Agent MCP Server](#ll3m-agent-mcp-server)
-- [Data Flow Architecture](#data-flow-architecture)
-  - [Client Interaction Layer](#client-interaction-layer)
-  - [Server Orchestration Layer](#server-orchestration-layer)
-- [Communication Patterns](#communication-patterns)
-  - [1. Direct Tool Calls](#1-direct-tool-calls)
-  - [2. Resource Access](#2-resource-access)
-  - [3. Workflow Orchestration](#3-workflow-orchestration)
-  - [4. Data Persistence](#4-data-persistence)
-- [Deployment Architecture](#deployment-architecture)
-  - [Development Environment](#development-environment)
-  - [Production Environment](#production-environment)
-- [Security Considerations](#security-considerations)
-  - [1. Access Control](#1-access-control)
-  - [2. Data Protection](#2-data-protection)
-  - [3. Network Security](#3-network-security)
-- [Performance Optimization](#performance-optimization)
-  - [1. Caching Strategies](#1-caching-strategies)
-  - [2. Resource Management](#2-resource-management)
-  - [3. Monitoring](#3-monitoring)
-- [Future Extensions](#future-extensions)
-  - [Potential New Servers](#potential-new-servers)
-  - [Enhanced Orchestration](#enhanced-orchestration)
+---
 
-## Overview
+## 1. Architectural Philosophy: The Cellular Metaphor
 
-The MCP Ecosystem Suite is a **profile-driven** collection of Model Context Protocol (MCP) servers. Instead of a single fixed stack, servers are registered in an **inventory** (`config/inventory.json`) and grouped into **profiles** (`config/profiles.json`) matched to a use case and target system. Each server focuses on a specific domain while interoperating through the MCP protocol.
+The **HeLa MCP Ecosystem** is architected around a cellular biology metaphor, respectfully recognizing **Henrietta Lacks** (1920–1951) and the immortal legacy of HeLa cells in biomedical research:
 
-## Core Principles
+1. **Cellular Specialization**: In biological systems, organelles perform distinct biochemical functions while cooperating as a unified organism. In the HeLa ecosystem, servers act as specialized cellular components (Nucleus, Membrane, Enzyme, Ribosome, Plastid) coordinated by a dual backbone.
+2. **Deterministic Immortality**: Through commit-pinned snapshots (`config/snapshots/v1.0.0.json`) and idempotent setup scripts, an entire multi-server agent harness can be restored in a clean, reproducible state on any host.
+3. **Repository Autonomy**: Underlying repositories, Git histories, and package dependencies remain completely autonomous and uncoupled.
 
-### 1. Modularity
-Each MCP server operates independently, allowing for:
-- Focused development and maintenance
-- Independent deployment and scaling
-- Technology stack specialization
-- Isolated testing and versioning
+---
 
-### 2. Interoperability
-All servers communicate through the standardized MCP protocol, enabling:
-- Seamless integration between servers
-- Cross-server workflow orchestration
-- Unified client configuration
-- Consistent API patterns
+## 2. The 4-Tier Naming Architecture
 
-### 3. Specialization
-Each server targets specific use cases:
-- **Chaining MCP**: Workflow orchestration and AI guidance
-- **Filesystem MCP**: File system operations and management
-- **Project Guardian MCP**: Project memory and knowledge management
-- **Terminal MCP**: System command execution
-- **Researcher MCP**: Combined web research and knowledge access
-- **Browser Agent MCP**: Browser automation and web interaction
-- **The Designer MCP**: UI/UX design system tooling
-- **scrcpy MCP**: Android device control *(GUI/device)*
-- **LL3M Agent MCP**: Autonomous 3D modeling in Blender *(GUI)*
+To balance brand clarity, backwards compatibility, and technical provenance, the ecosystem enforces a 4-tier naming model:
 
-## Profile-Driven Architecture
-
-The suite keeps a single registry of servers and a set of curated stacks, rather than one hardcoded "install everything" bundle.
-
-### Inventory
-`config/inventory.json` lists every available server with metadata the tooling depends on: Git repository URL, clone directory, entry file, build command (if any), required environment variables, and whether the server needs a GUI or physical device. Adding a new server here makes it available to every profile and to the `--all` scope.
-
-### Profiles
-`config/profiles.json` defines named stacks. Each entry picks a **system** (`gui`, `headless`, or `any`) and a `servers` list referencing inventory keys. The setup tool filters profiles by the target system and installs only the selected profile. The built-in `all` profile (system `any`) resolves to every inventory server. See [profiles.md](profiles.md).
-
-## Server Architecture
-
-The MCP Ecosystem Suite covers 9 servers registered in the inventory:
-
-### Chaining MCP Server
-**Purpose**: Intelligent tool orchestration and workflow management
-
-**Components**:
-- Server Discovery Module: Automatically detects available MCP servers
-- Tool Analysis Engine: Analyzes server capabilities and tools
-- Route Optimization Algorithm: Determines optimal tool execution paths
-- Sequential Thinking Manager: Handles complex problem-solving workflows
-- Workflow Orchestrator: Manages multi-server operations
-- Time Management System: Handles timezone conversions and scheduling
-
-**Integration Points**:
-- Discovers and coordinates all other MCP servers
-- Provides high-level orchestration for complex tasks
-- Integrates with Awesome Copilot for development guidance
-
-### Filesystem MCP Server
-**Purpose**: Advanced file system operations
-
-**Components**:
-- File Operations Handler: Basic file CRUD operations
-- Directory Management: Folder operations and navigation
-- Search Engine: File content and metadata search
-- Archive Manager: Compression and extraction utilities
-- File Monitor: Change detection and notifications
-
-**Integration Points**:
-- Provides file system access to other servers
-- Supports data import/export for Project Guardian
-- Enables file-based workflows in terminal operations
-
-### Project Guardian MCP Server
-**Purpose**: Project memory and knowledge management
-
-**Components**:
-- Knowledge Graph Engine: Entity and relationship management
-- Memory Manager: Project state persistence and retrieval
-- Database Abstraction Layer: SQLite operations and schema management
-- Import/Export System: Data transfer between formats
-- Search Index: Full-text search across project knowledge
-
-**Integration Points**:
-- Stores project context for other servers
-- Provides persistent memory for workflow orchestration
-- Enables knowledge sharing across development sessions
-
-### Terminal MCP Server
-**Purpose**: System command execution and automation
-
-**Components**:
-- Command Executor: Local and remote command execution
-- SSH Manager: Secure remote session handling
-- Session Controller: Persistent connection management
-- Output Processor: Command result parsing and formatting
-- Security Validator: Command safety and permission checking
-
-**Integration Points**:
-- Executes system operations for other servers
-- Provides deployment and automation capabilities
-- Enables infrastructure management workflows
-
-### Menager MCP Server
-**Purpose**: Inter-session terminal orchestration and AI agent control plane
-
-**Components**:
-- Session Manager: Polyglot harness multiplexing via pseudo-terminals (`pty`)
-- Event Interception Hook: Predictable output matching with non-blocking regex hooks
-- Memory-Bounded Buffer: Circular buffers for token-efficient terminal observability
-- Simulation Engine: Automated human typing and control sequence injection
-
-**Integration Points**:
-- Acts as a control plane for secondary CLI harnesses and sub-agents
-- Complements Terminal MCP by offering long-running multiplexed PTYs
-
-### Researcher MCP Server
-**Purpose**: Unified research platform combining Google Search and Wikipedia functionality
-
-**Components**:
-- Combined Search Interface: Unified Google Search and Wikipedia access
-- Content Analysis Engine: Advanced content extraction and analysis
-- Fact Verification System: Multi-source credibility assessment
-- Research Workflow Manager: Coordinated research across sources
-- Trend Analysis: Search pattern and interest analysis
-- Academic Research Tools: Specialized tools for scholarly research
-
-**Integration Points**:
-- Provides comprehensive research capabilities in a single server
-- Supports content verification and fact-checking
-- Enables web-based and knowledge base research workflows
-
-### Browser Agent MCP Server
-**Purpose**: Browser automation and web interaction
-
-**Components**:
-- Browser Controller: Playwright-based browser management
-- Interaction Engine: Automated clicking, typing, and navigation
-- Content Scraper: Intelligent data extraction from web pages
-- Session Manager: Persistent browser sessions and cookie handling
-- Visual Monitor: Screenshot and visual verification capabilities
-
-**Integration Points**:
-- Enables automation of web-based workflows
-- Provides real-time web interaction for research and testing
-- Complements Researcher MCP by providing interactive capabilities
-
-### The Designer MCP Server
-**Purpose**: UI/UX design system and token tooling
-
-**Components**:
-- Style Evaluation: Recommends the best design system for a product tone
-- Token Generator: Produces design tokens (colors, typography, spacing) and Tailwind configs
-- Component Generator: Renders ready-to-paste HTML/React/Vue components
-- Accessibility Audit: Runs WCAG checks and flags contrast/labeling issues
-- Pre-flight Scanner: Detects framework and token state in an existing project
-
-**Integration Points**:
-- Generates styling primitives consumed by frontend/design workflows
-- Pairs with Filesystem to write generated component and token files
-
-### scrcpy MCP Server
-**Purpose**: Android device control via ADB and scrcpy *(GUI/device)*
-
-**Components**:
-- Device Manager: Enumerates connected Android devices
-- Input Controller: Tap, swipe, key and text injection
-- UI Inspector: Dumps the accessibility tree and locates views
-- File Transfer: Push/pull files between host and device
-- Media Capture: Screenshots and screen recording
-
-**Integration Points**:
-- Enables mobile testing and automation workflows
-- Complements Terminal MCP for ADB-based system operations
-
-### LL3M Agent MCP Server
-**Purpose**: Autonomous 3D modeling in Blender *(GUI, requires local Blender)*
-
-**Components**:
-- Scene Generator: Builds 3D scenes from natural-language prompts
-- Planning Agent: Produces multi-component modeling plans
-- Refinement Loop: Applies reviewer feedback iteratively to improve mesh quality
-- Rendering: Captures screenshots and renders scene output
-
-**Integration Points**:
-- Depends on a local Blender installation and a display target
-- Complements Filesystem MCP for asset persistence
-
-## Data Flow Architecture
-
-### Client Interaction Layer
 ```
-┌─────────────────┐
-│   MCP Client    │ (Cursor IDE, Claude Desktop, OpenCode, etc.)
-│                 │
-│ • Tool Calls    │
-│ • Resource Reads│
-│ • Notifications │
-└─────────────────┘
-         │
-    MCP Protocol
-         │
+[ Tier 1: Public Identity ]  ──►  "HeLa Genome"
+[ Tier 2: Machine ID ]       ──►  "hela-genome"
+[ Tier 3: Technical Repo ]   ──►  "Project-Guardian-mcp-server"
+[ Tier 4: Immutable Commit ] ──►  "72bca15ebe511575fd14d5b841d7973bfaf26ca1"
 ```
 
-### Server Orchestration Layer
+1. **Tier 1 (Public Identity)**: Clean, uniform human-facing persona name (e.g. *HeLa Mitosis*, *HeLa Genome*, *HeLa Membrane*).
+2. **Tier 2 (Machine Identifier)**: Stable hyphenated identifier (`hela-*`) used in configuration files (`mcpServers`), CLI flags, and profile definitions.
+3. **Tier 3 (Technical Source Repo)**: Independent Git repository name on GitHub maintaining upstream authorship and commit history.
+4. **Tier 4 (Immutable Commit Pin)**: Exact SHA-1 hash recorded in `config/snapshots/` ensuring reproducible builds.
 
-```text
-┌───────────────────────────────────────────────────────────────────────┐
-│                         Chaining MCP Server                           │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │      Tool Discovery • Route Optimization • Orchestration        │  │
-│  └─────────────────────────────────────────────────────────────────┘  │
-│        │                        │                          │          │
-│   Orchestrates             Coordinates                  Manages       │
-│        │                        │                          │          │
-└───────────────────────────────────────────────────────────────────────┘
-         │                        │                          │
-         ▼                        ▼                          ▼
-┌─────────────────┐      ┌─────────────────┐        ┌─────────────────┐
-│ Filesystem MCP  │      │  Researcher MCP │        │The Designer MCP │
-│                 │      │                 │        │                 │
-│ File Operations │      │ Web+Wikipedia   │        │ UI/UX & Tokens  │
-└─────────────────┘      └─────────────────┘        └─────────────────┘
-         │                        │                          │
-         ▼                        ▼                          ▼
-┌─────────────────┐      ┌─────────────────┐        ┌─────────────────┐
-│ Project Guardian│      │  Browser Agent  │        │   scrcpy MCP    │
-│                 │      │                 │        │                 │
-│ Knowledge Mgmt  │      │ Automation      │        │ Android Control │
-└─────────────────┘      └─────────────────┘        └─────────────────┘
-         │                        │                          │
-         ▼                        ▼                          ▼
-┌─────────────────┐      ┌─────────────────┐        ┌─────────────────┐
-│  Terminal MCP   │      │   External APIs │        │ LL3M Agent MCP  │
-│                 │      │                 │        │                 │
-│ System Commands │      │ (Google/Web/SSH)│        │ 3D Modeling     │
-└─────────────────┘      └─────────────────┘        └─────────────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Data Storage   │
-│                 │
-│ SQLite • Files  │
-└─────────────────┘
+---
+
+## 3. Dual-Backbone Coordination Topology
+
+Every deployed profile in the ecosystem is grounded by a dual backbone:
+
+```
+                                  ┌───────────────────────────┐
+                                  │  AI Client / Orchestrator │
+                                  └─────────────┬─────────────┘
+                                                │ stdio JSON-RPC
+                        ┌───────────────────────┴───────────────────────┐
+                        │                                               │
+                        ▼                                               ▼
+             ┌─────────────────────┐                         ┌─────────────────────┐
+             │    HeLa Mitosis     │                         │     HeLa Genome     │
+             │   (`hela-mitosis`)  │                         │   (`hela-genome`)   │
+             ├─────────────────────┤                         ├─────────────────────┤
+             │ • Dynamic Routing   │                         │ • Knowledge Graph   │
+             │ • Step Reasoning    │◄──── Shared Memory ────►│ • Living SQLite DB  │
+             │ • Task Decomposition│                         │ • Entity / Relns    │
+             │ • Prompt Catalog    │                         │ • Milestones & State│
+             └──────────┬──────────┘                         └──────────┬──────────┘
+                        │                                               │
+                        └───────────────────────┬───────────────────────┘
+                                                │
+                          Coordinates Specialized Capability Cells
+                                                │
+         ┌──────────────┬──────────────┬────────┼──────────────┬──────────────┐
+         ▼              ▼              ▼        ▼              ▼              ▼
+   ┌───────────┐  ┌───────────┐  ┌───────────┐    ┌───────────┐  ┌───────────┐  ┌───────────┐
+   │ Membrane  │  │  Nucleus  │  │ Ribosome  │    │  Enzyme   │  │  Cytosol  │  │ Phenotype │
+   │ (Files)   │  │ (Exec)    │  │ (PTY)     │    │ (Search)  │  │ (Browser) │  │ (Design)  │
+   └───────────┘  └───────────┘  └───────────┘    └───────────┘  └───────────┘  └───────────┘
 ```
 
-## Communication Patterns
+* **HeLa Mitosis (Routing & Planning Backbone)**: Analyzes client tools, suggests multi-step execution paths, executes multi-branch trees via `sequentialthinking`, and serves 42 curated domain prompts.
+* **HeLa Genome (State & Memory Backbone)**: Maintains the living SQLite knowledge graph (`memory.db`), restores cross-session context, records task states, and manages project milestones.
 
-### 1. Direct Tool Calls
-Individual servers expose tools that clients can call directly for specific operations.
+---
 
-### 2. Resource Access
-Servers provide resources that can be read by clients for accessing cached data, templates, and status information.
+## 4. Component Taxonomy
 
-### 3. Workflow Orchestration
-The Chaining MCP server coordinates complex multi-step operations across multiple servers.
+### 4.1 Core Backbone Servers
 
-### 4. Data Persistence
-Project Guardian provides persistent storage for project state and knowledge across sessions.
+#### 1. HeLa Mitosis (`hela-mitosis` / `chaining-mcp-server`)
+* **Role**: Orchestration, dynamic routing, and step-by-step reasoning.
+* **Entrypoint**: `dist/index.js`
+* **Tools**: `sequentialthinking`, `analyze_tools`, `generate_route_suggestions`, `llm_decompose_task`, `workflow_orchestrator`.
+* **Zero-Key Fallback**: Employs deterministic local heuristic routing (<30ms) when `OPENROUTER_API_KEY` is not provided.
 
-## Deployment Architecture
+#### 2. HeLa Genome (`hela-genome` / `Project-Guardian-mcp-server`)
+* **Role**: Living memory graph, entity-relation-observation state tracking.
+* **Entrypoint**: `dist/index.js`
+* **Tools**: `create_entity`, `create_relation`, `add_observation`, `read_graph`, `search_nodes`, `get_session_context`, `sync_central_memory`.
+* **Storage**: Embedded SQLite database (`memory.db`) with FTS5 full-text indexing.
 
-### Development Environment
-- Individual server repositories for focused development
-- Local MCP client configuration for testing
-- Independent build and test pipelines
+---
 
-### Production Environment
-- Containerized deployment with Docker
-- Orchestrated setup through ecosystem repository
-- Centralized configuration management
-- Automated update and maintenance scripts
+### 4.2 Core Capability Servers
 
-## Security Considerations
+#### 3. HeLa Membrane (`hela-membrane` / `filesystem-mcp-server`)
+* **Role**: Sandboxed workspace filesystem operations and search.
+* **Entrypoint**: `dist/index.js`
+* **Tools**: `read_file`, `write_file`, `find_files`, `search_in_files`, `copy_file`, `move_file`, `delete_file`, `archive_files`.
 
-### 1. Access Control
-- Server-specific API keys (Google Search, etc.)
-- Command validation in Terminal MCP
-- File system permission checks
-- Browser isolation and security policies
+#### 4. HeLa Nucleus (`hela-nucleus` / `terminal-mcp-server`)
+* **Role**: Isolated command execution and RTK token optimization.
+* **Entrypoint**: `build/index.js`
+* **Tools**: `execute_command`, `transfer_file`, `terminal_ls`, `terminal_grep`, `terminal_cat`.
 
-### 2. Data Protection
-- Secure storage of sensitive configuration
-- Input validation and sanitization
-- Safe command execution boundaries
+#### 5. HeLa Ribosome (`hela-ribosome` / `menager-mcp-server`)
+* **Role**: Polyglot interactive PTY session multiplexing and Regex hook engine.
+* **Entrypoint**: `build/index.js`
+* **Tools**: `session_spawn`, `session_write`, `session_read`, `session_hook`, `session_close`, `session_list`, `session_prune`.
 
-### 3. Network Security
-- HTTPS-only external API calls
-- SSH key management for remote operations
-- Rate limiting and abuse prevention
+#### 6. HeLa Enzyme (`hela-enzyme` / `research-assistant-mcp-server`)
+* **Role**: Unified research platform combining Google Custom Search and Wikipedia caching.
+* **Entrypoint**: `dist/index.js`
+* **Tools**: `google_search`, `wikipedia_search`, `wikipedia_get_summary`, `content_summarizer`, `fact_checker`, `keyword_extraction`.
 
-## Performance Optimization
+#### 7. HeLa Cytosol (`hela-cytosol` / `Browser-Agent`)
+* **Role**: Playwright-based browser automation and DOM accessibility perception.
+* **Entrypoint**: `src/server.js`
+* **Tools**: `browser_navigate`, `browser_screenshot`, `browser_click`, `browser_type`, `browser_get_accessibility_tree`, `browser_get_page_markdown`.
 
-### 1. Caching Strategies
-- Tool discovery results caching
-- Content caching in search operations
-- Session persistence in terminal and browser operations
+---
 
-### 2. Resource Management
-- Connection pooling in database operations
-- Memory management in large file and browser operations
-- Concurrent request handling
+### 4.3 Specialized Capability Servers
 
-### 3. Monitoring
-- Performance metrics collection
-- Error tracking and reporting
-- Resource usage monitoring
+#### 8. HeLa Phenotype (`hela-phenotype` / `the-designer`)
+* **Role**: UI/UX design tokens, OKLCH palettes, and Tailwind component synthesis.
+* **Entrypoint**: `dist/index.js`
+* **Tools**: `generate_tokens`, `generate_tailwind_config`, `palette_fetch`, `audit_accessibility`, `generate_template`.
 
-## Future Extensions
+#### 9. HeLa Receptor (`hela-receptor` / `scrcpy-mcp`)
+* **Role**: Android mobile device control via ADB bridge.
+* **Entrypoint**: `dist/server.js`
+* **Tools**: `start_session`, `ui_dump`, `ui_find_element`, `tap`, `swipe`, `input_text`, `screenshot`.
 
-### Potential New Servers
-- **Git MCP**: Version control operations
-- **Database MCP**: General database access
-- **API MCP**: REST API testing and interaction
-- **Documentation MCP**: Code documentation generation
-- **Testing MCP**: Automated testing framework integration
+#### 10. HeLa Plastid (`hela-plastid` / `ll3m-agent`)
+* **Role**: Autonomous 3D procedural modeling and rendering in Blender.
+* **Entrypoint**: `dist/index.js` (under `brain/`)
+* **Tools**: `generate_modeling_plan`, `execute_blender_code`, `render_output`, `save_blend`, `get_fast_feedback`.
 
-### Enhanced Orchestration
-- Machine learning-based route optimization
-- Predictive tool recommendations
-- Automated workflow learning
-- Cross-server dependency resolution
+---
 
-This architecture provides a solid foundation for extensible AI agent harness capabilities while maintaining clean separation of concerns and robust interoperability. Because servers are inventory-driven and grouped into profiles, deploying a headless research node vs. a full GUI workstation is just a matter of choosing a different profile.
+## 5. Security & Isolation Model
+
+```
+Host Operating System / Terminal Environment
+  └── HeLa MCP Ecosystem Root
+        ├── stdio JSON-RPC Sandbox
+        ├── Path Canonicalization (HeLa Membrane)
+        ├── Explicit CWD & Timeout Limits (HeLa Nucleus)
+        ├── Process Group Teardown (HeLa Ribosome)
+        └── SSRF IP Filtering (HeLa Cytosol)
+```
+
+1. **Process Boundary**: Each server runs in an isolated Node.js child process communicating exclusively over standard input/output (`stdio`) via JSON-RPC 2.0 messages.
+2. **Memory Safety**: SQLite database operations in `hela-genome` use parameterized queries with WAL (Write-Ahead Logging) mode.
+3. **Secret Isolation**: API credentials are never output to stdout or logs. All diagnostics (`./setup.sh doctor`) display masked/presence indicators only.
+
+---
+
+## 6. Profile System & Lifecycle Management
+
+The ecosystem configuration generator (`scripts/generate-config.mjs`) reads:
+1. **`config/inventory.json`**: Authoritative component catalog, entrypoints, Git repositories, and alias mappings.
+2. **`config/profiles.json`**: Curated stacks tailored to specific agent personas and hardware targets.
+
+When executed, the installer matches the profile's server list against the inventory, checks out the exact pinned commit hashes from `config/snapshots/v1.0.0.json`, and renders the target client's exact syntax (`mcpServers` JSON, TOML, or YAML).
