@@ -1,18 +1,31 @@
-# MCP Ecosystem Refinement — Intensive Execution TODO
+# HeLa MCP Ecosystem Refinement & Rebrand — Intensive Execution TODO
 
-This document translates the complete 37-point specification in `Refinement_plan.md` into an actionable, trackable task checklist for refining the `mcp-ecosystem` repository into a hardened, reproducible, 10-MCP distribution suite.
+This document translates the complete specifications in `Refinement_plan.md` and `Rebrand_plan.md` into an actionable, trackable task checklist for refining and rebranding the `mcp-ecosystem` repository into the **HeLa MCP Ecosystem** — a hardened, reproducible, 10-MCP distribution suite.
 
 ---
 
-## Architectural Principle & Scope Boundaries
+## Architectural Principles & Scope Boundaries
 
-* **The 10-MCP Capability Ceiling**: Exactly 10 MCP servers. No MCP #11 will be added.
+* **The 10-MCP Capability Ceiling**: Exactly 10 MCP servers (7 core headless, 3 specialized GUI/device). No MCP #11 will be added.
+* **The 3-Layer Naming Architecture**:
+  * **Public Identity**: `HeLa <Component>` (e.g. `HeLa Mitosis`, `HeLa Genome`)
+  * **Machine Identifier (Ecosystem / CLI)**: `hela-*` (e.g. `hela-mitosis`, `hela-genome`)
+  * **Technical Source Repository**: Existing repository name (`chaining-mcp-server`, `Project-Guardian-mcp-server`, etc.)
+  * **Implementation Revision**: Exact Git commit hash (immutable pin)
 * **The Backbone**:
-  * **Chaining MCP**: Intelligent orchestration, dynamic tool discovery, task decomposition, route ranking, and workflows.
-  * **Project Guardian MCP**: Persistent project state, living SQLite knowledge graph, task tracking, and decision memory.
+  * **HeLa Mitosis (`hela-mitosis` / `chaining-mcp-server`)**: Intelligent orchestration, dynamic tool discovery, task decomposition, route ranking, and workflows.
+  * **HeLa Genome (`hela-genome` / `Project-Guardian-mcp-server`)**: Persistent project state, living SQLite knowledge graph, task tracking, and decision memory.
 * **The 8 Specialized Capabilities**:
-  * **Filesystem**, **Terminal**, **Menager**, **Researcher**, **The Designer**, **Browser Agent**, **scrcpy**, **LL3M Agent**.
-* **Reproducibility Mechanism**: Git commit hashes as immutable revision pins across all profiles and snapshots.
+  * **HeLa Membrane (`hela-membrane` / `filesystem-mcp-server`)**: Workspace filesystem boundary and file operations.
+  * **HeLa Nucleus (`hela-nucleus` / `terminal-mcp-server`)**: System command execution and terminal interaction.
+  * **HeLa Ribosome (`hela-ribosome` / `menager-mcp-server`)**: PTY process harness multiplexing and lifecycle coordination.
+  * **HeLa Enzyme (`hela-enzyme` / `research-assistant-mcp-server`)**: Unified Google & Wikipedia research, analysis, and fact-checking.
+  * **HeLa Cytosol (`hela-cytosol` / `browser-agent`)**: Web navigation, DOM interaction, and browser automation.
+  * **HeLa Phenotype (`hela-phenotype` / `the-designer`)**: UI/UX design tokens, components, and Tailwind styling.
+  * **HeLa Receptor (`hela-receptor` / `scrcpy-mcp`)**: External Android mobile device automation.
+  * **HeLa Plastid (`hela-plastid` / `ll3m-agent`)**: Autonomous 3D Blender modeling and rendering.
+* **Respectful Attribution**: The HeLa name is a respectful recognition of **Henrietta Lacks** and the scientific legacy of HeLa cells, used purely as an architectural cellular metaphor for a modular AI tooling stack.
+* **Repository Independence**: Underlying repositories, package names, source code, and Git histories remain independent and unchanged.
 
 ---
 
@@ -20,24 +33,24 @@ This document translates the complete 37-point specification in `Refinement_plan
 
 | Milestone | Scope & Phases | Focus Area | Status | Target Deliverable |
 |---|---|---|:---:|---|
-| **M1: Baseline & Profiles** | Phase 1 & 2 | 10-MCP repository audit, taxonomy classification, agent profiles & pre-validation | ⏳ In Progress | Updated `inventory.json`, `profiles.json`, and profile pre-validator |
-| **M2: Determinism & Doctor** | Phase 3 & 4 | Ecosystem snapshot engine (`v1.0.0.json`), deterministic setup & diagnostic tool | 📋 Planned | `config/snapshots/`, `./setup.sh doctor` |
-| **M3: Integration & Workflows** | Phase 5 & 6 | Backbone integration layer, large output control & Workflows A through F | 📋 Planned | `scripts/test-integration.sh`, `docs/workflows.md` |
-| **M4: Security, CI & Clients** | Phase 7, 8 & 9 | Security audit, client configuration testing & GitHub Actions CI matrix | 📋 Planned | Hardened `.github/workflows/ci.yml`, security report |
-| **M5: Showcase & Release** | Phase 10 | Real workflow recordings, documentation website & v1.0.0 public launch | 📋 Planned | Documentation website (`docs/site`), GitHub Release |
+| **M1: Baseline & HeLa Aliasing** | Phase 1, 2 & 3 | 10-MCP repository audit, canonical HeLa inventory, agent profiles & pre-validation | ⏳ In Progress | Updated `inventory.json`, `profiles.json`, alias translation engine |
+| **M2: Determinism & Doctor** | Phase 4 & 5 | Ecosystem snapshot engine (`v1.0.0.json`), deterministic setup & diagnostic tool | 📋 Planned | `config/snapshots/`, `./setup.sh doctor` |
+| **M3: Integration & Workflows** | Phase 6 & 7 | Backbone integration layer, output bounds, `test-integration.sh`, and Workflows A–F | 📋 Planned | `scripts/test-integration.sh`, `docs/workflows.md` |
+| **M4: Security, CI & Clients** | Phase 8, 9 & 10 | Security audit, multi-client configuration testing & GitHub Actions CI matrix | 📋 Planned | Hardened `.github/workflows/ci.yml`, security report |
+| **M5: Showcase & Release** | Phase 11 | Real workflow recordings, documentation website & v1.0.0 public launch | 📋 Planned | Documentation website (`docs/site`), GitHub Release |
 
 ---
 
 ## Phase 1: Complete Repository & 10-MCP Baseline Audit
 
 - [ ] **1.1. Inventory & Remote Repository Audit**
-  - [ ] Audit all 10 MCP server entries in `config/inventory.json` against their GitHub repositories:
+  - [ ] Audit all 10 MCP server entries against their GitHub repositories:
     - [ ] `chaining-mcp-server` (`1999AZZAR/chaining-mcp-server`)
     - [ ] `filesystem-mcp-server` (`1999AZZAR/filesystem-mcp-server`)
     - [ ] `Project-Guardian-mcp-server` (`1999AZZAR/Project-Guardian`)
     - [ ] `terminal-mcp-server` (`1999AZZAR/terminal-mcp-server`)
     - [ ] `menager-mcp-server` (`1999AZZAR/menager-mcp-server`)
-    - [ ] `research-mcp-server` (`1999AZZAR/research-mcp-server`)
+    - [ ] `research-assistant-mcp-server` (`1999AZZAR/research-mcp-server`)
     - [ ] `the-designer` (`1999AZZAR/the-designer`)
     - [ ] `browser-agent` (`1999AZZAR/browser-agent`)
     - [ ] `scrcpy-mcp` (`1999AZZAR/scrcpy-mcp`)
@@ -45,41 +58,54 @@ This document translates the complete 37-point specification in `Refinement_plan
   - [ ] Verify runtime entrypoints, build commands (`npm run build`, `tsc`), and package scripts.
   - [ ] Record exact commit hashes as current baseline revisions.
 
-- [ ] **1.2. Taxonomy & Role Classification in `inventory.json`**
-  - [ ] Update `config/inventory.json` schema to explicitly categorize each server:
-    - [ ] `category: "backbone"` for `chaining` and `project-guardian`
-    - [ ] `category: "capability"` for the 8 specialized servers
-    - [ ] `domain`: `workspace`, `knowledge`, `interaction`, `design`, `mobile`, `3d`
-    - [ ] `targetRequirement`: `headless-compatible`, `gui-required`, `device-required`, `runtime-required`
-  - [ ] Document all environment variables and optional secret dependencies per server.
-
-- [ ] **1.3. Baseline Verification**
-  - [ ] Run baseline test suite across all 10 servers and log current baseline passing status.
+- [ ] **1.2. Baseline Test Run**
+  - [ ] Run test suite across all 10 servers and document baseline status.
 
 ---
 
-## Phase 2: Profile System Refinement & Agent-Oriented Profiles
+## Phase 2: Canonical HeLa Taxonomy & Aliased Inventory System
 
-- [ ] **2.1. Audit & Refine Existing Profiles**
+- [ ] **2.1. Update `config/inventory.json` with Canonical HeLa Metadata**
+  - [ ] Update `config/inventory.json` schema to include:
+    - [ ] `id`: Machine identifier (`hela-mitosis`, `hela-genome`, etc.)
+    - [ ] `alias`: Human-facing public name (`HeLa Mitosis`, `HeLa Genome`, etc.)
+    - [ ] `source`: Source repository key (`chaining-mcp-server`, `Project-Guardian-mcp-server`, etc.)
+    - [ ] `scope`: `core` (7 servers) vs. `specialized` (3 servers)
+    - [ ] `role`: `backbone-orchestration`, `backbone-state`, `workspace`, `knowledge`, `interaction`, `design`, `mobile`, `3d`
+    - [ ] `targetRequirement`: `headless-compatible`, `gui-required`, `device-required`, `runtime-required`
+    - [ ] `revision`: Pinned Git commit hash
+    - [ ] `env`: Documented environment variables and optional secret dependencies
+  - [ ] Ensure backward compatibility: scripts support both `hela-*` IDs and legacy source keys transparently.
+
+- [ ] **2.2. Update Core Ecosystem Scripts for HeLa Aliasing**
+  - [ ] Update `scripts/lib.sh` to resolve server keys by both `hela-*` ID and source repository name.
+  - [ ] Update `scripts/generate-config.mjs` to render client configs using clean HeLa names while executing underlying source entries.
+  - [ ] Update `setup.sh` and `update.sh` CLI output to display canonical `HeLa <Component>` names with underlying source attribution.
+
+---
+
+## Phase 3: Profile System Refinement & Agent-Oriented Profiles
+
+- [ ] **3.1. Audit & Refine Existing Profiles with HeLa Naming**
   - [ ] Review all 7 profile definitions in `config/profiles.json`:
-    - [ ] `dev-workspace` (Full desktop workstation: Backbone + Filesystem + Terminal + Menager + Researcher + Designer + Browser Agent)
-    - [ ] `headless-server` (Core 7 servers: Backbone + Filesystem + Terminal + Menager + Researcher + Designer)
-    - [ ] `research` (Dedicated research node: Backbone + Researcher + Filesystem + Browser Agent)
-    - [ ] `web-devops` (Web development + browser verification: Backbone + Filesystem + Terminal + Designer + Browser Agent)
-    - [ ] `android-testing` (Mobile automation: Backbone + Terminal + scrcpy + Researcher)
-    - [ ] `3d-modeling` (Blender 3D automation: Backbone + LL3M + Filesystem + Terminal)
+    - [ ] `dev-workspace` (Full desktop workstation: Both backbones + Membrane + Nucleus + Ribosome + Enzyme + Phenotype + Cytosol)
+    - [ ] `headless-server` (Core 7 servers: Both backbones + Membrane + Nucleus + Ribosome + Enzyme + Phenotype)
+    - [ ] `research` (Dedicated research node: Both backbones + Enzyme + Membrane + Cytosol)
+    - [ ] `web-devops` (Web development + verification: Both backbones + Membrane + Nucleus + Phenotype + Cytosol)
+    - [ ] `android-testing` (Mobile automation: Both backbones + Nucleus + Receptor + Enzyme)
+    - [ ] `3d-modeling` (Blender 3D automation: Both backbones + Plastid + Membrane + Nucleus)
     - [ ] `all` (Full 10-MCP inventory stack)
-  - [ ] Ensure every profile includes both backbone servers (`chaining-mcp-server` and `Project-Guardian-mcp-server`).
+  - [ ] Ensure every profile includes both backbone servers (`hela-mitosis` and `hela-genome`).
 
-- [ ] **2.2. Agent Persona & Workflow Documentation in `docs/profiles.md`**
+- [ ] **3.2. Agent Persona & Workflow Documentation in `docs/profiles.md`**
   - [ ] Document each profile with:
     - [ ] Agent Persona & Purpose
-    - [ ] Backbone Components
+    - [ ] Backbone Components (`HeLa Mitosis` + `HeLa Genome`)
     - [ ] Specialized Capability Set
     - [ ] Target Requirements (Headless vs. GUI / Device)
     - [ ] Standard End-to-End Workflow Pipeline
 
-- [ ] **2.3. Strict Profile Pre-Validation**
+- [ ] **3.3. Strict Profile Pre-Validation**
   - [ ] Implement profile pre-validation in `scripts/lib.sh` / `setup.sh`:
     - [ ] Verify profile ID exists.
     - [ ] Verify every referenced server exists in `config/inventory.json`.
@@ -89,34 +115,34 @@ This document translates the complete 37-point specification in `Refinement_plan
 
 ---
 
-## Phase 3: Deterministic Installation, Idempotence & Snapshot Management
+## Phase 4: Deterministic Installation, Idempotence & Snapshot Management
 
-- [ ] **3.1. Ecosystem Snapshot Specification**
+- [ ] **4.1. Ecosystem Snapshot Specification**
   - [ ] Create `config/snapshots/` directory.
   - [ ] Create `config/snapshots/v1.0.0.json` (and `config/snapshots/latest-stable.json`) recording:
     - [ ] Ecosystem repository commit
-    - [ ] Pinned commit hash for all 10 MCP servers
+    - [ ] Pinned commit hashes for all 10 HeLa MCP servers
     - [ ] Verified profile compatibility matrix
   - [ ] Add snapshot selection support to `setup.sh` (`--snapshot <file|tag>`).
 
-- [ ] **3.2. Deterministic Installation Engine**
+- [ ] **4.2. Deterministic Installation Engine**
   - [ ] Update `setup_server` in `setup.sh` and `scripts/lib.sh`:
     - [ ] Clone or checkout exact pinned commit hash when specified in `inventory.json` / snapshot.
     - [ ] Support `--dev` flag to track moving `main`/`master` branches for development.
     - [ ] Install dependencies with clean, reproducible installs (`npm install` / `npm ci`).
     - [ ] Verify build artifacts (`dist/index.js`, `build/index.js`) exist after build step.
 
-- [ ] **3.3. Idempotency & Safe State Handling**
+- [ ] **4.3. Idempotency & Safe State Handling**
   - [ ] If server directory exists at the exact requested revision and is already built, skip re-cloning and re-building.
   - [ ] If revision differs, fetch and checkout the requested revision deterministically.
-  - [ ] Ensure repeated runs of `./setup.sh --profile <id>` produce identical environments without duplicate config entries or corrupted states.
+  - [ ] Ensure repeated runs of `./setup.sh --profile <id>` produce identical environments without duplicate config entries.
   - [ ] Retain previous known commit hash on updates for instant rollback capability.
 
 ---
 
-## Phase 4: Diagnostic Health Command (`setup.sh doctor`)
+## Phase 5: Diagnostic Health Command (`setup.sh doctor`)
 
-- [ ] **4.1. Create Comprehensive Diagnostics Engine (`scripts/doctor.sh` / `./setup.sh doctor`)**
+- [ ] **5.1. Create Comprehensive Diagnostics Engine (`scripts/doctor.sh` / `./setup.sh doctor`)**
   - [ ] **Host System Checks**:
     - [ ] Operating System, Architecture, Kernel
     - [ ] Node.js version (>= 18.0.0, recommend 20+ LTS)
@@ -130,10 +156,10 @@ This document translates the complete 37-point specification in `Refinement_plan
     - [ ] Permissions and executable bit check
     - [ ] Smoke startup test (launch node subprocess, verify clean stdio transport, exit in <500ms)
   - [ ] **External Runtime & Hardware Dependency Checks**:
-    - [ ] Playwright / Chromium browser binary check (for `browser-agent`)
-    - [ ] Android Debug Bridge (`adb`) and device detection (for `scrcpy-mcp`)
-    - [ ] Blender CLI executable check (`blender --version`) (for `ll3m-agent`)
-    - [ ] PTY / POSIX pseudo-terminal support (for `menager-mcp-server`)
+    - [ ] Playwright / Chromium browser binary check (for `hela-cytosol`)
+    - [ ] Android Debug Bridge (`adb`) and device detection (for `hela-receptor`)
+    - [ ] Blender CLI executable check (`blender --version`) (for `hela-plastid`)
+    - [ ] PTY / POSIX pseudo-terminal support (for `hela-ribosome`)
   - [ ] **Secret & API Key Checks**:
     - [ ] OpenRouter API Key (sk-or-v1-...) -> Valid / Free offline fallback active
     - [ ] GitHub Token (ghp_...) -> Valid / Bundled offline catalog active
@@ -145,118 +171,106 @@ This document translates the complete 37-point specification in `Refinement_plan
 
 ---
 
-## Phase 5: Backbone Auditing & Cross-MCP Integration Layer
+## Phase 6: Backbone Auditing & Cross-MCP Integration Layer
 
-- [ ] **5.1. Chaining Backbone Audit**
+- [ ] **6.1. HeLa Mitosis Backbone Audit**
   - [ ] Verify dynamic discovery of all peer MCP servers in the active client configuration.
   - [ ] Verify tool analysis (`analyze_tools`) and routing suggestions (`generate_route_suggestions`, `llm_suggest_route`).
-  - [ ] Verify task decomposition (`llm_decompose_task`) and linear/staged workflow orchestrator (`workflow_orchestrator`).
+  - [ ] Verify task decomposition (`llm_decompose_task`) and workflow orchestrator (`workflow_orchestrator`).
   - [ ] Verify sequential thinking (`sequentialthinking`) and multi-branch reasoning trees.
   - [ ] Verify telemetry and health monitoring endpoints (`chaining://health`, `chaining://cache/stats`).
   - [ ] Test graceful zero-key degradation (deterministic local heuristic fallback in <30ms).
 
-- [ ] **5.2. Project Guardian Backbone Audit**
+- [ ] **6.2. HeLa Genome Backbone Audit**
   - [ ] Verify session context restoration at startup (`get_session_context`).
   - [ ] Verify persistent entity, relation, and observation tracking in SQLite knowledge graph (`memory.db`).
   - [ ] Verify task tracking and status updates across chat sessions.
   - [ ] Verify central memory synchronization (`sync_central_memory`).
-  - [ ] Maintain strict boundary: Guardian remembers and tracks state; Chaining plans and executes.
+  - [ ] Maintain strict boundary: Genome remembers and tracks state; Mitosis plans and executes.
 
-- [ ] **5.3. Audit 8 Capability MCPs Against the Backbone**
-  - [ ] Verify tool naming and schema clarity across:
-    - [ ] `filesystem-mcp-server` (read, write, list, search, patch, archive, watch)
-    - [ ] `terminal-mcp-server` (execute, transfer, ls, grep, cat)
-    - [ ] `menager-mcp-server` (PTY sessions, regex hooks, circular buffer logs)
-    - [ ] `research-mcp-server` (Google search, Wikipedia search, sentiment, fact-check)
-    - [ ] `the-designer` (rules, tokens, Tailwind, components, accessibility, pre-flight scan)
-    - [ ] `browser-agent` (navigate, click, type, screenshot, evaluate, extract table)
-    - [ ] `scrcpy-mcp` (device list, tap, swipe, key events, ui dump, app control)
-    - [ ] `ll3m-agent` (Blender modeling plan, execute code, scene summary, render)
+- [ ] **6.3. Audit 8 Capability MCPs Against the Backbone**
+  - [ ] Verify tool naming and schema clarity across all 8 capabilities (`hela-membrane`, `hela-nucleus`, `hela-ribosome`, `hela-enzyme`, `hela-phenotype`, `hela-cytosol`, `hela-receptor`, `hela-plastid`).
   - [ ] Control large output payloads: enforce pagination, line limits, and truncation warnings.
   - [ ] Standardize error responses: operation, root cause, recoverability status, and suggested action.
 
-- [ ] **5.4. Ecosystem Integration Test Script (`scripts/test-integration.sh`)**
-  - [ ] Create automated integration test script that:
+- [ ] **6.4. Ecosystem Integration Test Script (`scripts/test-integration.sh`)**
+  - [ ] Create automated integration test script:
     - [ ] Launches selected MCP servers.
     - [ ] Validates tool registration via stdio JSON-RPC.
-    - [ ] Executes a simulated multi-MCP chain (Chaining plan -> Capability execution -> Guardian persistence).
+    - [ ] Executes simulated multi-MCP chain (Mitosis plan -> Capability execution -> Genome persistence).
     - [ ] Asserts 100% clean shutdown without zombie processes.
 
 ---
 
-## Phase 6: Real Cross-MCP Workflow Validation Scenarios
+## Phase 7: Real Cross-MCP Workflow Validation Scenarios
 
-- [ ] **6.1. Workflow A: Autonomous Software Development**
-  - [ ] Scenario: Create, test, and verify a full-stack feature.
-  - [ ] Pipeline: Guardian (restore context) -> Chaining (decompose plan) -> Filesystem (inspect repo) -> Terminal (implement/test) -> Browser Agent (verify web UI) -> Guardian (record decisions).
+- [ ] **7.1. Workflow A: Autonomous Software Development**
+  - [ ] Pipeline: HeLa Genome (restore context) -> HeLa Mitosis (decompose plan) -> HeLa Membrane (inspect repo) -> HeLa Nucleus (implement/test) -> HeLa Cytosol (verify web UI) -> HeLa Genome (record decisions).
   - [ ] Document test inputs, expected outputs, and recovery steps.
 
-- [ ] **6.2. Workflow B: Deep Research & Knowledge Ingestion**
-  - [ ] Scenario: Research a complex technical topic and create documentation.
-  - [ ] Pipeline: Guardian (restore context) -> Chaining (plan research) -> Researcher (gather facts) -> Filesystem (write document) -> Guardian (persist knowledge graph).
+- [ ] **7.2. Workflow B: Deep Research & Knowledge Ingestion**
+  - [ ] Pipeline: HeLa Genome (restore context) -> HeLa Mitosis (plan research) -> HeLa Enzyme (gather facts) -> HeLa Membrane (write document) -> HeLa Genome (persist knowledge graph).
   - [ ] Document test inputs, expected outputs, and recovery steps.
 
-- [ ] **6.3. Workflow C: UI/UX Design & Frontend Verification**
-  - [ ] Scenario: Design a responsive component with design tokens and test in browser.
-  - [ ] Pipeline: Guardian (restore specs) -> Chaining (coordinate) -> The Designer (generate tokens/Tailwind) -> Filesystem (create component) -> Browser Agent (visual verification) -> Guardian (record design tokens).
+- [ ] **7.3. Workflow C: UI/UX Design & Frontend Verification**
+  - [ ] Pipeline: HeLa Genome (restore specs) -> HeLa Mitosis (coordinate) -> HeLa Phenotype (generate tokens/Tailwind) -> HeLa Membrane (create component) -> HeLa Cytosol (visual verification) -> HeLa Genome (record design tokens).
   - [ ] Document test inputs, expected outputs, and recovery steps.
 
-- [ ] **6.4. Workflow D: Android Automation & Debugging**
-  - [ ] Scenario: Investigate mobile app bug, inspect logs, and test UI interaction.
-  - [ ] Pipeline: Guardian (restore issue) -> Researcher (investigate error) -> Terminal (inspect build/logcat) -> scrcpy (drive device UI) -> Guardian (record resolution).
+- [ ] **7.4. Workflow D: Android Automation & Debugging**
+  - [ ] Pipeline: HeLa Genome (restore issue) -> HeLa Enzyme (investigate error) -> HeLa Nucleus (inspect build/logcat) -> HeLa Receptor (drive device UI) -> HeLa Genome (record resolution).
   - [ ] Document test inputs, expected outputs, and recovery steps.
 
-- [ ] **6.5. Workflow E: Multi-Agent Terminal Orchestration**
-  - [ ] Scenario: Run and monitor long-running background tasks across multiple PTY sessions.
-  - [ ] Pipeline: Guardian (restore state) -> Chaining (distribute tasks) -> Menager (spawn PTY harnesses & hooks) -> Terminal/Filesystem (perform work) -> Guardian (persist logs & results).
+- [ ] **7.5. Workflow E: Multi-Agent Terminal Orchestration**
+  - [ ] Pipeline: HeLa Genome (restore state) -> HeLa Mitosis (distribute tasks) -> HeLa Ribosome (spawn PTY harnesses & hooks) -> HeLa Nucleus/Membrane (perform work) -> HeLa Genome (persist logs & results).
   - [ ] Document test inputs, expected outputs, and recovery steps.
 
-- [ ] **6.6. Workflow F: Autonomous 3D Asset Modeling**
-  - [ ] Scenario: Generate a 3D asset from natural language and export render.
-  - [ ] Pipeline: Guardian (restore 3D specs) -> Chaining (plan stages) -> LL3M Agent (Blender code execution & refine) -> Filesystem (save `.blend` & `.png`) -> Guardian (record asset relations).
+- [ ] **7.6. Workflow F: Autonomous 3D Asset Modeling**
+  - [ ] Pipeline: HeLa Genome (restore 3D specs) -> HeLa Mitosis (plan stages) -> HeLa Plastid (Blender code execution & refine) -> HeLa Membrane (save `.blend` & `.png`) -> HeLa Genome (record asset relations).
   - [ ] Document test inputs, expected outputs, and recovery steps.
 
 ---
 
-## Phase 7: Security & Reliability Audit
+## Phase 8: Security & Reliability Audit
 
-- [ ] **7.1. Terminal & Menager Security**
+- [ ] **8.1. Terminal & PTY Security (HeLa Nucleus & HeLa Ribosome)**
   - [ ] Verify shell command sanitization and prevent command injection.
   - [ ] Validate working directory boundaries (`cwd`).
   - [ ] Ensure clean PTY process lifecycle teardown to prevent orphan processes.
 
-- [ ] **7.2. Filesystem Security**
+- [ ] **8.2. Filesystem Security (HeLa Membrane)**
   - [ ] Verify path traversal prevention (`../` escape attacks).
   - [ ] Ensure safe archive extraction (`zip-slip` prevention).
   - [ ] Respect file permissions and symlink boundaries.
 
-- [ ] **7.3. Browser & Interaction Security**
+- [ ] **8.3. Browser & Interaction Security (HeLa Cytosol)**
   - [ ] Prevent credential leaking into console logs or chat state.
   - [ ] Enforce navigation boundaries and download sanitization.
 
-- [ ] **7.4. Device & External Process Security**
-  - [ ] Sanitize ADB arguments and device serial parameters in `scrcpy-mcp`.
-  - [ ] Sanitize Blender script execution parameters in `ll3m-agent`.
+- [ ] **8.4. Device & 3D Security (HeLa Receptor & HeLa Plastid)**
+  - [ ] Sanitize ADB arguments and device serial parameters.
+  - [ ] Sanitize Blender script execution parameters.
 
-- [ ] **7.5. Ecosystem & Secret Protection**
+- [ ] **8.5. Ecosystem & Secret Protection**
   - [ ] Ensure API keys and tokens are never logged or stored in world-readable files.
   - [ ] Verify safe temporary file handling and automated cleanup.
 
 ---
 
-## Phase 8: Documentation & Client Configuration Refinement
+## Phase 9: Documentation & Multi-Client Configuration Refinement
 
-- [ ] **8.1. Documentation Suite Organization**
+- [ ] **9.1. Documentation Suite Organization**
   - [ ] Maintain uniform, professional formatting (zero decorative emojis).
-  - [ ] Update `README.md` to communicate the 10-MCP Architecture, Backbone distinction, and Quick Start.
-  - [ ] Update `docs/architecture.md` with updated system and data flow diagrams.
+  - [ ] Update `README.md` to introduce the **HeLa MCP Ecosystem**, the 3-layer naming architecture, and the Backbone model.
+  - [ ] Add Henrietta Lacks respectful recognition and cellular architecture metaphor explanation.
+  - [ ] Include canonical alias mapping table (`HeLa Genome` <-> `Project-Guardian-mcp-server`).
+  - [ ] Update `docs/architecture.md` with cellular architecture diagrams.
   - [ ] Update `docs/profiles.md` with complete agent persona specifications.
   - [ ] Create `docs/workflows.md` documenting Workflows A through F with concrete prompts.
   - [ ] Maintain `docs/keys-and-secrets.md` (prerequisites, acquisition links, fallback modes).
   - [ ] Maintain `docs/beginner-guide.md` (3-minute zero-code onboarding).
   - [ ] Update `docs/troubleshooting.md` with diagnostic guides and recovery procedures.
 
-- [ ] **8.2. Generated Client Configurations**
+- [ ] **9.2. Generated Client Configurations**
   - [ ] Verify generator accuracy across all 8 client platforms:
     - [ ] Cursor IDE (`~/.cursor/mcp.json`)
     - [ ] Claude Desktop / CLI (`~/.claude.json`)
@@ -270,42 +284,42 @@ This document translates the complete 37-point specification in `Refinement_plan
 
 ---
 
-## Phase 9: Ecosystem CI/CD & Final Release Snapshot
+## Phase 10: CI/CD Hardening & Stable Snapshot Release
 
-- [ ] **9.1. CI/CD Pipeline Hardening (`.github/workflows/ci.yml`)**
+- [ ] **10.1. CI/CD Pipeline Hardening (`.github/workflows/ci.yml`)**
   - [ ] Inventory and profile syntax validation.
-  - [ ] Cross-check profile references against inventory.
+  - [ ] Cross-check profile references against canonical inventory.
   - [ ] All 70 profile × backend configuration generation matrix checks.
   - [ ] Shell script syntax validation (`bash -n`).
   - [ ] Pre-commit hook validation (formatting, trailing whitespace, YAML/JSON syntax).
   - [ ] Ecosystem integration test runner execution (mocked/offline mode).
 
-- [ ] **9.2. Stable Snapshot Release Preparation**
+- [ ] **10.2. Stable Snapshot Release Preparation**
   - [ ] Perform clean-environment installation tests.
   - [ ] Pin exact verified commit hashes for all 10 MCP servers in `config/snapshots/v1.0.0.json`.
   - [ ] Verify `./setup.sh --reconfigure` and `./update.sh --all --test` on clean system.
 
 ---
 
-## Phase 10: Showcase Recordings & Documentation Website
+## Phase 11: HeLa Showcase Recordings & Documentation Website
 
-- [ ] **10.1. Workflow Demonstration Recordings**
+- [ ] **11.1. Workflow Demonstration Recordings**
   - [ ] Capture terminal casts / video demos for:
-    - [ ] Workflow A (Full-stack feature development)
-    - [ ] Workflow B (Deep research & knowledge graph synthesis)
-    - [ ] Workflow C (UI design token generation & browser verification)
-    - [ ] Workflow D (Mobile device automation with scrcpy)
-    - [ ] Workflow E (PTY terminal harness orchestration with Menager)
-    - [ ] Workflow F (Autonomous 3D modeling with LL3M)
+    - [ ] Workflow A (Full-stack feature development with HeLa Mitosis, Membrane, Nucleus, Cytosol, Genome)
+    - [ ] Workflow B (Deep research & knowledge graph synthesis with HeLa Enzyme, Membrane, Genome)
+    - [ ] Workflow C (UI design token generation & browser verification with HeLa Phenotype, Cytosol)
+    - [ ] Workflow D (Mobile device automation with HeLa Receptor)
+    - [ ] Workflow E (PTY terminal harness orchestration with HeLa Ribosome)
+    - [ ] Workflow F (Autonomous 3D modeling with HeLa Plastid)
 
-- [ ] **10.2. Dedicated Documentation Website**
+- [ ] **11.2. Dedicated HeLa Documentation Website**
   - [ ] Build clean, modern website in `docs/site` (or GitHub Pages):
-    - [ ] Hero section with ecosystem architecture explanation.
-    - [ ] Interactive profile chooser (Headless vs. GUI vs. Custom).
+    - [ ] Hero section with HeLa cellular architecture explanation and Henrietta Lacks recognition.
+    - [ ] Interactive profile selector (Headless Server, Dev Workspace, Custom).
     - [ ] Real workflow video showcases.
     - [ ] One-liner installation guide and client configuration generator.
     - [ ] Complete API keys and offline fallback catalog.
 
-- [ ] **10.3. Public Release**
+- [ ] **11.3. Public Release**
   - [ ] Create GitHub Release `v1.0.0` with release snapshot metadata.
   - [ ] Publish documentation website and announce public release.
