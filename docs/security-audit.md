@@ -1,5 +1,7 @@
 # HeLa MCP Ecosystem: Security & Reliability Audit
 
+![Blotcat Security & Reliability Audit](../assets/blotcat-security.jpg)
+
 This document outlines the security architecture, threat model, mitigation strategies, and reliability standards implemented across the **HeLa MCP Ecosystem**.
 
 ---
