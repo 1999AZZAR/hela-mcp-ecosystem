@@ -45,14 +45,16 @@ function parseArgs(argv) {
   };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    if (arg === '--backend') args.backend = argv[++i];
+    if (arg === '--backend' || arg === '--client') args.backend = argv[++i];
+    else if (arg === '--profile') args.profile = argv[++i];
     else if (arg === '--root') args.root = argv[++i];
     else if (arg === '--out') args.out = argv[++i];
+    else if (arg === '--stdout') args.out = null;
     else if (arg === '--openrouter-key' || arg === '--openrouter') args.openrouterKey = argv[++i];
     else if (arg === '--github-token' || arg === '--github') args.githubToken = argv[++i];
     else if (arg === '--google-key' || arg === '--google') args.googleKey = argv[++i];
     else if (arg === '--google-cse-id' || arg === '--cse') args.googleCseId = argv[++i];
-    else if (args.profile === null) args.profile = arg;
+    else if (args.profile === null && !arg.startsWith('-')) args.profile = arg;
   }
   return args;
 }
@@ -151,11 +153,11 @@ function renderKilo(servers, root, options) {
   const mcp = {};
   for (const s of servers) {
     const name = s.id.replace('-mcp-server', '').replace('-mcp', '');
-    const entry = s.entry ? path.join(root, s.dir, s.entry) : null;
+    const args = entryArgs(s, root);
     const block = {
       type: 'local',
       enabled: true,
-      command: entry ? [s.runtime || 'node', entry] : [],
+      command: args.length ? [s.runtime || 'node', ...args] : [],
     };
     const env = buildServerEnv(s, root, options);
     if (Object.keys(env).length) block.environment = env;
@@ -182,11 +184,12 @@ function renderCodexToml(servers, root, options) {
   const sections = ['# Generated Codex / ChatGPT MCP Server Configuration'];
   for (const s of servers) {
     const name = s.id.replace('-mcp-server', '').replace('-mcp', '');
-    const entry = s.entry ? path.join(root, s.dir, s.entry) : '';
+    const args = entryArgs(s, root);
+    const argStr = args.map((a) => `"${a}"`).join(', ');
     const sectionLines = [
       `[mcpServers.${name}]`,
       `command = "${s.runtime || 'node'}"`,
-      `args = ["${entry}"]`,
+      `args = [${argStr}]`,
     ];
     const env = buildServerEnv(s, root, options);
     if (Object.keys(env).length > 0) {
@@ -231,7 +234,7 @@ function renderPrint(servers, root) {
 function main() {
   const args = parseArgs(process.argv.slice(2));
   if (!args.profile || !args.backend) {
-    console.error('Usage: node scripts/generate-config.mjs <profileId> --backend <cursor|claude|gemini|antigravity|opencode|kilo|zed|codex|docker|print> [--root <path>] [--out <file>]');
+    console.error('Usage: node scripts/generate-config.mjs <profileId> --backend <cursor|claude|gemini|antigravity|opencode|kilo|zed|codex|docker|print|skip> [--root <path>] [--out <file>]');
     process.exit(1);
   }
 
@@ -272,8 +275,11 @@ function main() {
     case 'print':
       out = renderPrint(servers, root) + '\n';
       break;
+    case 'skip':
+      out = 'Config generation skipped.\n';
+      break;
     default:
-      console.error(`Unknown backend "${args.backend}". Use cursor|claude|gemini|antigravity|opencode|kilo|zed|codex|docker|print.`);
+      console.error(`Unknown backend "${args.backend}". Use cursor|claude|gemini|antigravity|opencode|kilo|zed|codex|docker|print|skip.`);
       process.exit(1);
   }
 

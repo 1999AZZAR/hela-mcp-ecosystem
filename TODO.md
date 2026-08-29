@@ -36,7 +36,7 @@ This document translates the complete specifications in `Refinement_plan.md` and
 | **M1: Baseline & HeLa Aliasing** | Phase 1, 2 & 3 | 10-MCP repository audit, canonical HeLa inventory, agent profiles & pre-validation | [✓ Completed] | Updated `inventory.json`, `profiles.json`, alias translation engine |
 | **M2: Determinism & Doctor** | Phase 4 & 5 | Ecosystem snapshot engine (`v1.0.0.json`), deterministic setup & diagnostic tool | [✓ Completed] | `config/snapshots/`, `./setup.sh doctor` |
 | **M3: Integration & Workflows** | Phase 6 & 7 | Backbone integration layer, output bounds, `test-integration.sh`, and Workflows A–F | [✓ Completed] | `scripts/test-integration.sh`, `docs/workflows.md` |
-| **M4: Security, CI & Clients** | Phase 8, 9 & 10 | Security audit, multi-client configuration testing & GitHub Actions CI matrix | 📋 Planned | Hardened `.github/workflows/ci.yml`, security report |
+| **M4: Security, CI & Clients** | Phase 8, 9 & 10 | Security audit, multi-client configuration testing & GitHub Actions CI matrix | [✓ Completed] | Hardened `.github/workflows/ci.yml`, security report |
 | **M5: Showcase & Release** | Phase 11 | Real workflow recordings, documentation website & v1.0.0 public launch | 📋 Planned | Documentation website (`docs/site`), GitHub Release |
 
 ---
@@ -232,72 +232,72 @@ This document translates the complete specifications in `Refinement_plan.md` and
 
 ## Phase 8: Security & Reliability Audit
 
-- [ ] **8.1. Terminal & PTY Security (HeLa Nucleus & HeLa Ribosome)**
-  - [ ] Verify shell command sanitization and prevent command injection.
-  - [ ] Validate working directory boundaries (`cwd`).
-  - [ ] Ensure clean PTY process lifecycle teardown to prevent orphan processes.
+- [x] **8.1. Terminal & PTY Security (HeLa Nucleus & HeLa Ribosome)**
+  - [x] Verify shell command sanitization and prevent command injection.
+  - [x] Validate working directory boundaries (`cwd`).
+  - [x] Ensure clean PTY process lifecycle teardown to prevent orphan processes.
 
-- [ ] **8.2. Filesystem Security (HeLa Membrane)**
-  - [ ] Verify path traversal prevention (`../` escape attacks).
-  - [ ] Ensure safe archive extraction (`zip-slip` prevention).
-  - [ ] Respect file permissions and symlink boundaries.
+- [x] **8.2. Filesystem Security (HeLa Membrane)**
+  - [x] Verify path traversal prevention (`../` escape attacks).
+  - [x] Ensure safe archive extraction (`zip-slip` prevention).
+  - [x] Respect file permissions and symlink boundaries.
 
-- [ ] **8.3. Browser & Interaction Security (HeLa Cytosol)**
-  - [ ] Prevent credential leaking into console logs or chat state.
-  - [ ] Enforce navigation boundaries and download sanitization.
+- [x] **8.3. Browser & Interaction Security (HeLa Cytosol)**
+  - [x] Prevent credential leaking into console logs or chat state.
+  - [x] Enforce navigation boundaries and download sanitization.
 
-- [ ] **8.4. Device & 3D Security (HeLa Receptor & HeLa Plastid)**
-  - [ ] Sanitize ADB arguments and device serial parameters.
-  - [ ] Sanitize Blender script execution parameters.
+- [x] **8.4. Device & 3D Security (HeLa Receptor & HeLa Plastid)**
+  - [x] Sanitize ADB arguments and device serial parameters.
+  - [x] Sanitize Blender script execution parameters.
 
-- [ ] **8.5. Ecosystem & Secret Protection**
-  - [ ] Ensure API keys and tokens are never logged or stored in world-readable files.
-  - [ ] Verify safe temporary file handling and automated cleanup.
+- [x] **8.5. Ecosystem & Secret Protection**
+  - [x] Ensure API keys and tokens are never logged or stored in world-readable files.
+  - [x] Verify safe temporary file handling and automated cleanup.
 
 ---
 
 ## Phase 9: Documentation & Multi-Client Configuration Refinement
 
-- [ ] **9.1. Documentation Suite Organization**
-  - [ ] Maintain uniform, professional formatting (zero decorative emojis).
-  - [ ] Update `README.md` to introduce the **HeLa MCP Ecosystem**, the 3-layer naming architecture, and the Backbone model.
-  - [ ] Add Henrietta Lacks respectful recognition and cellular architecture metaphor explanation.
-  - [ ] Include canonical alias mapping table (`HeLa Genome` <-> `Project-Guardian-mcp-server`).
-  - [ ] Update `docs/architecture.md` with cellular architecture diagrams.
-  - [ ] Update `docs/profiles.md` with complete agent persona specifications.
-  - [ ] Create `docs/workflows.md` documenting Workflows A through F with concrete prompts.
-  - [ ] Maintain `docs/keys-and-secrets.md` (prerequisites, acquisition links, fallback modes).
-  - [ ] Maintain `docs/beginner-guide.md` (3-minute zero-code onboarding).
-  - [ ] Update `docs/troubleshooting.md` with diagnostic guides and recovery procedures.
+- [x] **9.1. Documentation Suite Organization**
+  - [x] Maintain uniform, professional formatting (zero decorative emojis).
+  - [x] Update `README.md` to introduce the **HeLa MCP Ecosystem**, the 3-layer naming architecture, and the Backbone model.
+  - [x] Add Henrietta Lacks respectful recognition and cellular architecture metaphor explanation.
+  - [x] Include canonical alias mapping table (`HeLa Genome` <-> `Project-Guardian-mcp-server`).
+  - [x] Update `docs/architecture.md` with cellular architecture diagrams.
+  - [x] Update `docs/profiles.md` with complete agent persona specifications.
+  - [x] Create `docs/workflows.md` documenting Workflows A through F with concrete prompts.
+  - [x] Maintain `docs/keys-and-secrets.md` (prerequisites, acquisition links, fallback modes).
+  - [x] Maintain `docs/beginner-guide.md` (3-minute zero-code onboarding).
+  - [x] Update `docs/troubleshooting.md` with diagnostic guides and recovery procedures.
 
-- [ ] **9.2. Generated Client Configurations**
-  - [ ] Verify generator accuracy across all 8 client platforms:
-    - [ ] Cursor IDE (`~/.cursor/mcp.json`)
-    - [ ] Claude Desktop / CLI (`~/.claude.json`)
-    - [ ] Antigravity CLI / Gemini (`~/.gemini/antigravity-cli/mcp_config.json`)
-    - [ ] OpenCode (`config/opencode.generated.json`)
-    - [ ] Kilo CLI (`~/.config/kilo/config.json`)
-    - [ ] Zed Editor (`~/.config/zed/settings.json`)
-    - [ ] Codex / ChatGPT (`~/.codex/config.toml`)
-    - [ ] Docker Compose (`config/docker-compose.generated.yml`)
-  - [ ] Ensure exact path expansion, environment variable mapping, and valid JSON/TOML syntax.
+- [x] **9.2. Generated Client Configurations**
+  - [x] Verify generator accuracy across all 8 client platforms:
+    - [x] Cursor IDE (`~/.cursor/mcp.json`)
+    - [x] Claude Desktop / CLI (`~/.claude.json`)
+    - [x] Antigravity CLI / Gemini (`~/.gemini/antigravity-cli/mcp_config.json`)
+    - [x] OpenCode (`config/opencode.generated.json`)
+    - [x] Kilo CLI (`~/.config/kilo/config.json`)
+    - [x] Zed Editor (`~/.config/zed/settings.json`)
+    - [x] Codex / ChatGPT (`~/.codex/config.toml`)
+    - [x] Docker Compose (`config/docker-compose.generated.yml`)
+  - [x] Ensure exact path expansion, environment variable mapping, and valid JSON/TOML syntax.
 
 ---
 
 ## Phase 10: CI/CD Hardening & Stable Snapshot Release
 
-- [ ] **10.1. CI/CD Pipeline Hardening (`.github/workflows/ci.yml`)**
-  - [ ] Inventory and profile syntax validation.
-  - [ ] Cross-check profile references against canonical inventory.
-  - [ ] All 70 profile × backend configuration generation matrix checks.
-  - [ ] Shell script syntax validation (`bash -n`).
-  - [ ] Pre-commit hook validation (formatting, trailing whitespace, YAML/JSON syntax).
-  - [ ] Ecosystem integration test runner execution (mocked/offline mode).
+- [x] **10.1. CI/CD Pipeline Hardening (`.github/workflows/ci.yml`)**
+  - [x] Inventory and profile syntax validation.
+  - [x] Cross-check profile references against canonical inventory.
+  - [x] All 70 profile × backend configuration generation matrix checks.
+  - [x] Shell script syntax validation (`bash -n`).
+  - [x] Pre-commit hook validation (formatting, trailing whitespace, YAML/JSON syntax).
+  - [x] Ecosystem integration test runner execution (mocked/offline mode).
 
-- [ ] **10.2. Stable Snapshot Release Preparation**
-  - [ ] Perform clean-environment installation tests.
-  - [ ] Pin exact verified commit hashes for all 10 MCP servers in `config/snapshots/v1.0.0.json`.
-  - [ ] Verify `./setup.sh --reconfigure` and `./update.sh --all --test` on clean system.
+- [x] **10.2. Stable Snapshot Release Preparation**
+  - [x] Perform clean-environment installation tests.
+  - [x] Pin exact verified commit hashes for all 10 MCP servers in `config/snapshots/v1.0.0.json`.
+  - [x] Verify `./setup.sh --reconfigure` and `./update.sh --all --test` on clean system.
 
 ---
 

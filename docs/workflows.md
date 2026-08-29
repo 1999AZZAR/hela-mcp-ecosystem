@@ -44,7 +44,7 @@ Workspace FS   Command Exec   PTY Harness    Research/Wiki   Browser DOM
 
 ### Workflow A: Autonomous Feature Engineering
 
-**Primary Profiles**: `dev-workspace`, `headless-server`  
+**Primary Profiles**: `dev-workspace`, `headless-server`
 **Components**: `hela-genome` → `hela-mitosis` → `hela-membrane` → `hela-nucleus` → `hela-genome`
 
 ```mermaid
@@ -77,7 +77,7 @@ sequenceDiagram
 
 ### Workflow B: Deep Research & Architecture Synthesis
 
-**Primary Profiles**: `research`, `dev-workspace`  
+**Primary Profiles**: `research`, `dev-workspace`
 **Components**: `hela-enzyme` → `hela-cytosol` → `hela-mitosis` → `hela-genome` → `hela-membrane`
 
 ```mermaid
@@ -110,7 +110,7 @@ sequenceDiagram
 
 ### Workflow C: End-to-End Web Feature with Design & Browser Verification
 
-**Primary Profiles**: `web-devops`, `dev-workspace`  
+**Primary Profiles**: `web-devops`, `dev-workspace`
 **Components**: `hela-phenotype` → `hela-membrane` → `hela-nucleus` → `hela-cytosol` → `hela-genome`
 
 ```mermaid
@@ -143,7 +143,7 @@ sequenceDiagram
 
 ### Workflow D: Mobile App Test Automation & Verification
 
-**Primary Profiles**: `android-testing`, `all`  
+**Primary Profiles**: `android-testing`, `all`
 **Components**: `hela-genome` → `hela-nucleus` → `hela-receptor` → `hela-genome`
 
 ```mermaid
@@ -175,7 +175,7 @@ sequenceDiagram
 
 ### Workflow E: Autonomous 3D Asset Creation & Render Pipeline
 
-**Primary Profiles**: `3d-modeling`, `all`  
+**Primary Profiles**: `3d-modeling`, `all`
 **Components**: `hela-genome` → `hela-mitosis` → `hela-plastid` → `hela-membrane` → `hela-genome`
 
 ```mermaid
@@ -207,7 +207,7 @@ sequenceDiagram
 
 ### Workflow F: Long-Horizon Complex Refactor with PTY Harness
 
-**Primary Profiles**: `dev-workspace`, `headless-server`  
+**Primary Profiles**: `dev-workspace`, `headless-server`
 **Components**: `hela-ribosome` → `hela-nucleus` → `hela-genome`
 
 ```mermaid

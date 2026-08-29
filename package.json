@@ -7,6 +7,7 @@
     "doctor": "./setup.sh doctor",
     "test": "node scripts/test-integration.mjs",
     "test:integration": "node scripts/test-integration.mjs",
+    "test:matrix": "node scripts/test-client-matrix.mjs",
     "build:all": "./scripts/build-all.sh --all",
     "clean:all": "./scripts/clean-all.sh --all"
   },
