@@ -1155,10 +1155,10 @@ footer {
   font-family: var(--font-mono);
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .wf-container {
-    grid-template-columns: 1fr;
+/* Responsive Adaptation & Mobile Craft */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 2.5rem;
   }
   .arch-dual-grid {
     grid-template-columns: 1fr;
@@ -1170,7 +1170,134 @@ footer {
     border-right: none;
     border-bottom: 1px solid var(--border-hairline);
   }
+}
+
+@media (max-width: 768px) {
+  .header-inner {
+    height: auto;
+    padding: 12px 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .nav-menu {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+  }
+
+  .nav-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hero-section {
+    padding: 40px 0 32px;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-tagline {
+    font-size: 0.95rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .quick-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .quick-cmd {
+    font-size: 0.75rem;
+    padding: 4px 0;
+  }
+
+  .copy-mini {
+    text-align: center;
+    padding: 6px;
+  }
+
+  .workbench-terminal,
+  .showcase-terminal-large {
+    border-radius: var(--radius-sm);
+  }
+
+  .terminal-header {
+    height: auto;
+    padding: 8px 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .terminal-tabs {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .terminal-body,
+  .showcase-terminal-body {
+    padding: 16px;
+    font-size: 0.82rem;
+    min-height: 280px;
+    max-height: 380px;
+  }
+
+  .wf-container {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .wf-tabs-nav {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 8px;
+  }
+
+  .node-graph-view {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 8px;
+  }
+
   .showcase-grid {
     grid-template-columns: 1fr;
+  }
+
+  .profiles-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cmd-palette-backdrop {
+    padding-top: 5vh;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .footer-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .footer-nav {
+    flex-direction: column;
+    gap: 10px;
   }
 }
