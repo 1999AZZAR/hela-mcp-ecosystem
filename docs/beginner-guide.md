@@ -1,28 +1,28 @@
-# 🌟 Beginner's Guide: How to Use the MCP Ecosystem
+# Beginner's Guide: How to Use the MCP Ecosystem
 
 > **Target Audience:** Anyone! No advanced coding, terminal expertise, or system administration experience required. If you can copy and paste a single command, you can set this up in under 3 minutes.
 
 ---
 
-## 💡 What is the MCP Ecosystem? (In Plain English)
+## What is the MCP Ecosystem? (In Plain English)
 
 Think of your AI assistant (like Claude, Cursor, ChatGPT, or Antigravity) like a brilliant mind in a room. By default, it can only talk to you.
 
 The **MCP Ecosystem** gives your AI assistant **hands, tools, and a long-term memory**:
-* 🧠 **Project Guardian**: Gives your AI a persistent memory so it never forgets your project plans, notes, or tasks across chats.
-* ⚡ **Chaining MCP**: Helps your AI think step-by-step, brainstorm multiple solutions, and pick the best strategy.
-* 📁 **Filesystem**: Lets your AI read, create, search, and organize project files on your computer.
-* 🖥️ **Terminal & Menager**: Lets your AI safely run commands and tests for you.
-* 🔍 **Researcher**: Allows your AI to search Google and Wikipedia for real-time facts and documentation.
-* 🎨 **The Designer**: Helps your AI create color palettes, design tokens, and modern user interfaces.
-* 🌐 **Browser Agent**: Lets your AI open a browser, click buttons, and extract web data.
+* **Project Guardian**: Gives your AI a persistent memory so it never forgets your project plans, notes, or tasks across chats.
+* **Chaining MCP**: Helps your AI think step-by-step, brainstorm multiple solutions, and pick the best strategy.
+* **Filesystem**: Lets your AI read, create, search, and organize project files on your computer.
+* **Terminal & Menager**: Lets your AI safely run commands and tests for you.
+* **Researcher**: Allows your AI to search Google and Wikipedia for real-time facts and documentation.
+* **The Designer**: Helps your AI create color palettes, design tokens, and modern user interfaces.
+* **Browser Agent**: Lets your AI open a browser, click buttons, and extract web data.
 
 ---
 
-## 🚀 3-Minute Quick Start
+## 3-Minute Quick Start
 
 ### Step 1: Open Your Terminal
-* **Mac**: Press `Cmd + Space`, type `Terminal`, and press `Enter`.
+* **macOS**: Press `Cmd + Space`, type `Terminal`, and press `Enter`.
 * **Windows**: Open `PowerShell` or `Windows Terminal` (WSL / Ubuntu recommended).
 * **Linux**: Press `Ctrl + Alt + T`.
 
@@ -37,9 +37,9 @@ cd mcp-ecosystem
 
 ---
 
-## 🧙 Step-by-Step Walkthrough of the Setup Wizard
+## Step-by-Step Walkthrough of the Setup Wizard
 
-When you run `./setup.sh`, you will see a friendly interactive menu. Here is exactly what to pick:
+When you run `./setup.sh`, you will see an interactive menu:
 
 ```
 [INFO] mcp-ecosystem setup & configuration
@@ -56,7 +56,7 @@ When you run `./setup.sh`, you will see a friendly interactive menu. Here is exa
 
 [QUESTION] Enter profile number (1-7):
 ```
-👉 **What to type:** Type `2` (or `1`) and press `Enter`.
+**Selection:** Type `2` (or `1`) and press `Enter`.
 
 ---
 
@@ -78,37 +78,40 @@ Next, the wizard will ask which AI application you use:
 
 [QUESTION] Choice (1-9):
 ```
-👉 **What to type:** Type the number for your AI app (e.g., `1` for Cursor, `2` for Claude) and press `Enter`.
+**Selection:** Type the number for your AI app (e.g., `1` for Cursor, `2` for Claude) and press `Enter`.
 
 ---
 
-### Optional API Keys (Press Enter to Skip!)
+### Optional API Keys (Press Enter to Skip)
 
 The wizard will ask if you have any optional API keys:
 
 ```
 [INFO] Configuring Optional API Keys & Secrets:
   (All keys are optional. Press Enter to skip and use offline fallback mode)
+  See docs/keys-and-secrets.md for documentation & sign-up URLs.
 
 [QUESTION] OpenRouter API Key (sk-or-v1-..., optional):
 [QUESTION] GitHub Personal Access Token (ghp_..., optional):
 [QUESTION] Google API Key (optional):
 [QUESTION] Google Custom Search Engine ID (optional):
 ```
-👉 **What to do:**
-* **If you have a key:** Paste it and press `Enter`.
-* **If you don't have keys:** **Just press `Enter` on each question!** The system will automatically configure free offline fallback mode.
+
+**What to do:**
+* **If you have keys:** Paste your key and press `Enter`.
+* **If you do not have keys:** **Just press `Enter` on each question!** The system automatically configures free offline fallback mode with zero errors or crashes.
+* **Where to get keys:** If you want to obtain free API keys for additional features, see our detailed [Prerequisites, Keys & Secrets Guide](keys-and-secrets.md) for direct signup links and configuration instructions.
 
 ```
 [SUCCESS] Wrote configuration to your AI app!
-[SUCCESS] Done. Restart your AI app to start using your new superpowers!
+[SUCCESS] Done. Restart your AI app to start using your new tools.
 ```
 
 ---
 
-## 🎯 How to Talk to Your AI to Use the MCP Tools
+## How to Talk to Your AI to Use the MCP Tools
 
-Once installed, **restart your AI app**. You don't need to learn any complex commands—just chat with your AI naturally!
+Once installed, **restart your AI app**. You do not need to learn special command syntax—just talk to your AI naturally.
 
 ### 1. Step-by-Step Task Planning & Brainstorming
 > **Prompt:** *"I want to build a personal budget tracker web app. Use sequential thinking to analyze the architecture and give me 3 creative feature ideas using brainstorming."*
@@ -127,16 +130,17 @@ Once installed, **restart your AI app**. You don't need to learn any complex com
 
 ---
 
-## ❓ Frequently Asked Questions (FAQ)
+## Frequently Asked Questions (FAQ)
 
 ### Do I need to pay for any API keys?
 **No.** All servers work 100% offline without any paid subscriptions or credit cards:
 * If you don't have an OpenRouter key, routing uses smart local heuristics.
 * If you don't have a GitHub token, prompt guides load from the bundled local library.
 * If you don't have a Google API key, research uses free Wikipedia search.
+* For a full breakdown of each key, its purpose, and free signup links, see the [Prerequisites, Keys & Secrets Guide](keys-and-secrets.md).
 
 ### How do I change my settings or add an API key later?
-You never need to edit configuration files manually! Just open your terminal and run:
+You never need to edit configuration files manually. Open your terminal and run:
 ```bash
 cd mcp-ecosystem
 ./setup.sh --reconfigure
@@ -152,5 +156,5 @@ cd mcp-ecosystem
 
 ### What if my AI app doesn't see the tools?
 1. Make sure you completely quit and restart your AI app (e.g. Cursor or Claude Desktop).
-2. Check your app's Settings -> MCP section to verify that the server lights are green.
-3. If you run into any trouble, check our [Troubleshooting Guide](troubleshooting.md).
+2. Check your app's Settings -> MCP section to verify that the server status indicators are active.
+3. If you encounter issues, refer to our [Troubleshooting Guide](troubleshooting.md).

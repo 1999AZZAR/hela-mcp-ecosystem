@@ -4,7 +4,7 @@ This document explains system prerequisites, all optional API keys/secrets acros
 
 ---
 
-## 📋 System Prerequisites
+## System Prerequisites
 
 Before running the setup, ensure your system has the following installed:
 
@@ -18,7 +18,7 @@ Before running the setup, ensure your system has the following installed:
 
 ---
 
-## 🔑 Keys & Secrets Catalog
+## Keys & Secrets Catalog
 
 All keys and secrets in this ecosystem are **100% OPTIONAL**. The entire suite is engineered with graceful degradation and offline fallbacks. You can run all servers out of the box with zero keys.
 
@@ -45,10 +45,10 @@ All keys and secrets in this ecosystem are **100% OPTIONAL**. The entire suite i
   1. Visit [OpenRouter API Keys](https://openrouter.ai/keys).
   2. Create a free account.
   3. Generate a new API key (`sk-or-v1-...`).
-  4. *Note*: OpenRouter provides completely free models (e.g. `openrouter/free` / `openrouter/auto`) that do not require credit card top-ups.
+  4. *Note*: OpenRouter provides free models (e.g. `openrouter/free` / `openrouter/auto`) that do not require credit card top-ups.
 * **If you DO NOT have it**:
   * **Consequence**: The server will not make external LLM calls.
-  * **Fallback Behavior**: `chaining-mcp-server` automatically and instantly falls back to its deterministic local heuristic optimizer. `llm_suggest_route` returns heuristic rankings in `<30ms`, `llm_decompose_task` returns rule-based subtasks, and `llm_summarize` performs local text compression. **Zero crashes, zero process hangs.**
+  * **Fallback Behavior**: `chaining-mcp-server` automatically and instantly falls back to its deterministic local heuristic optimizer. `llm_suggest_route` returns heuristic rankings in `<30ms`, `llm_decompose_task` returns rule-based subtasks, and `llm_summarize` performs local text compression. Zero crashes, zero process hangs.
 
 ---
 
@@ -78,7 +78,7 @@ All keys and secrets in this ecosystem are **100% OPTIONAL**. The entire suite i
 
 ---
 
-## ⚡ Zero-Touch Interactive Configuration
+## Zero-Touch Interactive Configuration
 
 You never have to manually edit JSON or TOML configuration files.
 

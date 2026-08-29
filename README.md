@@ -2,7 +2,7 @@
 
 A collection of Model Context Protocol (MCP) servers developed by Azzar, designed to enhance AI agent harness capabilities across development, research, project management, and system operations.
 
-> 👶 **New to MCP or non-technical?** Read our **[Beginner's Step-by-Step Guide](docs/beginner-guide.md)** for a 3-minute, zero-code visual walkthrough!
+> **New to MCP or non-technical?** Read our **[Beginner's Step-by-Step Guide](docs/beginner-guide.md)** for a 3-minute, zero-code visual walkthrough!
 
 ![Blotcat plugging MCP server cables into the central AI Hub](assets/blotcat-hero.jpg)
 
@@ -458,13 +458,13 @@ We welcome contributions to the MCP Ecosystem Suite! See [CONTRIBUTING.md](CONTR
 
 For comprehensive guides across the ecosystem:
 
-- 👶 **[Beginner's Step-by-Step Guide](docs/beginner-guide.md)** - Visual 3-minute walkthrough for non-technical users and quick onboarding.
-- 🔑 **[Prerequisites, Keys & Secrets Guide](docs/keys-and-secrets.md)** - System requirements, OpenRouter, GitHub & Google API keys, acquisition URLs, and zero-key offline fallback modes.
-- 📐 **[Architecture Guide](docs/architecture.md)** - System architecture, server components, and data flow diagrams.
-- 🚀 **[Integration Guide](docs/integration.md)** - Detailed setup instructions for Cursor IDE, Claude Desktop, Antigravity, OpenCode, Kilo, Zed, Codex, and Docker.
-- 📦 **[Profiles Reference](docs/profiles.md)** - Profile reference, GUI vs. headless stacks, custom profiles guide.
-- 🛠️ **[Troubleshooting Guide](docs/troubleshooting.md)** - Common issues, error codes, and troubleshooting solutions.
-- 🤝 **[Contributing Guidelines](CONTRIBUTING.md)** - Guide for adding new MCP servers and submitting improvements.
+- **[Beginner's Step-by-Step Guide](docs/beginner-guide.md)** - Visual 3-minute walkthrough for non-technical users and quick onboarding.
+- **[Prerequisites, Keys & Secrets Guide](docs/keys-and-secrets.md)** - System requirements, OpenRouter, GitHub & Google API keys, acquisition URLs, and zero-key offline fallback modes.
+- **[Architecture Guide](docs/architecture.md)** - System architecture, server components, and data flow diagrams.
+- **[Integration Guide](docs/integration.md)** - Detailed setup instructions for Cursor IDE, Claude Desktop, Antigravity, OpenCode, Kilo, Zed, Codex, and Docker.
+- **[Profiles Reference](docs/profiles.md)** - Profile reference, GUI vs. headless stacks, custom profiles guide.
+- **[Troubleshooting Guide](docs/troubleshooting.md)** - Common issues, error codes, and troubleshooting solutions.
+- **[Contributing Guidelines](CONTRIBUTING.md)** - Guide for adding new MCP servers and submitting improvements.
 
 ## License
 
