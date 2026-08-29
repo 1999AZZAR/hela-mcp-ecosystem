@@ -1,5 +1,7 @@
 # Beginner's Guide: How to Use the HeLa MCP Ecosystem
 
+![Blotcat 1-Click Beginner Setup](../assets/blotcat-beginner.jpg)
+
 > **Target Audience:** Anyone. No advanced coding, terminal expertise, or system administration experience required. If you can copy and paste a single command, you can set this up in under 3 minutes.
 
 ---

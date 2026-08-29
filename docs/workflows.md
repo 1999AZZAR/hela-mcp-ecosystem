@@ -1,5 +1,7 @@
 # HeLa MCP Ecosystem: Workflows & Integration Guide
 
+![Blotcat Workflows Orchestration](../assets/blotcat-workflows.jpg)
+
 This document defines the standard operational workflows and cross-MCP coordination patterns enabled by the **HeLa MCP Ecosystem**.
 
 ---

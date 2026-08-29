@@ -1,5 +1,7 @@
 # HeLa MCP Ecosystem: Keys & Secrets Guide
 
+![Blotcat Secrets & Credentials Vault](../assets/blotcat-secrets.jpg)
+
 This document explains system prerequisites, all optional API keys/secrets across the **HeLa MCP Ecosystem**, where to acquire them, and how the ecosystem operates in zero-cost, offline fallback modes.
 
 ---

@@ -1,5 +1,7 @@
 # HeLa MCP Ecosystem — Profile & Agent Persona Catalog
 
+![Blotcat Profile Selection & Specialization](../assets/blotcat-profiles.jpg)
+
 The HeLa MCP Ecosystem organizes capabilities into **agent-oriented profiles**. Each profile pairs the two foundational backbone servers (**HeLa Mitosis** for orchestration and **HeLa Genome** for persistent state) with a tailored set of specialized capability servers.
 
 ---
