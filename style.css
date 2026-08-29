@@ -294,6 +294,24 @@ header {
   font-size: 0.82rem;
 }
 
+/* Blotcat Doc & Web Illustrations */
+.doc-illustration {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 32px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-hairline);
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+}
+
+.doc-illustration img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .quick-cmd {
   color: var(--accent-cyan);
   overflow-x: auto;
