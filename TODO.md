@@ -37,7 +37,7 @@ This document translates the complete specifications in `Refinement_plan.md` and
 | **M2: Determinism & Doctor** | Phase 4 & 5 | Ecosystem snapshot engine (`v1.0.0.json`), deterministic setup & diagnostic tool | [✓ Completed] | `config/snapshots/`, `./setup.sh doctor` |
 | **M3: Integration & Workflows** | Phase 6 & 7 | Backbone integration layer, output bounds, `test-integration.sh`, and Workflows A–F | [✓ Completed] | `scripts/test-integration.sh`, `docs/workflows.md` |
 | **M4: Security, CI & Clients** | Phase 8, 9 & 10 | Security audit, multi-client configuration testing & GitHub Actions CI matrix | [✓ Completed] | Hardened `.github/workflows/ci.yml`, security report |
-| **M5: Showcase & Release** | Phase 11 | Real workflow recordings, documentation website & v1.0.0 public launch | 📋 Planned | Documentation website (`docs/site`), GitHub Release |
+| **M5: Showcase & Release** | Phase 11 | Real workflow recordings, documentation website & v1.0.0 public launch | [✓ Completed] | Documentation website (`docs/site`), GitHub Release |
 
 ---
 
@@ -303,23 +303,25 @@ This document translates the complete specifications in `Refinement_plan.md` and
 
 ## Phase 11: HeLa Showcase Recordings & Documentation Website
 
-- [ ] **11.1. Workflow Demonstration Recordings**
-  - [ ] Capture terminal casts / video demos for:
-    - [ ] Workflow A (Full-stack feature development with HeLa Mitosis, Membrane, Nucleus, Cytosol, Genome)
-    - [ ] Workflow B (Deep research & knowledge graph synthesis with HeLa Enzyme, Membrane, Genome)
-    - [ ] Workflow C (UI design token generation & browser verification with HeLa Phenotype, Cytosol)
-    - [ ] Workflow D (Mobile device automation with HeLa Receptor)
-    - [ ] Workflow E (PTY terminal harness orchestration with HeLa Ribosome)
-    - [ ] Workflow F (Autonomous 3D modeling with HeLa Plastid)
+- [x] **11.1. Workflow Demonstration Recordings**
+  - [x] Capture terminal casts / video demos for:
+    - [x] Workflow A (Full-stack feature development with HeLa Mitosis, Membrane, Nucleus, Cytosol, Genome)
+    - [x] Workflow B (Deep research & knowledge graph synthesis with HeLa Enzyme, Membrane, Genome)
+    - [x] Workflow C (UI design token generation & browser verification with HeLa Phenotype, Cytosol - YouTube: BnbDg1-be4g)
+    - [x] Workflow D (Mobile device automation with HeLa Receptor)
+    - [x] Workflow E (PTY terminal harness orchestration with HeLa Ribosome)
+    - [x] Workflow F (Autonomous 3D modeling with HeLa Plastid)
+    - [x] Living memory & project state showcase (YouTube: O6nYKjmlaGk)
+    - [x] Terminal Asciinema recordings: Doctor (uJ2E76GydNNgGdhI), Matrix (FSPKc53pFfHdFA7S), Integration (2uUsoWWED5HsiWJy), Setup CLI (vhYxgExIp5UV3WCg)
 
-- [ ] **11.2. Dedicated HeLa Documentation Website**
-  - [ ] Build clean, modern website in `docs/site` (or GitHub Pages):
-    - [ ] Hero section with HeLa cellular architecture explanation and Henrietta Lacks recognition.
-    - [ ] Interactive profile selector (Headless Server, Dev Workspace, Custom).
-    - [ ] Real workflow video showcases.
-    - [ ] One-liner installation guide and client configuration generator.
-    - [ ] Complete API keys and offline fallback catalog.
+- [x] **11.2. Dedicated HeLa Documentation Website**
+  - [x] Build clean, modern website in `docs/site` (or GitHub Pages):
+    - [x] Hero section with HeLa cellular architecture explanation and Henrietta Lacks recognition.
+    - [x] Interactive profile selector (Headless Server, Dev Workspace, Custom) and live client configurator.
+    - [x] Real workflow video showcases (YouTube) and interactive terminal cast cards.
+    - [x] One-liner installation guide and client configuration generator.
+    - [x] Complete API keys and offline fallback catalog.
 
-- [ ] **11.3. Public Release**
-  - [ ] Create GitHub Release `v1.0.0` with release snapshot metadata.
-  - [ ] Publish documentation website and announce public release.
+- [x] **11.3. Public Release**
+  - [x] Create GitHub Release `v1.0.0` with release snapshot metadata (`RELEASE_NOTES.md`).
+  - [x] Publish documentation website and announce public release.
