@@ -16,6 +16,18 @@ This document translates the complete 37-point specification in `Refinement_plan
 
 ---
 
+## Milestone Progress Dashboard
+
+| Milestone | Scope & Phases | Focus Area | Status | Target Deliverable |
+|---|---|---|:---:|---|
+| **M1: Baseline & Profiles** | Phase 1 & 2 | 10-MCP repository audit, taxonomy classification, agent profiles & pre-validation | ⏳ In Progress | Updated `inventory.json`, `profiles.json`, and profile pre-validator |
+| **M2: Determinism & Doctor** | Phase 3 & 4 | Ecosystem snapshot engine (`v1.0.0.json`), deterministic setup & diagnostic tool | 📋 Planned | `config/snapshots/`, `./setup.sh doctor` |
+| **M3: Integration & Workflows** | Phase 5 & 6 | Backbone integration layer, large output control & Workflows A through F | 📋 Planned | `scripts/test-integration.sh`, `docs/workflows.md` |
+| **M4: Security, CI & Clients** | Phase 7, 8 & 9 | Security audit, client configuration testing & GitHub Actions CI matrix | 📋 Planned | Hardened `.github/workflows/ci.yml`, security report |
+| **M5: Showcase & Release** | Phase 10 | Real workflow recordings, documentation website & v1.0.0 public launch | 📋 Planned | Documentation website (`docs/site`), GitHub Release |
+
+---
+
 ## Phase 1: Complete Repository & 10-MCP Baseline Audit
 
 - [ ] **1.1. Inventory & Remote Repository Audit**
