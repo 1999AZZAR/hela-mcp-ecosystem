@@ -11,31 +11,28 @@ A collection of Model Context Protocol (MCP) servers developed by Azzar, designe
 - [Quick Start](#quick-start)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-  - [MCP Client Options](#mcp-client-options)
+  - [Supported MCP Clients](#supported-mcp-clients)
   - [MCP Client Configuration](#mcp-client-configuration)
-    - [For Cursor IDE](#for-cursor-ide)
-    - [For Claude Desktop](#for-claude-desktop)
 - [Server Details](#server-details)
   - [Chaining MCP Server](#chaining-mcp-server)
   - [Filesystem MCP Server](#filesystem-mcp-server)
   - [Project Guardian MCP Server](#project-guardian-mcp-server)
   - [Terminal MCP Server](#terminal-mcp-server)
+  - [Menager MCP Server](#menager-mcp-server)
   - [Researcher MCP Server](#researcher-mcp-server)
+  - [The Designer MCP Server](#the-designer-mcp-server)
   - [Browser Agent MCP Server](#browser-agent-mcp-server)
-- [Development](#development)
-  - [Repository Structure](#repository-structure)
-  - [Individual Server Development](#individual-server-development)
-  - [Building All Servers](#managing-servers-by-scope)
-- [Contributing](#contributing)
-  - [For New Contributors](#for-new-contributors)
-  - [Development Guidelines](#development-guidelines)
-  - [Adding New Servers](#adding-new-servers)
-- [Documentation](#documentation)
+  - [scrcpy MCP Server](#scrcpy-mcp-server)
+  - [LL3M Agent MCP Server](#ll3m-agent-mcp-server)
+- [Repository Structure](#repository-structure)
+- [Managing Servers by Scope](#managing-servers-by-scope)
+- [Documentation Index](#documentation-index)
   - [Prerequisites & Secrets Guide](docs/keys-and-secrets.md)
   - [Architecture Guide](docs/architecture.md)
   - [Integration Guide](docs/integration.md)
   - [Profiles Reference](docs/profiles.md)
   - [Troubleshooting Guide](docs/troubleshooting.md)
+  - [Contributing Guidelines](CONTRIBUTING.md)
 - [License](#license)
 - [Support](#support)
 - [Updates](#updates)
@@ -388,35 +385,38 @@ Autonomous 3D modeling (GUI target, requires local Blender):
 - Multi-agent iterative refinement
 - Mesh/material inspection and rendering
 
-## Development
-
 ### Repository Structure
 
 ```
 mcp-ecosystem/
-├── README.md                              # This file
-├── CONTRIBUTING.md                      # Contribution guidelines
-├── LICENSE                              # MIT License
-├── setup.sh                             # Profile-driven setup script
-├── update.sh                            # Update servers in a scope
-├── config/                              # Server registry + profiles + examples
-│   ├── inventory.json                   # All available servers (registry)
-│   ├── profiles.json                    # Profile (stack) definitions
-│   ├── cursor-example.json              # Generated Cursor config (dev-workspace)
-│   ├── claude-example.json              # Generated Claude config (dev-workspace)
-│   ├── opencode-example.json            # Generated OpenCode config (dev-workspace)
-│   └── docker-compose.yml                # Docker configuration
-├── docs/                                # Documentation
-│   ├── architecture.md                 # System architecture overview
-│   ├── integration.md                  # Comprehensive integration guides
-│   ├── profiles.md                     # Profile reference + custom profiles
-│   └── troubleshooting.md              # Common issues and solutions
-└── scripts/                             # Utility scripts
-    ├── generate-config.mjs             # Render profile -> client config
-    ├── lib.sh                          # Shared helpers (profiles/inventory/scope)
-    ├── build-all.sh                    # Build servers in a scope
-    ├── test-all.sh                     # Test servers in a scope
-    └── clean-all.sh                    # Clean build artifacts in a scope
+├── README.md                              # Main ecosystem hub documentation
+├── CONTRIBUTING.md                        # Contribution guidelines & adding servers
+├── LICENSE                                # MIT License
+├── setup.sh                               # Profile installer & interactive reconfigurator
+├── update.sh                              # Update & rebuild servers in a scope
+├── config/                                # Server registry + profiles + client examples
+│   ├── inventory.json                     # Server registry & environment metadata
+│   ├── profiles.json                      # Profile (stack) definitions
+│   ├── cursor-example.json                # Generated Cursor config (dev-workspace)
+│   ├── claude-example.json                # Generated Claude Desktop config (dev-workspace)
+│   ├── gemini-example.json                # Generated Antigravity / Gemini config (dev-workspace)
+│   ├── opencode-example.json              # Generated OpenCode config (dev-workspace)
+│   ├── kilo-example.json                  # Generated Kilo CLI config (dev-workspace)
+│   ├── zed-example.json                   # Generated Zed config (dev-workspace)
+│   ├── codex-example.toml                 # Generated Codex / ChatGPT config (dev-workspace)
+│   └── docker-compose.yml                 # Container deployment specification
+├── docs/                                  # Complete Documentation Suite
+│   ├── keys-and-secrets.md                # Prerequisites, API keys, signup links & fallbacks
+│   ├── architecture.md                    # System architecture & inter-server communication
+│   ├── integration.md                     # Client integration guides & custom setups
+│   ├── profiles.md                        # Profile reference & custom stack builder
+│   └── troubleshooting.md                 # Common issues, process hangs & solutions
+└── scripts/                               # Automation & Maintenance Tooling
+    ├── generate-config.mjs                # Multi-client configuration renderer
+    ├── lib.sh                             # Shared shell utilities & JSON resolvers
+    ├── build-all.sh                       # Batch server builder
+    ├── test-all.sh                        # Batch test runner
+    └── clean-all.sh                       # Clean node_modules & build artifacts
 ```
 
 ### Individual Server Development
@@ -450,14 +450,16 @@ For more information see the [Profiles Guide](docs/profiles.md) and [Development
 
 We welcome contributions to the MCP Ecosystem Suite! See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
-## Documentation
+## Documentation Index
 
-For comprehensive documentation, see:
+For comprehensive guides across the ecosystem:
 
-- **[Architecture Guide](docs/architecture.md)** - System architecture, server components, and data flow diagrams
-- **[Profiles Guide](docs/profiles.md)** - Profile reference, GUI vs. headless stacks, custom profiles
-- **[Integration Guide](docs/integration.md)** - Detailed setup instructions for Cursor IDE, Claude Desktop, and Docker
-- **[Troubleshooting Guide](docs/troubleshooting.md)** - Common issues and solutions
+- 🔑 **[Prerequisites, Keys & Secrets Guide](docs/keys-and-secrets.md)** - System requirements, OpenRouter, GitHub & Google API keys, acquisition URLs, and zero-key offline fallback modes.
+- 📐 **[Architecture Guide](docs/architecture.md)** - System architecture, server components, and data flow diagrams.
+- 🚀 **[Integration Guide](docs/integration.md)** - Detailed setup instructions for Cursor IDE, Claude Desktop, Antigravity, OpenCode, Kilo, Zed, Codex, and Docker.
+- 📦 **[Profiles Reference](docs/profiles.md)** - Profile reference, GUI vs. headless stacks, custom profiles guide.
+- 🛠️ **[Troubleshooting Guide](docs/troubleshooting.md)** - Common issues, error codes, and troubleshooting solutions.
+- 🤝 **[Contributing Guidelines](CONTRIBUTING.md)** - Guide for adding new MCP servers and submitting improvements.
 
 ## License
 
@@ -469,6 +471,7 @@ The MCP Ecosystem Suite is licensed under the MIT License. See [LICENSE](LICENSE
 - **Discussions:** Join community discussions in the respective GitHub repositories
 - **Documentation:**
   - Check individual server READMEs for detailed usage instructions
+  - See [docs/keys-and-secrets.md](docs/keys-and-secrets.md) for API key setups
   - See [docs/integration.md](docs/integration.md) for integration help
   - See [docs/troubleshooting.md](docs/troubleshooting.md) for common issues
 
