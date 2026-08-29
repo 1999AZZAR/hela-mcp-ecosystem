@@ -27,6 +27,8 @@
   --accent-yellow-soft: rgba(255, 197, 51, 0.12);
   --accent-red: #ff6161;
   --accent-red-soft: rgba(255, 97, 97, 0.12);
+  --accent-blue: #3b82f6;
+  --accent-blue-soft: rgba(59, 130, 246, 0.15);
   --accent-purple: #a78bfa;
 
   --font-sans: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
@@ -65,8 +67,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image:
-    radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
   background-size: 24px 24px;
   pointer-events: none;
   z-index: 0;
@@ -377,11 +378,54 @@ header {
   word-break: break-word;
 }
 
-/* Terminal ANSI Coloring Classes */
-.term-pass { color: var(--accent-green); }
-.term-cyan { color: var(--accent-cyan); }
-.term-yellow { color: var(--accent-yellow); }
-.term-dim { color: var(--text-dim); }
+/* Full-Width Showcase Terminal Player */
+.showcase-terminal-large {
+  background: var(--bg-terminal);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+  margin-top: 24px;
+}
+
+.showcase-terminal-body {
+  padding: 28px;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #e2e8f0;
+  min-height: 420px;
+  max-height: 540px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+/* Section Common */
+.section {
+  padding: 56px 0;
+  border-top: 1px solid var(--border-hairline);
+}
+
+.section-title-wrap {
+  margin-bottom: 32px;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.section-heading {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
 
 /* Interactive Cellular Node Graph */
 .node-graph-card {
@@ -443,6 +487,83 @@ header {
   margin-top: 16px;
   font-family: var(--font-mono);
   font-size: 0.82rem;
+}
+
+/* Dual Backbone Cards */
+.arch-dual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.backbone-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-top: 3px solid var(--accent-cyan);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.backbone-card.genome {
+  border-top-color: var(--accent-blue);
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.card-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.card-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-hairline);
+  color: var(--accent-cyan);
+}
+
+.organelles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.organelle-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  transition: all 0.15s ease;
+}
+
+.organelle-card:hover {
+  border-color: var(--border-medium);
+  background: var(--bg-surface-elevated);
+}
+
+.organelle-card h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.organelle-card p {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
 }
 
 /* Workflows Layout */
@@ -801,6 +922,44 @@ header {
   color: var(--text-muted);
 }
 
+/* Troubleshooting / Callouts */
+.trouble-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.trouble-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-left: 3px solid var(--accent-yellow);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.trouble-card h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.trouble-card p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-bottom: 12px;
+}
+
+.trouble-fix {
+  background: var(--bg-terminal);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
+}
+
 /* Table */
 .table-wrap {
   border: 1px solid var(--border-hairline);
@@ -999,6 +1158,9 @@ footer {
 /* Responsive */
 @media (max-width: 900px) {
   .wf-container {
+    grid-template-columns: 1fr;
+  }
+  .arch-dual-grid {
     grid-template-columns: 1fr;
   }
   .config-workbench {
