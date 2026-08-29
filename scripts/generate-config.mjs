@@ -159,23 +159,25 @@ function renderNode(servers, root, keyName = 'mcpServers', options) {
 }
 
 function renderCodexToml(servers, root, options) {
-  const lines = ['# Generated Codex / ChatGPT MCP Server Configuration\n'];
+  const sections = ['# Generated Codex / ChatGPT MCP Server Configuration'];
   for (const s of servers) {
     const name = s.id.replace('-mcp-server', '').replace('-mcp', '');
     const entry = s.entry ? path.join(root, s.dir, s.entry) : '';
-    lines.push(`[mcpServers.${name}]`);
-    lines.push(`command = "${s.runtime || 'node'}"`);
-    lines.push(`args = ["${entry}"]`);
+    const sectionLines = [
+      `[mcpServers.${name}]`,
+      `command = "${s.runtime || 'node'}"`,
+      `args = ["${entry}"]`,
+    ];
     const env = buildServerEnv(s, root, options);
     if (Object.keys(env).length > 0) {
-      lines.push(`[mcpServers.${name}.env]`);
+      sectionLines.push(`[mcpServers.${name}.env]`);
       for (const [k, v] of Object.entries(env)) {
-        lines.push(`${k} = "${v}"`);
+        sectionLines.push(`${k} = "${v}"`);
       }
     }
-    lines.push('');
+    sections.push(sectionLines.join('\n'));
   }
-  return lines.join('\n');
+  return sections.join('\n\n');
 }
 
 function renderDocker(servers) {
