@@ -20,11 +20,14 @@ The **HeLa MCP Ecosystem** is architected around a cellular biology metaphor, re
 
 To balance brand clarity, backwards compatibility, and technical provenance, the ecosystem enforces a 4-tier naming model:
 
-```
-[ Tier 1: Public Identity ]  ──►  "HeLa Genome"
-[ Tier 2: Machine ID ]       ──►  "hela-genome"
-[ Tier 3: Technical Repo ]   ──►  "Project-Guardian-mcp-server"
-[ Tier 4: Immutable Commit ] ──►  "72bca15ebe511575fd14d5b841d7973bfaf26ca1"
+```mermaid
+flowchart LR
+    T1["Tier 1: Public Identity<br/>HeLa Genome"]
+    T2["Tier 2: Machine ID<br/>hela-genome"]
+    T3["Tier 3: Technical Repo<br/>Project-Guardian-mcp-server"]
+    T4["Tier 4: Immutable Commit<br/>72bca15ebe..."]
+
+    T1 --> T2 --> T3 --> T4
 ```
 
 1. **Tier 1 (Public Identity)**: Clean, uniform human-facing persona name (e.g. *HeLa Mitosis*, *HeLa Genome*, *HeLa Membrane*).
@@ -38,34 +41,23 @@ To balance brand clarity, backwards compatibility, and technical provenance, the
 
 Every deployed profile in the ecosystem is grounded by a dual backbone:
 
-```
-                                  ┌───────────────────────────┐
-                                  │  AI Client / Orchestrator │
-                                  └─────────────┬─────────────┘
-                                                │ stdio JSON-RPC
-                        ┌───────────────────────┴───────────────────────┐
-                        │                                               │
-                        ▼                                               ▼
-             ┌─────────────────────┐                         ┌─────────────────────┐
-             │    HeLa Mitosis     │                         │     HeLa Genome     │
-             │   (`hela-mitosis`)  │                         │   (`hela-genome`)   │
-             ├─────────────────────┤                         ├─────────────────────┤
-             │ • Dynamic Routing   │                         │ • Knowledge Graph   │
-             │ • Step Reasoning    │◄──── Shared Memory ────►│ • Living SQLite DB  │
-             │ • Task Decomposition│                         │ • Entity / Relns    │
-             │ • Prompt Catalog    │                         │ • Milestones & State│
-             └──────────┬──────────┘                         └──────────┬──────────┘
-                        │                                               │
-                        └───────────────────────┬───────────────────────┘
-                                                │
-                          Coordinates Specialized Capability Cells
-                                                │
-         ┌──────────────┬──────────────┬────────┼──────────────┬──────────────┐
-         ▼              ▼              ▼        ▼              ▼              ▼
-   ┌───────────┐  ┌───────────┐  ┌───────────┐    ┌───────────┐  ┌───────────┐  ┌───────────┐
-   │ Membrane  │  │  Nucleus  │  │ Ribosome  │    │  Enzyme   │  │  Cytosol  │  │ Phenotype │
-   │ (Files)   │  │ (Exec)    │  │ (PTY)     │    │ (Search)  │  │ (Browser) │  │ (Design)  │
-   └───────────┘  └───────────┘  └───────────┘    └───────────┘  └───────────┘  └───────────┘
+```mermaid
+flowchart TB
+    Client["AI Client / Orchestrator"]
+
+    Mitosis["HeLa Mitosis<br/>(hela-mitosis)<br/>- Dynamic Routing<br/>- Step Reasoning<br/>- Task Decomposition<br/>- Prompt Catalog"]
+    Genome["HeLa Genome<br/>(hela-genome)<br/>- Knowledge Graph<br/>- Living SQLite DB<br/>- Entity / Relations<br/>- Milestones & State"]
+
+    Membrane["HeLa Membrane<br/>(Files)"]
+    Nucleus["HeLa Nucleus<br/>(Exec)"]
+    Ribosome["HeLa Ribosome<br/>(PTY)"]
+    Enzyme["HeLa Enzyme<br/>(Search)"]
+    Cytosol["HeLa Cytosol<br/>(Browser)"]
+    Phenotype["HeLa Phenotype<br/>(Design)"]
+
+    Client -- "stdio JSON-RPC" --> Mitosis & Genome
+    Mitosis <-->|"Shared Memory"| Genome
+    Mitosis & Genome --> Membrane & Nucleus & Ribosome & Enzyme & Cytosol & Phenotype
 ```
 
 * **HeLa Mitosis (Routing & Planning Backbone)**: Analyzes client tools, suggests multi-step execution paths, executes multi-branch trees via `sequentialthinking`, and serves 42 curated domain prompts.
@@ -141,14 +133,18 @@ Every deployed profile in the ecosystem is grounded by a dual backbone:
 
 ## 5. Security & Isolation Model
 
-```
-Host Operating System / Terminal Environment
-  └── HeLa MCP Ecosystem Root
-        ├── stdio JSON-RPC Sandbox
-        ├── Path Canonicalization (HeLa Membrane)
-        ├── Explicit CWD & Timeout Limits (HeLa Nucleus)
-        ├── Process Group Teardown (HeLa Ribosome)
-        └── SSRF IP Filtering (HeLa Cytosol)
+```mermaid
+flowchart TB
+    Host["Host Operating System / Terminal Environment"]
+    Root["HeLa MCP Ecosystem Root"]
+    Sandbox["stdio JSON-RPC Sandbox"]
+    Membrane2["Path Canonicalization<br/>(HeLa Membrane)"]
+    Nucleus2["Explicit CWD & Timeout Limits<br/>(HeLa Nucleus)"]
+    Ribosome2["Process Group Teardown<br/>(HeLa Ribosome)"]
+    Cytosol2["SSRF IP Filtering<br/>(HeLa Cytosol)"]
+
+    Host --> Root
+    Root --> Sandbox & Membrane2 & Nucleus2 & Ribosome2 & Cytosol2
 ```
 
 1. **Process Boundary**: Each server runs in an isolated Node.js child process communicating exclusively over standard input/output (`stdio`) via JSON-RPC 2.0 messages.
