@@ -22,31 +22,24 @@ The **HeLa MCP Ecosystem** is named in respectful recognition of **Henrietta Lac
 
 Every profile in the HeLa ecosystem is anchored by two core backbone servers:
 
-```
-                  ┌─────────────────────────────────┐
-                  │    Agent / LLM Orchestrator     │
-                  └───────────────┬─────────────────┘
-                                  │ stdio JSON-RPC
-         ┌────────────────────────┴────────────────────────┐
-         │                                                 │
-         ▼                                                 ▼
-┌──────────────────┐                              ┌──────────────────┐
-│   HeLa Mitosis   │                              │   HeLa Genome    │
-│  (Orchestrator)  │                              │ (State & Memory) │
-├──────────────────┤                              ├──────────────────┤
-│ • Dynamic Routing│                              │ • Knowledge Graph│
-│ • Step Reasoning │◄────── Shared Context ──────►│ • Entities/Relns │
-│ • Tool Planning  │                              │ • Observations   │
-└────────┬─────────┘                              └────────┬─────────┘
-         │                                                 │
-         └────────────────────────┬────────────────────────┘
-                                  │
-               Dispatches to Specialized Capability Cells
-                                  │
-    ┌──────────────┬──────────────┼──────────────┬──────────────┐
-    ▼              ▼              ▼              ▼              ▼
-[Membrane]     [Nucleus]      [Ribosome]      [Enzyme]      [Cytosol]
-Workspace FS   Command Exec   PTY Harness    Research/Wiki   Browser DOM
+```mermaid
+flowchart TB
+    Agent["Agent / LLM Orchestrator"]
+
+    Mitosis["HeLa Mitosis<br/>(Orchestrator)<br/>- Dynamic Routing<br/>- Step Reasoning<br/>- Tool Planning"]
+    Genome["HeLa Genome<br/>(State & Memory)<br/>- Knowledge Graph<br/>- Entities / Relations<br/>- Observations"]
+
+    Membrane["HeLa Membrane<br/>Workspace FS"]
+    Nucleus["HeLa Nucleus<br/>Command Exec"]
+    Ribosome["HeLa Ribosome<br/>PTY Harness"]
+    Enzyme["HeLa Enzyme<br/>Research / Wiki"]
+    Cytosol["HeLa Cytosol<br/>Browser DOM"]
+
+    Agent -- "stdio JSON-RPC" --> Mitosis
+    Agent -- "stdio JSON-RPC" --> Genome
+    Mitosis <-->|"Shared Context"| Genome
+    Mitosis --> Membrane & Nucleus & Ribosome & Enzyme & Cytosol
+    Genome --> Membrane & Nucleus & Ribosome & Enzyme & Cytosol
 ```
 
 * **HeLa Mitosis (`hela-mitosis`)**: Cellular division and orchestration backbone. Handles dynamic tool routing, prompt decomposition, step-by-step reasoning (`sequentialthinking`), and multi-tool planning.

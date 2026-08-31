@@ -10,31 +10,22 @@ This document defines the standard operational workflows and cross-MCP coordinat
 
 Every profile in the HeLa MCP Ecosystem is anchored by two coordinating backbone servers:
 
-```
-                  ┌─────────────────────────────────┐
-                  │    Agent / LLM Orchestrator     │
-                  └───────────────┬─────────────────┘
-                                  │
-         ┌────────────────────────┴────────────────────────┐
-         │                                                 │
-         ▼                                                 ▼
-┌──────────────────┐                              ┌──────────────────┐
-│   HeLa Mitosis   │                              │   HeLa Genome    │
-│  (Orchestrator)  │                              │ (State & Memory) │
-├──────────────────┤                              ├──────────────────┤
-│ • Dynamic Routing│                              │ • Knowledge Graph│
-│ • Step Reasoning │◄────── Shared Context ──────►│ • Entities/Relns │
-│ • Tool Planning  │                              │ • Observations   │
-└────────┬─────────┘                              └────────┬─────────┘
-         │                                                 │
-         └────────────────────────┬────────────────────────┘
-                                  │
-               Dispatches to Specialized Capability Cells
-                                  │
-    ┌──────────────┬──────────────┼──────────────┬──────────────┐
-    ▼              ▼              ▼              ▼              ▼
-[Membrane]     [Nucleus]      [Ribosome]      [Enzyme]      [Cytosol]
-Workspace FS   Command Exec   PTY Harness    Research/Wiki   Browser DOM
+```mermaid
+flowchart TB
+    Agent["Agent / LLM Orchestrator"]
+
+    Mitosis["HeLa Mitosis<br/>(Orchestrator)<br/>- Dynamic Routing<br/>- Step Reasoning<br/>- Tool Planning"]
+    Genome["HeLa Genome<br/>(State & Memory)<br/>- Knowledge Graph<br/>- Entities / Relations<br/>- Observations"]
+
+    Membrane["HeLa Membrane<br/>Workspace FS"]
+    Nucleus["HeLa Nucleus<br/>Command Exec"]
+    Ribosome["HeLa Ribosome<br/>PTY Harness"]
+    Enzyme["HeLa Enzyme<br/>Research / Wiki"]
+    Cytosol["HeLa Cytosol<br/>Browser DOM"]
+
+    Agent --> Mitosis & Genome
+    Mitosis <-->|"Shared Context"| Genome
+    Mitosis & Genome --> Membrane & Nucleus & Ribosome & Enzyme & Cytosol
 ```
 
 - **HeLa Mitosis (`hela-mitosis`)**: Acts as the cognitive orchestrator. It decomposes complex prompts, analyzes tool performance, and runs `sequentialthinking` step-by-step logic.
