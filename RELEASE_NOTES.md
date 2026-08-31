@@ -4,7 +4,7 @@ We are proud to announce the official **v1.0.0** release of the **HeLa MCP Ecosy
 
 ---
 
-## 🧬 Architectural Vision & Metaphor
+## Architectural Vision & Metaphor
 
 The **HeLa MCP Ecosystem** is named in respectful recognition of **Henrietta Lacks** (1920–1951) and the enduring scientific legacy of HeLa cells. Using a **cellular biology metaphor**, the ecosystem organizes 10 specialized MCP servers into a harmonious organism:
 
@@ -14,7 +14,7 @@ The **HeLa MCP Ecosystem** is named in respectful recognition of **Henrietta Lac
 
 ---
 
-## 🌟 Key Highlights & Milestones Delivered
+## Key Highlights & Milestones Delivered
 
 ### 1. Dual-Backbone Architecture
 Every profile is grounded by two core backbones:
@@ -49,7 +49,7 @@ Modern, responsive documentation landing site featuring:
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
 git clone https://github.com/1999AZZAR/hela-mcp-ecosystem.git
@@ -60,7 +60,7 @@ cd hela-mcp-ecosystem
 
 ---
 
-## 📚 Documentation
+## Documentation
 
 * [Beginner's Step-by-Step Guide](docs/beginner-guide.md)
 * [Architecture Guide](docs/architecture.md)
@@ -71,7 +71,7 @@ cd hela-mcp-ecosystem
 
 ---
 
-## ⚖️ License & Attribution
+## License & Attribution
 
 Distributed under the MIT License. Developed by Azzar.
 
