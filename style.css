@@ -212,6 +212,301 @@ a {
   align-items: center;
 }
 
+
+/* ==========================================================================
+   Archival Shell & Sidebar Layout (modeled after iot.glassgallery.my.id/docs)
+   ========================================================================== */
+
+.archival-shell {
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.archival-main {
+  position: relative;
+  z-index: 2;
+  max-width: 80rem; /* 1280px vitrine */
+  margin: 0 auto;
+  min-height: 100vh;
+  border-left: 1px solid var(--archival-muted);
+  border-right: 1px solid var(--archival-muted);
+  padding: 32px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  background: var(--archival-canvas);
+}
+
+@media (min-width: 1024px) {
+  .archival-main {
+    padding: 48px 48px 80px;
+  }
+}
+
+/* Document Top Header (matching reference iot.glassgallery.my.id/docs) */
+.doc-header {
+  margin-bottom: 48px;
+  padding: 32px 32px 38px;
+  border: 1px solid var(--archival-muted);
+  background: var(--archival-surface);
+  border-radius: var(--radius-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.doc-watermark {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--archival-muted-fg);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.doc-meta-strip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.doc-meta-strip .meta-item {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--archival-muted-fg);
+}
+
+.doc-title {
+  font-family: var(--font-sans);
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: var(--archival-ink);
+  margin-bottom: 16px;
+}
+
+.doc-lead {
+  font-size: 1.02rem;
+  color: var(--archival-body);
+  max-width: 820px;
+  line-height: 1.65;
+}
+
+/* 2-Column Layout Grid */
+.docs-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+}
+
+@media (min-width: 1024px) {
+  .docs-layout {
+    grid-template-columns: 240px 1fr;
+    gap: 44px;
+  }
+}
+
+/* Left Sidebar Navigation */
+.docs-sidebar {
+  border-bottom: 1px solid var(--archival-muted);
+  padding-bottom: 24px;
+}
+
+@media (min-width: 1024px) {
+  .docs-sidebar {
+    border-bottom: none;
+    border-right: 1px solid var(--archival-muted);
+    padding-bottom: 0;
+    padding-right: 28px;
+  }
+}
+
+.sidebar-sticky {
+  position: sticky;
+  top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.sidebar-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--archival-muted);
+}
+
+.sidebar-brand-name {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--archival-ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar-brand-name::after {
+  content: "ARCHIVE";
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--archival-accent);
+  border: 1px solid var(--archival-accent-subtle);
+  background: var(--archival-accent-soft);
+  padding: 1px 5px;
+  border-radius: var(--radius-sm);
+}
+
+.sidebar-nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sidebar-heading {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--archival-muted-fg);
+  margin-bottom: 6px;
+}
+
+.sidebar-menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu-item a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--archival-muted-fg);
+  padding: 7px 10px;
+  border-radius: var(--radius-sm);
+  transition: all 0.15s ease;
+}
+
+.sidebar-menu-item a:hover {
+  color: var(--archival-accent);
+  background: var(--archival-surface);
+}
+
+.sidebar-menu-item.active a {
+  color: var(--archival-accent);
+  background: var(--archival-surface);
+  font-weight: 700;
+  box-shadow: inset 3px 0 0 var(--archival-accent);
+}
+
+.sidebar-sublinks {
+  list-style: none;
+  margin-top: 4px;
+  margin-left: 10px;
+  padding-left: 10px;
+  border-left: 1px solid var(--archival-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sidebar-sublinks a {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--archival-muted-fg);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 4px;
+  transition: color 0.12s ease;
+  font-weight: 500;
+}
+
+.sidebar-sublinks a:hover {
+  color: var(--archival-accent);
+}
+
+.sidebar-utilities {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 16px;
+  border-top: 1px solid var(--archival-muted);
+}
+
+.sidebar-search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: var(--archival-surface);
+  border: 1px solid var(--archival-muted);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--archival-ink);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.sidebar-search-btn:hover {
+  border-color: var(--archival-accent);
+  color: var(--archival-accent);
+  background: var(--archival-surface-elevated);
+}
+
+.sidebar-status-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--archival-muted-fg);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-top: 8px;
+  border-top: 1px solid var(--archival-muted);
+}
+
+/* Right Content Area */
+.docs-content {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  min-width: 0; /* Prevents overflow issues */
+}
+
+/* Sections scroll margin for sticky header/sidebar anchor jumps */
+.doc-section {
+  scroll-margin-top: 24px;
+}
+
 /* ==========================================================================
    Navigation Header
    ========================================================================== */

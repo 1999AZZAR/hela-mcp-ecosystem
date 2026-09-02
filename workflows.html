@@ -12,110 +12,140 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="archival-shell">
   <!-- Blueprint Grid Line Overlay -->
   <div class="blueprint-grid" aria-hidden="true"></div>
 
-  <!-- Pre-Header Archival Strip -->
-  <div class="archive-meta-strip">
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-      <span>[ SPECIMEN: WORKFLOW_PIPELINES // DOSSIER_REF: PLAYBOOK-WF-02 ]</span>
-      <span>[ STANDARDIZED RECIPES A–F // TOKEN ECONOMY DISCIPLINE ]</span>
-    </div>
-  </div>
+  <!-- Vitrine Archival Container -->
+  <main class="archival-main">
 
-  <!-- Navigation -->
-  <header>
-    <div class="container header-inner">
-      <div class="brand-block">
-        <a href="index.html" class="brand-title">HeLa MCP Ecosystem</a>
-        <div class="status-indicator">
-          <span class="status-dot"></span>
-          <span>v1.0.0 (c2cdf68)</span>
-        </div>
+    <!-- Document Header Banner -->
+    <header class="doc-header">
+      <div class="doc-meta-strip">
+        <div class="museum-label">SYSTEM_DOCUMENTATION_V1.0</div>
+        <div class="meta-item">// OPERATIONAL_PLAYBOOKS</div>
+        <div class="meta-item">// PLAYBOOK-WF-02</div>
       </div>
-      <nav class="nav-menu">
-        <a href="index.html">Workbench</a>
-        <a href="architecture.html">Architecture</a>
-        <a href="workflows.html" class="nav-active">Workflows</a>
-        <a href="profiles.html">Profiles</a>
-        <a href="showcase.html">Showcases</a>
-        <a href="troubleshooting.html">Diagnostics</a>
-        <button class="k-shortcut-btn open-cmd-palette" aria-label="Open Command Palette">
-          <span>Search 295 Tools</span>
-          <span class="k-key">⌘K</span>
-        </button>
-        <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 5px 12px; font-size: 0.72rem;">GitHub ↗</a>
-      </nav>
-    </div>
-  </header>
+      <h1 class="doc-title">Cross-MCP<br>Workflows</h1>
+      <p class="doc-lead">Standardized recipes combining multiple MCP servers into high-efficiency automated pipelines. Select any workflow below to inspect tool sequences, profiles, and persistence lifecycles.</p>
+      <div class="doc-watermark">SPEC_02 // 1999AZZAR-MCP</div>
+    </header>
 
-  <main>
-    <!-- Banner -->
-    <div class="page-banner">
-      <div class="container">
-        <div class="page-label">Operational Playbooks</div>
-        <h1 class="page-title">Cross-MCP Workflow Engine</h1>
-        <p class="page-lead">Standardized recipes combining multiple MCP servers into high-efficiency automated pipelines. Select any workflow below to view its tool sequences, profiles, and persistence lifecycle.</p>
-      </div>
-    </div>
+    <!-- 2-Column Archival Layout: Sidebar Nav + Main Content -->
+    <div class="docs-layout">
 
-    <!-- Workflows Section -->
-    <section class="section">
-      <div class="container">
-        <div class="wf-container">
-          <div class="wf-tabs-nav">
-            <button class="wf-tab-btn active" data-wf="workflow-a">Workflow A: Feature Engineering</button>
-            <button class="wf-tab-btn" data-wf="workflow-b">Workflow B: Deep Research</button>
-            <button class="wf-tab-btn" data-wf="workflow-c">Workflow C: Web UI &amp; Design</button>
-            <button class="wf-tab-btn" data-wf="workflow-d">Workflow D: Mobile Device QA</button>
-            <button class="wf-tab-btn" data-wf="workflow-e">Workflow E: Interactive PTY</button>
-            <button class="wf-tab-btn" data-wf="workflow-f">Workflow F: Blender 3D</button>
+      <!-- Left Sidebar Navigation -->
+      <aside class="docs-sidebar">
+        <div class="sidebar-sticky">
+
+          <!-- Brand Block -->
+          <div class="sidebar-brand">
+            <a href="index.html" class="sidebar-brand-name">HeLa Ecosystem</a>
+            <div style="display:flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:0.68rem; color:var(--archival-muted-fg);">
+              <span class="status-dot"></span>
+              <span>v1.0.0 (c2cdf68)</span>
+            </div>
           </div>
 
-          <div id="workflowDisplay">
-            <!-- Rendered dynamically by app.js -->
+          <!-- Navigation Index -->
+          <div class="sidebar-nav-group">
+            <div class="sidebar-heading">Index / Navigation</div>
+            <ul class="sidebar-menu">
+              <li class="sidebar-menu-item"><a href="index.html">Workbench</a></li>
+              <li class="sidebar-menu-item"><a href="architecture.html">Architecture</a></li>
+              <li class="sidebar-menu-item active">
+                <a href="workflows.html">Workflows</a>
+                <ul class="sidebar-sublinks">
+                  <li><a href="#workflows-section">Workflows A–F</a></li>
+                  <li><a href="#token-economy">Token Economy</a></li>
+                </ul>
+              </li>
+              <li class="sidebar-menu-item"><a href="profiles.html">Profiles</a></li>
+              <li class="sidebar-menu-item"><a href="showcase.html">Showcases</a></li>
+              <li class="sidebar-menu-item"><a href="troubleshooting.html">Diagnostics</a></li>
+            </ul>
           </div>
+
+          <!-- Utilities / Tools -->
+          <div class="sidebar-utilities">
+            <button class="sidebar-search-btn open-cmd-palette" aria-label="Open Command Palette">
+              <span>Search 295 Tools</span>
+              <span class="k-key">⌘K</span>
+            </button>
+            <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" rel="noopener noreferrer" class="sidebar-search-btn" style="text-decoration:none;">
+              <span>GitHub Repo</span>
+              <span>↗</span>
+            </a>
+            <div class="sidebar-status-box">
+              <span class="status-dot"></span>
+              <span>295 Tools Available</span>
+            </div>
+          </div>
+
         </div>
-      </div>
-    </section>
+      </aside>
 
-    <!-- Token Economy Principles -->
-    <section class="section">
-      <div class="container">
-        <div class="section-title-wrap">
-          <div class="section-label">Rigor &amp; Token Economy</div>
-          <h2 class="section-heading">Architectural Efficiency Principles</h2>
+      <!-- Right Main Content -->
+      <div class="docs-content">
+
+        <!-- Workflows Interactive Section -->
+        <section id="workflows-section" class="doc-section">
+          <div class="section-title-wrap">
+            <div class="section-label">Workflow Automation</div>
+            <h2 class="section-heading">Cross-MCP Tool Sequencing Pipelines</h2>
+          </div>
+
+          <div class="wf-container">
+            <div class="wf-tabs-nav">
+              <button class="wf-tab-btn active" data-wf="workflow-a">Workflow A: Feature Engineering</button>
+              <button class="wf-tab-btn" data-wf="workflow-b">Workflow B: Deep Research</button>
+              <button class="wf-tab-btn" data-wf="workflow-c">Workflow C: Web UI &amp; Design</button>
+              <button class="wf-tab-btn" data-wf="workflow-d">Workflow D: Mobile Device QA</button>
+              <button class="wf-tab-btn" data-wf="workflow-e">Workflow E: Interactive PTY</button>
+              <button class="wf-tab-btn" data-wf="workflow-f">Workflow F: Blender 3D</button>
+            </div>
+
+            <div id="workflowDisplay">
+              <!-- Rendered dynamically by app.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Token Economy Principles -->
+        <section id="token-economy" class="doc-section">
+          <div class="section-title-wrap">
+            <div class="section-label">Rigor &amp; Token Economy</div>
+            <h2 class="section-heading">Architectural Efficiency Principles</h2>
+          </div>
+
+          <div class="arch-dual-grid">
+            <div class="organelle-card">
+              <h4>1. Structured Memory Over Raw Logs</h4>
+              <p>Always record architectural decisions and task completion milestones to <code>hela-genome</code> so downstream turns don't consume context parsing thousands of log lines.</p>
+            </div>
+
+            <div class="organelle-card">
+              <h4>2. Structural Dumps Over Screenshots</h4>
+              <p>For mobile (<code>hela-receptor</code>) and browser (<code>hela-cytosol</code>), inspect XML and accessibility trees for element location; reserve visual screenshots for final verification.</p>
+            </div>
+
+            <div class="organelle-card">
+              <h4>3. Fail-Fast Doctor Diagnostics</h4>
+              <p>Always verify runtime and binary prerequisites via <code>./setup.sh doctor</code> before spawning long-running cross-server automation pipelines.</p>
+            </div>
+
+            <div class="organelle-card">
+              <h4>4. Subshell RTK Command Isolation</h4>
+              <p>Execute shell operations through <code>hela-nucleus</code> with RTK token filtering to strip redundant stdout noise and escape subshell pollution.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Document Seal -->
+        <div class="doc-seal-banner">
+          [ ARCHIVAL_RECORD_SEALED // SPEC_02_WORKFLOWS // VERIFIED_DISTRIBUTION ]
         </div>
 
-        <div class="arch-dual-grid">
-          <div class="organelle-card">
-            <h4>1. Structured Memory Over Raw Logs</h4>
-            <p>Always record architectural decisions and task completion milestones to <code>hela-genome</code> so downstream turns don't consume context parsing thousands of log lines.</p>
-          </div>
-
-          <div class="organelle-card">
-            <h4>2. Structural Dumps Over Screenshots</h4>
-            <p>For mobile (<code>hela-receptor</code>) and browser (<code>hela-cytosol</code>), inspect XML and accessibility trees for element location; reserve visual screenshots for final verification.</p>
-          </div>
-
-          <div class="organelle-card">
-            <h4>3. Fail-Fast Doctor Diagnostics</h4>
-            <p>Always verify runtime and binary prerequisites via <code>./setup.sh doctor</code> before spawning long-running cross-server automation pipelines.</p>
-          </div>
-
-          <div class="organelle-card">
-            <h4>4. Subshell RTK Command Isolation</h4>
-            <p>Execute shell operations through <code>hela-nucleus</code> with RTK token filtering to strip redundant stdout noise and escape subshell pollution.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Document Seal -->
-    <div class="container">
-      <div class="doc-seal-banner">
-        [ ARCHIVAL_RECORD_SEALED // SPEC_02_WORKFLOWS // VERIFIED_DISTRIBUTION ]
       </div>
     </div>
   </main>
@@ -133,23 +163,6 @@
       </div>
     </div>
   </div>
-
-  <footer>
-    <div class="container">
-      <div class="footer-row">
-        <div class="footer-nav">
-          <a href="index.html">Workbench</a>
-          <a href="architecture.html">Architecture</a>
-          <a href="workflows.html">Workflows</a>
-          <a href="profiles.html">Profiles</a>
-          <a href="showcase.html">Showcases</a>
-          <a href="troubleshooting.html">Diagnostics</a>
-          <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-        </div>
-        <div class="footer-copy">MIT LICENSE · HELA ARCHIVE · MAINTAINED BY AZZAR</div>
-      </div>
-    </div>
-  </footer>
 
   <script src="app.js"></script>
 </body>
