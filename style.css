@@ -2020,3 +2020,116 @@ footer {
     gap: 12px;
   }
 }
+
+
+/* ==========================================================================
+   Archival Technical Specimen Plates (Blotcat Hand-Drawn Illustrations)
+   ========================================================================== */
+
+.archival-plate {
+  margin: 28px 0 36px;
+  border: 1px solid var(--archival-muted);
+  background: var(--archival-surface);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 4px 16px rgba(42, 37, 32, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.archival-plate:hover {
+  border-color: var(--archival-accent-subtle);
+  box-shadow: 0 6px 20px rgba(42, 37, 32, 0.06);
+}
+
+.plate-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(191, 182, 166, 0.4);
+}
+
+.plate-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--archival-accent);
+}
+
+.plate-meta {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--archival-muted-fg);
+}
+
+.plate-viewport {
+  background: #FAF7F0;
+  border: 1px solid rgba(191, 182, 166, 0.45);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.plate-viewport img {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  display: block;
+  border-radius: 2px;
+}
+
+.plate-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid rgba(191, 182, 166, 0.35);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.plate-caption {
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--archival-body);
+  line-height: 1.4;
+}
+
+.plate-stamp {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--archival-accent);
+  background: var(--archival-accent-soft);
+  border: 1px solid var(--archival-accent-subtle);
+  padding: 2px 8px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+/* Dual Plate Grid for Side-by-Side Comparisons */
+.plate-dual-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin: 28px 0 36px;
+}
+
+@media (min-width: 768px) {
+  .plate-dual-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
