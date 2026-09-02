@@ -6,9 +6,23 @@
   <title>Diagnostics & Troubleshooting — HeLa MCP Ecosystem</title>
   <meta name="description" content="Doctor diagnostics, error resolution guide, and security audit principles for the HeLa MCP Ecosystem.">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <!-- Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Blueprint Grid Line Overlay -->
+  <div class="blueprint-grid" aria-hidden="true"></div>
+
+  <!-- Pre-Header Archival Strip -->
+  <div class="archive-meta-strip">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <span>[ SPECIMEN: DIAGNOSTICS_AND_DOCTOR // DOSSIER_REF: DIAG-05-AUDIT ]</span>
+      <span>[ 5-SUBSYSTEM VERIFICATION // RECOVERY PLAYBOOKS ]</span>
+    </div>
+  </div>
 
   <!-- Navigation -->
   <header>
@@ -27,11 +41,11 @@
         <a href="profiles.html">Profiles</a>
         <a href="showcase.html">Showcases</a>
         <a href="troubleshooting.html" class="nav-active">Diagnostics</a>
-        <button class="k-shortcut-btn open-cmd-palette">
+        <button class="k-shortcut-btn open-cmd-palette" aria-label="Open Command Palette">
           <span>Search 295 Tools</span>
           <span class="k-key">⌘K</span>
         </button>
-        <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">GitHub ↗</a>
+        <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 5px 12px; font-size: 0.72rem;">GitHub ↗</a>
       </nav>
     </div>
   </header>
@@ -40,8 +54,8 @@
     <!-- Banner -->
     <div class="page-banner">
       <div class="container">
-        <div class="page-label">Health & Reliability</div>
-        <h1 class="page-title">Diagnostics & Troubleshooting</h1>
+        <div class="page-label">Health &amp; Reliability Protocol</div>
+        <h1 class="page-title">Diagnostics &amp; Troubleshooting</h1>
         <p class="page-lead">Comprehensive automated diagnostic suite and guided playbooks for resolving common environment, runtime, database, and client communication issues.</p>
       </div>
     </div>
@@ -50,37 +64,38 @@
     <section class="section">
       <div class="container">
         <div class="section-title-wrap">
-          <div class="section-label">Diagnostic Tool</div>
+          <div class="section-label">Diagnostic Tooling</div>
           <h2 class="section-heading">Running Doctor Diagnostics</h2>
         </div>
 
-        <p style="color: var(--text-muted); margin-bottom: 20px;">The fastest way to diagnose your ecosystem is running the built-in diagnostic tool:</p>
+        <p style="color: var(--archival-body); margin-bottom: 20px; font-size: 0.92rem;">The fastest way to verify all 10 servers and system dependencies is running the built-in diagnostic CLI:</p>
 
-        <div class="quick-bar" style="margin-bottom: 24px;">
+        <div class="quick-bar" style="margin-bottom: 24px; max-width: 600px;">
           <span class="quick-cmd">./setup.sh doctor</span>
+          <button class="copy-mini" onclick="navigator.clipboard.writeText('./setup.sh doctor')">Copy</button>
         </div>
 
-        <p style="color: var(--text-muted); margin-bottom: 24px;">Doctor automatically audits 5 core subsystems:</p>
+        <p style="color: var(--archival-body); margin-bottom: 24px; font-size: 0.92rem;">Doctor automatically audits 5 core subsystems:</p>
 
         <div class="arch-dual-grid">
           <div class="organelle-card">
             <h4>1. Host Prerequisites</h4>
-            <p>Checks Node.js (>=18.0.0), npm, Git, SQLite3 CLI, and optional Python 3.</p>
+            <p>Checks Node.js (&gt;=18.0.0 LTS), npm, Git, SQLite3 CLI, and optional Python 3 runtime.</p>
           </div>
 
           <div class="organelle-card">
-            <h4>2. Server Builds & Entries</h4>
-            <p>Verifies <code>dist/index.js</code> or <code>build/index.js</code> artifacts across all 10 repositories.</p>
+            <h4>2. Server Builds &amp; Entries</h4>
+            <p>Verifies <code>dist/index.js</code> or <code>build/index.js</code> compiled artifacts across all 10 repositories.</p>
           </div>
 
           <div class="organelle-card">
             <h4>3. Stdio Smoke Tests</h4>
-            <p>Performs non-blocking stdio JSON-RPC handshake with each server (&lt;300ms timeout).</p>
+            <p>Performs non-blocking stdio JSON-RPC handshake with each server (&lt;300ms timeout threshold).</p>
           </div>
 
           <div class="organelle-card">
-            <h4>4. External Runtimes & Fallbacks</h4>
-            <p>Audits Playwright/Chromium, ADB, and Blender with graceful offline warnings.</p>
+            <h4>4. External Runtimes &amp; Fallbacks</h4>
+            <p>Audits Playwright/Chromium, ADB, and Blender with graceful offline warnings and isolation.</p>
           </div>
         </div>
       </div>
@@ -90,8 +105,8 @@
     <section class="section">
       <div class="container">
         <div class="section-title-wrap">
-          <div class="section-label">Playbooks</div>
-          <h2 class="section-heading">Common Scenarios & Instant Fixes</h2>
+          <div class="section-label">Incident Response</div>
+          <h2 class="section-heading">Common Scenarios &amp; Immediate Fixes</h2>
         </div>
 
         <div class="trouble-grid">
@@ -120,18 +135,25 @@
           <div class="trouble-card">
             <h4>4. Android ADB Offline or Unauthorized (HeLa Receptor)</h4>
             <p>If physical device is not recognized by ADB daemon, restart ADB and accept the RSA host prompt on device:</p>
-            <div class="trouble-fix">adb kill-server && adb start-server && adb devices</div>
+            <div class="trouble-fix">adb kill-server &amp;&amp; adb start-server &amp;&amp; adb devices</div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Document Seal -->
+    <div class="container">
+      <div class="doc-seal-banner">
+        [ ARCHIVAL_RECORD_SEALED // SPEC_05_DIAGNOSTICS // VERIFIED_DISTRIBUTION ]
+      </div>
+    </div>
   </main>
 
   <!-- Command Palette Modal (⌘K) -->
   <div class="cmd-palette-backdrop" id="cmdPalette">
     <div class="cmd-palette-modal">
       <div class="cmd-input-wrap">
-        <span style="color:var(--text-dim);">🔍</span>
+        <span style="color:var(--archival-muted-fg); font-family:var(--font-mono); font-size:0.85rem;">[SEARCH]</span>
         <input type="text" class="cmd-input" id="cmdInput" placeholder="Search 295 tools, pages, or profiles..." />
         <span class="k-key">ESC</span>
       </div>
@@ -151,9 +173,9 @@
           <a href="profiles.html">Profiles</a>
           <a href="showcase.html">Showcases</a>
           <a href="troubleshooting.html">Diagnostics</a>
-          <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank">GitHub</a>
+          <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
         </div>
-        <div class="footer-copy">MIT License • Developed by Azzar</div>
+        <div class="footer-copy">MIT LICENSE · HELA ARCHIVE · MAINTAINED BY AZZAR</div>
       </div>
     </div>
   </footer>

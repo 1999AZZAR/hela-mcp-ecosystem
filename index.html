@@ -6,9 +6,23 @@
   <title>HeLa MCP Ecosystem — 10-Server Cellular Distribution Suite</title>
   <meta name="description" content="A reproducible, 10-server MCP distribution suite for AI agents with dual-backbone orchestration and living memory graphs.">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <!-- Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Blueprint Grid Line Overlay -->
+  <div class="blueprint-grid" aria-hidden="true"></div>
+
+  <!-- Pre-Header Archival Strip -->
+  <div class="archive-meta-strip">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <span>[ SPECIMEN: HELA_ECOSYSTEM // ARCHIVAL_ID: 1999AZZAR-MCP ]</span>
+      <span>[ STATUS: 295 TOOLS READY // RFC-MCP-2026-A ]</span>
+    </div>
+  </div>
 
   <!-- Navigation -->
   <header>
@@ -27,11 +41,11 @@
         <a href="profiles.html">Profiles</a>
         <a href="showcase.html">Showcases</a>
         <a href="troubleshooting.html">Diagnostics</a>
-        <button class="k-shortcut-btn open-cmd-palette">
+        <button class="k-shortcut-btn open-cmd-palette" aria-label="Open Command Palette">
           <span>Search 295 Tools</span>
           <span class="k-key">⌘K</span>
         </button>
-        <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">GitHub ↗</a>
+        <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 5px 12px; font-size: 0.72rem;">GitHub ↗</a>
       </nav>
     </div>
   </header>
@@ -41,6 +55,7 @@
     <section class="hero-section">
       <div class="container">
         <div class="hero-header-wrap">
+          <div class="museum-label" style="justify-content: center; margin-bottom: 16px;">DISTRIBUTION_SUITE // SPECIMEN_01</div>
           <h1 class="hero-title">Cellular AI Tooling for Model Context Protocol</h1>
           <p class="hero-tagline">A hardened 10-server MCP distribution suite. Grounded by a dual-backbone for dynamic reasoning and SQLite memory graphs across full-stack engineering, research, design, device automation, and 3D modeling.</p>
 
@@ -49,7 +64,7 @@
             <a href="workflows.html" class="btn btn-secondary">View Workflows A–F</a>
           </div>
 
-          <div class="quick-bar" style="max-width: 720px; margin: 0 auto;">
+          <div class="quick-bar" style="max-width: 760px; margin: 0 auto;">
             <span class="quick-cmd" id="heroCmd">git clone https://github.com/1999AZZAR/hela-mcp-ecosystem.git && cd hela-mcp-ecosystem && ./setup.sh</span>
             <button class="copy-mini" id="heroCopyBtn">Copy</button>
           </div>
@@ -63,8 +78,9 @@
               <button class="term-tab" data-tab="matrix">test:matrix (70/70)</button>
               <button class="term-tab" data-tab="integration">npm test (295 tools)</button>
             </div>
-            <div style="display:flex; gap:6px;">
+            <div style="display:flex; align-items:center; gap:8px;">
               <span class="status-dot"></span>
+              <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--archival-code-muted); text-transform:uppercase;">STDIO_READY</span>
             </div>
           </div>
           <pre class="terminal-body" id="terminalBody">$ ./setup.sh doctor
@@ -96,67 +112,68 @@ SUCCESS: All required HeLa MCP servers and dependencies are healthy!</pre>
     <section class="section" id="architecture">
       <div class="container">
         <div class="section-title-wrap">
-          <div class="section-label">Interactive Organelle Explorer</div>
+          <div class="section-label">Organelle Taxonomy</div>
           <h2 class="section-heading">Cellular Dual-Backbone Architecture</h2>
         </div>
 
         <div class="node-graph-card">
           <div class="node-graph-header">
-            <span style="font-size:0.85rem; color:var(--text-muted);">Click any cell below to inspect its active tools catalog and sample JSON-RPC protocol:</span>
+            <span class="museum-label">SELECT SPECIMEN CELL TO INSPECT TOOLS CATALOG &amp; JSON-RPC PROTOCOL:</span>
+            <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--archival-muted-fg); text-transform:uppercase;">10 ORGANELLES</span>
           </div>
 
           <div class="node-graph-view">
             <div class="cell-node active" data-cell="hela-mitosis">
-              <div class="cell-node-title">🧬 HeLa Mitosis</div>
+              <div class="cell-node-title">HeLa Mitosis</div>
               <div class="cell-node-role">Orchestrator Backbone</div>
             </div>
             <div class="cell-node" data-cell="hela-genome">
-              <div class="cell-node-title">🧠 HeLa Genome</div>
+              <div class="cell-node-title">HeLa Genome</div>
               <div class="cell-node-role">State Backbone</div>
             </div>
             <div class="cell-node" data-cell="hela-membrane">
-              <div class="cell-node-title">🛡️ HeLa Membrane</div>
+              <div class="cell-node-title">HeLa Membrane</div>
               <div class="cell-node-role">Workspace FS</div>
             </div>
             <div class="cell-node" data-cell="hela-nucleus">
-              <div class="cell-node-title">⚡ HeLa Nucleus</div>
-              <div class="cell-node-role">Execution</div>
+              <div class="cell-node-title">HeLa Nucleus</div>
+              <div class="cell-node-role">Execution Boundary</div>
             </div>
             <div class="cell-node" data-cell="hela-ribosome">
-              <div class="cell-node-title">🧵 HeLa Ribosome</div>
+              <div class="cell-node-title">HeLa Ribosome</div>
               <div class="cell-node-role">Process Harness</div>
             </div>
             <div class="cell-node" data-cell="hela-enzyme">
-              <div class="cell-node-title">🔍 HeLa Enzyme</div>
-              <div class="cell-node-role">Knowledge</div>
+              <div class="cell-node-title">HeLa Enzyme</div>
+              <div class="cell-node-role">Knowledge Synthesis</div>
             </div>
             <div class="cell-node" data-cell="hela-cytosol">
-              <div class="cell-node-title">🌐 HeLa Cytosol</div>
+              <div class="cell-node-title">HeLa Cytosol</div>
               <div class="cell-node-role">Browser Agent</div>
             </div>
             <div class="cell-node" data-cell="hela-phenotype">
-              <div class="cell-node-title">🎨 HeLa Phenotype</div>
+              <div class="cell-node-title">HeLa Phenotype</div>
               <div class="cell-node-role">Design Tokens</div>
             </div>
             <div class="cell-node" data-cell="hela-receptor">
-              <div class="cell-node-title">📱 HeLa Receptor</div>
-              <div class="cell-node-role">Mobile ADB</div>
+              <div class="cell-node-title">HeLa Receptor</div>
+              <div class="cell-node-role">Mobile Automation</div>
             </div>
             <div class="cell-node" data-cell="hela-plastid">
-              <div class="cell-node-title">🧊 HeLa Plastid</div>
+              <div class="cell-node-title">HeLa Plastid</div>
               <div class="cell-node-role">Blender 3D</div>
             </div>
           </div>
 
           <div class="node-inspector" id="nodeInspector">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-              <strong style="color:var(--text-primary); font-size:0.95rem;">HeLa Mitosis (<code>hela-mitosis</code>)</strong>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:8px;">
+              <strong style="color:var(--archival-code-fg); font-size:0.95rem;">HeLa Mitosis (<code>hela-mitosis</code>)</strong>
               <span class="badge-core">18 Active Tools</span>
             </div>
-            <p style="color:var(--text-muted); margin-bottom:12px; font-family:var(--font-sans); font-size:0.85rem;">Cognitive division & orchestration backbone. Dynamic peer tool discovery, step-by-step reasoning, task decomposition, and 42 domain prompt templates.</p>
-            <div style="margin-bottom:8px;"><strong style="color:var(--accent-cyan);">Tools Catalog:</strong> <span style="color:#cbd5e1;">analyze_with_sequential_thinking, sequentialthinking, workflow_orchestrator, llm_decompose_task, llm_query, llm_summarize, search_prompts, get_prompt, list_mcp_servers, validate_tool_chain</span></div>
-            <div style="margin-top:12px; color:var(--text-dim); font-size:0.75rem;">Sample MCP JSON-RPC Payload:</div>
-            <pre style="background:var(--bg-canvas); padding:10px; border-radius:4px; margin-top:4px; color:#a78bfa; overflow-x:auto;">{
+            <p style="color:var(--archival-code-muted); margin-bottom:14px; font-family:var(--font-sans); font-size:0.88rem; line-height:1.5;">Cognitive division & orchestration backbone. Dynamic peer tool discovery, step-by-step reasoning, task decomposition, and 42 domain prompt templates.</p>
+            <div style="margin-bottom:10px;"><strong style="color:var(--archival-code-accent); text-transform:uppercase; font-size:0.75rem; letter-spacing:0.08em;">Tools Catalog:</strong> <span style="color:var(--archival-code-fg); font-size:0.82rem; margin-left:6px;">analyze_with_sequential_thinking, sequentialthinking, workflow_orchestrator, llm_decompose_task, llm_query, llm_summarize, search_prompts, get_prompt, list_mcp_servers, validate_tool_chain</span></div>
+            <div style="margin-top:14px; color:var(--archival-code-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;">Sample MCP JSON-RPC Payload:</div>
+            <pre style="background:var(--archival-code-surface); border:1px solid rgba(255,255,255,0.08); padding:12px; border-radius:4px; margin-top:6px; color:#EFE9DC; overflow-x:auto;">{
   "method": "tools/call",
   "params": {
     "name": "analyze_with_sequential_thinking",
@@ -176,14 +193,14 @@ SUCCESS: All required HeLa MCP servers and dependencies are healthy!</pre>
     <section class="section" id="configurator">
       <div class="container">
         <div class="section-title-wrap">
-          <div class="section-label">Config Generator</div>
+          <div class="section-label">Synthesis Engine</div>
           <h2 class="section-heading">Client Configuration Workbench</h2>
         </div>
 
         <div class="config-workbench">
           <div class="config-sidebar">
             <div class="control-item">
-              <label for="profileSelect">Target Profile</label>
+              <label for="profileSelect">Target Deployment Profile</label>
               <select id="profileSelect">
                 <option value="dev-workspace">Dev Workspace (Full Desktop)</option>
                 <option value="headless-server">Headless Server (Core 7)</option>
@@ -196,7 +213,7 @@ SUCCESS: All required HeLa MCP servers and dependencies are healthy!</pre>
             </div>
 
             <div class="control-item">
-              <label for="clientSelect">Target AI Client</label>
+              <label for="clientSelect">Target AI Client Environment</label>
               <select id="clientSelect">
                 <option value="cursor">Cursor IDE (~/.cursor/mcp.json)</option>
                 <option value="claude">Claude Desktop (~/.claude.json)</option>
@@ -212,7 +229,7 @@ SUCCESS: All required HeLa MCP servers and dependencies are healthy!</pre>
 
           <div class="config-code-pane">
             <div class="code-pane-header">
-              <span class="code-title">Configuration Output</span>
+              <span class="code-title">Generated Configuration Dossier</span>
               <button class="copy-mini" id="copyConfigBtn">Copy</button>
             </div>
             <pre><code id="configCode">// Configuration output will render here...</code></pre>
@@ -221,22 +238,30 @@ SUCCESS: All required HeLa MCP servers and dependencies are healthy!</pre>
       </div>
     </section>
 
-    <!-- Attribution -->
+    <!-- Historical Attribution -->
     <section class="section">
       <div class="container">
         <div class="tribute-section">
+          <div class="museum-label" style="margin-bottom: 12px;">HISTORICAL_DEDICATION // BIOMEDICAL_LEGACY</div>
           <h3>In Recognition of Henrietta Lacks</h3>
           <p>The HeLa MCP Ecosystem is named in respectful recognition of <strong>Henrietta Lacks</strong> (1920–1951) and the immortal scientific legacy of HeLa cells, which transformed global biomedical research. In this architecture, HeLa represents modular specialization, deterministic replicability, and software longevity.</p>
         </div>
       </div>
     </section>
+
+    <!-- Document Seal -->
+    <div class="container">
+      <div class="doc-seal-banner">
+        [ ARCHIVAL_RECORD_SEALED // VERIFIED_DISTRIBUTION // SPEC_REF: RFC-MCP-2026-A ]
+      </div>
+    </div>
   </main>
 
   <!-- Command Palette Modal (⌘K) -->
   <div class="cmd-palette-backdrop" id="cmdPalette">
     <div class="cmd-palette-modal">
       <div class="cmd-input-wrap">
-        <span style="color:var(--text-dim);">🔍</span>
+        <span style="color:var(--archival-muted-fg); font-family:var(--font-mono); font-size:0.85rem;">[SEARCH]</span>
         <input type="text" class="cmd-input" id="cmdInput" placeholder="Search 295 tools, pages, or profiles (e.g. sequentialthinking, memory, dev-workspace)..." />
         <span class="k-key">ESC</span>
       </div>
@@ -257,10 +282,10 @@ SUCCESS: All required HeLa MCP servers and dependencies are healthy!</pre>
           <a href="profiles.html">Profiles</a>
           <a href="showcase.html">Showcases</a>
           <a href="troubleshooting.html">Diagnostics</a>
-          <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank">GitHub</a>
+          <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
         </div>
         <div class="footer-copy">
-          MIT License • Developed by Azzar
+          MIT LICENSE · HELA ARCHIVE · MAINTAINED BY AZZAR
         </div>
       </div>
     </div>

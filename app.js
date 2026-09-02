@@ -577,14 +577,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const s = INVENTORY[id];
         if (s) {
           nodeInspector.innerHTML = `
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-              <strong style="color:var(--text-primary); font-size:0.95rem;">${s.alias} (<code>${id}</code>)</strong>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:8px;">
+              <strong style="color:var(--archival-code-fg); font-size:0.95rem;">${s.alias} (<code>${id}</code>)</strong>
               <span class="badge-core">${s.toolsCount} Active Tools</span>
             </div>
-            <p style="color:var(--text-muted); margin-bottom:12px; font-family:var(--font-sans); font-size:0.85rem;">${s.desc}</p>
-            <div style="margin-bottom:8px;"><strong style="color:var(--accent-cyan);">Tools Catalog:</strong> <span style="color:#cbd5e1;">${s.tools.join(", ")}</span></div>
-            <div style="margin-top:12px; color:var(--text-dim); font-size:0.75rem;">Sample MCP JSON-RPC Payload:</div>
-            <pre style="background:var(--bg-canvas); padding:10px; border-radius:4px; margin-top:4px; color:#a78bfa; overflow-x:auto;">${JSON.stringify(s.sampleRpc, null, 2)}</pre>
+            <p style="color:var(--archival-code-muted); margin-bottom:14px; font-family:var(--font-sans); font-size:0.88rem; line-height:1.5;">${s.desc}</p>
+            <div style="margin-bottom:10px;"><strong style="color:var(--archival-code-accent); text-transform:uppercase; font-size:0.75rem; letter-spacing:0.08em;">Tools Catalog:</strong> <span style="color:var(--archival-code-fg); font-size:0.82rem; margin-left:6px;">${s.tools.join(", ")}</span></div>
+            <div style="margin-top:14px; color:var(--archival-code-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;">Sample MCP JSON-RPC Payload:</div>
+            <pre style="background:var(--archival-code-surface); border:1px solid rgba(255,255,255,0.08); padding:12px; border-radius:4px; margin-top:6px; color:#EFE9DC; overflow-x:auto;">${JSON.stringify(s.sampleRpc, null, 2)}</pre>
           `;
         }
       });
