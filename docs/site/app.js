@@ -6,7 +6,7 @@
 const INVENTORY = {
   "hela-mitosis": {
     "alias": "HeLa Mitosis",
-    "source": "chaining-mcp-server",
+    "source": "chaining-mcp",
     "scope": "core",
     "role": "Orchestrator Backbone",
     "entry": "dist/index.js",
@@ -23,7 +23,7 @@ const INVENTORY = {
   },
   "hela-genome": {
     "alias": "HeLa Genome",
-    "source": "Project-Guardian-mcp-server",
+    "source": "project-mcp",
     "scope": "core",
     "role": "State & Memory Backbone",
     "entry": "dist/index.js",
@@ -40,7 +40,7 @@ const INVENTORY = {
   },
   "hela-membrane": {
     "alias": "HeLa Membrane",
-    "source": "filesystem-mcp-server",
+    "source": "filesystem-mcp",
     "scope": "core",
     "role": "Workspace Filesystem",
     "entry": "dist/index.js",
@@ -57,7 +57,7 @@ const INVENTORY = {
   },
   "hela-nucleus": {
     "alias": "HeLa Nucleus",
-    "source": "terminal-mcp-server",
+    "source": "terminal-mcp",
     "scope": "core",
     "role": "Execution Boundary",
     "entry": "build/index.js",
@@ -74,7 +74,7 @@ const INVENTORY = {
   },
   "hela-ribosome": {
     "alias": "HeLa Ribosome",
-    "source": "menager-mcp-server",
+    "source": "menager-mcp",
     "scope": "core",
     "role": "Process Harness",
     "entry": "build/index.js",
@@ -91,7 +91,7 @@ const INVENTORY = {
   },
   "hela-enzyme": {
     "alias": "HeLa Enzyme",
-    "source": "research-assistant-mcp-server",
+    "source": "researcher-mcp",
     "scope": "core",
     "role": "Knowledge Synthesis",
     "entry": "dist/index.js",
@@ -108,7 +108,7 @@ const INVENTORY = {
   },
   "hela-cytosol": {
     "alias": "HeLa Cytosol",
-    "source": "Browser-Agent",
+    "source": "browser-mcp",
     "scope": "core",
     "role": "Browser Interaction",
     "entry": "src/server.js",
@@ -125,7 +125,7 @@ const INVENTORY = {
   },
   "hela-phenotype": {
     "alias": "HeLa Phenotype",
-    "source": "the-designer",
+    "source": "designer-mcp",
     "scope": "specialized",
     "role": "Design & Tokens",
     "entry": "dist/index.js",
@@ -159,7 +159,7 @@ const INVENTORY = {
   },
   "hela-plastid": {
     "alias": "HeLa Plastid",
-    "source": "ll3m-agent",
+    "source": "ll3m-mcp",
     "scope": "specialized",
     "role": "3D Blender Modeling",
     "entry": "dist/index.js",
@@ -387,7 +387,7 @@ function renderConfig(profileKey, clientKey) {
     for (const k of serverKeys) {
       const s = INVENTORY[k];
       const name = k.replace("-mcp-server", "").replace("-mcp", "");
-      const dir = s.source === "ll3m-agent" ? "ll3m-agent/brain" : s.source;
+      const dir = s.source === "ll3m-mcp" ? "ll3m-mcp/brain" : s.source;
       mcpServers[name] = {
         command: "node",
         args: [`${root}/${dir}/${s.entry}`]
@@ -401,7 +401,7 @@ function renderConfig(profileKey, clientKey) {
     for (const k of serverKeys) {
       const s = INVENTORY[k];
       const name = k.replace("-mcp-server", "").replace("-mcp", "");
-      const dir = s.source === "ll3m-agent" ? "ll3m-agent/brain" : s.source;
+      const dir = s.source === "ll3m-mcp" ? "ll3m-mcp/brain" : s.source;
       mcp[name] = {
         type: "local",
         enabled: true,
@@ -416,7 +416,7 @@ function renderConfig(profileKey, clientKey) {
     for (const k of serverKeys) {
       const s = INVENTORY[k];
       const name = k.replace("-mcp-server", "").replace("-mcp", "");
-      const dir = s.source === "ll3m-agent" ? "ll3m-agent/brain" : s.source;
+      const dir = s.source === "ll3m-mcp" ? "ll3m-mcp/brain" : s.source;
       context_servers[name] = {
         command: "node",
         args: [`${root}/${dir}/${s.entry}`]
@@ -430,7 +430,7 @@ function renderConfig(profileKey, clientKey) {
     for (const k of serverKeys) {
       const s = INVENTORY[k];
       const name = k.replace("-mcp-server", "").replace("-mcp", "");
-      const dir = s.source === "ll3m-agent" ? "ll3m-agent/brain" : s.source;
+      const dir = s.source === "ll3m-mcp" ? "ll3m-mcp/brain" : s.source;
       lines.push(`\n[mcpServers.${name}]\ncommand = "node"\nargs = ["${root}/${dir}/${s.entry}"]`);
     }
     return lines.join("\n");
