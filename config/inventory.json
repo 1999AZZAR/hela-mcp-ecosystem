@@ -203,7 +203,7 @@
       "role": "3d",
       "targetRequirement": "runtime-required",
       "repo": "https://github.com/1999AZZAR/ll3m-mcp.git",
-      "dir": "ll3m-agent/brain",
+      "dir": "ll3m-mcp/brain",
       "runtime": "node",
       "entry": "dist/index.js",
       "build": "build",
@@ -227,6 +227,15 @@
     "browser-agent": "hela-cytosol",
     "the-designer": "hela-phenotype",
     "scrcpy-mcp": "hela-receptor",
-    "ll3m-agent": "hela-plastid"
+    "ll3m-agent": "hela-plastid",
+    "chaining-mcp": "hela-mitosis",
+    "project-mcp": "hela-genome",
+    "filesystem-mcp": "hela-membrane",
+    "terminal-mcp": "hela-nucleus",
+    "menager-mcp": "hela-ribosome",
+    "researcher-mcp": "hela-enzyme",
+    "browser-mcp": "hela-cytosol",
+    "designer-mcp": "hela-phenotype",
+    "ll3m-mcp": "hela-plastid"
   }
 }
