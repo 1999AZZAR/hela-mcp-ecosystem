@@ -9,7 +9,7 @@
     "hela-mitosis": {
       "id": "hela-mitosis",
       "alias": "HeLa Mitosis",
-      "name": "HeLa Mitosis (Chaining MCP)",
+      "name": "HeLa Mitosis (chaining-mcp)",
       "source": "chaining-mcp",
       "scope": "core",
       "role": "backbone-orchestration",
@@ -39,7 +39,7 @@
     "hela-genome": {
       "id": "hela-genome",
       "alias": "HeLa Genome",
-      "name": "HeLa Genome (Project Guardian)",
+      "name": "HeLa Genome (project-mcp)",
       "source": "project-mcp",
       "scope": "core",
       "role": "backbone-state",
@@ -58,7 +58,7 @@
     "hela-membrane": {
       "id": "hela-membrane",
       "alias": "HeLa Membrane",
-      "name": "HeLa Membrane (Filesystem MCP)",
+      "name": "HeLa Membrane (filesystem-mcp)",
       "source": "filesystem-mcp",
       "scope": "core",
       "role": "workspace",
@@ -77,7 +77,7 @@
     "hela-nucleus": {
       "id": "hela-nucleus",
       "alias": "HeLa Nucleus",
-      "name": "HeLa Nucleus (Terminal MCP)",
+      "name": "HeLa Nucleus (terminal-mcp)",
       "source": "terminal-mcp",
       "scope": "core",
       "role": "workspace",
@@ -96,7 +96,7 @@
     "hela-ribosome": {
       "id": "hela-ribosome",
       "alias": "HeLa Ribosome",
-      "name": "HeLa Ribosome (Menager MCP)",
+      "name": "HeLa Ribosome (menager-mcp)",
       "source": "menager-mcp",
       "scope": "core",
       "role": "workspace",
@@ -115,7 +115,7 @@
     "hela-enzyme": {
       "id": "hela-enzyme",
       "alias": "HeLa Enzyme",
-      "name": "HeLa Enzyme (Researcher MCP)",
+      "name": "HeLa Enzyme (researcher-mcp)",
       "source": "researcher-mcp",
       "scope": "core",
       "role": "knowledge",
@@ -140,7 +140,7 @@
     "hela-cytosol": {
       "id": "hela-cytosol",
       "alias": "HeLa Cytosol",
-      "name": "HeLa Cytosol (Browser Agent)",
+      "name": "HeLa Cytosol (browser-mcp)",
       "source": "browser-mcp",
       "scope": "core",
       "role": "interaction",
@@ -159,7 +159,7 @@
     "hela-phenotype": {
       "id": "hela-phenotype",
       "alias": "HeLa Phenotype",
-      "name": "HeLa Phenotype (The Designer)",
+      "name": "HeLa Phenotype (designer-mcp)",
       "source": "designer-mcp",
       "scope": "specialized",
       "role": "design",
@@ -178,7 +178,7 @@
     "hela-receptor": {
       "id": "hela-receptor",
       "alias": "HeLa Receptor",
-      "name": "HeLa Receptor (scrcpy MCP)",
+      "name": "HeLa Receptor (scrcpy-mcp)",
       "source": "scrcpy-mcp",
       "scope": "specialized",
       "role": "mobile",
@@ -197,7 +197,7 @@
     "hela-plastid": {
       "id": "hela-plastid",
       "alias": "HeLa Plastid",
-      "name": "HeLa Plastid (LL3M Agent)",
+      "name": "HeLa Plastid (ll3m-mcp)",
       "source": "ll3m-mcp",
       "scope": "specialized",
       "role": "3d",
