@@ -6,210 +6,142 @@
   <title>Diagnostics & Troubleshooting — HeLa MCP Ecosystem</title>
   <meta name="description" content="Doctor diagnostics, error resolution guide, and security audit principles for the HeLa MCP Ecosystem.">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <!-- Fonts: Plus Jakarta Sans & JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="archival-shell">
-  <!-- Blueprint Grid Line Overlay -->
-  <div class="blueprint-grid" aria-hidden="true"></div>
+<body>
 
-  <!-- Vitrine Archival Container -->
-  <main class="archival-main">
-
-    <!-- Document Header Banner -->
-    <header class="doc-header">
-      <a href="index.html" class="doc-return-link">← RETURN_TO_WORKBENCH</a>
-      <div class="doc-meta-strip">
-        <div class="museum-label">SYSTEM_DOCUMENTATION_V1.0</div>
-        <div class="meta-item">// HEALTH_AND_RELIABILITY</div>
-        <div class="meta-item">// DIAG-05-AUDIT</div>
+  <!-- Navigation -->
+  <header>
+    <div class="container header-inner">
+      <div class="brand-block">
+        <a href="index.html" class="brand-title">HeLa MCP Ecosystem</a>
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span>v1.0.0 (c2cdf68)</span>
+        </div>
       </div>
-      <h1 class="doc-title">Diagnostics &amp;<br>Troubleshooting</h1>
-      <p class="doc-lead">Comprehensive automated diagnostic suite and guided playbooks for resolving common environment, runtime, database, and client communication issues.</p>
-      <div class="doc-watermark">SPEC_05 // 1999AZZAR-MCP</div>
-    </header>
+      <nav class="nav-menu">
+        <a href="index.html">Workbench</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="workflows.html">Workflows</a>
+        <a href="profiles.html">Profiles</a>
+        <a href="showcase.html">Showcases</a>
+        <a href="troubleshooting.html" class="nav-active">Diagnostics</a>
+        <button class="k-shortcut-btn open-cmd-palette">
+          <span>Search 295 Tools</span>
+          <span class="k-key">⌘K</span>
+        </button>
+        <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- 2-Column Archival Layout: Sidebar Nav + Main Content -->
-    <div class="docs-layout">
-
-      <!-- Left Sidebar Navigation -->
-      <aside class="docs-sidebar">
-        <div class="sidebar-sticky">
-
-          <!-- Brand Block -->
-          <div class="sidebar-brand">
-            <a href="index.html" class="sidebar-brand-name">HeLa Ecosystem</a>
-            <div class="sidebar-brand-meta">
-              <span class="status-dot"></span>
-              <span>v1.0.0 // 10_SERVERS</span>
-            </div>
-          </div>
-
-          <!-- Primary Navigation Modules -->
-          <div class="sidebar-group">
-            <div class="sidebar-heading">Index / Modules</div>
-            <ul class="sidebar-nav-list">
-              <li class="sidebar-nav-item"><a href="index.html"><span class="nav-num">01</span> <span>Workbench</span></a></li>
-              <li class="sidebar-nav-item"><a href="architecture.html"><span class="nav-num">02</span> <span>Architecture</span></a></li>
-              <li class="sidebar-nav-item"><a href="workflows.html"><span class="nav-num">03</span> <span>Workflows</span></a></li>
-              <li class="sidebar-nav-item"><a href="profiles.html"><span class="nav-num">04</span> <span>Profiles</span></a></li>
-              <li class="sidebar-nav-item"><a href="showcase.html"><span class="nav-num">05</span> <span>Showcases</span></a></li>
-              <li class="sidebar-nav-item active"><a href="troubleshooting.html"><span class="nav-num">06</span> <span>Diagnostics</span></a></li>
-            </ul>
-          </div>
-
-          <!-- On This Specimen (TOC) -->
-          <div class="sidebar-group">
-            <div class="sidebar-heading">On This Specimen</div>
-            <nav class="sidebar-toc">
-                <a href="#doctor-section">Doctor CLI</a>
-                <a href="#subsystems-section">5 Subsystems Audit</a>
-                <a href="#playbooks-section">Incident Response</a>
-            </nav>
-          </div>
-
-          <!-- Sidebar Utilities -->
-          <div class="sidebar-utilities">
-            <button class="sidebar-search-btn open-cmd-palette" aria-label="Open Command Palette">
-              <span>Search 295 Tools</span>
-              <span class="k-key">⌘K</span>
-            </button>
-            <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" rel="noopener noreferrer" class="sidebar-search-btn">
-              <span>GitHub Repository</span>
-              <span>↗</span>
-            </a>
-            <div class="sidebar-status-box">
-              <span class="status-dot"></span>
-              <span>295 Tools Ready</span>
-            </div>
-          </div>
-
-        </div>
-      </aside>
-
-      <!-- Right Main Content -->
-      <div class="docs-content">
-
-        <!-- Doctor Diagnostic Section -->
-        <section id="doctor-section" class="doc-section">
-          <div class="section-title-wrap">
-            <div class="section-label">Diagnostic Tooling</div>
-            <h2 class="section-heading">Running Doctor Diagnostics</h2>
-          </div>
-
-          <p style="color: var(--archival-body); margin-bottom: 20px; font-size: 0.92rem;">The fastest way to verify all 10 servers and system dependencies is running the built-in diagnostic CLI:</p>
-
-          <div class="quick-bar" style="margin-bottom: 24px;">
-            <span class="quick-cmd">./setup.sh doctor</span>
-            <button class="copy-mini" >Copy</button>
-          </div>
-          <!-- Archival Specimen Plate 05 -->
-          <div class="archival-plate">
-            <div class="plate-header">
-              <span class="plate-label">PLATE_05 // SUBSYSTEM_DIAGNOSTICS</span>
-              <span class="plate-meta">FIG. 5.0 · HEALTH AUDIT</span>
-            </div>
-            <div class="plate-viewport">
-              <img src="assets/blotcat-web-diagnostics.jpg" alt="Blotcat Doctor Health Diagnostics" loading="lazy" />
-            </div>
-            <div class="plate-footer">
-              <span class="plate-caption">Specimen Visual: Blotcat conducting automated doctor diagnostics across the 5 core host subsystems.</span>
-              <span class="plate-stamp">DIAG_05 // AUDIT_OK</span>
-            </div>
-          </div>
-        </section>
-
-        <div class="archival-divider"></div>
-
-        <!-- 5 Subsystems Audit Breakdown -->
-        <section id="subsystems-section" class="doc-section">
-          <div class="section-title-wrap">
-            <div class="section-label">Audit Protocol</div>
-            <h2 class="section-heading">The 5 Core Audit Checks</h2>
-          </div>
-
-          <p style="color: var(--archival-body); margin-bottom: 24px; font-size: 0.92rem;">Doctor automatically audits 5 core subsystems on your local machine:</p>
-
-          <div class="arch-dual-grid">
-            <div class="organelle-card">
-              <h4>1. Host Prerequisites</h4>
-              <p>Checks Node.js (&gt;=18.0.0 LTS), npm, Git, SQLite3 CLI, and optional Python 3 runtime.</p>
-            </div>
-
-            <div class="organelle-card">
-              <h4>2. Server Builds &amp; Entries</h4>
-              <p>Verifies <code>dist/index.js</code> or <code>build/index.js</code> compiled artifacts across all 10 repositories.</p>
-            </div>
-
-            <div class="organelle-card">
-              <h4>3. Stdio Smoke Tests</h4>
-              <p>Performs non-blocking stdio JSON-RPC handshake with each server (&lt;300ms timeout threshold).</p>
-            </div>
-
-            <div class="organelle-card">
-              <h4>4. External Runtimes &amp; Fallbacks</h4>
-              <p>Audits Playwright/Chromium, ADB, and Blender with graceful offline warnings and isolation.</p>
-            </div>
-          </div>
-        </section>
-
-        <div class="archival-divider"></div>
-
-        <!-- Common Issues & Solutions -->
-        <section id="playbooks-section" class="doc-section">
-          <div class="section-title-wrap">
-            <div class="section-label">Incident Response</div>
-            <h2 class="section-heading">Common Scenarios &amp; Immediate Fixes</h2>
-          </div>
-
-          <div class="trouble-grid">
-            <!-- Issue 1 -->
-            <div class="trouble-card">
-              <h4>1. Playwright / Chromium Missing (HeLa Cytosol)</h4>
-              <p>Occurs on fresh systems or minimal cloud servers when browser binaries haven't been installed.</p>
-              <div class="trouble-fix">npx playwright install --with-deps chromium</div>
-            </div>
-
-            <!-- Issue 2 -->
-            <div class="trouble-card">
-              <h4>2. SQLite Database Lock / Recovery (HeLa Genome)</h4>
-              <p>If an abnormal termination locks SQLite <code>memory.db</code>, force WAL mode and integrity verification:</p>
-              <div class="trouble-fix">sqlite3 memory.db "PRAGMA journal_mode=WAL; PRAGMA integrity_check;"</div>
-            </div>
-
-            <!-- Issue 3 -->
-            <div class="trouble-card">
-              <h4>3. Deterministic Snapshot Rollback</h4>
-              <p>If an upstream repository introduces a breaking change in dev mode, pin immediately to the certified release snapshot:</p>
-              <div class="trouble-fix">./setup.sh --snapshot v1.0.0 --reconfigure</div>
-            </div>
-
-            <!-- Issue 4 -->
-            <div class="trouble-card">
-              <h4>4. Android ADB Offline or Unauthorized (HeLa Receptor)</h4>
-              <p>If physical device is not recognized by ADB daemon, restart ADB and accept the RSA host prompt on device:</p>
-              <div class="trouble-fix">adb kill-server &amp;&amp; adb start-server &amp;&amp; adb devices</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Document Seal -->
-        <div class="doc-seal-banner">
-          [ ARCHIVAL_RECORD_SEALED // SPEC_05_DIAGNOSTICS // VERIFIED_DISTRIBUTION ]
-        </div>
-
+  <main>
+    <!-- Banner -->
+    <div class="page-banner">
+      <div class="container">
+        <div class="page-label">Health & Reliability</div>
+        <h1 class="page-title">Diagnostics & Troubleshooting</h1>
+        <p class="page-lead">Comprehensive automated diagnostic suite and guided playbooks for resolving common environment, runtime, database, and client communication issues.</p>
       </div>
     </div>
+
+    <!-- Doctor Diagnostic Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-label">Diagnostic Tool</div>
+          <h2 class="section-heading">Running Doctor Diagnostics</h2>
+        </div>
+
+        <div class="illustration-card">
+          <div class="illustration-mat">
+            <img src="assets/blotcat-web-diagnostics.jpg" alt="Blotcat Doctor Health Diagnostics" />
+          </div>
+          <div class="illustration-footer">
+            <span class="illustration-caption">Automated Doctor Health Diagnostics · 10-Server Stdio Handshake Check</span>
+            <span class="illustration-tag">./setup.sh doctor</span>
+          </div>
+        </div>
+
+        <p style="color: var(--text-muted); margin-bottom: 20px;">The fastest way to diagnose your ecosystem is running the built-in diagnostic tool:</p>
+
+        <div class="quick-bar" style="margin-bottom: 24px;">
+          <span class="quick-cmd">./setup.sh doctor</span>
+        </div>
+
+        <p style="color: var(--text-muted); margin-bottom: 24px;">Doctor automatically audits 5 core subsystems:</p>
+
+        <div class="arch-dual-grid">
+          <div class="organelle-card">
+            <h4>1. Host Prerequisites</h4>
+            <p>Checks Node.js (>=18.0.0), npm, Git, SQLite3 CLI, and optional Python 3.</p>
+          </div>
+
+          <div class="organelle-card">
+            <h4>2. Server Builds & Entries</h4>
+            <p>Verifies <code>dist/index.js</code> or <code>build/index.js</code> artifacts across all 10 repositories.</p>
+          </div>
+
+          <div class="organelle-card">
+            <h4>3. Stdio Smoke Tests</h4>
+            <p>Performs non-blocking stdio JSON-RPC handshake with each server (&lt;300ms timeout).</p>
+          </div>
+
+          <div class="organelle-card">
+            <h4>4. External Runtimes & Fallbacks</h4>
+            <p>Audits Playwright/Chromium, ADB, and Blender with graceful offline warnings.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Common Issues & Solutions -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-label">Playbooks</div>
+          <h2 class="section-heading">Common Scenarios & Instant Fixes</h2>
+        </div>
+
+        <div class="trouble-grid">
+          <!-- Issue 1 -->
+          <div class="trouble-card">
+            <h4>1. Playwright / Chromium Missing (HeLa Cytosol)</h4>
+            <p>Occurs on fresh systems or minimal cloud servers when browser binaries haven't been installed.</p>
+            <div class="trouble-fix">npx playwright install --with-deps chromium</div>
+          </div>
+
+          <!-- Issue 2 -->
+          <div class="trouble-card">
+            <h4>2. SQLite Database Lock / Recovery (HeLa Genome)</h4>
+            <p>If an abnormal termination locks SQLite <code>memory.db</code>, force WAL mode and integrity verification:</p>
+            <div class="trouble-fix">sqlite3 memory.db "PRAGMA journal_mode=WAL; PRAGMA integrity_check;"</div>
+          </div>
+
+          <!-- Issue 3 -->
+          <div class="trouble-card">
+            <h4>3. Deterministic Snapshot Rollback</h4>
+            <p>If an upstream repository introduces a breaking change in dev mode, pin immediately to the certified release snapshot:</p>
+            <div class="trouble-fix">./setup.sh --snapshot v1.0.0 --reconfigure</div>
+          </div>
+
+          <!-- Issue 4 -->
+          <div class="trouble-card">
+            <h4>4. Android ADB Offline or Unauthorized (HeLa Receptor)</h4>
+            <p>If physical device is not recognized by ADB daemon, restart ADB and accept the RSA host prompt on device:</p>
+            <div class="trouble-fix">adb kill-server && adb start-server && adb devices</div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Command Palette Modal (⌘K) -->
   <div class="cmd-palette-backdrop" id="cmdPalette">
     <div class="cmd-palette-modal">
       <div class="cmd-input-wrap">
-        <span style="color:var(--archival-muted-fg); font-family:var(--font-mono); font-size:0.85rem;">[SEARCH]</span>
+        <span style="color:var(--text-dim);">🔍</span>
         <input type="text" class="cmd-input" id="cmdInput" placeholder="Search 295 tools, pages, or profiles..." />
         <span class="k-key">ESC</span>
       </div>
@@ -218,6 +150,23 @@
       </div>
     </div>
   </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div class="footer-nav">
+          <a href="index.html">Workbench</a>
+          <a href="architecture.html">Architecture</a>
+          <a href="workflows.html">Workflows</a>
+          <a href="profiles.html">Profiles</a>
+          <a href="showcase.html">Showcases</a>
+          <a href="troubleshooting.html">Diagnostics</a>
+          <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank">GitHub</a>
+        </div>
+        <div class="footer-copy">MIT License • Developed by Azzar</div>
+      </div>
+    </div>
+  </footer>
 
   <script src="app.js"></script>
 </body>

@@ -6,190 +6,118 @@
   <title>Showcases & Terminal Recordings — HeLa MCP Ecosystem</title>
   <meta name="description" content="Video demonstrations and Asciinema terminal recordings of the HeLa MCP Ecosystem.">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <!-- Fonts: Plus Jakarta Sans & JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="archival-shell">
-  <!-- Blueprint Grid Line Overlay -->
-  <div class="blueprint-grid" aria-hidden="true"></div>
+<body>
 
-  <!-- Vitrine Archival Container -->
-  <main class="archival-main">
-
-    <!-- Document Header Banner -->
-    <header class="doc-header">
-      <a href="index.html" class="doc-return-link">← RETURN_TO_WORKBENCH</a>
-      <div class="doc-meta-strip">
-        <div class="museum-label">SYSTEM_DOCUMENTATION_V1.0</div>
-        <div class="meta-item">// EXHIBITS_AND_CASTS</div>
-        <div class="meta-item">// SHOWCASE-04-EVIDENCE</div>
-      </div>
-      <h1 class="doc-title">Showcases &amp;<br>Recordings</h1>
-      <p class="doc-lead">Live recorded demonstrations of UI/UX design synthesis, persistent SQLite knowledge graphs, automated diagnostics, and 70-combination matrix test runs.</p>
-      <div class="doc-watermark">SPEC_04 // 1999AZZAR-MCP</div>
-    </header>
-
-    <!-- 2-Column Archival Layout: Sidebar Nav + Main Content -->
-    <div class="docs-layout">
-
-      <!-- Left Sidebar Navigation -->
-      <aside class="docs-sidebar">
-        <div class="sidebar-sticky">
-
-          <!-- Brand Block -->
-          <div class="sidebar-brand">
-            <a href="index.html" class="sidebar-brand-name">HeLa Ecosystem</a>
-            <div class="sidebar-brand-meta">
-              <span class="status-dot"></span>
-              <span>v1.0.0 // 10_SERVERS</span>
-            </div>
-          </div>
-
-          <!-- Primary Navigation Modules -->
-          <div class="sidebar-group">
-            <div class="sidebar-heading">Index / Modules</div>
-            <ul class="sidebar-nav-list">
-              <li class="sidebar-nav-item"><a href="index.html"><span class="nav-num">01</span> <span>Workbench</span></a></li>
-              <li class="sidebar-nav-item"><a href="architecture.html"><span class="nav-num">02</span> <span>Architecture</span></a></li>
-              <li class="sidebar-nav-item"><a href="workflows.html"><span class="nav-num">03</span> <span>Workflows</span></a></li>
-              <li class="sidebar-nav-item"><a href="profiles.html"><span class="nav-num">04</span> <span>Profiles</span></a></li>
-              <li class="sidebar-nav-item active"><a href="showcase.html"><span class="nav-num">05</span> <span>Showcases</span></a></li>
-              <li class="sidebar-nav-item"><a href="troubleshooting.html"><span class="nav-num">06</span> <span>Diagnostics</span></a></li>
-            </ul>
-          </div>
-
-          <!-- On This Specimen (TOC) -->
-          <div class="sidebar-group">
-            <div class="sidebar-heading">On This Specimen</div>
-            <nav class="sidebar-toc">
-                <a href="#video-section">Video Walkthroughs</a>
-                <a href="#deployments-section">Live Deployments</a>
-                <a href="#terminal-records">Interactive Terminal</a>
-                <a href="#casts-section">Asciinema Casts</a>
-            </nav>
-          </div>
-
-          <!-- Sidebar Utilities -->
-          <div class="sidebar-utilities">
-            <button class="sidebar-search-btn open-cmd-palette" aria-label="Open Command Palette">
-              <span>Search 295 Tools</span>
-              <span class="k-key">⌘K</span>
-            </button>
-            <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" rel="noopener noreferrer" class="sidebar-search-btn">
-              <span>GitHub Repository</span>
-              <span>↗</span>
-            </a>
-            <div class="sidebar-status-box">
-              <span class="status-dot"></span>
-              <span>295 Tools Ready</span>
-            </div>
-          </div>
-
+  <!-- Navigation -->
+  <header>
+    <div class="container header-inner">
+      <div class="brand-block">
+        <a href="index.html" class="brand-title">HeLa MCP Ecosystem</a>
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span>v1.0.0 (c2cdf68)</span>
         </div>
-      </aside>
+      </div>
+      <nav class="nav-menu">
+        <a href="index.html">Workbench</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="workflows.html">Workflows</a>
+        <a href="profiles.html">Profiles</a>
+        <a href="showcase.html" class="nav-active">Showcases</a>
+        <a href="troubleshooting.html">Diagnostics</a>
+        <button class="k-shortcut-btn open-cmd-palette">
+          <span>Search 295 Tools</span>
+          <span class="k-key">⌘K</span>
+        </button>
+        <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
 
-      <!-- Right Main Content -->
-      <div class="docs-content">
+  <main>
+    <!-- Banner -->
+    <div class="page-banner">
+      <div class="container">
+        <div class="page-label">Demonstration Gallery</div>
+        <h1 class="page-title">Video Showcases & Terminal Recordings</h1>
+        <p class="page-lead">Live recorded demonstrations of UI/UX design synthesis, persistent SQLite knowledge graphs, automated diagnostics, and 70-combination matrix test runs.</p>
+      </div>
+    </div>
 
-        <!-- Video Showcases Section -->
-        <section id="video-section" class="doc-section">
-          <div class="section-title-wrap">
-            <div class="section-label">Video Evidence</div>
-            <h2 class="section-heading">Autonomous Workflow Walkthroughs</h2>
+    <!-- Video Showcases -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-label">Video Walkthroughs</div>
+          <h2 class="section-heading">Autonomous Workflow Showcases</h2>
+        </div>
+
+        <div class="showcase-grid">
+          <div class="showcase-card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/BnbDg1-be4g" title="The Designer Showcase" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <h3>🎨 HeLa Phenotype & The Designer Showcase</h3>
+            <p>Autonomous generation of design tokens, OKLCH color palettes, and component layout directly from high-level specifications.</p>
           </div>
 
-          <div class="showcase-grid">
-            <div class="showcase-card">
-              <div class="video-frame">
-                <iframe src="https://www.youtube-nocookie.com/embed/BnbDg1-be4g" title="The Designer Showcase" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-              <div class="museum-label" style="margin-bottom: 6px;">DEMO_01 // THE_DESIGNER</div>
-              <h3>HeLa Phenotype &amp; Design Token Generation</h3>
-              <p>Autonomous generation of design tokens, OKLCH color palettes, and component layouts directly from high-level architectural specifications.</p>
+          <div class="showcase-card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/O6nYKjmlaGk" title="Project Guardian Memory Showcase" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+            <h3>🧠 HeLa Genome & Project Guardian Memory</h3>
+            <p>Living SQLite knowledge graph demonstration: tracking entities, architectural decisions, and cross-session task state.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="showcase-card">
-              <div class="video-frame">
-                <iframe src="https://www.youtube-nocookie.com/embed/O6nYKjmlaGk" title="Project Guardian Memory Showcase" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-              <div class="museum-label" style="margin-bottom: 6px;">DEMO_02 // PROJECT_GUARDIAN</div>
-              <h3>HeLa Genome &amp; Persistent Knowledge Graph</h3>
-              <p>Living SQLite knowledge graph demonstration: tracking entities, architectural decisions, and cross-session task state with FTS5 search.</p>
+    <!-- Live Generated Web Demonstrations -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-label">Live Web Deployments</div>
+          <h2 class="section-heading">Production UIs Generated by HeLa Phenotype</h2>
+        </div>
+
+        <div class="showcase-grid">
+          <div class="showcase-card" style="background:var(--bg-surface); border:1px solid var(--border-hairline); border-radius:var(--radius-md); padding:24px; max-width: 780px; margin: 0 auto;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+              <span class="badge-spec">the-designer</span>
+              <a href="https://demo-designer.glassgallery.my.id/" target="_blank" class="btn btn-secondary" style="padding:5px 12px; font-size:0.8rem;">Open Live Site ↗</a>
+            </div>
+            <h3 style="font-size:1.2rem; color:var(--text-primary); margin-bottom:8px;">🏛️ Ellis UI Archive / The Collection</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6; margin-bottom:16px;">A production showcase of 24 bespoke, anti-slop design systems synthesized with HeLa Phenotype (the-designer). Features interactive live previews of themes ranging from 8-bit GameBoy LCDs, Classified Dossier manila folders, Nutrition Facts labels, to Gothic Tomes and Swiss Archival typography.</p>
+            <div style="font-family:var(--font-mono); font-size:0.8rem; color:var(--accent-cyan);">https://demo-designer.glassgallery.my.id/</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Large Interactive Terminal Player -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-label">Live Terminal Workbench</div>
+          <h2 class="section-heading">Full-Scale Execution Records</h2>
+        </div>
+
+        <div class="showcase-terminal-large">
+          <div class="terminal-header">
+            <div class="terminal-tabs">
+              <button class="term-tab active" data-tab="doctor">setup.sh doctor</button>
+              <button class="term-tab" data-tab="matrix">test:matrix (70/70)</button>
+              <button class="term-tab" data-tab="integration">npm test (295 tools)</button>
+            </div>
+            <div class="term-dots">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
             </div>
           </div>
-          <!-- Archival Specimen Plate 06 -->
-          <div class="archival-plate">
-            <div class="plate-header">
-              <span class="plate-label">PLATE_06 // REAL_WORLD_INTEGRATION</span>
-              <span class="plate-meta">FIG. 6.0 · MULTI-CLIENT ADAPTERS</span>
-            </div>
-            <div class="plate-viewport">
-              <img src="assets/blotcat-integration.jpg" alt="Blotcat Real-World Desktop & Headless IDE Integration" loading="lazy" />
-            </div>
-            <div class="plate-footer">
-              <span class="plate-caption">Specimen Visual: Blotcat orchestrating real-world IDE, terminal, and browser integrations across multi-modal agents.</span>
-              <span class="plate-stamp">VERIFIED // ARCHIVAL_AUTHENTIC</span>
-            </div>
-          </div>
-        </section>
-
-        <div class="archival-divider"></div>
-
-        <!-- Live Generated Web Demonstrations -->
-        <section id="deployments-section" class="doc-section">
-          <div class="section-title-wrap">
-            <div class="section-label">Production Specimens</div>
-            <h2 class="section-heading">Production Web Applications Synthesized by HeLa</h2>
-          </div>
-
-          <div class="showcase-grid">
-            <div class="showcase-card" style="background:var(--archival-surface); border:1px solid var(--archival-muted); border-radius:var(--radius-sm); padding:24px;">
-              <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px;">
-                <span class="badge-spec">the-designer</span>
-                <a href="https://demo-designer.glassgallery.my.id/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:4px 12px; font-size:0.72rem;">Open Live Site ↗</a>
-              </div>
-              <h3 style="font-size:1.15rem; color:var(--archival-ink); margin-bottom:8px;">Ellis UI Archive · The Design Collection</h3>
-              <p style="color:var(--archival-body); font-size:0.88rem; line-height:1.55; margin-bottom:14px;">A collection of 24 bespoke design systems ranging from 8-bit GameBoy LCDs, Classified Dossier manila folders, Nutrition Labels, to Gothic Tomes and Swiss Archival typography.</p>
-              <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--archival-accent); font-weight:600;">demo-designer.glassgallery.my.id</div>
-            </div>
-
-            <div class="showcase-card" style="background:var(--archival-surface); border:1px solid var(--archival-muted); border-radius:var(--radius-sm); padding:24px;">
-              <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px;">
-                <span class="badge-spec">the-designer</span>
-                <a href="http://example.very3d.co.id/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:4px 12px; font-size:0.72rem;">Open Live Site ↗</a>
-              </div>
-              <h3 style="font-size:1.15rem; color:var(--archival-ink); margin-bottom:8px;">Aluluf Kitchen Daily Menu &amp; Polling</h3>
-              <p style="color:var(--archival-body); font-size:0.88rem; line-height:1.55; margin-bottom:14px;">Culinary menu experience with real-time community dish polling, i18n localization (ID/EN), light/dark mode persistence, and countdown scheduling.</p>
-              <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--archival-accent); font-weight:600;">example.very3d.co.id</div>
-            </div>
-          </div>
-        </section>
-
-        <div class="archival-divider"></div>
-
-        <!-- Large Interactive Terminal Player -->
-        <section id="terminal-records" class="doc-section">
-          <div class="section-title-wrap">
-            <div class="section-label">Terminal Archive</div>
-            <h2 class="section-heading">Execution Records &amp; Asciinema Casts</h2>
-          </div>
-
-          <div class="showcase-terminal-large">
-            <div class="terminal-header">
-              <div class="terminal-tabs">
-                <button class="term-tab active" data-tab="doctor">setup.sh doctor</button>
-                <button class="term-tab" data-tab="matrix">test:matrix (70/70)</button>
-                <button class="term-tab" data-tab="integration">npm test (295 tools)</button>
-              </div>
-              <div style="display:flex; align-items:center; gap:8px;">
-                <span class="status-dot"></span>
-                <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--archival-code-muted); text-transform:uppercase;">STDIO_RECORDING</span>
-              </div>
-            </div>
-            <pre class="showcase-terminal-body" id="terminalBody">$ ./setup.sh doctor
+          <pre class="showcase-terminal-body" id="terminalBody">$ ./setup.sh doctor
 === HeLa MCP Ecosystem — Diagnostic Report ===
 Node.js:     ✓ v20+ LTS
 Git:         ✓ 2.25+
@@ -210,59 +138,39 @@ HeLa Receptor      specialized  present      [READY] Stdio JSON-RPC OK
 HeLa Plastid       specialized  present      [READY] Stdio JSON-RPC OK
 
 SUCCESS: All required HeLa MCP servers and dependencies are healthy!</pre>
-          </div>
-        </section>
-
-        <div class="archival-divider"></div>
-
-        <!-- Asciinema Public Recording Links -->
-        <section id="casts-section" class="doc-section">
-          <div class="section-title-wrap">
-            <div class="section-label">Asciinema Archive</div>
-            <h2 class="section-heading">Public Recording Logs</h2>
-          </div>
-
-          <div class="asciinema-row">
-            <a href="https://asciinema.org/a/uJ2E76GydNNgGdhI" target="_blank" rel="noopener noreferrer" class="asciinema-box">
-              <div class="museum-label" style="margin-bottom: 4px;">CAST_01</div>
-              <div class="asciinema-title">Diagnostics Doctor Cast ↗</div>
-              <div class="asciinema-desc">asciinema.org/a/uJ2E76GydNNgGdhI</div>
-            </a>
-
-            <a href="https://asciinema.org/a/FSPKc53pFfHdFA7S" target="_blank" rel="noopener noreferrer" class="asciinema-box">
-              <div class="museum-label" style="margin-bottom: 4px;">CAST_02</div>
-              <div class="asciinema-title">70-Combination Matrix Cast ↗</div>
-              <div class="asciinema-desc">asciinema.org/a/FSPKc53pFfHdFA7S</div>
-            </a>
-
-            <a href="https://asciinema.org/a/2uUsoWWED5HsiWJy" target="_blank" rel="noopener noreferrer" class="asciinema-box">
-              <div class="museum-label" style="margin-bottom: 4px;">CAST_03</div>
-              <div class="asciinema-title">Master Integration Cast ↗</div>
-              <div class="asciinema-desc">asciinema.org/a/2uUsoWWED5HsiWJy</div>
-            </a>
-
-            <a href="https://asciinema.org/a/vhYxgExIp5UV3WCg" target="_blank" rel="noopener noreferrer" class="asciinema-box">
-              <div class="museum-label" style="margin-bottom: 4px;">CAST_04</div>
-              <div class="asciinema-title">Setup CLI Cast ↗</div>
-              <div class="asciinema-desc">asciinema.org/a/vhYxgExIp5UV3WCg</div>
-            </a>
-          </div>
-        </section>
-
-        <!-- Document Seal -->
-        <div class="doc-seal-banner">
-          [ ARCHIVAL_RECORD_SEALED // SPEC_04_SHOWCASE // VERIFIED_DISTRIBUTION ]
         </div>
 
+        <!-- Asciinema Public Recording Links -->
+        <div class="asciinema-row" style="margin-top: 28px;">
+          <a href="https://asciinema.org/a/uJ2E76GydNNgGdhI" target="_blank" class="asciinema-box">
+            <div class="asciinema-title">🩺 Diagnostics Doctor Cast ↗</div>
+            <div class="asciinema-desc">asciinema.org/a/uJ2E76GydNNgGdhI</div>
+          </a>
+
+          <a href="https://asciinema.org/a/FSPKc53pFfHdFA7S" target="_blank" class="asciinema-box">
+            <div class="asciinema-title">🧪 70-Combination Matrix Cast ↗</div>
+            <div class="asciinema-desc">asciinema.org/a/FSPKc53pFfHdFA7S</div>
+          </a>
+
+          <a href="https://asciinema.org/a/2uUsoWWED5HsiWJy" target="_blank" class="asciinema-box">
+            <div class="asciinema-title">⚡ Master Integration Cast ↗</div>
+            <div class="asciinema-desc">asciinema.org/a/2uUsoWWED5HsiWJy</div>
+          </a>
+
+          <a href="https://asciinema.org/a/vhYxgExIp5UV3WCg" target="_blank" class="asciinema-box">
+            <div class="asciinema-title">⚙️ Setup CLI Cast ↗</div>
+            <div class="asciinema-desc">asciinema.org/a/vhYxgExIp5UV3WCg</div>
+          </a>
+        </div>
       </div>
-    </div>
+    </section>
   </main>
 
   <!-- Command Palette Modal (⌘K) -->
   <div class="cmd-palette-backdrop" id="cmdPalette">
     <div class="cmd-palette-modal">
       <div class="cmd-input-wrap">
-        <span style="color:var(--archival-muted-fg); font-family:var(--font-mono); font-size:0.85rem;">[SEARCH]</span>
+        <span style="color:var(--text-dim);">🔍</span>
         <input type="text" class="cmd-input" id="cmdInput" placeholder="Search 295 tools, pages, or profiles..." />
         <span class="k-key">ESC</span>
       </div>
@@ -271,6 +179,23 @@ SUCCESS: All required HeLa MCP servers and dependencies are healthy!</pre>
       </div>
     </div>
   </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div class="footer-nav">
+          <a href="index.html">Workbench</a>
+          <a href="architecture.html">Architecture</a>
+          <a href="workflows.html">Workflows</a>
+          <a href="profiles.html">Profiles</a>
+          <a href="showcase.html">Showcases</a>
+          <a href="troubleshooting.html">Diagnostics</a>
+          <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank">GitHub</a>
+        </div>
+        <div class="footer-copy">MIT License • Developed by Azzar</div>
+      </div>
+    </div>
+  </footer>
 
   <script src="app.js"></script>
 </body>

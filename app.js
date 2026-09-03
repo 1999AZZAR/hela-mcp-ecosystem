@@ -6,7 +6,7 @@
 const INVENTORY = {
   "hela-mitosis": {
     "alias": "HeLa Mitosis",
-    "source": "chaining-mcp-server",
+    "source": "chaining-mcp",
     "scope": "core",
     "role": "Orchestrator Backbone",
     "entry": "dist/index.js",
@@ -23,7 +23,7 @@ const INVENTORY = {
   },
   "hela-genome": {
     "alias": "HeLa Genome",
-    "source": "Project-Guardian-mcp-server",
+    "source": "project-mcp",
     "scope": "core",
     "role": "State & Memory Backbone",
     "entry": "dist/index.js",
@@ -40,7 +40,7 @@ const INVENTORY = {
   },
   "hela-membrane": {
     "alias": "HeLa Membrane",
-    "source": "filesystem-mcp-server",
+    "source": "filesystem-mcp",
     "scope": "core",
     "role": "Workspace Filesystem",
     "entry": "dist/index.js",
@@ -57,7 +57,7 @@ const INVENTORY = {
   },
   "hela-nucleus": {
     "alias": "HeLa Nucleus",
-    "source": "terminal-mcp-server",
+    "source": "terminal-mcp",
     "scope": "core",
     "role": "Execution Boundary",
     "entry": "build/index.js",
@@ -74,7 +74,7 @@ const INVENTORY = {
   },
   "hela-ribosome": {
     "alias": "HeLa Ribosome",
-    "source": "menager-mcp-server",
+    "source": "menager-mcp",
     "scope": "core",
     "role": "Process Harness",
     "entry": "build/index.js",
@@ -91,7 +91,7 @@ const INVENTORY = {
   },
   "hela-enzyme": {
     "alias": "HeLa Enzyme",
-    "source": "research-assistant-mcp-server",
+    "source": "researcher-mcp",
     "scope": "core",
     "role": "Knowledge Synthesis",
     "entry": "dist/index.js",
@@ -108,7 +108,7 @@ const INVENTORY = {
   },
   "hela-cytosol": {
     "alias": "HeLa Cytosol",
-    "source": "Browser-Agent",
+    "source": "browser-mcp",
     "scope": "core",
     "role": "Browser Interaction",
     "entry": "src/server.js",
@@ -125,7 +125,7 @@ const INVENTORY = {
   },
   "hela-phenotype": {
     "alias": "HeLa Phenotype",
-    "source": "the-designer",
+    "source": "designer-mcp",
     "scope": "specialized",
     "role": "Design & Tokens",
     "entry": "dist/index.js",
@@ -159,7 +159,7 @@ const INVENTORY = {
   },
   "hela-plastid": {
     "alias": "HeLa Plastid",
-    "source": "ll3m-agent",
+    "source": "ll3m-mcp",
     "scope": "specialized",
     "role": "3D Blender Modeling",
     "entry": "dist/index.js",
@@ -387,7 +387,7 @@ function renderConfig(profileKey, clientKey) {
     for (const k of serverKeys) {
       const s = INVENTORY[k];
       const name = k.replace("-mcp-server", "").replace("-mcp", "");
-      const dir = s.source === "ll3m-agent" ? "ll3m-agent/brain" : s.source;
+      const dir = s.source === "ll3m-mcp" ? "ll3m-mcp/brain" : s.source;
       mcpServers[name] = {
         command: "node",
         args: [`${root}/${dir}/${s.entry}`]
@@ -401,7 +401,7 @@ function renderConfig(profileKey, clientKey) {
     for (const k of serverKeys) {
       const s = INVENTORY[k];
       const name = k.replace("-mcp-server", "").replace("-mcp", "");
-      const dir = s.source === "ll3m-agent" ? "ll3m-agent/brain" : s.source;
+      const dir = s.source === "ll3m-mcp" ? "ll3m-mcp/brain" : s.source;
       mcp[name] = {
         type: "local",
         enabled: true,
@@ -416,7 +416,7 @@ function renderConfig(profileKey, clientKey) {
     for (const k of serverKeys) {
       const s = INVENTORY[k];
       const name = k.replace("-mcp-server", "").replace("-mcp", "");
-      const dir = s.source === "ll3m-agent" ? "ll3m-agent/brain" : s.source;
+      const dir = s.source === "ll3m-mcp" ? "ll3m-mcp/brain" : s.source;
       context_servers[name] = {
         command: "node",
         args: [`${root}/${dir}/${s.entry}`]
@@ -430,7 +430,7 @@ function renderConfig(profileKey, clientKey) {
     for (const k of serverKeys) {
       const s = INVENTORY[k];
       const name = k.replace("-mcp-server", "").replace("-mcp", "");
-      const dir = s.source === "ll3m-agent" ? "ll3m-agent/brain" : s.source;
+      const dir = s.source === "ll3m-mcp" ? "ll3m-mcp/brain" : s.source;
       lines.push(`\n[mcpServers.${name}]\ncommand = "node"\nargs = ["${root}/${dir}/${s.entry}"]`);
     }
     return lines.join("\n");
@@ -513,57 +513,28 @@ document.addEventListener("DOMContentLoaded", () => {
     updateOutput();
   }
 
-  function copyToClipboard(text, btn) {
-    const orig = btn.textContent;
-    function showSuccess() {
-      btn.textContent = "COPIED ✓";
-      setTimeout(() => { btn.textContent = orig; }, 2000);
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(showSuccess).catch(() => {
-        fallbackCopy(text);
-        showSuccess();
+  if (copyBtn && codeOutput) {
+    copyBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText(codeOutput.textContent).then(() => {
+        const orig = copyBtn.textContent;
+        copyBtn.textContent = "Copied!";
+        setTimeout(() => { copyBtn.textContent = orig; }, 2000);
       });
-    } else {
-      fallbackCopy(text);
-      showSuccess();
-    }
-  }
-
-  function fallbackCopy(text) {
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    ta.style.position = "fixed";
-    ta.style.opacity = "0";
-    document.body.appendChild(ta);
-    ta.focus();
-    ta.select();
-    try {
-      document.execCommand("copy");
-    } catch (e) {}
-    document.body.removeChild(ta);
-  }
-
-  // Wire all copy buttons across the application
-  document.querySelectorAll(".copy-mini").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      if (btn.id === "copyConfigBtn" && codeOutput) {
-        copyToClipboard(codeOutput.textContent, btn);
-        return;
-      }
-      if (btn.id === "heroCopyBtn" && heroCmd) {
-        copyToClipboard(heroCmd.textContent.trim(), btn);
-        return;
-      }
-      const parent = btn.closest(".quick-bar, .code-pane-header, .trouble-card");
-      if (parent) {
-        const target = parent.querySelector(".quick-cmd, pre code, .trouble-fix");
-        if (target) {
-          copyToClipboard(target.textContent.trim(), btn);
-        }
-      }
     });
-  });
+  }
+
+  // Hero Quick Copy
+  const heroCopyBtn = document.getElementById("heroCopyBtn");
+  const heroCmd = document.getElementById("heroCmd");
+  if (heroCopyBtn && heroCmd) {
+    heroCopyBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText(heroCmd.textContent.trim()).then(() => {
+        const orig = heroCopyBtn.textContent;
+        heroCopyBtn.textContent = "Copied!";
+        setTimeout(() => { heroCopyBtn.textContent = orig; }, 2000);
+      });
+    });
+  }
 
   // Terminal Simulator Tabs
   const termBody = document.getElementById("terminalBody");
@@ -598,39 +569,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const nodeInspector = document.getElementById("nodeInspector");
   const cellNodes = document.querySelectorAll(".cell-node");
   if (nodeInspector && cellNodes.length > 0) {
-    function renderInspector(node) {
-      cellNodes.forEach((n) => n.classList.remove("active"));
-      node.classList.add("active");
-      let rawId = node.getAttribute("data-cell") || node.getAttribute("data-node");
-      if (!rawId) return;
-      const id = rawId.startsWith("hela-") ? rawId : "hela-" + rawId;
-      const s = INVENTORY[id];
-      if (s) {
-        nodeInspector.innerHTML = `
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:10px;">
-            <div>
-              <strong style="color:var(--archival-code-fg); font-size:1.05rem; font-family:var(--font-sans);">${s.alias}</strong>
-              <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--archival-code-muted); margin-left:8px;">(<code>${id}</code> // ${s.source})</span>
-            </div>
-            <span class="badge-core" style="font-size:0.72rem;">${s.toolsCount} Active Tools</span>
-          </div>
-          <p style="color:var(--archival-code-muted); margin-bottom:14px; font-family:var(--font-sans); font-size:0.9rem; line-height:1.55;">${s.desc}</p>
-          <div style="margin-bottom:12px;">
-            <strong style="color:var(--archival-code-accent); text-transform:uppercase; font-size:0.72rem; letter-spacing:0.08em; font-family:var(--font-mono);">Tools Catalog:</strong>
-            <span style="color:var(--archival-code-fg); font-size:0.82rem; margin-left:8px; font-family:var(--font-mono); line-height:1.6;">${s.tools.join(", ")}</span>
-          </div>
-          <div style="margin-top:14px; color:var(--archival-code-muted); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; font-family:var(--font-mono);">Sample Stdio JSON-RPC Handshake:</div>
-          <pre style="background:var(--archival-code-surface); border:1px solid rgba(255,255,255,0.08); padding:12px; border-radius:4px; margin-top:6px; color:#EFE9DC; overflow-x:auto; font-size:0.82rem; font-family:var(--font-mono);">${JSON.stringify(s.sampleRpc, null, 2)}</pre>
-        `;
-      }
-    }
-
     cellNodes.forEach((node) => {
-      node.addEventListener("click", () => renderInspector(node));
+      node.addEventListener("click", () => {
+        cellNodes.forEach((n) => n.classList.remove("active"));
+        node.classList.add("active");
+        const id = node.getAttribute("data-cell");
+        const s = INVENTORY[id];
+        if (s) {
+          nodeInspector.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <strong style="color:var(--text-primary); font-size:0.95rem;">${s.alias} (<code>${id}</code>)</strong>
+              <span class="badge-core">${s.toolsCount} Active Tools</span>
+            </div>
+            <p style="color:var(--text-muted); margin-bottom:12px; font-family:var(--font-sans); font-size:0.85rem;">${s.desc}</p>
+            <div style="margin-bottom:8px;"><strong style="color:var(--accent-cyan);">Tools Catalog:</strong> <span style="color:#cbd5e1;">${s.tools.join(", ")}</span></div>
+            <div style="margin-top:12px; color:var(--text-dim); font-size:0.75rem;">Sample MCP JSON-RPC Payload:</div>
+            <pre style="background:var(--bg-canvas); padding:10px; border-radius:4px; margin-top:4px; color:#a78bfa; overflow-x:auto;">${JSON.stringify(s.sampleRpc, null, 2)}</pre>
+          `;
+        }
+      });
     });
-
-    const activeNode = document.querySelector(".cell-node.active") || cellNodes[0];
-    if (activeNode) renderInspector(activeNode);
   }
 
   // Command Palette (⌘K) Modal
