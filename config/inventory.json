@@ -215,19 +215,6 @@
     }
   },
   "aliases": {
-    "chaining-mcp-server": "hela-mitosis",
-    "Project-Guardian-mcp-server": "hela-genome",
-    "project-guardian-mcp-server": "hela-genome",
-    "filesystem-mcp-server": "hela-membrane",
-    "terminal-mcp-server": "hela-nucleus",
-    "menager-mcp-server": "hela-ribosome",
-    "menager": "hela-ribosome",
-    "research-mcp-server": "hela-enzyme",
-    "research-assistant-mcp-server": "hela-enzyme",
-    "browser-agent": "hela-cytosol",
-    "the-designer": "hela-phenotype",
-    "scrcpy-mcp": "hela-receptor",
-    "ll3m-agent": "hela-plastid",
     "chaining-mcp": "hela-mitosis",
     "project-mcp": "hela-genome",
     "filesystem-mcp": "hela-membrane",
@@ -236,6 +223,7 @@
     "researcher-mcp": "hela-enzyme",
     "browser-mcp": "hela-cytosol",
     "designer-mcp": "hela-phenotype",
+    "scrcpy-mcp": "hela-receptor",
     "ll3m-mcp": "hela-plastid"
   }
 }
