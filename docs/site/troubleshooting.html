@@ -3,184 +3,124 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diagnostics & Troubleshooting — HeLa MCP Ecosystem</title>
-  <meta name="description" content="Doctor diagnostics, error resolution guide, and security audit principles for the HeLa MCP Ecosystem.">
+  <title>Diagnostics — HeLa MCP Ecosystem</title>
+  <meta name="description" content="Doctor diagnostics, failure scenarios, and fixes for the HeLa MCP Ecosystem.">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <!-- Fonts: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
-  <!-- Blueprint Grid Line Overlay -->
-  <div class="blueprint-grid" aria-hidden="true"></div>
-
-  <!-- Pre-Header Archival Strip -->
-  <div class="archive-meta-strip">
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-      <span>[ SPECIMEN: DIAGNOSTICS_AND_DOCTOR // DOSSIER_REF: DIAG-05-AUDIT ]</span>
-      <span>[ 5-SUBSYSTEM VERIFICATION // RECOVERY PLAYBOOKS ]</span>
-    </div>
-  </div>
-
-  <!-- Navigation -->
-  <header>
-    <div class="container header-inner">
-      <div class="brand-block">
-        <a href="index.html" class="brand-title">HeLa MCP Ecosystem</a>
-        <div class="status-indicator">
-          <span class="status-dot"></span>
-          <span>v1.0.0 (c2cdf68)</span>
-        </div>
+  <div class="doc-shell">
+    <aside class="doc-sidebar" aria-label="Documentation sections">
+      <div class="doc-brand">
+        <a href="index.html" class="doc-brand-title">HeLa MCP Ecosystem</a>
+        <div class="doc-brand-meta">v1.0.0 · 10 SERVERS · 295 TOOLS</div>
       </div>
-      <nav class="nav-menu">
-        <a href="index.html">Workbench</a>
-        <a href="architecture.html">Architecture</a>
-        <a href="workflows.html">Workflows</a>
-        <a href="profiles.html">Profiles</a>
-        <a href="showcase.html">Showcases</a>
-        <a href="troubleshooting.html" class="nav-active">Diagnostics</a>
-        <button class="k-shortcut-btn open-cmd-palette" aria-label="Open Command Palette">
-          <span>Search 295 Tools</span>
-          <span class="k-key">⌘K</span>
-        </button>
-        <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 5px 12px; font-size: 0.72rem;">GitHub ↗</a>
+      <nav aria-label="Documentation">
+      <div class="doc-nav-section">GETTING STARTED</div>
+      <ol class="doc-nav">
+        <li><a href="index.html"><span class="doc-nav-num">01</span> Overview</a></li>
+        <li><a href="index.html#installation"><span class="doc-nav-num">02</span> Installation</a></li>
+        <li><a href="index.html#verify"><span class="doc-nav-num">03</span> Verify</a></li>
+      </ol>
+      <div class="doc-nav-section">REFERENCE</div>
+      <ol class="doc-nav" start="4">
+        <li><a href="architecture.html"><span class="doc-nav-num">04</span> Architecture</a></li>
+        <li><a href="workflows.html"><span class="doc-nav-num">05</span> Workflows</a></li>
+        <li><a href="profiles.html"><span class="doc-nav-num">06</span> Profiles &amp; Config</a></li>
+      </ol>
+      <div class="doc-nav-section">OPERATE</div>
+      <ol class="doc-nav" start="7">
+        <li><a href="showcase.html"><span class="doc-nav-num">07</span> Showcase</a></li>
+        <li><a href="troubleshooting.html" aria-current="page"><span class="doc-nav-num">08</span> Diagnostics</a></li>
+      </ol>
       </nav>
-    </div>
-  </header>
-
-  <main id="main-content">
-    <!-- Banner -->
-    <div class="page-banner">
-      <div class="container">
-        <div class="page-label">Health &amp; Reliability Protocol</div>
-        <h1 class="page-title">Diagnostics &amp; Troubleshooting</h1>
-        <p class="page-lead">Comprehensive automated diagnostic suite and guided playbooks for resolving common environment, runtime, database, and client communication issues.</p>
-      </div>
-    </div>
-
-    <!-- Doctor Diagnostic Section -->
-    <section class="section">
-      <div class="container">
-        <div class="section-title-wrap">
-          <div class="section-label">Diagnostic Tooling</div>
-          <h2 class="section-heading">Running Doctor Diagnostics</h2>
-        </div>
-
-        <p style="color: var(--archival-body); margin-bottom: 20px; font-size: 0.92rem;">The fastest way to verify all 10 servers and system dependencies is running the built-in diagnostic CLI:</p>
-
-        <div class="quick-bar" style="margin-bottom: 24px; max-width: 600px;">
-          <span class="quick-cmd">./setup.sh doctor</span>
-          <button class="copy-mini" onclick="navigator.clipboard.writeText('./setup.sh doctor')">Copy</button>
-        </div>
-
-        <p style="color: var(--archival-body); margin-bottom: 24px; font-size: 0.92rem;">Doctor automatically audits 5 core subsystems:</p>
-
-        <div class="arch-dual-grid">
-          <div class="organelle-card">
-            <h4>1. Host Prerequisites</h4>
-            <p>Checks Node.js (&gt;=18.0.0 LTS), npm, Git, SQLite3 CLI, and optional Python 3 runtime.</p>
-          </div>
-
-          <div class="organelle-card">
-            <h4>2. Server Builds &amp; Entries</h4>
-            <p>Verifies <code>dist/index.js</code> or <code>build/index.js</code> compiled artifacts across all 10 repositories.</p>
-          </div>
-
-          <div class="organelle-card">
-            <h4>3. Stdio Smoke Tests</h4>
-            <p>Performs non-blocking stdio JSON-RPC handshake with each server (&lt;300ms timeout threshold).</p>
-          </div>
-
-          <div class="organelle-card">
-            <h4>4. External Runtimes &amp; Fallbacks</h4>
-            <p>Audits Playwright/Chromium, ADB, and Blender with graceful offline warnings and isolation.</p>
-          </div>
+    </aside>
+    <div class="doc-main">
+      <div class="doc-topbar">
+        <span class="doc-topbar-title">SPEC_06 // DIAGNOSTICS</span>
+        <div class="topbar-actions">
+          <button class="btn open-cmd-palette" type="button">Search ⌘K</button>
+          <a class="btn" href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
-    </section>
+      <main id="main-content" class="doc-content">
+        <header class="specimen-plate">
+          <div class="specimen-ref"><span>SPEC_06 // 1999AZZAR-MCP</span><span>DOSSIER: DOCTOR_AND_FAILURES</span></div>
+          <h1 class="doc-title">Diagnostics</h1>
+          <p class="doc-lead">First run <code>setup.sh doctor</code> — it classifies the failure for you. The scenarios below cover everything the doctor flags.</p>
+        </header>
 
-    <!-- Common Issues & Solutions -->
-    <section class="section">
-      <div class="container">
-        <div class="section-title-wrap">
-          <div class="section-label">Incident Response</div>
-          <h2 class="section-heading">Common Scenarios &amp; Immediate Fixes</h2>
+        <h2 id="doctor">Doctor report anatomy</h2>
+        <div class="code-dossier">
+          <div class="code-dossier-header"><span>SHELL // DOCTOR_SECTIONS</span><button class="copy-btn" type="button">Copy</button></div>
+          <pre><code>./setup.sh doctor
+# 1. Runtime: Node 20+, Git, SQLite3 (WAL)
+# 2. Component health: entrypoint present + stdio handshake + tool count
+# 3. External drivers: Playwright / ADB / Blender (optional, per scope)
+# 4. API keys: OpenRouter / GitHub / Google (optional, graceful fallback)</code></pre>
         </div>
 
-        <div class="trouble-grid">
-          <!-- Issue 1 -->
-          <div class="trouble-card">
-            <h4>1. Playwright / Chromium Missing (HeLa Cytosol)</h4>
-            <p>Occurs on fresh systems or minimal cloud servers when browser binaries haven't been installed.</p>
-            <div class="trouble-fix">npx playwright install --with-deps chromium</div>
-          </div>
+        <h2 id="scenarios">Scenarios &amp; fixes</h2>
 
-          <!-- Issue 2 -->
-          <div class="trouble-card">
-            <h4>2. SQLite Database Lock / Recovery (HeLa Genome)</h4>
-            <p>If an abnormal termination locks SQLite <code>memory.db</code>, force WAL mode and integrity verification:</p>
-            <div class="trouble-fix">sqlite3 memory.db "PRAGMA journal_mode=WAL; PRAGMA integrity_check;"</div>
+        <section class="diag-card" aria-labelledby="d-entry">
+          <div class="diag-card-header" id="d-entry">Entrypoint missing</div>
+          <div class="diag-card-body">
+            <p><strong>Symptom:</strong> doctor marks a cell <code>present: no</code>. <strong>Cause:</strong> skipped build. <strong>Fix:</strong> <code>cd &lt;dir&gt; &amp;&amp; npm install &amp;&amp; npm run build</code>, then re-run doctor. Cytosol needs no build (<code>src/server.js</code> runs directly).</p>
           </div>
+        </section>
 
-          <!-- Issue 3 -->
-          <div class="trouble-card">
-            <h4>3. Deterministic Snapshot Rollback</h4>
-            <p>If an upstream repository introduces a breaking change in dev mode, pin immediately to the certified release snapshot:</p>
-            <div class="trouble-fix">./setup.sh --snapshot v1.0.0 --reconfigure</div>
+        <section class="diag-card" aria-labelledby="d-handshake">
+          <div class="diag-card-header" id="d-handshake">Handshake failure</div>
+          <div class="diag-card-body">
+            <p><strong>Symptom:</strong> entrypoint present but JSON-RPC fails. <strong>Causes:</strong> wrong Node major (<code>node --version</code>, need 20+), or a crashed native binding (<code>node-pty</code> in ribosome needs build tools: <code>build-essential</code>/<code>python3</code>). Reinstall that cell's <code>node_modules</code> and rebuild.</p>
           </div>
+        </section>
 
-          <!-- Issue 4 -->
-          <div class="trouble-card">
-            <h4>4. Android ADB Offline or Unauthorized (HeLa Receptor)</h4>
-            <p>If physical device is not recognized by ADB daemon, restart ADB and accept the RSA host prompt on device:</p>
-            <div class="trouble-fix">adb kill-server &amp;&amp; adb start-server &amp;&amp; adb devices</div>
+        <section class="diag-card" aria-labelledby="d-quota">
+          <div class="diag-card-header" id="d-quota">Google quota / OpenRouter errors</div>
+          <div class="diag-card-body">
+            <p><strong>Symptom:</strong> enzyme Google calls fail; mitosis LLM tools report HTTP errors. <strong>By design:</strong> enzyme falls back to Wikipedia flagged <code>degraded (quota)</code>; mitosis falls back to offline heuristics. <strong>Fix:</strong> check quotas/keys, or continue degraded — the system never hard-fails on key issues.</p>
           </div>
+        </section>
+
+        <section class="diag-card" aria-labelledby="d-matrix">
+          <div class="diag-card-header" id="d-matrix">Matrix failure after editing inventory</div>
+          <div class="diag-card-body">
+            <p><strong>Symptom:</strong> <code>test:matrix</code> fails post-edit. <strong>Cause:</strong> almost always a missing trailing newline or invalid JSON in <code>config/inventory.json</code> (pre-commit <code>end-of-file-fixer</code> enforces this). Validate JSON, ensure newline, re-run.</p>
+          </div>
+        </section>
+
+        <section class="diag-card" aria-labelledby="d-client">
+          <div class="diag-card-header" id="d-client">Client sees no tools</div>
+          <div class="diag-card-body">
+            <p><strong>Symptom:</strong> harness starts but lists zero tools. <strong>Checklist:</strong> absolute paths in the client file (no <code>~</code>), <code>node</code> on PATH for the harness, <code>enabled: true</code> on the cell, then restart the harness (configs load at startup).</p>
+          </div>
+        </section>
+
+        <div class="admonition warning">
+          <div class="admonition-title">STILL STUCK</div>
+          <div>Open an issue at <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" rel="noopener noreferrer">1999AZZAR/hela-mcp-ecosystem</a> with the full <code>setup.sh doctor</code> output and the failing gate.</div>
         </div>
-      </div>
-    </section>
 
-    <!-- Document Seal -->
-    <div class="container">
-      <div class="doc-seal-banner">
-        [ ARCHIVAL_RECORD_SEALED // SPEC_05_DIAGNOSTICS // VERIFIED_DISTRIBUTION ]
-      </div>
-    </div>
-  </main>
-
-  <!-- Command Palette Modal (⌘K) -->
-  <div class="cmd-palette-backdrop" id="cmdPalette">
-    <div class="cmd-palette-modal">
-      <div class="cmd-input-wrap">
-        <span style="color:var(--archival-muted-fg); font-family:var(--font-mono); font-size:0.85rem;">[SEARCH]</span>
-        <input type="text" class="cmd-input" id="cmdInput" aria-label="Search tools, pages, or profiles" placeholder="Search 295 tools, pages, or profiles..." />
-        <span class="k-key">ESC</span>
-      </div>
-      <div class="cmd-results" id="cmdResults">
-        <!-- Rendered dynamically by app.js -->
-      </div>
+        <footer class="doc-footer"><span>MIT LICENSE · AZZAR</span><span>ARCHIVAL_RECORD_SEALED // HELA_MCP_ECOSYSTEM</span></footer>
+      </main>
     </div>
   </div>
 
-  <footer>
-    <div class="container">
-      <div class="footer-row">
-        <div class="footer-nav">
-          <a href="index.html">Workbench</a>
-          <a href="architecture.html">Architecture</a>
-          <a href="workflows.html">Workflows</a>
-          <a href="profiles.html">Profiles</a>
-          <a href="showcase.html">Showcases</a>
-          <a href="troubleshooting.html">Diagnostics</a>
-          <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-        </div>
-        <div class="footer-copy">MIT LICENSE · HELA ARCHIVE · MAINTAINED BY AZZAR</div>
+  <div class="cmd-backdrop" id="cmdPalette" role="dialog" aria-label="Search documentation">
+    <div class="cmd-modal">
+      <div class="cmd-input-row">
+        <span aria-hidden="true">§</span>
+        <input type="text" class="cmd-input" id="cmdInput" aria-label="Search tools, pages, or profiles" placeholder="Search 295 tools, pages, profiles…">
+        <span class="cmd-item-tag">ESC</span>
       </div>
+      <div class="cmd-results" id="cmdResults"></div>
     </div>
-  </footer>
-
+  </div>
   <script src="app.js"></script>
 </body>
 </html>
