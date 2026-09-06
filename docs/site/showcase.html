@@ -10,7 +10,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/asciinema-player@3.9.0/dist/bundle/asciinema-player.min.css">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -74,30 +73,19 @@
         </div>
 
         <h2 id="recordings">Terminal recordings</h2>
-        <p>Asciinema captures of the verification gates, replayable in place. <span class="step-tool">setup</span> installs, <span class="step-tool">doctor</span> diagnoses, <span class="step-tool">matrix</span> validates all 70 combinations, <span class="step-tool">integration</span> runs the 13-test suite.</p>
-        <div class="cast-grid">
-          <section class="cast-cell" aria-label="Terminal recording">
-            <h3>setup.sh doctor</h3>
-            <asciinema-player class="cast-frame" src="casts/doctor.cast" aria-label="Terminal recording of setup.sh doctor"></asciinema-player>
-            <p class="cast-fallback">No player? <a href="casts/doctor.cast" download>Download doctor.cast</a></p>
-          </section>
-          <section class="cast-cell" aria-label="Terminal recording">
-            <h3>npm run test:matrix</h3>
-            <asciinema-player class="cast-frame" src="casts/matrix.cast" aria-label="Terminal recording of the client matrix test"></asciinema-player>
-            <p class="cast-fallback">No player? <a href="casts/matrix.cast" download>Download matrix.cast</a></p>
-          </section>
-          <section class="cast-cell" aria-label="Terminal recording">
-            <h3>npm test</h3>
-            <asciinema-player class="cast-frame" src="casts/integration.cast" aria-label="Terminal recording of the integration suite"></asciinema-player>
-            <p class="cast-fallback">No player? <a href="casts/integration.cast" download>Download integration.cast</a></p>
-          </section>
-          <section class="cast-cell" aria-label="Terminal recording">
-            <h3>setup.sh install</h3>
-            <asciinema-player class="cast-frame" src="casts/setup.cast" aria-label="Terminal recording of setup.sh install"></asciinema-player>
-            <p class="cast-fallback">No player? <a href="casts/setup.cast" download>Download setup.cast</a></p>
-          </section>
+        <p>Asciinema captures of the verification gates. Replay with <code>asciinema play &lt;file&gt;</code> or open in any <code>.cast</code>-compatible viewer.</p>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <caption>TABLE 5.2 — RECORDING LEDGER (casts/)</caption>
+            <thead><tr><th scope="col">Recording</th><th scope="col">Command</th><th scope="col">Covers</th></tr></thead>
+            <tbody>
+              <tr><td><a href="casts/setup.cast" download>setup.cast</a></td><td><code>./setup.sh</code></td><td>Install and build</td></tr>
+              <tr><td><a href="casts/doctor.cast" download>doctor.cast</a></td><td><code>./setup.sh doctor</code></td><td>10-cell health diagnostics</td></tr>
+              <tr><td><a href="casts/matrix.cast" download>matrix.cast</a></td><td><code>npm run test:matrix</code></td><td>70 profile × client combinations</td></tr>
+              <tr><td><a href="casts/integration.cast" download>integration.cast</a></td><td><code>npm test</code></td><td>13-test integration suite</td></tr>
+            </tbody>
+          </table>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/asciinema-player@3.9.0/dist/bundle/asciinema-player.min.js"></script>
 
         <h2 id="ellis">Production exhibit: Ellis UI Archive</h2>
         <p>Live at <a href="https://demo-designer.glassgallery.my.id/" target="_blank" rel="noopener noreferrer">demo-designer.glassgallery.my.id</a> — 24 bespoke component design systems generated through <span class="step-tool">hela-phenotype:generate_tokens → generate_8state_component</span>, verified in-browser via <span class="step-tool">hela-cytosol</span>, recorded in <span class="step-tool">hela-genome</span>. This is workflow C executed against a real deployment target, not a mock.</p>

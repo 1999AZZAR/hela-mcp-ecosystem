@@ -733,16 +733,17 @@ ol.steps > li::marker {
 /* ---------- Specimen figure plates ---------- */
 
 .figure-plate {
-  margin: 0 0 24px;
+  margin: 28px 0 28px;
   border: 1px solid var(--rule-strong);
   border-radius: var(--radius-md);
   background: var(--paper-raised);
   overflow: hidden;
+  box-shadow: 0 2px 8px var(--shadow-soft);
 }
 
 .figure-mat {
   background: var(--ink);
-  padding: 18px;
+  padding: 22px;
 }
 
 .figure-mat img {
@@ -750,6 +751,8 @@ ol.steps > li::marker {
   width: 100%;
   height: auto;
   border-radius: var(--radius-sm);
+  outline: 1px solid var(--code-line);
+  outline-offset: 6px;
 }
 
 .figure-caption {
@@ -757,48 +760,22 @@ ol.steps > li::marker {
   justify-content: space-between;
   gap: 12px;
   flex-wrap: wrap;
-  padding: 10px 14px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--rule-strong);
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--ink-meta);
 }
 
 .figure-caption strong {
-  color: var(--ink);
+  color: var(--accent);
+  letter-spacing: 0.08em;
 }
 
-/* ---------- Terminal cast dossiers ---------- */
-
-.cast-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 16px;
-  margin: 0 0 24px;
-}
-
-.cast-cell {
-  min-width: 0;
-}
-
-.cast-frame {
-  width: 100%;
-  min-height: 260px;
-  border: 1px solid var(--code-line);
-  border-radius: var(--radius-md);
-  background: var(--code-bg);
-}
-
-.cast-fallback {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--ink-meta);
-  padding: 8px 0 0;
-}
-
-@media (max-width: 900px) {
-  .cast-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
+.figure-plate--inset {
+  max-width: 480px;
+  float: right;
+  margin: 8px 0 20px 24px;
 }
 
 /* ---------- Definition rows (diagnostics) ---------- */
@@ -843,7 +820,17 @@ ol.steps > li::marker {
 
 /* ---------- Responsive ---------- */
 
+.figure-plate--inset + h2 {
+  clear: right;
+}
+
 @media (max-width: 900px) {
+  .figure-plate--inset {
+    float: none;
+    max-width: none;
+    margin-left: 0;
+  }
+
   .doc-shell {
     grid-template-columns: minmax(0, 1fr);
   }
