@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <!-- Blueprint Grid Line Overlay -->
   <div class="blueprint-grid" aria-hidden="true"></div>
 
@@ -50,7 +51,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <!-- Banner -->
     <div class="page-banner">
       <div class="container">
@@ -154,7 +155,7 @@
     <div class="cmd-palette-modal">
       <div class="cmd-input-wrap">
         <span style="color:var(--archival-muted-fg); font-family:var(--font-mono); font-size:0.85rem;">[SEARCH]</span>
-        <input type="text" class="cmd-input" id="cmdInput" placeholder="Search 295 tools, pages, or profiles..." />
+        <input type="text" class="cmd-input" id="cmdInput" aria-label="Search tools, pages, or profiles" placeholder="Search 295 tools, pages, or profiles..." />
         <span class="k-key">ESC</span>
       </div>
       <div class="cmd-results" id="cmdResults">

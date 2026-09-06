@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <!-- Blueprint Grid Line Overlay -->
   <div class="blueprint-grid" aria-hidden="true"></div>
 
@@ -50,7 +51,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <!-- Hero Workbench Section -->
     <section class="hero-section">
       <div class="container">
@@ -166,14 +167,14 @@ SUCCESS: All required HeLa MCP servers and dependencies are healthy!</pre>
           </div>
 
           <div class="node-inspector" id="nodeInspector">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:8px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; border-bottom:1px solid var(--archival-code-line); padding-bottom:8px;">
               <strong style="color:var(--archival-code-fg); font-size:0.95rem;">HeLa Mitosis (<code>hela-mitosis</code>)</strong>
               <span class="badge-core">18 Active Tools</span>
             </div>
             <p style="color:var(--archival-code-muted); margin-bottom:14px; font-family:var(--font-sans); font-size:0.88rem; line-height:1.5;">Cognitive division & orchestration backbone. Dynamic peer tool discovery, step-by-step reasoning, task decomposition, and 42 domain prompt templates.</p>
             <div style="margin-bottom:10px;"><strong style="color:var(--archival-code-accent); text-transform:uppercase; font-size:0.75rem; letter-spacing:0.08em;">Tools Catalog:</strong> <span style="color:var(--archival-code-fg); font-size:0.82rem; margin-left:6px;">analyze_with_sequential_thinking, sequentialthinking, workflow_orchestrator, llm_decompose_task, llm_query, llm_summarize, search_prompts, get_prompt, list_mcp_servers, validate_tool_chain</span></div>
             <div style="margin-top:14px; color:var(--archival-code-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;">Sample MCP JSON-RPC Payload:</div>
-            <pre style="background:var(--archival-code-surface); border:1px solid rgba(255,255,255,0.08); padding:12px; border-radius:4px; margin-top:6px; color:#EFE9DC; overflow-x:auto;">{
+            <pre style="background:var(--archival-code-surface); border:1px solid var(--archival-code-line); padding:12px; border-radius:4px; margin-top:6px; color:var(--archival-code-fg); overflow-x:auto;">{
   "method": "tools/call",
   "params": {
     "name": "analyze_with_sequential_thinking",
@@ -262,7 +263,7 @@ SUCCESS: All required HeLa MCP servers and dependencies are healthy!</pre>
     <div class="cmd-palette-modal">
       <div class="cmd-input-wrap">
         <span style="color:var(--archival-muted-fg); font-family:var(--font-mono); font-size:0.85rem;">[SEARCH]</span>
-        <input type="text" class="cmd-input" id="cmdInput" placeholder="Search 295 tools, pages, or profiles (e.g. sequentialthinking, memory, dev-workspace)..." />
+        <input type="text" class="cmd-input" id="cmdInput" aria-label="Search tools, pages, or profiles" placeholder="Search 295 tools, pages, or profiles (e.g. sequentialthinking, memory, dev-workspace)..." />
         <span class="k-key">ESC</span>
       </div>
       <div class="cmd-results" id="cmdResults">
