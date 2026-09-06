@@ -136,6 +136,15 @@ document.addEventListener("DOMContentLoaded", () => {
     updateOutput();
   }
 
+  // Right-rail table of contents from section headings
+  const tocList = document.getElementById("tocList");
+  if (tocList) {
+    const heads = document.querySelectorAll("main.doc-content h2[id]");
+    tocList.innerHTML = Array.from(heads).map((h) =>
+      '<li><a href="#' + h.id + '">' + h.textContent + "</a></li>"
+    ).join("");
+  }
+
   // Copy buttons (code dossiers + configurator)
   document.querySelectorAll(".copy-btn").forEach((btn) => {
     btn.addEventListener("click", () => {

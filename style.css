@@ -212,11 +212,55 @@ kbd {
 .doc-main {
   min-width: 0;
   padding: 0 0 96px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 200px;
+  gap: 40px;
+  align-items: start;
 }
 
 .doc-content {
   max-width: var(--content-w);
+  width: 100%;
+  margin: 0 auto;
   padding: 40px 40px 0;
+}
+
+.doc-toc {
+  position: sticky;
+  top: 76px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  padding: 40px 32px 0 0;
+  font-size: 0.8rem;
+}
+
+.doc-toc-title {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+  margin-bottom: 8px;
+}
+
+.doc-toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 12px;
+  border-left: 1px solid var(--rule-strong);
+}
+
+.doc-toc li {
+  margin-bottom: 6px;
+}
+
+.doc-toc a {
+  color: var(--ink-meta);
+  text-decoration: none;
+  transition: color 0.15s var(--ease-out);
+}
+
+.doc-toc a:hover {
+  color: var(--accent);
 }
 
 /* ---------- Specimen plate (page header) ---------- */
@@ -772,10 +816,43 @@ ol.steps > li::marker {
   letter-spacing: 0.08em;
 }
 
-.figure-plate--inset {
-  max-width: 480px;
-  float: right;
-  margin: 8px 0 20px 24px;
+.figure-plate {
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- Responsive video frames ---------- */
+
+.video-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  margin: 0 0 24px;
+}
+
+.video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--ink);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-caption {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-meta);
+  padding: 8px 2px 0;
 }
 
 /* ---------- Definition rows (diagnostics) ---------- */
@@ -820,15 +897,17 @@ ol.steps > li::marker {
 
 /* ---------- Responsive ---------- */
 
-.figure-plate--inset + h2 {
-  clear: right;
-}
-
 @media (max-width: 900px) {
-  .figure-plate--inset {
-    float: none;
-    max-width: none;
-    margin-left: 0;
+  .doc-main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .doc-toc {
+    display: none;
+  }
+
+  .video-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .doc-shell {
