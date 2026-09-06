@@ -730,6 +730,77 @@ ol.steps > li::marker {
   color: var(--paper-raised);
 }
 
+/* ---------- Specimen figure plates ---------- */
+
+.figure-plate {
+  margin: 0 0 24px;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-md);
+  background: var(--paper-raised);
+  overflow: hidden;
+}
+
+.figure-mat {
+  background: var(--ink);
+  padding: 18px;
+}
+
+.figure-mat img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+}
+
+.figure-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-meta);
+}
+
+.figure-caption strong {
+  color: var(--ink);
+}
+
+/* ---------- Terminal cast dossiers ---------- */
+
+.cast-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  margin: 0 0 24px;
+}
+
+.cast-cell {
+  min-width: 0;
+}
+
+.cast-frame {
+  width: 100%;
+  min-height: 260px;
+  border: 1px solid var(--code-line);
+  border-radius: var(--radius-md);
+  background: var(--code-bg);
+}
+
+.cast-fallback {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-meta);
+  padding: 8px 0 0;
+}
+
+@media (max-width: 900px) {
+  .cast-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 /* ---------- Definition rows (diagnostics) ---------- */
 
 .diag-card {
