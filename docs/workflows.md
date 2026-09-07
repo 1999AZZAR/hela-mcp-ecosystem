@@ -28,7 +28,7 @@ flowchart TB
     Mitosis & Genome --> Membrane & Nucleus & Ribosome & Enzyme & Cytosol
 ```
 
-- **HeLa Mitosis (`hela-mitosis`)**: Acts as the cognitive orchestrator. It decomposes complex prompts, analyzes tool performance, and runs `sequentialthinking` step-by-step logic.
+- **HeLa Mitosis (`hela-mitosis`)**: Acts as the cognitive orchestrator. It decomposes complex prompts, analyzes tool performance, and runs Needle-backed `sequentialthinking` step-by-step logic (each thought is an observe → decide → execute agent step recorded in AgentState).
 - **HeLa Genome (`hela-genome`)**: Acts as the immutable project memory. It stores entities, relations, observations, and session milestones in `memory.db`.
 
 ---

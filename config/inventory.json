@@ -21,10 +21,9 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "revision": "9776015b9aa44d882dbe3c279a2c8a986f9ebe4b",
+      "revision": "dbcd818a83e68bf0db8c9b9075311044d274b3a7",
       "env": [
         "MEMORY_FILE_PATH",
-        "SEQUENTIAL_THINKING_AVAILABLE",
         "AWESOME_COPILOT_ENABLED",
         "RELIABILITY_MONITORING_ENABLED",
         "CHAINING_TOOL_TIMEOUT_MS",
@@ -34,7 +33,7 @@
         "CHAINING_LLM_BASE_URL",
         "GITHUB_TOKEN"
       ],
-      "description": "Orchestrates MCP capabilities, tool discovery, route optimization, sequential thinking, 42 prebuilt prompts, and multi-step workflows."
+      "description": "Orchestrates MCP capabilities via the bundled Needle 2 agent runtime (plan → execute → observe, fully offline), tool discovery, route optimization, 40 prebuilt prompts, skills catalog, and multi-step workflows. No external sequential-thinking server."
     },
     "hela-genome": {
       "id": "hela-genome",

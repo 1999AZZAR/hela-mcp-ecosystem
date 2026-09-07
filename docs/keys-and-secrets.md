@@ -41,7 +41,7 @@ All keys and secrets in this ecosystem are **100% OPTIONAL**. The entire suite i
 
 ### 1. `OPENROUTER_API_KEY`
 
-* **Target Component**: **HeLa Mitosis** (`hela-mitosis` / `chaining-mcp-server`)
+* **Target Component**: **HeLa Mitosis** (`hela-mitosis` / `chaining-mcp`)
 * **Purpose**: Powers dynamic LLM intelligence for task decomposition (`llm_decompose_task`), AI route ranking (`llm_suggest_route`), and query routing (`llm_query`).
 * **Where to get it**:
   1. Visit [OpenRouter API Keys](https://openrouter.ai/keys).
@@ -50,13 +50,13 @@ All keys and secrets in this ecosystem are **100% OPTIONAL**. The entire suite i
   4. *Note*: OpenRouter provides free models (e.g. `openrouter/free`) that do not require paid credits.
 * **If you DO NOT have it**:
   * **Consequence**: The server will not make external LLM calls.
-  * **Fallback Behavior**: `hela-mitosis` automatically and instantly falls back to its deterministic local heuristic optimizer. `llm_suggest_route` returns heuristic rankings in `<30ms`, `llm_decompose_task` returns rule-based subtasks, and `llm_summarize` performs local text compression. Zero crashes, zero process hangs.
+  * **Fallback Behavior**: `hela-mitosis` runs its bundled Needle 2 agent runtime fully offline (plan → execute → observe, ~25MB RAM). OpenRouter is used only as a budgeted escalation backend. With no key, escalation hands control back to the calling agent (`handoff: true`) with the full state trail — never a fabricated answer. `brainstorming` is the one exception: it needs a generative model and fails honestly without a key. Zero crashes, zero process hangs.
 
 ---
 
 ### 2. `GITHUB_TOKEN`
 
-* **Target Component**: **HeLa Mitosis** (`hela-mitosis` / `chaining-mcp-server`)
+* **Target Component**: **HeLa Mitosis** (`hela-mitosis` / `chaining-mcp`)
 * **Purpose**: Synchronizes the latest community prompt collections, guidelines, and chatmodes from GitHub repositories at runtime.
 * **Where to get it**:
   1. Visit [GitHub Personal Access Tokens](https://github.com/settings/tokens).

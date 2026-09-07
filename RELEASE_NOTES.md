@@ -18,7 +18,7 @@ The **HeLa MCP Ecosystem** is named in respectful recognition of **Henrietta Lac
 
 ### 1. Dual-Backbone Architecture
 Every profile is grounded by two core backbones:
-* **HeLa Mitosis (`chaining-mcp-server`)**: Cellular division and orchestration backbone. Dynamic peer discovery, step-by-step reasoning via `sequentialthinking`, task decomposition, and 42 domain prompts.
+* **HeLa Mitosis (`chaining-mcp`)**: Cellular division and orchestration backbone. Bundled Needle 2 agent runtime (plan → execute → observe, offline-first), Needle-backed sequential reasoning (`sequentialthinking`, `agent_run`), task decomposition, and 40 domain prompts. No external sequential-thinking server.
 * **HeLa Genome (`Project-Guardian-mcp-server`)**: Living memory and state backbone. SQLite knowledge graph (`memory.db`), entity-relation tracking, cross-session context restoration, and decision memory.
 
 ### 2. 10-MCP Component Taxonomy

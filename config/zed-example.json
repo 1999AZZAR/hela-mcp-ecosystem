@@ -3,15 +3,13 @@
     "hela-mitosis": {
       "command": "node",
       "args": [
-        "/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"
+        "/path/to/mcp-ecosystem/chaining-mcp/dist/index.js"
       ],
       "env": {
-        "MEMORY_FILE_PATH": "/path/to/mcp-ecosystem/chaining-mcp-server/data/memory.json",
-        "SEQUENTIAL_THINKING_AVAILABLE": "true",
+        "MEMORY_FILE_PATH": "/path/to/mcp-ecosystem/chaining-mcp/data/memory.json",
         "AWESOME_COPILOT_ENABLED": "true",
         "RELIABILITY_MONITORING_ENABLED": "true",
         "CHAINING_TOOL_TIMEOUT_MS": "10000",
-        "CHAINING_LLM_ENABLED": "false",
         "CHAINING_LLM_MODEL": "openrouter/free",
         "CHAINING_LLM_BASE_URL": "https://openrouter.ai/api/v1"
       }

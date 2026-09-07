@@ -10,7 +10,7 @@ The HeLa MCP Ecosystem organizes capabilities into **agent-oriented profiles**. 
 
 Every profile in the ecosystem includes the core dual backbone:
 
-* **HeLa Mitosis (`hela-mitosis` / `chaining-mcp-server`)**: Intelligent tool discovery, route ranking, sequential thinking, task decomposition, and workflow orchestration.
+* **HeLa Mitosis (`hela-mitosis` / `chaining-mcp`)**: Intelligent tool discovery, Needle-planned routing, Needle-backed sequential thinking, task decomposition, skills catalog, and workflow orchestration.
 * **HeLa Genome (`hela-genome` / `Project-Guardian-mcp-server`)**: Living SQLite knowledge graph (`memory.db`), task tracking, architectural decisions, and cross-session context restoration.
 
 ---

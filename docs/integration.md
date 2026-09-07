@@ -78,9 +78,8 @@ The MCP Ecosystem Suite uses a profile-based configuration. Create or update you
   "mcpServers": {
     "chaining": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"],
+      "args": ["/absolute/path/to/mcp-ecosystem/chaining-mcp/dist/index.js"],
       "env": {
-        "SEQUENTIAL_THINKING_AVAILABLE": "true",
         "AWESOME_COPILOT_ENABLED": "true",
         "RELIABILITY_MONITORING_ENABLED": "true",
         "GITHUB_TOKEN": "your-github-token"
@@ -151,9 +150,8 @@ Add your profile's servers to the Claude Desktop config file. For the `dev-works
   "mcpServers": {
     "chaining": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"],
+      "args": ["/absolute/path/to/mcp-ecosystem/chaining-mcp/dist/index.js"],
       "env": {
-        "SEQUENTIAL_THINKING_AVAILABLE": "true",
         "AWESOME_COPILOT_ENABLED": "true",
         "RELIABILITY_MONITORING_ENABLED": "true",
         "GITHUB_TOKEN": "your-github-token"
@@ -262,9 +260,8 @@ Example (`dev-workspace` snippet):
   "context_servers": {
     "chaining": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-ecosystem/chaining-mcp-server/dist/index.js"],
+      "args": ["/absolute/path/to/mcp-ecosystem/chaining-mcp/dist/index.js"],
       "env": {
-        "SEQUENTIAL_THINKING_AVAILABLE": "true"
       }
     }
   }
@@ -337,7 +334,6 @@ DATA_PATH=./data
 WORKSPACE_PATH=./workspace
 
 # Optional: Server-specific settings
-SEQUENTIAL_THINKING_AVAILABLE=true
 AWESOME_COPILOT_ENABLED=true
 RELIABILITY_MONITORING_ENABLED=true
 ```

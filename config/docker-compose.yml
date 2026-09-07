@@ -7,12 +7,11 @@ services:
   # HeLa Mitosis (Chaining MCP) — Orchestration Backbone
   hela-mitosis:
     build:
-      context: ../chaining-mcp-server
+      context: ../chaining-mcp
       dockerfile: Dockerfile
     ports:
       - "3001:3001"
     environment:
-      - SEQUENTIAL_THINKING_AVAILABLE=true
       - AWESOME_COPILOT_ENABLED=true
       - RELIABILITY_MONITORING_ENABLED=true
       - GITHUB_TOKEN=${GITHUB_TOKEN}

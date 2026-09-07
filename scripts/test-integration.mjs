@@ -68,7 +68,6 @@ class McpClient {
     const env = {
       ...process.env,
       MEMORY_FILE_PATH: path.join(dir, 'data/memory.json'),
-      SEQUENTIAL_THINKING_AVAILABLE: 'true',
       AWESOME_COPILOT_ENABLED: 'true',
       CHAINING_TOOL_TIMEOUT_MS: '5000',
     };

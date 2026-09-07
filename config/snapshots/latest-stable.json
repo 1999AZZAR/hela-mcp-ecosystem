@@ -8,9 +8,9 @@
   "servers": {
     "hela-mitosis": {
       "alias": "HeLa Mitosis",
-      "source": "chaining-mcp-server",
-      "repo": "https://github.com/1999AZZAR/chaining-mcp-server.git",
-      "revision": "9776015b9aa44d882dbe3c279a2c8a986f9ebe4b",
+      "source": "chaining-mcp",
+      "repo": "https://github.com/1999AZZAR/chaining-mcp.git",
+      "revision": "dbcd818a83e68bf0db8c9b9075311044d274b3a7",
       "scope": "core",
       "role": "backbone-orchestration"
     },
