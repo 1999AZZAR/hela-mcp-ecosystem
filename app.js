@@ -7,9 +7,9 @@
 const INVENTORY = {
   "hela-mitosis": {
     "alias": "HeLa Mitosis", "source": "chaining-mcp", "scope": "core",
-    "role": "Orchestrator Backbone", "entry": "dist/index.js", "toolsCount": 22,
-    "tools": ["analyze_with_sequential_thinking", "sequentialthinking", "workflow_orchestrator", "llm_decompose_task", "llm_query", "llm_summarize", "search_prompts", "get_prompt", "list_mcp_servers", "validate_tool_chain"],
-    "desc": "Cognitive division and orchestration backbone. Peer discovery, step-by-step reasoning, task decomposition, prompt templates."
+    "role": "Orchestrator Backbone", "entry": "dist/index.js", "toolsCount": 29,
+    "tools": ["agent_run", "analyze_with_sequential_thinking", "sequentialthinking", "workflow_orchestrator", "workflow_status", "workflow_cancel", "llm_decompose_task", "llm_suggest_route", "llm_query", "llm_summarize", "list_skills", "search_skills", "get_skill", "suggest_skill_chain", "search_prompts", "get_prompt", "list_mcp_servers", "validate_tool_chain"],
+    "desc": "Cognitive division and orchestration backbone. Bundled Needle 2 agent runtime, peer discovery, Needle-backed sequential reasoning, task decomposition, skills catalog, prompt templates."
   },
   "hela-genome": {
     "alias": "HeLa Genome", "source": "project-mcp", "scope": "core",
