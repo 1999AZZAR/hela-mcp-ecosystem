@@ -118,7 +118,9 @@ const PAGES = [
   { title: "05 Workflows", link: "workflows.html" },
   { title: "06 Profiles and Config", link: "profiles.html" },
   { title: "07 Showcase", link: "showcase.html" },
-  { title: "08 Diagnostics", link: "troubleshooting.html" }
+  { title: "08 Diagnostics", link: "troubleshooting.html" },
+  { title: "09 Privacy", link: "privacy.html" },
+  { title: "10 Terms", link: "terms.html" }
 ];
 
 document.addEventListener("DOMContentLoaded", () => {

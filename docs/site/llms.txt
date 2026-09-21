@@ -17,6 +17,8 @@
 - [Profiles & Config](https://hela-mcp.glassgallery.my.id/profiles.html): seven deployment profiles and the client configuration workbench.
 - [Showcase](https://hela-mcp.glassgallery.my.id/showcase.html): verified outputs and production deployments.
 - [Diagnostics](https://hela-mcp.glassgallery.my.id/troubleshooting.html): doctor diagnostics, failure scenarios, fixes.
+- [Privacy](https://hela-mcp.glassgallery.my.id/privacy.html): what the site collects (nothing), third parties, local-first software.
+- [Terms](https://hela-mcp.glassgallery.my.id/terms.html): MIT license, as-is warranty, operator responsibility.
 
 ## Server roster (295 tools)
 
