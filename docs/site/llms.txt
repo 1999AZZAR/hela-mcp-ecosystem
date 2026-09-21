@@ -1,0 +1,39 @@
+# HeLa MCP Ecosystem
+
+> A reproducible, 10-server MCP (Model Context Protocol) distribution suite for AI
+> agents: dual-backbone orchestration (Mitosis reasoning + Genome memory graphs),
+> 295 tools, seven deployment profiles, six cross-server pipelines.
+
+- Site: https://hela-mcp.glassgallery.my.id/
+- Source: https://github.com/1999AZZAR/hela-mcp-ecosystem
+- Install: `curl -fsSL https://raw.githubusercontent.com/1999AZZAR/hela-mcp-ecosystem/master/setup.sh | bash`
+- License: see repository LICENSE.
+
+## Pages
+
+- [Overview](https://hela-mcp.glassgallery.my.id/index.html): install and verify the suite.
+- [Architecture](https://hela-mcp.glassgallery.my.id/architecture.html): dual-backbone topology and per-server reference.
+- [Workflows](https://hela-mcp.glassgallery.my.id/workflows.html): six cross-MCP pipelines (tool sequences, profiles, persistence).
+- [Profiles & Config](https://hela-mcp.glassgallery.my.id/profiles.html): seven deployment profiles and the client configuration workbench.
+- [Showcase](https://hela-mcp.glassgallery.my.id/showcase.html): verified outputs and production deployments.
+- [Diagnostics](https://hela-mcp.glassgallery.my.id/troubleshooting.html): doctor diagnostics, failure scenarios, fixes.
+
+## Server roster (295 tools)
+
+- HeLa Mitosis (orchestrator / agent runtime, 29 tools)
+- HeLa Genome (state & memory knowledge graph, 34 tools)
+- HeLa Membrane (workspace filesystem, 16 tools)
+- HeLa Nucleus (command execution, 5 tools)
+- HeLa Ribosome (PTY harness sessions, 11 tools)
+- HeLa Enzyme (research & knowledge, 28 tools)
+- HeLa Cytosol (browser automation, 93 tools)
+- HeLa Phenotype (design systems, 29 tools)
+- HeLa Receptor (Android device control, 46 tools)
+- HeLa Plastid (Blender 3D, 15 tools)
+
+## Notes for AI consumers
+
+- Every server speaks MCP over stdio; the gateway directory in the source repo
+  exposes them over Streamable HTTP.
+- Behavior flags are opt-in environment variables documented in each server
+  README (e.g. `HELA_ENVELOPE`, `HELA_ALLOWED_ROOTS`, `HELA_POLICY_PROFILE`).
