@@ -4,21 +4,21 @@
 > agents: dual-backbone orchestration (Mitosis reasoning + Genome memory graphs),
 > 295 tools, seven deployment profiles, six cross-server pipelines.
 
-- Site: https://hela-mcp.glassgallery.my.id/
+- Site: https://hela.my.id/
 - Source: https://github.com/1999AZZAR/hela-mcp-ecosystem
 - Install: `curl -fsSL https://raw.githubusercontent.com/1999AZZAR/hela-mcp-ecosystem/master/setup.sh | bash`
 - License: see repository LICENSE.
 
 ## Pages
 
-- [Overview](https://hela-mcp.glassgallery.my.id/index.html): install and verify the suite.
-- [Architecture](https://hela-mcp.glassgallery.my.id/architecture.html): dual-backbone topology and per-server reference.
-- [Workflows](https://hela-mcp.glassgallery.my.id/workflows.html): six cross-MCP pipelines (tool sequences, profiles, persistence).
-- [Profiles & Config](https://hela-mcp.glassgallery.my.id/profiles.html): seven deployment profiles and the client configuration workbench.
-- [Showcase](https://hela-mcp.glassgallery.my.id/showcase.html): verified outputs and production deployments.
-- [Diagnostics](https://hela-mcp.glassgallery.my.id/troubleshooting.html): doctor diagnostics, failure scenarios, fixes.
-- [Privacy](https://hela-mcp.glassgallery.my.id/privacy.html): what the site collects (nothing), third parties, local-first software.
-- [Terms](https://hela-mcp.glassgallery.my.id/terms.html): MIT license, as-is warranty, operator responsibility.
+- [Overview](https://hela.my.id/index.html): install and verify the suite.
+- [Architecture](https://hela.my.id/architecture.html): dual-backbone topology and per-server reference.
+- [Workflows](https://hela.my.id/workflows.html): six cross-MCP pipelines (tool sequences, profiles, persistence).
+- [Profiles & Config](https://hela.my.id/profiles.html): seven deployment profiles and the client configuration workbench.
+- [Showcase](https://hela.my.id/showcase.html): verified outputs and production deployments.
+- [Diagnostics](https://hela.my.id/troubleshooting.html): doctor diagnostics, failure scenarios, fixes.
+- [Privacy](https://hela.my.id/privacy.html): what the site collects (nothing), third parties, local-first software.
+- [Terms](https://hela.my.id/terms.html): MIT license, as-is warranty, operator responsibility.
 
 ## Server roster (295 tools)
 
