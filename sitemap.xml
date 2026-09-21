@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hela-mcp.glassgallery.my.id/index.html</loc>
+    <loc>https://hela.my.id/index.html</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://hela-mcp.glassgallery.my.id/architecture.html</loc>
+    <loc>https://hela.my.id/architecture.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hela-mcp.glassgallery.my.id/workflows.html</loc>
+    <loc>https://hela.my.id/workflows.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hela-mcp.glassgallery.my.id/profiles.html</loc>
+    <loc>https://hela.my.id/profiles.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hela-mcp.glassgallery.my.id/showcase.html</loc>
+    <loc>https://hela.my.id/showcase.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://hela-mcp.glassgallery.my.id/troubleshooting.html</loc>
+    <loc>https://hela.my.id/troubleshooting.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://hela-mcp.glassgallery.my.id/privacy.html</loc>
+    <loc>https://hela.my.id/privacy.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://hela-mcp.glassgallery.my.id/terms.html</loc>
+    <loc>https://hela.my.id/terms.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

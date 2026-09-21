@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hela-mcp.glassgallery.my.id/sitemap.xml
+Sitemap: https://hela.my.id/sitemap.xml
