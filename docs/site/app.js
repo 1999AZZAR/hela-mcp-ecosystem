@@ -68,6 +68,7 @@ const INVENTORY = {
 };
 
 const PROFILES = {
+  "minimal": { "name": "Minimal (Mitosis + Genome + Enzyme)", "servers": ["hela-mitosis", "hela-genome", "hela-enzyme"] },
   "dev-workspace": { "name": "Dev Workspace (Full Desktop)", "servers": ["hela-mitosis", "hela-genome", "hela-membrane", "hela-nucleus", "hela-ribosome", "hela-enzyme", "hela-phenotype", "hela-cytosol"] },
   "headless-server": { "name": "Headless Server (Core 7)", "servers": ["hela-mitosis", "hela-genome", "hela-membrane", "hela-nucleus", "hela-ribosome", "hela-enzyme", "hela-phenotype"] },
   "research": { "name": "Research Terminal", "servers": ["hela-mitosis", "hela-genome", "hela-enzyme", "hela-membrane", "hela-cytosol"] },

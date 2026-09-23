@@ -2,7 +2,7 @@
 /**
  * HeLa MCP Ecosystem — Multi-Client Configuration Matrix Validator
  *
- * Tests all 10 client configuration generators across all 7 profiles (70 combinations):
+ * Tests all 10 client configuration generators across all 8 profiles (80 combinations):
  *  - Format correctness (JSON / TOML / YAML)
  *  - Schema structure conformance
  *  - Server key resolution and command parameters
@@ -47,7 +47,7 @@ function readJson(p) {
 }
 
 function runMatrix() {
-  console.log(`\n${colors.bold}${colors.cyan}=== HeLa MCP Ecosystem — 70-Combination Client Matrix Validator ===${colors.reset}\n`);
+  console.log(`\n${colors.bold}${colors.cyan}=== HeLa MCP Ecosystem — 80-Combination Client Matrix Validator ===${colors.reset}\n`);
 
   const profilesData = readJson(path.join(ECOSYSTEM_ROOT, 'config/profiles.json')).profiles;
   const profileIds = profilesData.map((p) => p.id);
@@ -135,10 +135,10 @@ function runMatrix() {
 
   const duration = Date.now() - startTime;
   console.log('\n' + '='.repeat(78));
-  console.log(`Matrix Test Summary: ${colors.bold}${passed} passed${colors.reset}, ${failed > 0 ? colors.red : colors.green}${failed} failed${colors.reset} (70 total combinations) in ${duration}ms.`);
+  console.log(`Matrix Test Summary: ${colors.bold}${passed} passed${colors.reset}, ${failed > 0 ? colors.red : colors.green}${failed} failed${colors.reset} (80 total combinations) in ${duration}ms.`);
 
   if (failed === 0) {
-    console.log(`${colors.green}${colors.bold}SUCCESS: All 70 profile × client matrix tests passed with 100% schema accuracy!${colors.reset}\n`);
+    console.log(`${colors.green}${colors.bold}SUCCESS: All 80 profile × client matrix tests passed with 100% schema accuracy!${colors.reset}\n`);
     process.exit(0);
   } else {
     console.log(`${colors.red}${colors.bold}FAILURE: Some matrix tests failed. Review log above.${colors.reset}\n`);

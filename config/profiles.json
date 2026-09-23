@@ -2,6 +2,18 @@
   "$comment": "Available stack profiles for the HeLa MCP Ecosystem. 'servers' keys reference canonical hela-* IDs in config/inventory.json. 'system' indicates target environment.",
   "profiles": [
     {
+      "id": "minimal",
+      "name": "HeLa Minimal",
+      "system": "any",
+      "persona": "Lightweight Research & Memory Agent",
+      "description": "Smallest viable HeLa stack: orchestration (Mitosis), persistent memory (Genome), and multi-source research (Enzyme). No Chromium, ADB, or Blender dependencies — runs on any machine with Node.js.",
+      "servers": [
+        "hela-mitosis",
+        "hela-genome",
+        "hela-enzyme"
+      ]
+    },
+    {
       "id": "dev-workspace",
       "name": "HeLa Dev Workspace",
       "system": "gui",
