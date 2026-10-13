@@ -13,8 +13,8 @@ const INVENTORY = {
   },
   "hela-genome": {
     "alias": "HeLa Genome", "source": "project-mcp", "scope": "core",
-    "role": "State and Memory Backbone", "entry": "dist/index.js", "toolsCount": 34,
-    "tools": ["initialize_memory", "create_entity", "create_relation", "add_observation", "search_nodes", "open_node", "get_session_context", "sync_central_memory", "execute_sql", "query_data", "inspect_untrusted_text", "scan_project_secrets"],
+    "role": "State and Memory Backbone", "entry": "dist/index.js", "toolsCount": 38,
+    "tools": ["initialize_memory", "create_entity", "create_relation", "add_observation", "search_nodes", "open_node", "get_file_context", "get_timeline", "get_session_context", "sync_central_memory", "execute_sql", "query_data", "inspect_untrusted_text", "scan_project_secrets"],
     "desc": "Living SQLite knowledge graph with FTS5 search, entity tracking, and session restoration."
   },
   "hela-membrane": {
