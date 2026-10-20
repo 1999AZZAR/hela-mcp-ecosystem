@@ -50,7 +50,7 @@ All keys and secrets in this ecosystem are **100% OPTIONAL**. The entire suite i
   4. *Note*: OpenRouter provides free models (e.g. `openrouter/free`) that do not require paid credits.
 * **If you DO NOT have it**:
   * **Consequence**: The server will not make external LLM calls.
-  * **Fallback Behavior**: `hela-mitosis` runs its bundled Needle 2 agent runtime fully offline (plan → execute → observe, ~25MB RAM). OpenRouter is used only as a budgeted escalation backend. With no key, escalation hands control back to the calling agent (`handoff: true`) with the full state trail — never a fabricated answer. `brainstorming` is the one exception: it needs a generative model and fails honestly without a key. Zero crashes, zero process hangs.
+  * **Fallback Behavior**: `hela-mitosis` runs its bundled Needle 3 agent runtime fully offline (plan → execute → observe, ~25MB RAM). OpenRouter is used only as a budgeted escalation backend. With no key, escalation hands control back to the calling agent (`handoff: true`) with the full state trail — never a fabricated answer. `brainstorming` is the one exception: it needs a generative model and fails honestly without a key. Zero crashes, zero process hangs.
 
 ---
 

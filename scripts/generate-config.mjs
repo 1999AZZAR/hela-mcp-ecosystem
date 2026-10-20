@@ -123,6 +123,8 @@ function buildServerEnv(s, root, options = {}) {
       env[key] = '300000';
     } else if (key === 'WIKIPEDIA_DEFAULT_LANGUAGE') {
       env[key] = 'en';
+    } else if (key === 'HELA_PROFILE') {
+      env[key] = options.profile || 'dev-workspace';
     } else if (/_AVAILABLE$|_ENABLED$/.test(key)) {
       env[key] = 'true';
     } else {

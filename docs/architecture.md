@@ -60,7 +60,7 @@ flowchart TB
     Mitosis & Genome --> Membrane & Nucleus & Ribosome & Enzyme & Cytosol & Phenotype
 ```
 
-* **HeLa Mitosis (Routing & Planning Backbone)**: Bundled Needle 2 agent runtime (plan → execute → observe with recorded AgentState), suggests multi-step execution paths, Needle-backed sequential analysis, and serves 40 curated domain prompts. Offline-first; OpenRouter is an escalation backend only.
+* **HeLa Mitosis (Routing & Planning Backbone)**: Bundled Needle 3 agent runtime (plan → execute → observe with recorded AgentState), suggests multi-step execution paths, Needle-backed sequential analysis, and serves 40 curated domain prompts. Offline-first; OpenRouter is an escalation backend only.
 * **HeLa Genome (State & Memory Backbone)**: Maintains the living SQLite knowledge graph (`memory.db`), restores cross-session context, records task states, and manages project milestones.
 
 ---
@@ -73,7 +73,7 @@ flowchart TB
 * **Role**: Orchestration, dynamic routing, and Needle-backed sequential reasoning.
 * **Entrypoint**: `dist/index.js`
 * **Tools**: `agent_run`, `sequentialthinking`, `analyze_with_sequential_thinking`, `analyze_tools`, `generate_route_suggestions`, `llm_decompose_task`, `llm_suggest_route`, `workflow_orchestrator`, `workflow_status`, `workflow_cancel`, `list_skills`, `search_skills`, `get_skill`, `suggest_skill_chain`, plus prompt/resource, time, and validation tools.
-* **Zero-Key Behavior**: The bundled Needle 2 agent runs fully offline. Without `OPENROUTER_API_KEY`, escalation hands control back to the calling agent (`handoff: true`) with the full state trail — never a fabricated answer. `brainstorming` is the one exception: it needs a generative model and fails honestly without a key.
+* **Zero-Key Behavior**: The bundled Needle 3 agent runs fully offline. Without `OPENROUTER_API_KEY`, escalation hands control back to the calling agent (`handoff: true`) with the full state trail — never a fabricated answer. `brainstorming` is the one exception: it needs a generative model and fails honestly without a key.
 
 #### 2. HeLa Genome (`hela-genome` / `Project-Guardian-mcp-server`)
 * **Role**: Living memory graph, entity-relation-observation state tracking.

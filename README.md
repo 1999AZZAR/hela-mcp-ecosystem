@@ -51,7 +51,7 @@ flowchart TB
 
 | Canonical Identity | Machine ID (`id`) | Technical Source Repo | Scope | Cellular Metaphor & Role |
 |---|---|---|---|---|
-| **HeLa Mitosis** | `hela-mitosis` | [`chaining-mcp`](https://github.com/1999AZZAR/chaining-mcp) | Core | **Orchestrator**: Bundled Needle 2 agent runtime, dynamic routing, 40 bundled prompt templates |
+| **HeLa Mitosis** | `hela-mitosis` | [`chaining-mcp`](https://github.com/1999AZZAR/chaining-mcp) | Core | **Orchestrator**: Bundled Needle 3 agent runtime, dynamic routing, 40 bundled prompt templates |
 | **HeLa Genome** | `hela-genome` | [`Project-Guardian-mcp-server`](https://github.com/1999AZZAR/project-guardian-mcp-server) | Core | **State Backbone**: Entity-relation knowledge graph, milestone tracking, memory persistence |
 | **HeLa Membrane** | `hela-membrane` | [`filesystem-mcp-server`](https://github.com/1999AZZAR/filesystem-mcp-server) | Core | **Workspace**: Sandboxed filesystem operations, recursive search, archive extraction |
 | **HeLa Nucleus** | `hela-nucleus` | [`terminal-mcp-server`](https://github.com/1999AZZAR/terminal-mcp-server) | Core | **Execution**: Command execution, subshell isolation, RTK token-optimized execution |

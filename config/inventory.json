@@ -21,7 +21,7 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "revision": "dbcd818a83e68bf0db8c9b9075311044d274b3a7",
+      "revision": "d569b1724baed5fba6d6cd1b746083af711b5d15",
       "env": [
         "MEMORY_FILE_PATH",
         "AWESOME_COPILOT_ENABLED",
@@ -31,9 +31,10 @@
         "OPENROUTER_API_KEY",
         "CHAINING_LLM_MODEL",
         "CHAINING_LLM_BASE_URL",
-        "GITHUB_TOKEN"
+        "GITHUB_TOKEN",
+        "HELA_PROFILE"
       ],
-      "description": "Orchestrates MCP capabilities via the bundled Needle 2 agent runtime (plan → execute → observe, fully offline), tool discovery, route optimization, 40 prebuilt prompts, skills catalog, and multi-step workflows. No external sequential-thinking server."
+      "description": "Orchestrates MCP capabilities via the bundled Needle 3 agent runtime (plan → execute → observe, fully offline), tool discovery, route optimization, 40 prebuilt prompts, skills catalog, and multi-step workflows. No external sequential-thinking server."
     },
     "hela-genome": {
       "id": "hela-genome",
