@@ -69,14 +69,14 @@ All keys and secrets in this ecosystem are **100% OPTIONAL**. The entire suite i
 
 ### 3. `GOOGLE_API_KEY` & `GOOGLE_CSE_ID`
 
-* **Target Component**: **HeLa Enzyme** (`hela-enzyme` / `research-assistant-mcp-server`)
-* **Purpose**: Live web search queries via the Google Custom Search JSON API.
+* **Target Component**: **HeLa Enzyme** (`hela-enzyme` / `researcher-mcp`)
+* **Purpose**: Optional Tier 1 web search queries via the Google Custom Search JSON API.
 * **Where to get them**:
   1. **API Key**: Create an API key at [Google Cloud Console](https://console.cloud.google.com/apis/credentials). Enable the *Custom Search API* (100 free searches/day).
   2. **CSE ID**: Create a Search Engine ID at [Programmable Search Engine](https://programmablesearchengine.google.com/controlpanel/all) (set Search the entire web = ON).
 * **If you DO NOT have them**:
-  * **Consequence**: Live Google search queries will return a configuration notice.
-  * **Fallback Behavior**: Wikipedia search, article summaries, deep-content extraction, multi-language pages, keyword extraction, and sentiment analysis work 100% without keys.
+  * **Consequence**: None — all 29 tools work 100% free out of the box with zero broken endpoints.
+  * **Fallback Behavior**: Live web search cascades to keyless parallel search (DuckDuckGo, Bing, etc.) and Wikipedia fallback. `academic_search` queries arXiv's public OpenSearch API, `news_monitor` queries Google News RSS feeds, `search_trends` queries Hacker News Algolia, and content extraction falls back to Jina Reader (`r.jina.ai`).
 
 ---
 

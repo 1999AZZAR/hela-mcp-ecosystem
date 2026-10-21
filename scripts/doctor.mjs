@@ -177,7 +177,7 @@ async function runDoctor(options = {}) {
   report.secrets = {
     OPENROUTER_API_KEY: process.env.OPENROUTER_API_KEY ? 'Configured (Live LLM active)' : 'Not set (Offline Heuristic Mode <30ms active)',
     GITHUB_TOKEN: process.env.GITHUB_TOKEN ? 'Configured (Live Prompt sync active)' : 'Not set (Bundled Catalog active)',
-    GOOGLE_API_KEY: process.env.GOOGLE_API_KEY ? 'Configured (Live CSE active)' : 'Not set (Wikipedia Fallback active)',
+    GOOGLE_API_KEY: process.env.GOOGLE_API_KEY ? 'Configured (Live CSE active)' : 'Not set (Zero-Key Dual-Tier Fallback active)',
     GOOGLE_CSE_ID: process.env.GOOGLE_CSE_ID ? 'Configured' : 'Not set',
   };
 

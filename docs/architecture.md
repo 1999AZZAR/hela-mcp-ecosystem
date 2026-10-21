@@ -100,8 +100,8 @@ flowchart TB
 * **Entrypoint**: `build/index.js`
 * **Tools**: `session_spawn`, `session_write`, `session_read`, `session_hook`, `session_close`, `session_list`, `session_prune`.
 
-#### 6. HeLa Enzyme (`hela-enzyme` / `research-assistant-mcp-server`)
-* **Role**: Unified research platform combining Google Custom Search and Wikipedia caching.
+#### 6. HeLa Enzyme (`hela-enzyme` / `researcher-mcp`)
+* **Role**: Unified research platform: zero-key dual-tier web search + arXiv + Google News RSS + Wikipedia caching.
 * **Entrypoint**: `dist/index.js`
 * **Tools**: `google_search`, `wikipedia_search`, `wikipedia_get_summary`, `content_summarizer`, `fact_checker`, `keyword_extraction`.
 

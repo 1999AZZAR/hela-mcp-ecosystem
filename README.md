@@ -56,7 +56,7 @@ flowchart TB
 | **HeLa Membrane** | `hela-membrane` | [`filesystem-mcp-server`](https://github.com/1999AZZAR/filesystem-mcp-server) | Core | **Workspace**: Sandboxed filesystem operations, recursive search, archive extraction |
 | **HeLa Nucleus** | `hela-nucleus` | [`terminal-mcp-server`](https://github.com/1999AZZAR/terminal-mcp-server) | Core | **Execution**: Command execution, subshell isolation, RTK token-optimized execution |
 | **HeLa Ribosome** | `hela-ribosome` | [`menager-mcp-server`](https://github.com/1999AZZAR/menager-mcp-server) | Core | **Process Harness**: Interactive PTY multiplexing, Regex hooks, lifecycle management |
-| **HeLa Enzyme** | `hela-enzyme` | [`research-assistant-mcp-server`](https://github.com/1999AZZAR/research-assistant-mcp-server) | Core | **Knowledge**: Unified Google Custom Search + cached Wikipedia synthesis and fact-checking |
+| **HeLa Enzyme** | `hela-enzyme` | [`researcher-mcp`](https://github.com/1999AZZAR/researcher-mcp) | Core | **Knowledge**: Zero-key dual-tier web search + arXiv + Google News RSS + Wikipedia synthesis and fact-checking |
 | **HeLa Cytosol** | `hela-cytosol` | [`Browser-Agent`](https://github.com/1999AZZAR/Browser-Agent) | Core | **Interaction**: Playwright browser automation, accessibility trees, DOM perception |
 | **HeLa Phenotype** | `hela-phenotype` | [`the-designer`](https://github.com/1999AZZAR/the-designer) | Specialized | **Design**: UI/UX design tokens, OKLCH color palettes, Tailwind and component synthesis |
 | **HeLa Receptor** | `hela-receptor` | [`scrcpy-mcp`](https://github.com/1999AZZAR/scrcpy-mcp) | Specialized | **Mobile**: Android device automation, ADB bridge, XML view hierarchy inspection |
