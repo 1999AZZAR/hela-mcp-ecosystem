@@ -43,8 +43,8 @@ const INVENTORY = {
   },
   "hela-cytosol": {
     "alias": "HeLa Cytosol", "source": "browser-mcp", "scope": "core",
-    "role": "Browser Interaction", "entry": "src/server.js", "toolsCount": 93,
-    "tools": ["browser_navigate", "browser_click", "browser_fill_form", "browser_screenshot", "browser_get_page_markdown", "browser_get_accessibility_tree", "browser_intercept", "browser_extract_schema"],
+    "role": "Browser Interaction", "entry": "src/server.js", "toolsCount": 73,
+    "tools": ["browser_navigate", "browser_click", "browser_fill_form", "browser_screenshot", "browser_get_content", "browser_intercept", "browser_extract_schema"],
     "desc": "Playwright automation with AX-tree perception and intercepts."
   },
   "hela-phenotype": {
