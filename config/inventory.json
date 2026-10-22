@@ -21,7 +21,7 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "revision": "018a0303475aafe1d6fd38561971c4589fd26a93",
+      "revision": "b996da3da29e944ec31a3542189a5f334943c8d8",
       "env": [
         "MEMORY_FILE_PATH",
         "AWESOME_COPILOT_ENABLED",
