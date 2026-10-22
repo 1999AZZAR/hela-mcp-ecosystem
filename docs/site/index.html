@@ -55,42 +55,46 @@
         <div class="doc-brand-meta">v1.0.0 · 10 SERVERS · 295 TOOLS</div>
       </div>
       <nav aria-label="Documentation">
-      <div class="doc-nav-section">GETTING STARTED</div>
+      <div class="doc-nav-section" data-i18n="nav.section.started">GETTING STARTED</div>
       <ol class="doc-nav">
-        <li><a href="index.html" aria-current="page"><span class="doc-nav-num">01</span> Overview</a></li>
-        <li><a href="index.html#installation"><span class="doc-nav-num">02</span> Installation</a></li>
-        <li><a href="index.html#verify"><span class="doc-nav-num">03</span> Verify</a></li>
+        <li><a href="index.html" aria-current="page"><span class="doc-nav-num">01</span> <span data-i18n="nav.overview">Overview</span></a></li>
+        <li><a href="index.html#installation"><span class="doc-nav-num">02</span> <span data-i18n="nav.installation">Installation</span></a></li>
+        <li><a href="index.html#verify"><span class="doc-nav-num">03</span> <span data-i18n="nav.verify">Verify</span></a></li>
       </ol>
-      <div class="doc-nav-section">REFERENCE</div>
+      <div class="doc-nav-section" data-i18n="nav.section.reference">REFERENCE</div>
       <ol class="doc-nav" start="4">
-        <li><a href="architecture.html"><span class="doc-nav-num">04</span> Architecture</a></li>
-        <li><a href="workflows.html"><span class="doc-nav-num">05</span> Workflows</a></li>
-        <li><a href="profiles.html"><span class="doc-nav-num">06</span> Profiles &amp; Config</a></li>
+        <li><a href="architecture.html"><span class="doc-nav-num">04</span> <span data-i18n="nav.architecture">Architecture</span></a></li>
+        <li><a href="workflows.html"><span class="doc-nav-num">05</span> <span data-i18n="nav.workflows">Workflows</span></a></li>
+        <li><a href="profiles.html"><span class="doc-nav-num">06</span> <span data-i18n="nav.profiles">Profiles &amp; Config</span></a></li>
       </ol>
-      <div class="doc-nav-section">OPERATE</div>
+      <div class="doc-nav-section" data-i18n="nav.section.operate">OPERATE</div>
       <ol class="doc-nav" start="7">
-        <li><a href="showcase.html"><span class="doc-nav-num">07</span> Showcase</a></li>
-        <li><a href="troubleshooting.html"><span class="doc-nav-num">08</span> Diagnostics</a></li>
+        <li><a href="showcase.html"><span class="doc-nav-num">07</span> <span data-i18n="nav.showcase">Showcase</span></a></li>
+        <li><a href="troubleshooting.html"><span class="doc-nav-num">08</span> <span data-i18n="nav.diagnostics">Diagnostics</span></a></li>
       </ol>
-      <div class="doc-nav-section">LEGAL</div>
+      <div class="doc-nav-section" data-i18n="nav.section.legal">LEGAL</div>
       <ol class="doc-nav" start="9">
-        <li><a href="privacy.html"><span class="doc-nav-num">09</span> Privacy</a></li>
-        <li><a href="terms.html"><span class="doc-nav-num">10</span> Terms</a></li>
+        <li><a href="privacy.html"><span class="doc-nav-num">09</span> <span data-i18n="nav.privacy">Privacy</span></a></li>
+        <li><a href="terms.html"><span class="doc-nav-num">10</span> <span data-i18n="nav.terms">Terms</span></a></li>
       </ol>
     </aside>
     <div class="doc-main">
       <div class="doc-topbar">
         <span class="doc-topbar-title">SPEC_01 // OVERVIEW</span>
-        <div class="topbar-actions">
-          <button class="btn open-cmd-palette" type="button">Search ⌘K</button>
+                <div class="topbar-actions">
+          <div class="lang-switcher" aria-label="Language switcher">
+            <button class="lang-btn active" data-lang="en" type="button" title="English">EN</button>
+            <button class="lang-btn" data-lang="id" type="button" title="Bahasa Indonesia">ID</button>
+          </div>
+          <button class="btn open-cmd-palette" type="button"><span data-i18n="topbar.search">Search</span> ⌘K</button>
           <a class="btn" href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
       <main id="main-content" class="doc-content">
         <header class="specimen-plate">
           <div class="specimen-ref"><span>SPEC_01 // 1999AZZAR-MCP</span><span>DOSSIER: OVERVIEW_AND_INSTALL</span></div>
-          <h1 class="doc-title">HeLa Cellular MCP Workbench</h1>
-          <p class="doc-lead">A reproducible, 10-server MCP distribution suite for AI agents. Dual-backbone orchestration (reasoning + memory), deterministic stdio transport, and per-profile client configuration across 8 agent harnesses.</p>
+          <h1 class="doc-title" data-i18n="index.title">HeLa Cellular MCP Workbench</h1>
+          <p class="doc-lead" data-i18n="index.lead">A reproducible, 10-server MCP distribution suite for AI agents. Dual-backbone orchestration (reasoning + memory), deterministic stdio transport, and per-profile client configuration across 8 agent harnesses.</p>
         </header>
 
         <figure class="figure-plate">
@@ -98,8 +102,8 @@
           <figcaption class="figure-caption"><strong>FIG.</strong><span>PLATE 01 · blotcat-hero.jpg · Workbench overview</span></figcaption>
         </figure>
 
-        <h2 id="what">What this is</h2>
-        <p>Ten specialized servers, each a biological cell with one job. Two backbones coordinate them: <strong>HeLa Mitosis</strong> (task reasoning and routing) and <strong>HeLa Genome</strong> (persistent memory graph). The remaining eight cells provide filesystem, execution, processes, research, browser, design, mobile, and 3D capabilities.</p>
+        <h2 id="what" data-i18n="index.what_title">What this is</h2>
+        <p data-i18n="index.what_desc">Ten specialized servers, each a biological cell with one job. Two backbones coordinate them: <strong>HeLa Mitosis</strong> (task reasoning and routing) and <strong>HeLa Genome</strong> (persistent memory graph). The remaining eight cells provide filesystem, execution, processes, research, browser, design, mobile, and 3D capabilities.</p>
         <div class="doc-table-wrap">
           <table class="doc-table">
             <caption>TABLE 1.1 — THE TEN CELLS</caption>
@@ -120,7 +124,7 @@
         </div>
         <p>Full tool catalogs, entries, and repositories: <a href="architecture.html">04 Architecture</a>. Named in recognition of <strong>Henrietta Lacks</strong> (1920–1951): modular specialization, deterministic replicability, longevity.</p>
 
-        <h2 id="installation">Installation</h2>
+        <h2 id="installation" data-i18n="index.install_title">Installation</h2>
         <p>Requirements: Node.js 20+ LTS, Git 2.25+, SQLite3. Optional per cell: Playwright Chromium (cytosol), ADB (receptor), Blender 4+ (plastid).</p>
         <div class="code-dossier">
           <div class="code-dossier-header"><span>SHELL // CLONE_AND_INSTALL</span><button class="copy-btn" type="button">Copy</button></div>
@@ -130,8 +134,8 @@ cd hela-mcp-ecosystem
         </div>
         <p><code>setup.sh</code> clones, builds, and writes the client configuration for the chosen profile. Useful flags: <code>--system gui|headless</code>, <code>--reconfigure</code> (config only), <code>--dev</code> (track branches instead of pins), <code>doctor</code> (diagnostics).</p>
 
-        <h2 id="verify">Verify</h2>
-        <p>Three gates, all expected green before use:</p>
+        <h2 id="verify" data-i18n="index.verify_title">Verify</h2>
+        <p data-i18n="index.verify_desc">Three gates, all expected green before use:</p>
         <div class="code-dossier">
           <div class="code-dossier-header"><span>SHELL // VERIFICATION_GATES</span><button class="copy-btn" type="button">Copy</button></div>
           <pre><code>./setup.sh doctor     # 10/10 [READY] Stdio JSON-RPC OK

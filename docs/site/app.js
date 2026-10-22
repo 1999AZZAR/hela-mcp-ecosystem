@@ -124,7 +124,140 @@ const PAGES = [
   { title: "10 Terms", link: "terms.html" }
 ];
 
+
+const I18N = {
+  en: {
+    "topbar.search": "Search",
+    "nav.overview": "Overview",
+    "nav.installation": "Installation",
+    "nav.verify": "Verify",
+    "nav.architecture": "Architecture",
+    "nav.workflows": "Workflows",
+    "nav.profiles": "Profiles & Config",
+    "nav.showcase": "Showcase",
+    "nav.diagnostics": "Diagnostics",
+    "nav.privacy": "Privacy",
+    "nav.terms": "Terms",
+    "nav.section.started": "GETTING STARTED",
+    "nav.section.reference": "REFERENCE",
+    "nav.section.operate": "OPERATE",
+    "nav.section.legal": "LEGAL",
+    "index.title": "HeLa Cellular MCP Workbench",
+    "index.lead": "A reproducible, 10-server MCP distribution suite for AI agents. Dual-backbone orchestration (reasoning + memory), deterministic stdio transport, and per-profile client configuration across 8 agent harnesses.",
+    "index.what_title": "What this is",
+    "index.what_desc": "Ten specialized servers, each a biological cell with one job. Two backbones coordinate them: <strong>HeLa Mitosis</strong> (task reasoning and routing) and <strong>HeLa Genome</strong> (persistent memory graph). The remaining eight cells provide filesystem, execution, processes, research, browser, design, mobile, and 3D capabilities.",
+    "index.install_title": "Installation",
+    "index.verify_title": "Verify",
+    "index.verify_desc": "Three gates, all expected green before use:",
+    "profiles.title": "Profiles & Config",
+    "profiles.lead": "Eight deployment profiles. Pick the stack that matches the machine, then generate the exact client file below — 80 profile × client combinations, schema-validated.",
+    "profiles.matrix_title": "Profile matrix",
+    "profiles.configurator_title": "Configuration workbench",
+    "profiles.label_profile": "Target profile",
+    "profiles.label_client": "Client harness",
+    "arch.title": "Architecture",
+    "arch.lead": "Two backbones coordinate ten cells over standard MCP stdio (JSON-RPC 2.0). Mitosis routes and plans; Genome remembers. Every other cell is single-purpose.",
+    "arch.backbones_title": "The dual backbone",
+    "arch.servers_title": "Server reference",
+    "arch.transport_title": "Transport",
+    "arch.keys_title": "API keys",
+    "workflows.title": "Workflows",
+    "workflows.lead": "Six cross-cell pipelines demonstrated end-to-end. Every pipeline uses Mitosis to reason, Genome to record, and specialized cells to act.",
+    "diag.title": "Diagnostics",
+    "diag.lead": "How to diagnose, inspect, and repair any cell in the ecosystem. From the single-command doctor report to known failure modes and verified fixes.",
+    "showcase.title": "Showcase",
+    "showcase.lead": "Recorded verification gates and a production deployment synthesized end-to-end by the ecosystem. Proof that the cells operate together as advertised.",
+    "privacy.title": "Privacy Policy",
+    "privacy.lead": "Effective 2026-09-21. Short version: this site collects nothing. The software runs on your machine. We do not want your data.",
+    "terms.title": "Terms of Use",
+    "terms.lead": "Effective 2026-09-21. Short version: this is MIT-licensed open source software provided as-is. You run it; you are responsible for what it does."
+  },
+  id: {
+    "topbar.search": "Cari",
+    "nav.overview": "Ikhtisar",
+    "nav.installation": "Instalasi",
+    "nav.verify": "Verifikasi",
+    "nav.architecture": "Arsitektur",
+    "nav.workflows": "Alur Kerja",
+    "nav.profiles": "Profil & Konfigurasi",
+    "nav.showcase": "Pameran",
+    "nav.diagnostics": "Diagnostik",
+    "nav.privacy": "Privasi",
+    "nav.terms": "Ketentuan",
+    "nav.section.started": "MEMULAI",
+    "nav.section.reference": "REFERENSI",
+    "nav.section.operate": "PENGOPERASIAN",
+    "nav.section.legal": "LEGAL & HUKUM",
+    "index.title": "Meja Kerja Seluler HeLa MCP",
+    "index.lead": "Rangkaian distribusi 10 server MCP yang dapat direproduksi untuk agen AI. Orkestrasi dual-backbone (penalaran + memori), transport stdio deterministik, dan konfigurasi klien per-profil di 8 harness agen.",
+    "index.what_title": "Tentang Ekosistem Ini",
+    "index.what_desc": "Sepuluh server terspesialisasi, masing-masing bertindak layaknya sel biologis dengan satu tugas utama. Dua backbone mengoordinasikannya: <strong>HeLa Mitosis</strong> (penalaran & perutean tugas) dan <strong>HeLa Genome</strong> (grafik memori persisten). Delapan sel lainnya menyediakan kapabilitas berkas, eksekusi perintah, proses, riset, browser, desain antarmuka, mobile, dan 3D.",
+    "index.install_title": "Instalasi",
+    "index.verify_title": "Verifikasi",
+    "index.verify_desc": "Tiga gerbang verifikasi, semuanya diharapkan berstatus hijau sebelum digunakan:",
+    "profiles.title": "Profil & Konfigurasi",
+    "profiles.lead": "Delapan profil instalasi. Pilih tumpukan server yang sesuai dengan mesin Anda, lalu buat berkas konfigurasi klien yang presisi di bawah ini — 80 kombinasi profil × klien, tervalidasi skemanya.",
+    "profiles.matrix_title": "Matriks Profil",
+    "profiles.configurator_title": "Meja Kerja Konfigurasi",
+    "profiles.label_profile": "Profil target",
+    "profiles.label_client": "Klien agen",
+    "arch.title": "Arsitektur",
+    "arch.lead": "Dua backbone mengoordinasikan sepuluh sel melalui standar MCP stdio (JSON-RPC 2.0). Mitosis merutekan dan merencanakan; Genome mengingat. Setiap sel lainnya berfokus pada fungsi tunggal.",
+    "arch.backbones_title": "Dual Backbone",
+    "arch.servers_title": "Referensi Server",
+    "arch.transport_title": "Transport Komunikasi",
+    "arch.keys_title": "Kunci API & Akses",
+    "workflows.title": "Alur Kerja",
+    "workflows.lead": "Enam pipeline lintas-sel yang didemonstrasikan menyeluruh. Setiap alur kerja memanfaatkan Mitosis untuk menalar, Genome untuk mencatat, dan sel-sel terspesialisasi untuk bertindak.",
+    "diag.title": "Diagnostik",
+    "diag.lead": "Cara memeriksa, menganalisis, dan memperbaiki sel apa pun dalam ekosistem. Mulai dari laporan satu perintah (doctor) hingga penanganan mode kegagalan yang umum.",
+    "showcase.title": "Pameran & Bukti",
+    "showcase.lead": "Rekaman gerbang verifikasi dan deployment produksi yang dibangun langsung oleh ekosistem. Bukti nyata bahwa sel-sel bekerja selaras sebagaimana dirancang.",
+    "privacy.title": "Kebijakan Privasi",
+    "privacy.lead": "Berlaku sejak 2026-09-21. Ringkasnya: situs ini tidak mengumpulkan data apa pun. Perangkat lunak berjalan di komputer Anda sendiri. Kami tidak menginginkan data Anda.",
+    "terms.title": "Ketentuan Penggunaan",
+    "terms.lead": "Berlaku sejak 2026-09-21. Ringkasnya: ini adalah perangkat lunak open source berlisensi MIT yang disediakan apa adanya. Anda menjalankannya; Anda bertanggung jawab penuh atas apa yang dilakukannya."
+  }
+};
+
+function getActiveLanguage() {
+  return localStorage.getItem("hela_lang") || "en";
+}
+
+function setLanguage(lang) {
+  if (!I18N[lang]) lang = "en";
+  localStorage.setItem("hela_lang", lang);
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    if (I18N[lang] && I18N[lang][key]) {
+      el.innerHTML = I18N[lang][key];
+    }
+  });
+
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    if (btn.getAttribute("data-lang") === lang) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize language from storage or default
+  setLanguage(getActiveLanguage());
+
+  // Language switcher buttons
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const lang = btn.getAttribute("data-lang");
+      setLanguage(lang);
+    });
+  });
+
   // Configurator (profiles page only)
   const profileSelect = document.getElementById("profileSelect");
   const clientSelect = document.getElementById("clientSelect");
