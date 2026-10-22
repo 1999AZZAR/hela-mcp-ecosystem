@@ -113,7 +113,18 @@ function renderConfig(profileKey, clientKey) {
   return "// Select a profile and client.";
 }
 
-const PAGES = [
+const isIdPage = (typeof document !== "undefined" && (document.documentElement.lang === "id" || window.location.pathname.includes("/id/")));
+
+const PAGES = isIdPage ? [
+  { title: "01 Ikhtisar", link: "index.html" },
+  { title: "04 Arsitektur", link: "architecture.html" },
+  { title: "05 Alur Kerja", link: "workflows.html" },
+  { title: "06 Profil & Konfigurasi", link: "profiles.html" },
+  { title: "07 Pameran & Demo", link: "showcase.html" },
+  { title: "08 Diagnostik", link: "troubleshooting.html" },
+  { title: "09 Privasi", link: "privacy.html" },
+  { title: "10 Ketentuan", link: "terms.html" }
+] : [
   { title: "01 Overview", link: "index.html" },
   { title: "04 Architecture", link: "architecture.html" },
   { title: "05 Workflows", link: "workflows.html" },
@@ -246,15 +257,34 @@ function setLanguage(lang) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize language from storage or default
-  setLanguage(getActiveLanguage());
+  const isId = document.documentElement.lang === "id" || window.location.pathname.includes("/id/");
+  const currentLang = isId ? "id" : "en";
+  localStorage.setItem("hela_lang", currentLang);
 
-  // Language switcher buttons
   document.querySelectorAll(".lang-btn").forEach((btn) => {
+    const btnLang = btn.getAttribute("data-lang");
+    if (btnLang === currentLang) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+
     btn.addEventListener("click", (e) => {
+      const targetLang = btn.getAttribute("data-lang");
+      if (targetLang) {
+        localStorage.setItem("hela_lang", targetLang);
+      }
+      const href = btn.getAttribute("href");
+      if (href) {
+        return; // Allow native navigation to the target language static page
+      }
       e.preventDefault();
-      const lang = btn.getAttribute("data-lang");
-      setLanguage(lang);
+      const currentFile = window.location.pathname.split("/").pop() || "index.html";
+      if (targetLang === "id" && !window.location.pathname.includes("/id/")) {
+        window.location.href = "id/" + currentFile;
+      } else if (targetLang === "en" && window.location.pathname.includes("/id/")) {
+        window.location.href = "../" + currentFile;
+      }
     });
   });
 
