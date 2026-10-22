@@ -21,7 +21,7 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "revision": "aeaf751",
+      "revision": "176b4cccb12033b5517de39513b0d6c6176e7ddd",
       "env": [
         "MEMORY_FILE_PATH",
         "AWESOME_COPILOT_ENABLED",
@@ -51,7 +51,7 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "revision": "72bca15ebe511575fd14d5b841d7973bfaf26ca1",
+      "revision": "005f3f12698e0fa968c1ec6573d64df2e48f1694",
       "env": [],
       "description": "Preserves persistent project knowledge, state, living SQLite knowledge graph, task tracking, and session continuity."
     },
@@ -70,7 +70,7 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "revision": "6f38f7d763cce79a57ce13383515b74269782f36",
+      "revision": "3fcb6d42aeb273739e315ab8251f9cd00327a4dc",
       "env": [],
       "description": "Controlled interaction with the project workspace: file search, regex patching, watching, and safe archive operations."
     },
@@ -89,7 +89,7 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "revision": "e896c4fec5afc8d576df7d81d687b507a6a588b9",
+      "revision": "856e0ec0fff10695b89ea68be66dcccdcda6c266",
       "env": [],
       "description": "Command execution and direct system interaction with local/remote SSH support, timeouts, and deep RTK integration."
     },
@@ -108,7 +108,7 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "revision": "9df80052ad7dbb8fb8c20aaf4a3c754f29ffca23",
+      "revision": "b3324244cbb2ae43c7508144e1214873d3c89c5c",
       "env": [],
       "description": "Process orchestration server for pseudo-terminal (PTY) session management, multiplexing, and non-blocking regex event hooks."
     },
@@ -152,7 +152,7 @@
       "build": null,
       "needsGui": false,
       "needsDevice": false,
-      "revision": "d08f4cc463266d12e40f6131f552543ebbb98f3b",
+      "revision": "56f42d63f2d7a0aa1daeebe4b812e380ae648ccc",
       "env": [],
       "description": "Playwright-based browser automation environment for navigation, DOM interaction, scraping, and visual screenshot verification."
     },
@@ -171,7 +171,7 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "revision": "0655c05c5df30898c7a6e442dfbb19eddebfe934",
+      "revision": "c8c2951dcbed9b1710a745993f028317f10a3f10",
       "env": [],
       "description": "UI/UX design system selector, OKLCH token generation, Tailwind CSS generator, brand cloning, and component preview."
     },
@@ -190,7 +190,7 @@
       "build": "build",
       "needsGui": true,
       "needsDevice": true,
-      "revision": "116e74f36b9211b2cec5bfe1085363355d0d669f",
+      "revision": "7c9988160a6efaf9f871fa9eecec9c2e5f2225cd",
       "env": [],
       "description": "Android mobile device automation via ADB and scrcpy: element inspection, touch gestures, and app lifecycle control."
     },
@@ -209,7 +209,7 @@
       "build": "build",
       "needsGui": true,
       "needsDevice": false,
-      "revision": "99b919da288cb8673e132ab7e809a71d1e6e9d5e",
+      "revision": "ccc02975af805ace0f12ec7bcee129971a2fe6b1",
       "env": [],
       "description": "Autonomous 3D modeling system for Blender with natural language scene generation and iterative refinement."
     }
