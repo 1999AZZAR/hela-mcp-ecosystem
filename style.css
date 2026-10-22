@@ -977,6 +977,9 @@ ol.steps > li::marker {
   cursor: pointer;
   border-radius: 2px;
   transition: all 0.15s var(--ease-out);
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1.2;
 }
 
 .lang-btn:hover {

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagnostik — Ekosistem HeLa MCP</title>
+  <meta name="description" content="Diagnostik doctor, skenario kegagalan, dan perbaikan untuk Ekosistem HeLa MCP.">
+  <link rel="canonical" href="https://hela.my.id/id/troubleshooting.html">
+  <link rel="alternate" hreflang="en" href="https://hela.my.id/troubleshooting.html">
+  <link rel="alternate" hreflang="id" href="https://hela.my.id/id/troubleshooting.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ekosistem HeLa MCP">
+  <meta property="og:title" content="Diagnostik — Ekosistem HeLa MCP">
+  <meta property="og:description" content="Diagnostik doctor, skenario kegagalan, dan perbaikan untuk Ekosistem HeLa MCP.">
+  <meta property="og:url" content="https://hela.my.id/id/troubleshooting.html">
+  <meta property="og:image" content="https://hela.my.id/assets/blotcat-troubleshooting.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Diagnostik — Ekosistem HeLa MCP">
+  <meta name="twitter:description" content="Diagnostik doctor, skenario kegagalan, dan perbaikan untuk Ekosistem HeLa MCP.">
+  <meta name="twitter:image" content="https://hela.my.id/assets/blotcat-troubleshooting.jpg">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+  <div class="doc-shell">
+    <aside class="doc-sidebar" aria-label="Bagian dokumentasi">
+      <div class="doc-brand">
+        <a href="index.html" class="doc-brand-title">Ekosistem HeLa MCP</a>
+        <div class="doc-brand-meta">v1.0.0 · 10 SERVER · 295 ALAT</div>
+      </div>
+      <nav aria-label="Dokumentasi">
+      <div class="doc-nav-section">MEMULAI</div>
+      <ol class="doc-nav">
+        <li><a href="index.html"><span class="doc-nav-num">01</span> Ikhtisar</a></li>
+        <li><a href="index.html#installation"><span class="doc-nav-num">02</span> Instalasi</a></li>
+        <li><a href="index.html#verify"><span class="doc-nav-num">03</span> Verifikasi</a></li>
+      </ol>
+      <div class="doc-nav-section">REFERENSI</div>
+      <ol class="doc-nav" start="4">
+        <li><a href="architecture.html"><span class="doc-nav-num">04</span> Arsitektur</a></li>
+        <li><a href="workflows.html"><span class="doc-nav-num">05</span> Alur Kerja</a></li>
+        <li><a href="profiles.html"><span class="doc-nav-num">06</span> Profil &amp; Konfigurasi</a></li>
+      </ol>
+      <div class="doc-nav-section">PENGOPERASIAN</div>
+      <ol class="doc-nav" start="7">
+        <li><a href="showcase.html"><span class="doc-nav-num">07</span> Pameran &amp; Demo</a></li>
+        <li><a href="troubleshooting.html" aria-current="page"><span class="doc-nav-num">08</span> Diagnostik</a></li>
+      </ol>
+      <div class="doc-nav-section">LEGAL &amp; HUKUM</div>
+      <ol class="doc-nav" start="9">
+        <li><a href="privacy.html"><span class="doc-nav-num">09</span> Privasi</a></li>
+        <li><a href="terms.html"><span class="doc-nav-num">10</span> Ketentuan</a></li>
+      </ol>
+      </nav>
+    </aside>
+    <div class="doc-main">
+      <div class="doc-topbar">
+        <span class="doc-topbar-title">SPEC_06 // DIAGNOSTIK</span>
+        <div class="topbar-actions">
+          <div class="lang-switcher" aria-label="Pengalih bahasa">
+            <a class="lang-btn" href="../troubleshooting.html" data-lang="en" title="English">EN</a>
+            <a class="lang-btn active" href="troubleshooting.html" data-lang="id" title="Bahasa Indonesia">ID</a>
+          </div>
+          <button class="btn open-cmd-palette" type="button">Cari ⌘K</button>
+          <a class="btn" href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+      <main id="main-content" class="doc-content">
+        <header class="specimen-plate">
+          <div class="specimen-ref"><span>SPEC_06 // 1999AZZAR-MCP</span><span>DOSIR: DOKTOR_DAN_KEGAGALAN</span></div>
+          <h1 class="doc-title">Diagnostik</h1>
+          <p class="doc-lead">Jalankan <code>setup.sh doctor</code> terlebih dahulu — diagnostik akan mengklasifikasikan penyebab kegagalan secara otomatis. Skenario di bawah ini mencakup seluruh permasalahan yang ditandai oleh doctor.</p>
+        </header>
+
+        <figure class="figure-plate">
+          <div class="figure-mat"><img src="../assets/blotcat-troubleshooting.jpg" alt="Meja diagnostik Blotcat" loading="lazy"></div>
+          <figcaption class="figure-caption"><strong>GMBAR.</strong><span>PELAT 05 · blotcat-troubleshooting.jpg · Analisis kegagalan</span></figcaption>
+        </figure>
+
+        <h2 id="doctor">Anatomi laporan doctor</h2>
+        <div class="code-dossier">
+          <div class="code-dossier-header"><span>SHELL // BAGIAN_DOKTOR</span><button class="copy-btn" type="button">Salin</button></div>
+          <pre><code>./setup.sh doctor
+# 1. Runtime: Node 20+, Git, SQLite3 (WAL)
+# 2. Kesehatan komponen: entrypoint hadir + stdio handshake + jumlah tool
+# 3. Driver eksternal: Playwright / ADB / Blender (opsional, sesuai cakupan)
+# 4. Kunci API: OpenRouter / GitHub / Google (opsional, fallback adaptif)</code></pre>
+        </div>
+
+        <h2 id="scenarios">Skenario kegagalan &amp; perbaikan</h2>
+
+        <section class="diag-card" aria-labelledby="d-entry">
+          <div class="diag-card-header" id="d-entry">Entrypoint tidak ditemukan</div>
+          <div class="diag-card-body">
+            <p><strong>Gejala:</strong> doctor menandai sel <code>present: no</code>. <strong>Penyebab:</strong> tahap kompilasi/build terlewat. <strong>Solusi:</strong> jalankan <code>cd &lt;dir&gt; &amp;&amp; npm install &amp;&amp; npm run build</code>, lalu jalankan ulang doctor. Cytosol tidak memerlukan build (<code>src/server.js</code> berjalan langsung).</p>
+          </div>
+        </section>
+
+        <section class="diag-card" aria-labelledby="d-handshake">
+          <div class="diag-card-header" id="d-handshake">Kegagalan handshake JSON-RPC</div>
+          <div class="diag-card-body">
+            <p><strong>Gejala:</strong> entrypoint ada tetapi protokol JSON-RPC gagal. <strong>Penyebab:</strong> versi mayor Node keliru (jalankan <code>node --version</code>, membutuhkan 20+), atau kegagalan native binding (<code>node-pty</code> pada ribosome memerlukan build tools: <code>build-essential</code>/<code>python3</code>). Instal ulang <code>node_modules</code> sel terkait dan lakukan build ulang.</p>
+          </div>
+        </section>
+
+        <section class="diag-card" aria-labelledby="d-quota">
+          <div class="diag-card-header" id="d-quota">Kuota Google / Galat OpenRouter</div>
+          <div class="diag-card-body">
+            <p><strong>Gejala:</strong> pemanggilan Google API oleh enzyme gagal; perkakas LLM mitosis melaporkan galat HTTP. <strong>Sesuai Desain:</strong> enzyme beralih secara anggun ke Wikipedia dengan status <code>degraded (quota)</code>; mitosis beralih ke heuristik offline. <strong>Solusi:</strong> periksa kuota/kunci API, atau biarkan sistem beroperasi dalam mode terdegradasi — sistem dirancang untuk tidak pernah crash total karena kendala API keys.</p>
+          </div>
+        </section>
+
+        <section class="diag-card" aria-labelledby="d-matrix">
+          <div class="diag-card-header" id="d-matrix">Kegagalan matriks setelah mengedit inventaris</div>
+          <div class="diag-card-body">
+            <p><strong>Gejala:</strong> pengujian <code>test:matrix</code> gagal setelah pengeditan. <strong>Penyebab:</strong> hampir selalu akibat ketiadaan baris baru di akhir berkas (trailing newline) atau JSON yang tidak valid di <code>config/inventory.json</code> (pemeriksaan pre-commit <code>end-of-file-fixer</code> mewajibkan hal ini). Validasi struktur JSON, pastikan baris baru di akhir, lalu jalankan kembali.</p>
+          </div>
+        </section>
+
+        <section class="diag-card" aria-labelledby="d-client">
+          <div class="diag-card-header" id="d-client">Klien tidak melihat perkakas</div>
+          <div class="diag-card-body">
+            <p><strong>Gejala:</strong> harness agen berjalan tetapi melaporkan nol (0) perkakas. <strong>Daftar Periksa:</strong> gunakan path absolut dalam konfigurasi klien (hindari simbol pintasan <code>~</code>), pastikan biner <code>node</code> berada di PATH environment harness, pastikan nilai <code>enabled: true</code> untuk sel tersebut, lalu muat ulang (restart) harness agen (konfigurasi dimuat hanya saat inisialisasi awal).</p>
+          </div>
+        </section>
+
+        <div class="admonition warning">
+          <div class="admonition-title">MASIH MENGALAMI KENDALA?</div>
+          <div>Buka tiket kendala pada repositori <a href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" rel="noopener noreferrer">1999AZZAR/hela-mcp-ecosystem</a> dengan menyertakan keluaran lengkap dari perintah <code>setup.sh doctor</code> serta gerbang verifikasi yang gagal.</div>
+        </div>
+
+        <footer class="doc-footer"><span>LISENSI MIT · AZZAR</span><span>CATATAN_ARSIP_TERSEGEL // HELA_MCP_ECOSYSTEM</span></footer>
+      </main>
+      <nav class="doc-toc" aria-label="Pada halaman ini"><div class="doc-toc-title">PADA HALAMAN INI</div><ol id="tocList"></ol></nav>
+    </div>
+  </div>
+
+  <div class="cmd-backdrop" id="cmdPalette" role="dialog" aria-label="Cari dokumentasi">
+    <div class="cmd-modal">
+      <div class="cmd-input-row">
+        <span aria-hidden="true">§</span>
+        <input type="text" class="cmd-input" id="cmdInput" aria-label="Cari perkakas, halaman, atau profil" placeholder="Cari 295 perkakas, halaman, profil…">
+        <span class="cmd-item-tag">ESC</span>
+      </div>
+      <div class="cmd-results" id="cmdResults"></div>
+    </div>
+  </div>
+  <script src="../app.js"></script>
+</body>
+</html>
