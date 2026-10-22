@@ -312,7 +312,7 @@ async function runSuite() {
     check('hela-enzyme', 'google_search', (t) => /canonical/i.test(t.description || ''), 'description must mark google_search canonical');
     check('hela-enzyme', 'extract_content', (t) => /canonical/i.test(t.description || ''), 'description must mark extract_content canonical');
     check('hela-cytosol', 'browser_search', (t) => /restricted/i.test(t.description || ''), 'description must mark browser_search restricted');
-    check('hela-cytosol', 'browser_get_page_markdown', (t) => /restricted/i.test(t.description || ''), 'description must mark browser_get_page_markdown restricted');
+    check('hela-cytosol', 'browser_get_content', (t) => /restricted/i.test(t.description || ''), 'description must mark browser_get_content restricted');
     check('hela-genome', 'execute_sql', (t) => /canonical/i.test(t.description || ''), 'description must mark execute_sql canonical');
     check('hela-genome', 'query_data', (t) => /canonical/i.test(t.description || ''), 'description must mark query_data canonical');
     check('hela-ribosome', 'opencode_db', (t) => /restricted/i.test(t.description || ''), 'description must mark opencode_db restricted');

@@ -108,7 +108,7 @@ flowchart TB
 #### 7. HeLa Cytosol (`hela-cytosol` / `Browser-Agent`)
 * **Role**: Playwright-based browser automation and DOM accessibility perception.
 * **Entrypoint**: `src/server.js`
-* **Tools**: `browser_navigate`, `browser_screenshot`, `browser_click`, `browser_type`, `browser_get_accessibility_tree`, `browser_get_page_markdown`.
+* **Tools**: `browser_navigate`, `browser_screenshot`, `browser_click`, `browser_type`, `browser_get_content`.
 
 ---
 
@@ -138,7 +138,7 @@ Several organelles expose overlapping capabilities. Descriptions and the Mitosis
 | Intent | Canonical | Restricted alternative | Restricted use |
 |--------|-----------|------------------------|----------------|
 | Web search | `hela-enzyme:google_search` | `hela-cytosol:browser_search` | Visual browser workflows only |
-| Content extraction | `hela-enzyme:extract_content` | `hela-cytosol:browser_get_page_markdown` | Pages requiring client-side JavaScript |
+| Content extraction | `hela-enzyme:extract_content` | `hela-cytosol:browser_get_content` | Pages requiring client-side JavaScript |
 | Local file read | `hela-membrane:read_file` | `hela-nucleus:terminal_cat` | Remote SSH targets only (`host` required) |
 | Memory-graph inspection | `hela-genome:execute_sql` / `query_data` | `hela-ribosome:opencode_db` | OpenCode session database only |
 

@@ -56,7 +56,7 @@ The HeLa MCP Ecosystem operates on a multi-layer isolation model designed to saf
 ### 2.4 Browser Automation & SSRF Protection (`hela-cytosol` / `browser-agent`)
 - **Local Network Filtering**: Internal infrastructure endpoints (e.g. `169.254.169.254`, cloud metadata services) are restricted.
 - **Headless Isolation**: Browser sessions run with isolated user data directories (`--incognito` / ephemeral contexts).
-- **DOM-First Analysis**: Prefer structural accessibility trees (`browser_get_accessibility_tree`) over full-screen bitmap captures to minimize token consumption and visual attack surfaces.
+- **DOM-First Analysis**: Prefer structural accessibility trees (`browser_get_content (axtree)`) over full-screen bitmap captures to minimize token consumption and visual attack surfaces.
 
 ---
 

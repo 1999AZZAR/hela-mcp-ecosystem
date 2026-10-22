@@ -95,7 +95,7 @@
         <p>Profil yang cocok: <code>research</code>, <code>dev-workspace</code>. Literatur ilmiah → dokumentasi live → ringkasan trade-off → penyimpanan pengetahuan.</p>
         <ol class="steps">
           <li><div><strong>Survei data.</strong> <span class="step-tool">hela-enzyme:research_brief</span> — fan-out satu panggilan ke Google, arXiv, dan Wikipedia secara paralel (lebih cepat dari chaining manual).</div></li>
-          <li><div><strong>Ekstraksi web.</strong> <span class="step-tool">hela-cytosol:browser_navigate → browser_get_page_markdown</span> — ekstraksi teks terstruktur dari URL target.</div></li>
+          <li><div><strong>Ekstraksi web.</strong> <span class="step-tool">hela-cytosol:browser_navigate → browser_get_content</span> — ekstraksi teks terstruktur dari URL target.</div></li>
           <li><div><strong>Sintesis.</strong> <span class="step-tool">hela-mitosis:llm_summarize</span> — analisis komparatif temuan.</div></li>
           <li><div><strong>Simpan.</strong> <span class="step-tool">hela-genome:create_entity + add_observation</span> — entitas dan temuan masuk ke <code>memory.db</code>.</div></li>
           <li><div><strong>Publikasikan.</strong> <span class="step-tool">hela-membrane:write_file</span> — ringkasan markdown disimpan di <code>docs/</code>.</div></li>
