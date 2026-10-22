@@ -171,7 +171,7 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "revision": "c8c2951dcbed9b1710a745993f028317f10a3f10",
+      "revision": "709c378821b04d9ce9b25c631d7b481404bc2b89",
       "env": [],
       "description": "UI/UX design system selector, OKLCH token generation, Tailwind CSS generator, brand cloning, and component preview."
     },
