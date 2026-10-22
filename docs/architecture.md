@@ -103,7 +103,7 @@ flowchart TB
 #### 6. HeLa Enzyme (`hela-enzyme` / `researcher-mcp`)
 * **Role**: Unified research platform: zero-key dual-tier web search + arXiv + Google News RSS + Wikipedia caching.
 * **Entrypoint**: `dist/index.js`
-* **Tools**: `google_search`, `wikipedia_search`, `wikipedia_get_summary`, `content_summarizer`, `fact_checker`, `keyword_extraction`.
+* **Tools**: `google_search`, `wikipedia_search`, `wikipedia_get`, `content_summarizer`, `fact_checker`, `keyword_extraction`.
 
 #### 7. HeLa Cytosol (`hela-cytosol` / `Browser-Agent`)
 * **Role**: Playwright-based browser automation and DOM accessibility perception.
