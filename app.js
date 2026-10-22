@@ -38,7 +38,7 @@ const INVENTORY = {
   "hela-enzyme": {
     "alias": "HeLa Enzyme", "source": "researcher-mcp", "scope": "core",
     "role": "Knowledge Synthesis", "entry": "dist/index.js", "toolsCount": 29,
-    "tools": ["google_search", "wikipedia_search", "wikipedia_get_summary", "fact_checker", "academic_search", "content_summarizer", "extract_content", "research_brief", "keyword_extraction"],
+    "tools": ["google_search", "wikipedia_search", "wikipedia_get", "fact_checker", "academic_search", "content_summarizer", "extract_content", "research_brief", "keyword_extraction"],
     "desc": "Google + Wikipedia research with caching, fact-checking, and one-call briefs."
   },
   "hela-cytosol": {
