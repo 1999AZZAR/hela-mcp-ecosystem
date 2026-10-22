@@ -296,6 +296,57 @@ async function runSuite() {
     failed++;
   }
 
+  // Test 2.4: Canonical Responsibility Boundaries (Phase 2)
+  try {
+    const failures = [];
+    const check = (serverKey, toolName, predicate, expectation) => {
+      const tool = activeClients.get(serverKey)?.tools.find((t) => t.name === toolName);
+      if (!tool) return;
+      if (!predicate(tool)) failures.push(`${serverKey}:${toolName} — ${expectation}`);
+    };
+
+    check('hela-nucleus', 'terminal_cat',
+      (t) => Array.isArray(t.inputSchema?.required) && t.inputSchema.required.includes('host') && /remote SSH/i.test(t.description || ''),
+      'host must be required and description must scope it to remote SSH');
+    check('hela-membrane', 'read_file', (t) => /canonical/i.test(t.description || ''), 'description must mark read_file canonical');
+    check('hela-enzyme', 'google_search', (t) => /canonical/i.test(t.description || ''), 'description must mark google_search canonical');
+    check('hela-enzyme', 'extract_content', (t) => /canonical/i.test(t.description || ''), 'description must mark extract_content canonical');
+    check('hela-cytosol', 'browser_search', (t) => /restricted/i.test(t.description || ''), 'description must mark browser_search restricted');
+    check('hela-cytosol', 'browser_get_page_markdown', (t) => /restricted/i.test(t.description || ''), 'description must mark browser_get_page_markdown restricted');
+    check('hela-genome', 'execute_sql', (t) => /canonical/i.test(t.description || ''), 'description must mark execute_sql canonical');
+    check('hela-genome', 'query_data', (t) => /canonical/i.test(t.description || ''), 'description must mark query_data canonical');
+    check('hela-ribosome', 'opencode_db', (t) => /restricted/i.test(t.description || ''), 'description must mark opencode_db restricted');
+
+    if (failures.length > 0) throw new Error(failures.join('; '));
+    console.log(` ${colors.green}✓${colors.reset} Canonical boundaries: Enzyme/Genome/Membrane preferred; Nucleus/Cytosol/Ribosome restricted scopes validated`);
+    passed++;
+  } catch (err) {
+    console.log(` ${colors.red}✗${colors.reset} Canonical boundaries failed: ${err.message}`);
+    failed++;
+  }
+
+  // Section 3: Cross-Server Tool-Name Collision Invariant
+  console.log(`\n${colors.bold}Section 3: Zero-Collision Tool-Name Invariant${colors.reset}`);
+  console.log('-'.repeat(78));
+
+  try {
+    const toolOwners = new Map();
+    const collisions = [];
+    for (const [serverKey, { tools }] of activeClients.entries()) {
+      for (const tool of tools) {
+        const owner = toolOwners.get(tool.name);
+        if (owner) collisions.push(`${tool.name} (${owner} ↔ ${serverKey})`);
+        else toolOwners.set(tool.name, serverKey);
+      }
+    }
+    if (collisions.length > 0) throw new Error(`duplicate tool names: ${collisions.join(', ')}`);
+    console.log(` ${colors.green}✓${colors.reset} Zero collisions across ${toolOwners.size} unique tool names`);
+    passed++;
+  } catch (err) {
+    console.log(` ${colors.red}✗${colors.reset} Collision invariant failed: ${err.message}`);
+    failed++;
+  }
+
   // Cleanup all clients
   for (const { client } of activeClients.values()) {
     client.stop();

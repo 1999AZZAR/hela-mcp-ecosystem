@@ -93,7 +93,7 @@ flowchart TB
 #### 4. HeLa Nucleus (`hela-nucleus` / `terminal-mcp-server`)
 * **Role**: Isolated command execution and RTK token optimization.
 * **Entrypoint**: `build/index.js`
-* **Tools**: `execute_command`, `transfer_file`, `terminal_ls`, `terminal_grep`, `terminal_cat`.
+* **Tools**: `execute_command`, `transfer_file`, `terminal_ls`, `terminal_grep`, `terminal_cat`, `terminal_session_close`, `terminal_session_list`.
 
 #### 5. HeLa Ribosome (`hela-ribosome` / `menager-mcp-server`)
 * **Role**: Polyglot interactive PTY session multiplexing and Regex hook engine.
@@ -128,6 +128,21 @@ flowchart TB
 * **Role**: Autonomous 3D procedural modeling and rendering in Blender.
 * **Entrypoint**: `dist/index.js` (under `brain/`)
 * **Tools**: `generate_modeling_plan`, `execute_blender_code`, `render_output`, `save_blend`, `get_fast_feedback`.
+
+---
+
+### 4.4 Canonical Tool Boundaries (v1.2.0)
+
+Several organelles expose overlapping capabilities. Descriptions and the Mitosis capability router now enforce a single canonical choice per intent, keeping a restricted alternative only for its niche:
+
+| Intent | Canonical | Restricted alternative | Restricted use |
+|--------|-----------|------------------------|----------------|
+| Web search | `hela-enzyme:google_search` | `hela-cytosol:browser_search` | Visual browser workflows only |
+| Content extraction | `hela-enzyme:extract_content` | `hela-cytosol:browser_get_page_markdown` | Pages requiring client-side JavaScript |
+| Local file read | `hela-membrane:read_file` | `hela-nucleus:terminal_cat` | Remote SSH targets only (`host` required) |
+| Memory-graph inspection | `hela-genome:execute_sql` / `query_data` | `hela-ribosome:opencode_db` | OpenCode session database only |
+
+Tool names are unique ecosystem-wide after the Phase 1 rename, so the router matches boundaries by tool name without needing a server field.
 
 ---
 

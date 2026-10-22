@@ -25,8 +25,8 @@ const INVENTORY = {
   },
   "hela-nucleus": {
     "alias": "HeLa Nucleus", "source": "terminal-mcp", "scope": "core",
-    "role": "Execution Boundary", "entry": "build/index.js", "toolsCount": 5,
-    "tools": ["execute_command", "transfer_file", "terminal_ls", "terminal_grep", "terminal_cat"],
+    "role": "Execution Boundary", "entry": "build/index.js", "toolsCount": 7,
+    "tools": ["execute_command", "transfer_file", "terminal_ls", "terminal_grep", "terminal_cat", "terminal_session_close", "terminal_session_list"],
     "desc": "Isolated command execution with RTK token optimization."
   },
   "hela-ribosome": {
