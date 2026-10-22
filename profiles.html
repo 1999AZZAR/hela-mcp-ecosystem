@@ -42,43 +42,47 @@
         <div class="doc-brand-meta">v1.0.0 · 10 SERVERS · 295 TOOLS</div>
       </div>
       <nav aria-label="Documentation">
-      <div class="doc-nav-section">GETTING STARTED</div>
+      <div class="doc-nav-section" data-i18n="nav.section.started">GETTING STARTED</div>
       <ol class="doc-nav">
-        <li><a href="index.html"><span class="doc-nav-num">01</span> Overview</a></li>
-        <li><a href="index.html#installation"><span class="doc-nav-num">02</span> Installation</a></li>
-        <li><a href="index.html#verify"><span class="doc-nav-num">03</span> Verify</a></li>
+        <li><a href="index.html"><span class="doc-nav-num">01</span> <span data-i18n="nav.overview">Overview</span></a></li>
+        <li><a href="index.html#installation"><span class="doc-nav-num">02</span> <span data-i18n="nav.installation">Installation</span></a></li>
+        <li><a href="index.html#verify"><span class="doc-nav-num">03</span> <span data-i18n="nav.verify">Verify</span></a></li>
       </ol>
-      <div class="doc-nav-section">REFERENCE</div>
+      <div class="doc-nav-section" data-i18n="nav.section.reference">REFERENCE</div>
       <ol class="doc-nav" start="4">
-        <li><a href="architecture.html"><span class="doc-nav-num">04</span> Architecture</a></li>
-        <li><a href="workflows.html"><span class="doc-nav-num">05</span> Workflows</a></li>
-        <li><a href="profiles.html" aria-current="page"><span class="doc-nav-num">06</span> Profiles &amp; Config</a></li>
+        <li><a href="architecture.html"><span class="doc-nav-num">04</span> <span data-i18n="nav.architecture">Architecture</span></a></li>
+        <li><a href="workflows.html"><span class="doc-nav-num">05</span> <span data-i18n="nav.workflows">Workflows</span></a></li>
+        <li><a href="profiles.html" aria-current="page"><span class="doc-nav-num">06</span> <span data-i18n="nav.profiles">Profiles &amp; Config</span></a></li>
       </ol>
-      <div class="doc-nav-section">OPERATE</div>
+      <div class="doc-nav-section" data-i18n="nav.section.operate">OPERATE</div>
       <ol class="doc-nav" start="7">
-        <li><a href="showcase.html"><span class="doc-nav-num">07</span> Showcase</a></li>
-        <li><a href="troubleshooting.html"><span class="doc-nav-num">08</span> Diagnostics</a></li>
+        <li><a href="showcase.html"><span class="doc-nav-num">07</span> <span data-i18n="nav.showcase">Showcase</span></a></li>
+        <li><a href="troubleshooting.html"><span class="doc-nav-num">08</span> <span data-i18n="nav.diagnostics">Diagnostics</span></a></li>
       </ol>
-      <div class="doc-nav-section">LEGAL</div>
+      <div class="doc-nav-section" data-i18n="nav.section.legal">LEGAL</div>
       <ol class="doc-nav" start="9">
-        <li><a href="privacy.html"><span class="doc-nav-num">09</span> Privacy</a></li>
-        <li><a href="terms.html"><span class="doc-nav-num">10</span> Terms</a></li>
+        <li><a href="privacy.html"><span class="doc-nav-num">09</span> <span data-i18n="nav.privacy">Privacy</span></a></li>
+        <li><a href="terms.html"><span class="doc-nav-num">10</span> <span data-i18n="nav.terms">Terms</span></a></li>
       </ol>
       </nav>
     </aside>
     <div class="doc-main">
       <div class="doc-topbar">
         <span class="doc-topbar-title">SPEC_04 // PROFILES</span>
-        <div class="topbar-actions">
-          <button class="btn open-cmd-palette" type="button">Search ⌘K</button>
+                <div class="topbar-actions">
+          <div class="lang-switcher" aria-label="Language switcher">
+            <button class="lang-btn active" data-lang="en" type="button" title="English">EN</button>
+            <button class="lang-btn" data-lang="id" type="button" title="Bahasa Indonesia">ID</button>
+          </div>
+          <button class="btn open-cmd-palette" type="button"><span data-i18n="topbar.search">Search</span> ⌘K</button>
           <a class="btn" href="https://github.com/1999AZZAR/hela-mcp-ecosystem" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
       <main id="main-content" class="doc-content">
         <header class="specimen-plate">
           <div class="specimen-ref"><span>SPEC_04 // 1999AZZAR-MCP</span><span>DOSSIER: PROFILES_AND_CLIENT_MATRIX</span></div>
-          <h1 class="doc-title">Profiles &amp; Config</h1>
-          <p class="doc-lead">Eight deployment profiles. Pick the stack that matches the machine, then generate the exact client file below — 80 profile × client combinations, schema-validated.</p>
+          <h1 class="doc-title" data-i18n="profiles.title">Profiles &amp; Config</h1>
+          <p class="doc-lead" data-i18n="profiles.lead">Eight deployment profiles. Pick the stack that matches the machine, then generate the exact client file below — 80 profile × client combinations, schema-validated.</p>
         </header>
 
         <figure class="figure-plate">
@@ -86,7 +90,7 @@
           <figcaption class="figure-caption"><strong>FIG.</strong><span>PLATE 04 · blotcat-profiles.jpg · Profile matrix</span></figcaption>
         </figure>
 
-        <h2 id="matrix">Profile matrix</h2>
+        <h2 id="matrix" data-i18n="profiles.matrix_title">Profile matrix</h2>
         <div class="doc-table-wrap">
           <table class="doc-table">
             <caption>TABLE 4.1 — DEPLOYMENT PROFILES</caption>
@@ -108,11 +112,11 @@
           <div><code>headless-server</code> excludes cytosol, receptor, and plastid — zero Playwright/Chromium, ADB, or Blender dependencies, instant startup on VPS/CI.</div>
         </div>
 
-        <h2 id="configurator">Configuration workbench</h2>
+        <h2 id="configurator" data-i18n="profiles.configurator_title">Configuration workbench</h2>
         <p>Select a profile and a client. The output is byte-identical in shape to what <code>setup.sh</code> writes.</p>
         <div class="field-row">
           <div class="field">
-            <label for="profileSelect">Target profile</label>
+            <label for="profileSelect" data-i18n="profiles.label_profile">Target profile</label>
             <select id="profileSelect">
               <option value="minimal">Minimal (Mitosis + Genome + Enzyme)</option>
               <option value="dev-workspace">Dev Workspace (Full Desktop)</option>
