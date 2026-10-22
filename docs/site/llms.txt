@@ -2,7 +2,7 @@
 
 > A reproducible, 10-server MCP (Model Context Protocol) distribution suite for AI
 > agents: dual-backbone orchestration (Mitosis reasoning + Genome memory graphs),
-> 295 tools, seven deployment profiles, six cross-server pipelines.
+> 347 tools, eight deployment profiles, six cross-server pipelines.
 
 - Site: https://hela.my.id/
 - Source: https://github.com/1999AZZAR/hela-mcp-ecosystem
@@ -14,13 +14,13 @@
 - [Overview](https://hela.my.id/index.html): install and verify the suite.
 - [Architecture](https://hela.my.id/architecture.html): dual-backbone topology and per-server reference.
 - [Workflows](https://hela.my.id/workflows.html): six cross-MCP pipelines (tool sequences, profiles, persistence).
-- [Profiles & Config](https://hela.my.id/profiles.html): seven deployment profiles and the client configuration workbench.
+- [Profiles & Config](https://hela.my.id/profiles.html): eight deployment profiles and the client configuration workbench.
 - [Showcase](https://hela.my.id/showcase.html): verified outputs and production deployments.
 - [Diagnostics](https://hela.my.id/troubleshooting.html): doctor diagnostics, failure scenarios, fixes.
 - [Privacy](https://hela.my.id/privacy.html): what the site collects (nothing), third parties, local-first software.
 - [Terms](https://hela.my.id/terms.html): MIT license, as-is warranty, operator responsibility.
 
-## Server roster (295 tools)
+## Server roster (347 tools)
 
 - HeLa Mitosis (orchestrator / agent runtime, 29 tools)
 - HeLa Genome (state & memory knowledge graph, 34 tools)

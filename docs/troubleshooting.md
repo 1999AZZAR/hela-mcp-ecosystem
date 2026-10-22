@@ -110,7 +110,7 @@ node <entrypoint-file>
 **Fix**:
 Restore known-good, audited release snapshot:
 ```bash
-./setup.sh --snapshot v1.0.0 --profile dev-workspace --non-interactive
+./setup.sh --snapshot v1.1.0 --profile dev-workspace --non-interactive
 ```
 
 ---
@@ -163,6 +163,6 @@ Restore known-good, audited release snapshot:
 
 ## 3. Getting Further Support
 
-* **Run Integration Tests**: `npm test` (executes 295 tool discovery tests across all 10 servers).
+* **Run Integration Tests**: `npm test` (executes 347 tool discovery tests across all 10 servers).
 * **Run Matrix Tests**: `npm run test:matrix` (verifies all 70 client configuration combinations).
 * **File an Issue**: Open an issue on GitHub at [`https://github.com/1999AZZAR/hela-mcp-ecosystem/issues`](https://github.com/1999AZZAR/hela-mcp-ecosystem/issues) with the output of `./setup.sh doctor --json`.

@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "snapshot_version": "1.1.0",
+  "created_at": "2026-10-23T03:22:00Z",
+  "description": "Known-good, fully audited release snapshot for HeLa MCP Ecosystem v1.1.0 with exact immutable commit pins and dynamic capability resolver v2.",
+  "environment": {
+    "node_minimum": ">=20.0.0",
+    "recommended_node": "v25.9.0",
+    "git_minimum": ">=2.30.0",
+    "sqlite_minimum": ">=3.35.0"
+  },
+  "servers": {
+    "hela-mitosis": {
+      "repo": "https://github.com/1999AZZAR/chaining-mcp.git",
+      "commit": "d0e60b28731d428d39d2cd75707763052efbdb61",
+      "branch": "main",
+      "entry": "dist/index.js"
+    },
+    "hela-genome": {
+      "repo": "https://github.com/1999AZZAR/project-mcp.git",
+      "commit": "005f3f12698e0fa968c1ec6573d64df2e48f1694",
+      "branch": "main",
+      "entry": "dist/index.js"
+    },
+    "hela-membrane": {
+      "repo": "https://github.com/1999AZZAR/filesystem-mcp.git",
+      "commit": "3fcb6d42aeb273739e315ab8251f9cd00327a4dc",
+      "branch": "master",
+      "entry": "dist/index.js"
+    },
+    "hela-nucleus": {
+      "repo": "https://github.com/1999AZZAR/terminal-mcp.git",
+      "commit": "856e0ec0fff10695b89ea68be66dcccdcda6c266",
+      "branch": "master",
+      "entry": "build/index.js"
+    },
+    "hela-ribosome": {
+      "repo": "https://github.com/1999AZZAR/menager-mcp.git",
+      "commit": "b3324244cbb2ae43c7508144e1214873d3c89c5c",
+      "branch": "master",
+      "entry": "build/index.js"
+    },
+    "hela-enzyme": {
+      "repo": "https://github.com/1999AZZAR/researcher-mcp.git",
+      "commit": "303fdc62626c726bfa3abca4afb0cedef4218694",
+      "branch": "master",
+      "entry": "dist/index.js"
+    },
+    "hela-cytosol": {
+      "repo": "https://github.com/1999AZZAR/browser-mcp.git",
+      "commit": "56f42d63f2d7a0aa1daeebe4b812e380ae648ccc",
+      "branch": "master",
+      "entry": "src/server.js"
+    },
+    "hela-phenotype": {
+      "repo": "https://github.com/1999AZZAR/designer-mcp.git",
+      "commit": "8b9b5c116007b1de6e725c204e8d318fdf515e79",
+      "branch": "master",
+      "entry": "dist/index.js"
+    },
+    "hela-receptor": {
+      "repo": "https://github.com/1999AZZAR/scrcpy-mcp.git",
+      "commit": "7c9988160a6efaf9f871fa9eecec9c2e5f2225cd",
+      "branch": "master",
+      "entry": "dist/server.js"
+    },
+    "hela-plastid": {
+      "repo": "https://github.com/1999AZZAR/ll3m-mcp.git",
+      "commit": "ccc02975af805ace0f12ec7bcee129971a2fe6b1",
+      "branch": "master",
+      "entry": "dist/index.js"
+    }
+  },
+  "verified_profiles": [
+    "minimal",
+    "dev-workspace",
+    "headless-server",
+    "research",
+    "web-devops",
+    "android-testing",
+    "3d-modeling",
+    "all"
+  ],
+  "verified_clients": [
+    "cursor",
+    "claude",
+    "gemini",
+    "antigravity",
+    "opencode",
+    "kilo",
+    "zed",
+    "codex",
+    "docker",
+    "skip"
+  ]
+}

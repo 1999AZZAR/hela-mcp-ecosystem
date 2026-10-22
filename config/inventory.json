@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "project_name": "HeLa MCP Ecosystem",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "total_servers": 10,
   "core_headless_count": 7,
   "specialized_gui_count": 3,

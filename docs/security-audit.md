@@ -77,6 +77,6 @@ The HeLa MCP Ecosystem operates on a multi-layer isolation model designed to saf
 
 ## 4. Reliability & Idempotence Guarantees
 
-1. **Deterministic Snapshots**: Environments can be pinned to immutable commit hashes (`--snapshot v1.0.0`), preventing breaking upstream changes from destabilizing production pipelines.
+1. **Deterministic Snapshots**: Environments can be pinned to immutable commit hashes (`--snapshot v1.1.0`), preventing breaking upstream changes from destabilizing production pipelines.
 2. **Build Idempotence**: Setup tools verify existing build artifacts (`dist/index.js`, `build/index.js`) and commit hashes before rebuilding, allowing instant reconfigurations in <1s.
 3. **Automated Matrix Verification**: Continuous integration runs 70/70 backend matrix tests on every pull request to ensure zero configuration regression.
