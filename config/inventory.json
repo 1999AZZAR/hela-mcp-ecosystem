@@ -171,9 +171,9 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "revision": "709c378821b04d9ce9b25c631d7b481404bc2b89",
+      "revision": "8b9b5c116007b1de6e725c204e8d318fdf515e79",
       "env": [],
-      "description": "UI/UX design system selector, OKLCH token generation, Tailwind CSS generator, brand cloning, and component preview."
+      "description": "UI/UX design system selector, Awwwards-tier kinetic motion, OKLCH tokens, brand cloning, component preview, and native Stitch Canvas bridge."
     },
     "hela-receptor": {
       "id": "hela-receptor",
