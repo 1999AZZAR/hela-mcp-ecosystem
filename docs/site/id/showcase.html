@@ -30,7 +30,7 @@
     <aside class="doc-sidebar" aria-label="Bagian dokumentasi">
       <div class="doc-brand">
         <a href="index.html" class="doc-brand-title">Ekosistem HeLa MCP</a>
-        <div class="doc-brand-meta">v1.1.0 · 10 SERVER · 347 ALAT</div>
+        <div class="doc-brand-meta">v1.2.0 · 10 SERVER · 292 ALAT</div>
       </div>
       <nav aria-label="Dokumentasi">
       <div class="doc-nav-section">MEMULAI</div>
@@ -127,10 +127,10 @@
         </div>
 
         <h2 id="ellis">Eksibisi Produksi: Ellis UI Archive</h2>
-        <p>Dapat diakses langsung di <a href="https://demo-designer.glassgallery.my.id/" target="_blank" rel="noopener noreferrer">demo-designer.glassgallery.my.id</a> — 24 sistem desain komponen kustom yang dibuat melalui rantai alat <span class="step-tool">hela-phenotype:generate_tokens → generate_8state_component</span>, diverifikasi langsung di browser via <span class="step-tool">hela-cytosol</span>, dan dicatat ke dalam <span class="step-tool">hela-genome</span>. Ini adalah bukti alur kerja C yang dieksekusi terhadap target deployment nyata, bukan sekadar mock.</p>
+        <p>Dapat diakses langsung di <a href="https://demo-designer.glassgallery.my.id/" target="_blank" rel="noopener noreferrer">demo-designer.glassgallery.my.id</a> — 24 sistem desain komponen kustom yang dibuat melalui rantai alat <span class="step-tool">hela-phenotype:design_tokens → generate_8state_component</span>, diverifikasi langsung di browser via <span class="step-tool">hela-cytosol</span>, dan dicatat ke dalam <span class="step-tool">hela-genome</span>. Ini adalah bukti alur kerja C yang dieksekusi terhadap target deployment nyata, bukan sekadar mock.</p>
         <div class="admonition success">
           <div class="admonition-title">JALUR REPRODUKSI</div>
-          <div>Token (<code>generate_tokens</code>) → Tailwind (<code>generate_tailwind_config</code>) → Komponen (<code>generate_8state_component</code>) → Verifikasi (<code>browser_screenshot</code>) → Simpan Memori (<code>add_observation</code>). Setiap langkah merupakan pemanggilan alat MCP yang terdokumentasi.</div>
+          <div>Token (<code>design_tokens action=theme</code>) → Tailwind (<code>design_tokens action=tailwind</code>) → Komponen (<code>generate_8state_component</code>) → Verifikasi (<code>browser_screenshot</code>) → Simpan Memori (<code>memory_edit action=add_observations</code>). Setiap langkah merupakan pemanggilan alat MCP yang terdokumentasi.</div>
         </div>
 
         <footer class="doc-footer"><span>LISENSI MIT · AZZAR</span><span>ARCHIVAL_RECORD_SEALED // HELA_MCP_ECOSYSTEM</span></footer>
@@ -143,7 +143,7 @@
     <div class="cmd-modal">
       <div class="cmd-input-row">
         <span aria-hidden="true">§</span>
-        <input type="text" class="cmd-input" id="cmdInput" aria-label="Cari alat, halaman, atau profil" placeholder="Cari 347 alat, halaman, profil…">
+        <input type="text" class="cmd-input" id="cmdInput" aria-label="Cari alat, halaman, atau profil" placeholder="Cari 292 alat, halaman, profil…">
         <span class="cmd-item-tag">ESC</span>
       </div>
       <div class="cmd-results" id="cmdResults"></div>

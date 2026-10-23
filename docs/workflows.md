@@ -56,7 +56,7 @@ sequenceDiagram
     Membrane-->>Agent: Code written to workspace
     Agent->>Nucleus: execute_command("npm test" / "pytest")
     Nucleus-->>Agent: Test run output
-    Agent->>Genome: add_observation("Feature X implemented & tested")
+    Agent->>Genome: memory_edit(action="add_observations", observations=[…])
 ```
 
 #### Step-by-Step Tool Sequence:
@@ -64,7 +64,7 @@ sequenceDiagram
 2. **Decomposition**: Call `llm_decompose_task` or `sequentialthinking` on `hela-mitosis` to generate an execution plan.
 3. **Workspace Modification**: Call `read_file` and `write_file` on `hela-membrane` to apply minimal, production-ready code changes.
 4. **Validation**: Call `execute_command` on `hela-nucleus` (or `rtk` wrapper) to run automated unit tests.
-5. **State Recording**: Call `add_observation` and `create_relation` on `hela-genome` to commit progress to the knowledge graph.
+5. **State Recording**: Call `memory_edit` on `hela-genome` to commit progress to the knowledge graph.
 
 ---
 
@@ -88,7 +88,7 @@ sequenceDiagram
     Cytosol-->>Agent: Live technical documentation content
     Agent->>Mitosis: llm_summarize(extracted_data)
     Mitosis-->>Agent: Synthesized architectural comparison
-    Agent->>Genome: create_entity("TechSpec:X") + add_observation
+    Agent->>Genome: memory_edit(action="create_entities") + memory_edit(action="add_observations")
     Agent->>Membrane: write_file("docs/architecture/spec-x.md")
 ```
 
@@ -96,7 +96,7 @@ sequenceDiagram
 1. **Knowledge Retrieval**: Query `wikipedia_search` or `google_search` via `hela-enzyme` for background literature and reference APIs.
 2. **Live Web Extraction**: Use `browser_navigate` and `browser_get_content(format=markdown)` via `hela-cytosol` to extract documentation from official docs sites.
 3. **Synthesis**: Run `llm_summarize` and `analyze_with_sequential_thinking` on `hela-mitosis` to synthesize key architectural trade-offs.
-4. **Knowledge Ingestion**: Call `create_entity` and `create_relation` on `hela-genome` linking findings to existing system components.
+4. **Knowledge Ingestion**: Call `memory_edit` on `hela-genome` linking findings to existing system components.
 5. **Artifact Generation**: Save the final report using `write_file` on `hela-membrane`.
 
 ---
@@ -115,18 +115,18 @@ sequenceDiagram
     participant Cytosol as HeLa Cytosol
     participant Genome as HeLa Genome
 
-    Agent->>Phenotype: generate_tokens(genre) / generate_tailwind_config
+    Agent->>Phenotype: design_tokens(action="theme") / design_tokens(action="tailwind")
     Phenotype-->>Agent: Design tokens & OKLCH color palette
     Agent->>Membrane: write_file("tailwind.config.js" & component files)
     Agent->>Nucleus: execute_command("npm run dev")
     Nucleus-->>Agent: Local dev server active on port 3000
     Agent->>Cytosol: browser_navigate("http://localhost:3000") -> browser_screenshot
     Cytosol-->>Agent: Rendered visual screenshot & accessibility tree
-    Agent->>Genome: add_observation("Design verified on DOM & visual snapshot")
+    Agent->>Genome: memory_edit(action="add_observations", observations=["Design verified on DOM & visual snapshot"])
 ```
 
 #### Step-by-Step Tool Sequence:
-1. **Design System Token Generation**: Call `generate_tokens`, `palette_fetch`, or `generate_tailwind_config` on `hela-phenotype`.
+1. **Design System Token Generation**: Call `design_tokens`, `palette`, or `logo_workflow` on `hela-phenotype`.
 2. **Component Implementation**: Write JSX/Tailwind files using `write_file` on `hela-membrane`.
 3. **Dev Server Launch**: Launch background local web server using `execute_command` on `hela-nucleus`.
 4. **Visual & Accessibility Verification**: Navigate to `http://localhost:3000` via `browser_navigate` on `hela-cytosol`, verify DOM via `browser_get_content(format=axtree)`, and take visual snapshot with `browser_screenshot`.
@@ -157,7 +157,7 @@ sequenceDiagram
     Agent->>Receptor: tap(element_id) / input_text("user_input")
     Receptor-->>Agent: UI transition complete
     Agent->>Receptor: screenshot("artifacts/test-pass.png")
-    Agent->>Genome: add_observation("Mobile flow X verified on physical Android")
+    Agent->>Genome: memory_edit(action="add_observations", observations=["Mobile flow X verified on physical Android"])
 ```
 
 #### Step-by-Step Tool Sequence:
@@ -189,7 +189,7 @@ sequenceDiagram
     Agent->>Plastid: execute_blender_code(script) -> render_output
     Plastid-->>Agent: High-resolution render output PNG
     Agent->>Plastid: save_blend("assets/chair.blend")
-    Agent->>Genome: add_observation("Generated 3D chair asset and render")
+    Agent->>Genome: memory_edit(action="add_observations", observations=["Generated 3D chair asset and render"])
 ```
 
 #### Step-by-Step Tool Sequence:
@@ -218,7 +218,7 @@ sequenceDiagram
     Agent->>Ribosome: session_read("sess-101") (bounded polling)
     Ribosome-->>Agent: Streamed stdout/stderr chunk
     Agent->>Nucleus: execute_command("git status")
-    Agent->>Genome: add_observation("Long refactor build verified via PTY session")
+    Agent->>Genome: memory_edit(action="add_observations", observations=["Long refactor build verified via PTY session"])
     Agent->>Ribosome: session_close("sess-101")
 ```
 

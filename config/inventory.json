@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "project_name": "HeLa MCP Ecosystem",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "total_servers": 10,
   "core_headless_count": 7,
   "specialized_gui_count": 3,
@@ -21,7 +21,7 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "revision": "d0e60b28731d428d39d2cd75707763052efbdb61",
+      "revision": "74bea95c62d93f5aead5048ae057c55f96d2ac0c",
       "env": [
         "MEMORY_FILE_PATH",
         "AWESOME_COPILOT_ENABLED",
@@ -34,7 +34,7 @@
         "GITHUB_TOKEN",
         "HELA_PROFILE"
       ],
-      "description": "Orchestrates MCP capabilities via the bundled Needle 3 agent runtime (plan → execute → observe, fully offline), tool discovery, route optimization, 40 prebuilt prompts, skills catalog, and multi-step workflows. No external sequential-thinking server."
+      "description": "Orchestrates MCP capabilities via the bundled Needle 3 agent runtime (plan \u2192 execute \u2192 observe, fully offline), tool discovery, route optimization, 40 prebuilt prompts, skills catalog, and multi-step workflows. No external sequential-thinking server."
     },
     "hela-genome": {
       "id": "hela-genome",
@@ -51,7 +51,7 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "revision": "005f3f12698e0fa968c1ec6573d64df2e48f1694",
+      "revision": "e7181e8945eb73ced86e38373d2bebba1128da7d",
       "env": [],
       "description": "Preserves persistent project knowledge, state, living SQLite knowledge graph, task tracking, and session continuity."
     },
@@ -70,7 +70,7 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "revision": "3fcb6d42aeb273739e315ab8251f9cd00327a4dc",
+      "revision": "c4046ff9aa0198a7721b0e061378f41b70283bb3",
       "env": [],
       "description": "Controlled interaction with the project workspace: file search, regex patching, watching, and safe archive operations."
     },
@@ -89,7 +89,7 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "revision": "856e0ec0fff10695b89ea68be66dcccdcda6c266",
+      "revision": "2d1c92f51ad792b8ffbc02593ff2a1b1cb33e0b1",
       "env": [],
       "description": "Command execution and direct system interaction with local/remote SSH support, timeouts, and deep RTK integration."
     },
@@ -108,7 +108,7 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "revision": "b3324244cbb2ae43c7508144e1214873d3c89c5c",
+      "revision": "fdc24a56ddca734842d0a109a9e3a31f71b0e08f",
       "env": [],
       "description": "Process orchestration server for pseudo-terminal (PTY) session management, multiplexing, and non-blocking regex event hooks."
     },
@@ -127,7 +127,7 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "revision": "303fdc62626c726bfa3abca4afb0cedef4218694",
+      "revision": "df5b06fcbe5e78d8895b5fb2f7a872e74f18f5ba",
       "env": [
         "GOOGLE_API_KEY",
         "GOOGLE_CSE_ID",
@@ -152,7 +152,7 @@
       "build": null,
       "needsGui": false,
       "needsDevice": false,
-      "revision": "56f42d63f2d7a0aa1daeebe4b812e380ae648ccc",
+      "revision": "cf4a6cb0c1540ce43ee79b39c6ef314b8741ab01",
       "env": [],
       "description": "Playwright-based browser automation environment for navigation, DOM interaction, scraping, and visual screenshot verification."
     },
@@ -171,7 +171,7 @@
       "build": "build",
       "needsGui": false,
       "needsDevice": false,
-      "revision": "8b9b5c116007b1de6e725c204e8d318fdf515e79",
+      "revision": "e9dfb9fac1544b39f1d18a798a4acc2bfaf30f28",
       "env": [],
       "description": "UI/UX design system selector, Awwwards-tier kinetic motion, OKLCH tokens, brand cloning, component preview, and native Stitch Canvas bridge."
     },

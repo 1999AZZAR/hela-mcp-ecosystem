@@ -11,7 +11,7 @@ This document provides a comprehensive architectural reference for the **HeLa MC
 The **HeLa MCP Ecosystem** is architected around a cellular biology metaphor, respectfully recognizing **Henrietta Lacks** (1920–1951) and the immortal legacy of HeLa cells in biomedical research:
 
 1. **Cellular Specialization**: In biological systems, organelles perform distinct biochemical functions while cooperating as a unified organism. In the HeLa ecosystem, servers act as specialized cellular components (Nucleus, Membrane, Enzyme, Ribosome, Plastid) coordinated by a dual backbone.
-2. **Deterministic Immortality**: Through commit-pinned snapshots (`config/snapshots/v1.1.0.json`) and idempotent setup scripts, an entire multi-server agent harness can be restored in a clean, reproducible state on any host.
+2. **Deterministic Immortality**: Through commit-pinned snapshots (`config/snapshots/v1.2.0.json`) and idempotent setup scripts, an entire multi-server agent harness can be restored in a clean, reproducible state on any host.
 3. **Repository Autonomy**: Underlying repositories, Git histories, and package dependencies remain completely autonomous and uncoupled.
 
 ---
@@ -78,7 +78,7 @@ flowchart TB
 #### 2. HeLa Genome (`hela-genome` / `Project-Guardian-mcp-server`)
 * **Role**: Living memory graph, entity-relation-observation state tracking.
 * **Entrypoint**: `dist/index.js`
-* **Tools**: `create_entity`, `create_relation`, `add_observation`, `read_graph`, `search_nodes`, `get_session_context`, `sync_central_memory`.
+* **Tools**: `memory_edit` (entity/relation/observation CRUD), `read_graph`, `search_nodes`, `get_session_context`, `sync_central_memory`, `security_scan`.
 * **Storage**: Embedded SQLite database (`memory.db`) with FTS5 full-text indexing.
 
 ---
@@ -117,7 +117,7 @@ flowchart TB
 #### 8. HeLa Phenotype (`hela-phenotype` / `the-designer`)
 * **Role**: UI/UX design tokens, OKLCH palettes, and Tailwind component synthesis.
 * **Entrypoint**: `dist/index.js`
-* **Tools**: `generate_tokens`, `generate_tailwind_config`, `palette_fetch`, `audit_accessibility`, `generate_template`.
+* **Tools**: `design_tokens`, `palette`, `design_audit`, `generate_template`, `logo_workflow`.
 
 #### 9. HeLa Receptor (`hela-receptor` / `scrcpy-mcp`)
 * **Role**: Android mobile device control via ADB bridge.
@@ -174,4 +174,4 @@ The ecosystem configuration generator (`scripts/generate-config.mjs`) reads:
 1. **`config/inventory.json`**: Authoritative component catalog, entrypoints, Git repositories, and alias mappings.
 2. **`config/profiles.json`**: Curated stacks tailored to specific agent personas and hardware targets.
 
-When executed, the installer matches the profile's server list against the inventory, checks out the exact pinned commit hashes from `config/snapshots/v1.1.0.json`, and renders the target client's exact syntax (`mcpServers` JSON, TOML, or YAML).
+When executed, the installer matches the profile's server list against the inventory, checks out the exact pinned commit hashes from `config/snapshots/v1.2.0.json`, and renders the target client's exact syntax (`mcpServers` JSON, TOML, or YAML).

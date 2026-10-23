@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "snapshot_version": "1.1.0",
-  "created_at": "2026-10-23T03:22:00Z",
-  "description": "Known-good, fully audited release snapshot for HeLa MCP Ecosystem v1.1.0 with exact immutable commit pins and dynamic capability resolver v2.",
+  "snapshot_version": "1.2.0",
+  "created_at": "2026-10-23T06:14:12Z",
+  "description": "Known-good, fully audited release snapshot for HeLa MCP Ecosystem v1.2.0 with exact immutable commit pins, consolidated 292-tool surface, and dynamic capability resolver v2.",
   "environment": {
     "node_minimum": ">=20.0.0",
     "recommended_node": "v25.9.0",
@@ -12,49 +12,49 @@
   "servers": {
     "hela-mitosis": {
       "repo": "https://github.com/1999AZZAR/chaining-mcp.git",
-      "commit": "d0e60b28731d428d39d2cd75707763052efbdb61",
+      "commit": "74bea95c62d93f5aead5048ae057c55f96d2ac0c",
       "branch": "main",
       "entry": "dist/index.js"
     },
     "hela-genome": {
       "repo": "https://github.com/1999AZZAR/project-mcp.git",
-      "commit": "005f3f12698e0fa968c1ec6573d64df2e48f1694",
-      "branch": "main",
+      "commit": "e7181e8945eb73ced86e38373d2bebba1128da7d",
+      "branch": "master",
       "entry": "dist/index.js"
     },
     "hela-membrane": {
       "repo": "https://github.com/1999AZZAR/filesystem-mcp.git",
-      "commit": "3fcb6d42aeb273739e315ab8251f9cd00327a4dc",
+      "commit": "c4046ff9aa0198a7721b0e061378f41b70283bb3",
       "branch": "master",
       "entry": "dist/index.js"
     },
     "hela-nucleus": {
       "repo": "https://github.com/1999AZZAR/terminal-mcp.git",
-      "commit": "856e0ec0fff10695b89ea68be66dcccdcda6c266",
-      "branch": "master",
+      "commit": "2d1c92f51ad792b8ffbc02593ff2a1b1cb33e0b1",
+      "branch": "main",
       "entry": "build/index.js"
     },
     "hela-ribosome": {
       "repo": "https://github.com/1999AZZAR/menager-mcp.git",
-      "commit": "b3324244cbb2ae43c7508144e1214873d3c89c5c",
+      "commit": "fdc24a56ddca734842d0a109a9e3a31f71b0e08f",
       "branch": "master",
       "entry": "build/index.js"
     },
     "hela-enzyme": {
       "repo": "https://github.com/1999AZZAR/researcher-mcp.git",
-      "commit": "303fdc62626c726bfa3abca4afb0cedef4218694",
+      "commit": "df5b06fcbe5e78d8895b5fb2f7a872e74f18f5ba",
       "branch": "master",
       "entry": "dist/index.js"
     },
     "hela-cytosol": {
       "repo": "https://github.com/1999AZZAR/browser-mcp.git",
-      "commit": "56f42d63f2d7a0aa1daeebe4b812e380ae648ccc",
+      "commit": "cf4a6cb0c1540ce43ee79b39c6ef314b8741ab01",
       "branch": "master",
       "entry": "src/server.js"
     },
     "hela-phenotype": {
       "repo": "https://github.com/1999AZZAR/designer-mcp.git",
-      "commit": "8b9b5c116007b1de6e725c204e8d318fdf515e79",
+      "commit": "e9dfb9fac1544b39f1d18a798a4acc2bfaf30f28",
       "branch": "master",
       "entry": "dist/index.js"
     },
