@@ -14,7 +14,7 @@ const INVENTORY = {
   "hela-genome": {
     "alias": "HeLa Genome", "source": "project-mcp", "scope": "core",
     "role": "State and Memory Backbone", "entry": "dist/index.js", "toolsCount": 38,
-    "tools": ["initialize_memory", "create_entity", "create_relation", "add_observation", "search_nodes", "open_node", "get_file_context", "get_timeline", "get_session_context", "sync_central_memory", "execute_sql", "query_data", "inspect_untrusted_text", "scan_project_secrets"],
+    "tools": ["initialize_memory", "memory_edit", "read_graph", "search_nodes", "open_node", "get_file_context", "get_timeline", "get_session_context", "sync_central_memory", "execute_sql", "query_data", "inspect_untrusted_text", "security_scan"],
     "desc": "Living SQLite knowledge graph with FTS5 search, entity tracking, and session restoration."
   },
   "hela-membrane": {
@@ -50,7 +50,7 @@ const INVENTORY = {
   "hela-phenotype": {
     "alias": "HeLa Phenotype", "source": "designer-mcp", "scope": "specialized",
     "role": "Design and Tokens", "entry": "dist/index.js", "toolsCount": 29,
-    "tools": ["generate_rules", "generate_tokens", "palette_fetch", "brand_fetch_design_md", "generate_tailwind_config", "generate_8state_component", "audit_accessibility", "evaluate_style"],
+    "tools": ["generate_rules", "design_tokens", "palette", "brand_fetch_design_md", "generate_8state_component", "design_audit", "evaluate_style", "logo_workflow"],
     "desc": "OKLCH tokens, brand references, Tailwind synthesis, 8-state components."
   },
   "hela-receptor": {

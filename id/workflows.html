@@ -30,7 +30,7 @@
     <aside class="doc-sidebar" aria-label="Bagian dokumentasi">
       <div class="doc-brand">
         <a href="index.html" class="doc-brand-title">Ekosistem HeLa MCP</a>
-        <div class="doc-brand-meta">v1.1.0 · 10 SERVER · 347 ALAT</div>
+        <div class="doc-brand-meta">v1.2.0 · 10 SERVER · 292 ALAT</div>
       </div>
       <nav aria-label="Dokumentasi">
       <div class="doc-nav-section">MEMULAI</div>
@@ -88,7 +88,7 @@
           <li><div><strong>Dekomposisi tugas.</strong> <span class="step-tool">hela-mitosis:analyze_with_sequential_thinking</span> — langkah implementasi atomik bertenaga Needle.</div></li>
           <li><div><strong>Sunting kode.</strong> <span class="step-tool">hela-membrane:write_file</span> — perubahan minimal dan siap produksi.</div></li>
           <li><div><strong>Jalankan tes.</strong> <span class="step-tool">hela-nucleus:execute_command</span> — contoh: <code>npm test</code>.</div></li>
-          <li><div><strong>Catat ke memori.</strong> <span class="step-tool">hela-genome:add_observation</span> — simpan penyelesaian dan relasi status.</div></li>
+          <li><div><strong>Catat ke memori.</strong> <span class="step-tool">hela-genome:memory_edit(add_observations)</span> — simpan penyelesaian dan relasi status.</div></li>
         </ol>
 
         <h2 id="workflow-b">B — Riset Mendalam &amp; Sintesis Pengetahuan</h2>
@@ -97,18 +97,18 @@
           <li><div><strong>Survei data.</strong> <span class="step-tool">hela-enzyme:research_brief</span> — fan-out satu panggilan ke Google, arXiv, dan Wikipedia secara paralel (lebih cepat dari chaining manual).</div></li>
           <li><div><strong>Ekstraksi web.</strong> <span class="step-tool">hela-cytosol:browser_navigate → browser_get_content</span> — ekstraksi teks terstruktur dari URL target.</div></li>
           <li><div><strong>Sintesis.</strong> <span class="step-tool">hela-mitosis:llm_summarize</span> — analisis komparatif temuan.</div></li>
-          <li><div><strong>Simpan.</strong> <span class="step-tool">hela-genome:create_entity + add_observation</span> — entitas dan temuan masuk ke <code>memory.db</code>.</div></li>
+          <li><div><strong>Simpan.</strong> <span class="step-tool">hela-genome:memory_edit(create_entities + add_observations)</span> — entitas dan temuan masuk ke <code>memory.db</code>.</div></li>
           <li><div><strong>Publikasikan.</strong> <span class="step-tool">hela-membrane:write_file</span> — ringkasan markdown disimpan di <code>docs/</code>.</div></li>
         </ol>
 
         <h2 id="workflow-c">C — Sintesis &amp; Verifikasi Desain UI</h2>
         <p>Profil yang cocok: <code>web-devops</code>, <code>dev-workspace</code>. Token warna → komponen antarmuka → render langsung → verifikasi visual &amp; DOM.</p>
         <ol class="steps">
-          <li><div><strong>Bangun token.</strong> <span class="step-tool">hela-phenotype:generate_tokens / palette_fetch</span> — token warna OKLCH, skala tipografi, config Tailwind.</div></li>
+          <li><div><strong>Bangun token.</strong> <span class="step-tool">hela-phenotype:design_tokens / palette</span> — token warna OKLCH, skala tipografi, config Tailwind.</div></li>
           <li><div><strong>Buat komponen.</strong> <span class="step-tool">hela-membrane:write_file</span> — kode komponen dan <code>tailwind.config.js</code>.</div></li>
           <li><div><strong>Jalankan server.</strong> <span class="step-tool">hela-nucleus:execute_command</span> — server dev lokal.</div></li>
           <li><div><strong>Verifikasi visual.</strong> <span class="step-tool">hela-cytosol:browser_navigate → browser_screenshot</span> — pemeriksaan pohon AX dan tangkapan visual.</div></li>
-          <li><div><strong>Catat pencapaian.</strong> <span class="step-tool">hela-genome:add_observation</span> — pencatatan milestone dan referensi snapshot.</div></li>
+          <li><div><strong>Catat pencapaian.</strong> <span class="step-tool">hela-genome:memory_edit(add_observations)</span> — pencatatan milestone dan referensi snapshot.</div></li>
         </ol>
 
         <h2 id="workflow-d">D — Otomasi Perangkat Mobile &amp; Pengujian UI</h2>
@@ -118,7 +118,7 @@
           <li><div><strong>Buka sesi.</strong> <span class="step-tool">hela-receptor:start_session</span> — stream kontrol perangkat.</div></li>
           <li><div><strong>Inspeksi UI.</strong> <span class="step-tool">hela-receptor:ui_dump</span> — hierarki struktural elemen antarmuka.</div></li>
           <li><div><strong>Aksi sentuh.</strong> <span class="step-tool">hela-receptor:tap / input_text</span> — otomasi interaksi sentuh dan form.</div></li>
-          <li><div><strong>Catat laporan.</strong> <span class="step-tool">hela-genome:add_observation</span> — hasil tes disimpan di grafik memori.</div></li>
+          <li><div><strong>Catat laporan.</strong> <span class="step-tool">hela-genome:memory_edit(add_observations)</span> — hasil tes disimpan di grafik memori.</div></li>
         </ol>
 
         <h2 id="workflow-e">E — Orkestrasi Proses PTY Interaktif</h2>
@@ -128,7 +128,7 @@
           <li><div><strong>Streaming log.</strong> <span class="step-tool">hela-ribosome:session_read</span> — chunk stdout/stderr terkontrol.</div></li>
           <li><div><strong>Pasang trigger.</strong> <span class="step-tool">hela-ribosome:session_hook</span> — respon otomatis berbasis pola regex.</div></li>
           <li><div><strong>Tutup proses.</strong> <span class="step-tool">hela-ribosome:session_close</span> — penutupan proses secara rapi.</div></li>
-          <li><div><strong>Simpan log.</strong> <span class="step-tool">hela-genome:add_observation</span> — pencatatan status exit dan log.</div></li>
+          <li><div><strong>Simpan log.</strong> <span class="step-tool">hela-genome:memory_edit(add_observations)</span> — pencatatan status exit dan log.</div></li>
         </ol>
 
         <h2 id="workflow-f">F — Pemodelan 3D Prosedural Blender Otonom</h2>
@@ -138,7 +138,7 @@
           <li><div><strong>Eksekusi kode.</strong> <span class="step-tool">hela-plastid:execute_blender_code</span> — pembuatan geometri, material, dan tata cahaya.</div></li>
           <li><div><strong>Render.</strong> <span class="step-tool">hela-plastid:render_output</span> — tangkapan kamera viewport.</div></li>
           <li><div><strong>Simpan berkas.</strong> <span class="step-tool">hela-plastid:save_blend</span> — berkas biner <code>.blend</code> disimpan di <code>assets/</code>.</div></li>
-          <li><div><strong>Catat aset.</strong> <span class="step-tool">hela-genome:add_observation</span> — metadata aset dan jalur render.</div></li>
+          <li><div><strong>Catat aset.</strong> <span class="step-tool">hela-genome:memory_edit(add_observations)</span> — metadata aset dan jalur render.</div></li>
         </ol>
 
         <footer class="doc-footer"><span>LISENSI MIT · AZZAR</span><span>ARCHIVAL_RECORD_SEALED // HELA_MCP_ECOSYSTEM</span></footer>
@@ -151,7 +151,7 @@
     <div class="cmd-modal">
       <div class="cmd-input-row">
         <span aria-hidden="true">§</span>
-        <input type="text" class="cmd-input" id="cmdInput" aria-label="Cari alat, halaman, atau profil" placeholder="Cari 347 alat, halaman, profil…">
+        <input type="text" class="cmd-input" id="cmdInput" aria-label="Cari alat, halaman, atau profil" placeholder="Cari 292 alat, halaman, profil…">
         <span class="cmd-item-tag">ESC</span>
       </div>
       <div class="cmd-results" id="cmdResults"></div>

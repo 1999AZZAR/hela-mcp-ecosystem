@@ -41,7 +41,7 @@
     <aside class="doc-sidebar" aria-label="Documentation sections">
       <div class="doc-brand">
         <a href="index.html" class="doc-brand-title">HeLa MCP Ecosystem</a>
-        <div class="doc-brand-meta">v1.1.0 · 10 SERVERS · 322 TOOLS</div>
+        <div class="doc-brand-meta">v1.2.0 · 10 SERVERS · 292 TOOLS</div>
       </div>
       <nav aria-label="Documentation">
       <div class="doc-nav-section" data-i18n="nav.section.started">GETTING STARTED</div>
@@ -98,7 +98,7 @@
           <li><div><strong>Decompose.</strong> <span class="step-tool">hela-mitosis:analyze_with_sequential_thinking</span> — atomic implementation steps.</div></li>
           <li><div><strong>Edit.</strong> <span class="step-tool">hela-membrane:write_file</span> — minimal, production-ready changes.</div></li>
           <li><div><strong>Test.</strong> <span class="step-tool">hela-nucleus:execute_command</span> — e.g. <code>npm test</code>.</div></li>
-          <li><div><strong>Commit memory.</strong> <span class="step-tool">hela-genome:add_observation</span> — record completion and relations.</div></li>
+          <li><div><strong>Commit memory.</strong> <span class="step-tool">hela-genome:memory_edit(add_observations)</span> — record completion and relations.</div></li>
         </ol>
 
         <h2 id="workflow-b">B — Deep Research &amp; Synthesis</h2>
@@ -107,18 +107,18 @@
           <li><div><strong>Survey.</strong> <span class="step-tool">hela-enzyme:research_brief</span> — one-call Google + Wikipedia fan-out (preferred over manual chaining).</div></li>
           <li><div><strong>Scrape.</strong> <span class="step-tool">hela-cytosol:browser_navigate → browser_get_content</span> — structured extraction from target URLs.</div></li>
           <li><div><strong>Synthesize.</strong> <span class="step-tool">hela-mitosis:llm_summarize</span> — comparative analysis.</div></li>
-          <li><div><strong>Store.</strong> <span class="step-tool">hela-genome:create_entity + add_observation</span> — entities and findings in <code>memory.db</code>.</div></li>
+          <li><div><strong>Store.</strong> <span class="step-tool">hela-genome:memory_edit(create_entities + add_observations)</span> — entities and findings in <code>memory.db</code>.</div></li>
           <li><div><strong>Publish.</strong> <span class="step-tool">hela-membrane:write_file</span> — markdown summary under <code>docs/</code>.</div></li>
         </ol>
 
         <h2 id="workflow-c">C — UI Design Synthesis &amp; Verification</h2>
         <p>Profiles: <code>web-devops</code>, <code>dev-workspace</code>. Tokens → components → live render → DOM verification.</p>
         <ol class="steps">
-          <li><div><strong>Tokenize.</strong> <span class="step-tool">hela-phenotype:generate_tokens / palette_fetch</span> — OKLCH tokens, type scale, Tailwind config.</div></li>
+          <li><div><strong>Tokenize.</strong> <span class="step-tool">hela-phenotype:design_tokens / palette</span> — OKLCH tokens, type scale, Tailwind config.</div></li>
           <li><div><strong>Build.</strong> <span class="step-tool">hela-membrane:write_file</span> — component code and <code>tailwind.config.js</code>.</div></li>
           <li><div><strong>Serve.</strong> <span class="step-tool">hela-nucleus:execute_command</span> — local dev server.</div></li>
           <li><div><strong>Verify.</strong> <span class="step-tool">hela-cytosol:browser_navigate → browser_screenshot</span> — AX-tree check and rendered capture.</div></li>
-          <li><div><strong>Record.</strong> <span class="step-tool">hela-genome:add_observation</span> — milestone and snapshot reference.</div></li>
+          <li><div><strong>Record.</strong> <span class="step-tool">hela-genome:memory_edit(add_observations)</span> — milestone and snapshot reference.</div></li>
         </ol>
 
         <h2 id="workflow-d">D — Mobile Device Automation &amp; UI Testing</h2>
@@ -128,7 +128,7 @@
           <li><div><strong>Attach.</strong> <span class="step-tool">hela-receptor:start_session</span> — control stream.</div></li>
           <li><div><strong>Inspect.</strong> <span class="step-tool">hela-receptor:ui_dump</span> — structural hierarchy.</div></li>
           <li><div><strong>Act.</strong> <span class="step-tool">hela-receptor:tap / input_text</span> — touch and form automation.</div></li>
-          <li><div><strong>Record.</strong> <span class="step-tool">hela-genome:add_observation</span> — results in the memory graph.</div></li>
+          <li><div><strong>Record.</strong> <span class="step-tool">hela-genome:memory_edit(add_observations)</span> — results in the memory graph.</div></li>
         </ol>
 
         <h2 id="workflow-e">E — Interactive PTY Orchestration</h2>
@@ -138,7 +138,7 @@
           <li><div><strong>Stream.</strong> <span class="step-tool">hela-ribosome:session_read</span> — bounded stdout/stderr chunks.</div></li>
           <li><div><strong>Hook.</strong> <span class="step-tool">hela-ribosome:session_hook</span> — regex triggers with auto-response.</div></li>
           <li><div><strong>Close.</strong> <span class="step-tool">hela-ribosome:session_close</span> — graceful teardown.</div></li>
-          <li><div><strong>Record.</strong> <span class="step-tool">hela-genome:add_observation</span> — logs and exit status.</div></li>
+          <li><div><strong>Record.</strong> <span class="step-tool">hela-genome:memory_edit(add_observations)</span> — logs and exit status.</div></li>
         </ol>
 
         <h2 id="workflow-f">F — Autonomous Blender 3D Modeling</h2>
@@ -148,7 +148,7 @@
           <li><div><strong>Execute.</strong> <span class="step-tool">hela-plastid:execute_blender_code</span> — geometry, materials, lighting.</div></li>
           <li><div><strong>Render.</strong> <span class="step-tool">hela-plastid:render_output</span> — camera snapshot.</div></li>
           <li><div><strong>Save.</strong> <span class="step-tool">hela-plastid:save_blend</span> — binary <code>.blend</code> under <code>assets/</code>.</div></li>
-          <li><div><strong>Record.</strong> <span class="step-tool">hela-genome:add_observation</span> — asset metadata and render path.</div></li>
+          <li><div><strong>Record.</strong> <span class="step-tool">hela-genome:memory_edit(add_observations)</span> — asset metadata and render path.</div></li>
         </ol>
       </nav>
 
@@ -162,7 +162,7 @@
     <div class="cmd-modal">
       <div class="cmd-input-row">
         <span aria-hidden="true">§</span>
-        <input type="text" class="cmd-input" id="cmdInput" aria-label="Search tools, pages, or profiles" placeholder="Search 322 tools, pages, profiles…">
+        <input type="text" class="cmd-input" id="cmdInput" aria-label="Search tools, pages, or profiles" placeholder="Search 292 tools, pages, profiles…">
         <span class="cmd-item-tag">ESC</span>
       </div>
       <div class="cmd-results" id="cmdResults"></div>

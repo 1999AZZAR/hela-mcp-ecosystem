@@ -41,7 +41,7 @@
     <aside class="doc-sidebar" aria-label="Documentation sections">
       <div class="doc-brand">
         <a href="index.html" class="doc-brand-title">HeLa MCP Ecosystem</a>
-        <div class="doc-brand-meta">v1.1.0 · 10 SERVERS · 322 TOOLS</div>
+        <div class="doc-brand-meta">v1.2.0 · 10 SERVERS · 292 TOOLS</div>
       </div>
       <nav aria-label="Documentation">
       <div class="doc-nav-section" data-i18n="nav.section.started">GETTING STARTED</div>
@@ -138,10 +138,10 @@
         </div>
 
         <h2 id="ellis">Production exhibit: Ellis UI Archive</h2>
-        <p>Live at <a href="https://demo-designer.glassgallery.my.id/" target="_blank" rel="noopener noreferrer">demo-designer.glassgallery.my.id</a> — 24 bespoke component design systems generated through <span class="step-tool">hela-phenotype:generate_tokens → generate_8state_component</span>, verified in-browser via <span class="step-tool">hela-cytosol</span>, recorded in <span class="step-tool">hela-genome</span>. This is workflow C executed against a real deployment target, not a mock.</p>
+        <p>Live at <a href="https://demo-designer.glassgallery.my.id/" target="_blank" rel="noopener noreferrer">demo-designer.glassgallery.my.id</a> — 24 bespoke component design systems generated through <span class="step-tool">hela-phenotype:design_tokens → generate_8state_component</span>, verified in-browser via <span class="step-tool">hela-cytosol</span>, recorded in <span class="step-tool">hela-genome</span>. This is workflow C executed against a real deployment target, not a mock.</p>
         <div class="admonition success">
           <div class="admonition-title">REPRODUCTION PATH</div>
-          <div>Tokens (<code>generate_tokens</code>) → Tailwind (<code>generate_tailwind_config</code>) → components (<code>generate_8state_component</code>) → verify (<code>browser_screenshot</code>) → record (<code>add_observation</code>). Every step is a documented tool call.</div>
+          <div>Tokens (<code>design_tokens action=theme</code>) → Tailwind (<code>design_tokens action=tailwind</code>) → components (<code>generate_8state_component</code>) → verify (<code>browser_screenshot</code>) → record (<code>memory_edit action=add_observations</code>). Every step is a documented tool call.</div>
         </div>
 
         <footer class="doc-footer"><span>MIT LICENSE · AZZAR</span><span>ARCHIVAL_RECORD_SEALED // HELA_MCP_ECOSYSTEM</span></footer>
@@ -154,7 +154,7 @@
     <div class="cmd-modal">
       <div class="cmd-input-row">
         <span aria-hidden="true">§</span>
-        <input type="text" class="cmd-input" id="cmdInput" aria-label="Search tools, pages, or profiles" placeholder="Search 322 tools, pages, profiles…">
+        <input type="text" class="cmd-input" id="cmdInput" aria-label="Search tools, pages, or profiles" placeholder="Search 292 tools, pages, profiles…">
         <span class="cmd-item-tag">ESC</span>
       </div>
       <div class="cmd-results" id="cmdResults"></div>
