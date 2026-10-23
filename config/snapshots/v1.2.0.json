@@ -18,7 +18,7 @@
     },
     "hela-genome": {
       "repo": "https://github.com/1999AZZAR/project-mcp.git",
-      "commit": "e7181e8945eb73ced86e38373d2bebba1128da7d",
+      "commit": "7f894a08dace8b7a59341e1c931d8a4d7de28ea6",
       "branch": "master",
       "entry": "dist/index.js"
     },
